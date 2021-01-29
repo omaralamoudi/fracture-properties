@@ -1,0 +1,245 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{Carman1961}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=6d2d64631452da614b484db13e0cbe47}{%
+           family={Carman},
+           familyi={C\bibinitperiod},
+           given={PC},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6d2d64631452da614b484db13e0cbe47}
+      \strng{fullhash}{6d2d64631452da614b484db13e0cbe47}
+      \strng{bibnamehash}{6d2d64631452da614b484db13e0cbe47}
+      \strng{authorbibnamehash}{6d2d64631452da614b484db13e0cbe47}
+      \strng{authornamehash}{6d2d64631452da614b484db13e0cbe47}
+      \strng{authorfullhash}{6d2d64631452da614b484db13e0cbe47}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{L’ecoulement des gaz a travers les milieux poreux: Presses Universitaires de France}
+      \field{year}{1961}
+    \endentry
+    \entry{Darcy1856}{book}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9cd309aec7ae4d85d3e907a13d2b2ce0}{%
+           family={Darcy},
+           familyi={D\bibinitperiod},
+           given={Henry\bibnamedelimb Philibert\bibnamedelima Gaspard},
+           giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {V. Dalamont}%
+      }
+      \strng{namehash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \strng{fullhash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \strng{bibnamehash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \strng{authorbibnamehash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \strng{authornamehash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \strng{authorfullhash}{9cd309aec7ae4d85d3e907a13d2b2ce0}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Les Fontaines publiques de la ville de Dijon. Exposition et application des principes {à} suivre et des formules {à} employer dans les questions de distribution d'eau, etc}
+      \field{year}{1856}
+    \endentry
+    \entry{Ketcham2010}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=cfa06b79fc972dd49a1590225b1f8c30}{%
+           family={Ketcham},
+           familyi={K\bibinitperiod},
+           given={Richard\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7f1487ba141b616d11f92299558ac8f1}
+      \strng{fullhash}{7f1487ba141b616d11f92299558ac8f1}
+      \strng{bibnamehash}{7f1487ba141b616d11f92299558ac8f1}
+      \strng{authorbibnamehash}{7f1487ba141b616d11f92299558ac8f1}
+      \strng{authornamehash}{7f1487ba141b616d11f92299558ac8f1}
+      \strng{authorfullhash}{7f1487ba141b616d11f92299558ac8f1}
+      \field{sortinit}{K}
+      \field{sortinithash}{9fd838a31ba64d981e8f44562bd33f89}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Geosphere}
+      \field{number}{5}
+      \field{title}{{Three-dimensional measurement of fractures in heterogeneous materials using high-resolution X-ray computed tomography}}
+      \field{volume}{6}
+      \field{year}{2010}
+      \field{pages}{499\bibrangedash 514}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1130/ges00552.1
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/oma385/Dropbox/Books + Papers/organized/mendeley/pdf/Ketcham, Slottke, Sharp - 2010 - Three-dimensional measurement of fractures in heterogeneous materials using high-resolution X-ray compu.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Lindeberg1998}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=3d170851c0f566169f61c3e367fef2bc}{%
+           family={Lindeberg},
+           familyi={L\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3d170851c0f566169f61c3e367fef2bc}
+      \strng{fullhash}{3d170851c0f566169f61c3e367fef2bc}
+      \strng{bibnamehash}{3d170851c0f566169f61c3e367fef2bc}
+      \strng{authorbibnamehash}{3d170851c0f566169f61c3e367fef2bc}
+      \strng{authornamehash}{3d170851c0f566169f61c3e367fef2bc}
+      \strng{authorfullhash}{3d170851c0f566169f61c3e367fef2bc}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{2}
+      \field{title}{{Edge detection and ridge detection with automatic scale selection}}
+      \field{volume}{30}
+      \field{year}{1998}
+      \field{pages}{117\bibrangedash 154}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1023/A:1008097225773
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/oma385/Dropbox/Books + Papers/organized/mendeley/pdf/Lindeberg - 1998 - Edge detection and ridge detection with automatic scale selection.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1023/A:1008097225773
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1023/A:1008097225773
+      \endverb
+      \keyw{computer vision,diffuseness,edge detection,feature detection,gaussian deriva-,multiscale representation,normalized derivative,ridge detection,scale selection,scale-space,tive}
+    \endentry
+    \entry{Mavko2009}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=63a7d097e80cc35a0f7cd891a7b72d17}{%
+           family={Mavko},
+           familyi={M\bibinitperiod},
+           given={Gary},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{03654d0b1541d28f87e80612c6619768}
+      \strng{fullhash}{03654d0b1541d28f87e80612c6619768}
+      \strng{bibnamehash}{03654d0b1541d28f87e80612c6619768}
+      \strng{authorbibnamehash}{03654d0b1541d28f87e80612c6619768}
+      \strng{authornamehash}{03654d0b1541d28f87e80612c6619768}
+      \strng{authorfullhash}{03654d0b1541d28f87e80612c6619768}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780511626753}
+      \field{title}{{The Rock Physics Handbook}}
+      \field{year}{2009}
+      \field{pages}{511}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1017/CBO9780511626753
+      \endverb
+      \verb{urlraw}
+      \verb http://ebooks.cambridge.org/ref/id/CBO9780511626753
+      \endverb
+      \verb{url}
+      \verb http://ebooks.cambridge.org/ref/id/CBO9780511626753
+      \endverb
+    \endentry
+    \entry{Voorn2013}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=4afb28c80022afd4aa950a921215ec76}{%
+           family={Voorn},
+           familyi={V\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c047f4d5ea05430627cc9b59b079c561}
+      \strng{fullhash}{c047f4d5ea05430627cc9b59b079c561}
+      \strng{bibnamehash}{c047f4d5ea05430627cc9b59b079c561}
+      \strng{authorbibnamehash}{c047f4d5ea05430627cc9b59b079c561}
+      \strng{authornamehash}{c047f4d5ea05430627cc9b59b079c561}
+      \strng{authorfullhash}{c047f4d5ea05430627cc9b59b079c561}
+      \field{sortinit}{V}
+      \field{sortinithash}{75dd7385c90b2252c3ae853a80ca853b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00983004}
+      \field{journaltitle}{Computers and Geosciences}
+      \field{title}{{Multiscale Hessian fracture filtering for the enhancement and segmentation of narrow fractures in 3D image data}}
+      \field{volume}{57}
+      \field{year}{2013}
+      \field{pages}{44\bibrangedash 53}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.cageo.2013.03.006
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/oma385/Dropbox/Books + Papers/organized/mendeley/pdf/Voorn, Exner, Rath - 2013 - Multiscale Hessian fracture filtering for the enhancement and segmentation of narrow fractures in 3D image d.pdf:pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.cageo.2013.03.006
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.cageo.2013.03.006
+      \endverb
+      \keyw{Dolomite,FIJI,Fractured reservoir,ImageJ,Macro,$\mu$CT}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
