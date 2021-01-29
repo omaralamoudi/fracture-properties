@@ -1,6 +1,10 @@
 % go to correct directory
-cd 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\scripts';
-addpath(genpath('C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\scripts'));
+if (ispc)
+    cd 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\scripts';
+elseif (ismac)
+    cd '~/Dropbox/GraduateSchool/PhD/CourseWork/2-Spring2019/3DAnalysisOfVolumetricData/Project/scripts';    
+end
+addpath(genpath('.'));
 
 clear variables; clc;
 InitColormaps();
