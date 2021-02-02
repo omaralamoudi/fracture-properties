@@ -1,3 +1,6 @@
+# System files
+.DS_Store
+
 # Cleanable LaTeX files. When running the clear function, these files are removed. Rendering them useless to track.
 *.aux
 *.bbl
