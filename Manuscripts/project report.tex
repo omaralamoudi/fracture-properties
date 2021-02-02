@@ -3,16 +3,17 @@
 \author{Omar Alamoudi}
 \date{May 14, 2019}
 
-
+% styling packages
 \usepackage[margin = 1in]{geometry}
 \setlength{\parskip}{0.25cm}
 \renewcommand{\baselinestretch}{1.0}
 \usepackage{mathtools, amssymb, subcaption, float}
 \usepackage{grffile}
 \usepackage{graphicx}
+
 \graphicspath{{figures/}}
 
-
+% referencing packages
 \usepackage{hyperref}
 \def\chapterautorefname~#1\null{Chap.~(#1)\null}
 \def\sectionautorefname~#1\null{Sec.~(#1)\null}
@@ -20,7 +21,7 @@
 \def\figureautorefname~#1\null{Fig.~(#1)\null}
 \def\tableautorefname~#1\null{Tab.~(#1)\null}
 \def\equationautorefname~#1\null{Eq.~(#1)\null}
-
+% modifying the autoref fuction slightly
 \newcommand{\Autoref}[1]{%
   \begingroup%
   \def\chapterautorefname~##1\null{Chapter~(##1)\null}%
@@ -33,12 +34,12 @@
   \endgroup%
 }
 
-
+% definling the package use for referencing
 \usepackage[style=authoryear]{biblatex}
 \bibliography{references}
 
 
-% a command to nubmer a particular line
+% a command to number a particular equation
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
 
@@ -49,7 +50,14 @@ We should measure the point spread function, or edge spread function of our mach
 
 
 \section{Introduction}
-In applications that are relevant to the utilization and understanding composite materials, particularly multi-phase materials, understanding the effective or apparent properties of such composites is essential for understanding how they behave under the influence of different physical and chemical processes. It is also very important to understand how constituents of such composites affect one another along the surfaces of contact. Rocks, soils, and rock melts are three complex composite material examples that geologist, geophysicists, and engineers encounter. Rocks are very rarely composed of a single physical material phase, in most likelihood, a rock sample is composed of at least two phases: a solid, and a fluid phase. The interaction between these phases is governed by the physical properties of each phase, and the law of conservation of mass, momentum, and energy of their system. With this broad view points in mind, a particular physical process that I am interested in is the processes governing fluid flow within fractured rocks, how the flow is affected by the introduction of fractures in such rocks, and the influence of varying the fluid pressure on these fractures, their capacity of storage and the flow of the fluids through them. 
+In applications that utilize and depend on the understanding of multi-phase composite material properties, understanding the effective or apparent properties is essential. The behavior of such materials varies under the influence of different physical and chemical processes. It is also very important to understand how constituents of such composites affect one another along boundaries of contact. Rocks, soils, and rock melts are three composite material examples that geologist, geophysicists, and engineers want to understand. Rocks are very rarely composed of a single physical material phase, in most likelihood, a rock sample is composed of at least two phases: a solid, and a fluid phase. The interaction between these phases is governed by the physical properties of each phase, and the law of conservation of mass, momentum, and energy of their system. With this broad view points in mind, a particular physical process that we interested in is the processes governing fluid flow within fractured rocks. The question of how the fluid flow is affected by the induction and eveolution of fractures in such rocks is of interest. Since fluid flow is generally dominated by flow through fracture [citations needed], one can deduce that the geometric properties of these fracture are primary influences on the fluid flow. Also, the evolution of these fractures due to deformation is relevant. In order to understand how these properties affect the fluid flow, we need to detect and measure these fractures [cite different techniques that measure fractures].
+
+In order to understand how the evolution of fractures influences samples permeability, we plan to conduct tri-axial testing of cylindrical rock samples while simultaneously acquiring micrometer-scale Computed Tomography images (microCT), permeability measurements, and ultrasonic P and S wave velocities. A time-sequential series of these measurements will be acquired to capture the fracture induction and evolution in the sample. The acquisition of all types of data will be conducted at different deformation stages. Therefore, we need a systematic, semi-automatic approach to reliably detect and measure the fractures of the samples. 
+
+[]
+
+
+\emph{[The following paragraph discusses how fracture geometries have in the past been related to permeability.]}
 
 Darcy's law shown in \autoref{eqn:Darcy's Law} \parencite{Darcy1856, Mavko2009} governs the conductivity of fluid within a cylindrical porous material sample with known geometry. The driving force of the fluid motion is the pressure gradient. Darcy's law does not make any explicit declarations about the spatial distribution, or shape of the pores within a rock specimen. On the other hand, the Kozeny--Carman \parencite{Carman1961, Mavko2009} describes the fluid flow through a cylindrical cavity in solid block see \autoref{eqn:Kozeny-Carman}. Imagine drilling a cylindrical cavity in the cylindrical sample with the known geometry with Radius R. \Autoref{eqn:Kozeny-Carman} describes the flow through that cavity. 
 
