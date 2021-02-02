@@ -13,6 +13,7 @@ clc
 img.img(:,:,1) = imread('../Data/crop_1014.tiff');
 img.img(:,:,2) = imread('../Data/crop_1015.tiff');
 img.img(:,:,3) = imread('../Data/crop_1016.tiff');
+
 %%  COMPUTING TRADITIONAL DERIVATIVE OPERATIONS
 % defining the pixle/voxel dimentions
 
