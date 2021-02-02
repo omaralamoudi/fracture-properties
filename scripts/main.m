@@ -12,4 +12,7 @@ addpath(genpath('.'));
 home;
 InitColormaps();
 
-%% 
+%% Generating 2D synthetic imags
+generateSynthFracs2D;
+
+FracMap_Prototype2D;

@@ -1,11 +1,3 @@
-clear variables; home
-InitColormaps();
-cd 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\scripts'
-addpath(genpath('C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project'));
-generateSynthFracs_v1;
-
-% clear fig1 fig2 dim filterSize fracAps imgDim SNR traverseXCoor
-home
 %%  COMPUTING TRADITIONAL DERIVATIVE OPERATIONS
 % defining the pixle/voxel dimentions
 
