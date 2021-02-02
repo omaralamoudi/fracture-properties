@@ -12,3 +12,6 @@
 *.synctex.gz
 *.bak
 *.dvi
+
+# Matlab files, especially temporary files *.*~
+*.m~

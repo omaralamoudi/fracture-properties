@@ -29,23 +29,25 @@ SNR = 10;
 filterSize = 3;
 
 % IMAGE GENERATION AND DISPLAY
-% Creating a folder named output to save output images
-mkdir output
-addpath('output'); 
+% Creating a folder named output with a subdirectory of yyymmdd-HHMMSS that
+% contains the results of what follows
+targetdir = ['output',filesep,'2D',filesep,'synth images',filesep,datestr(now,'yyyymmdd-HHMM')];
+mkdir(targetdir);
+addpath(genpath(targetdir)); 
 % Generating crisp (not blurred) images
 img(1).img          = MakeFracImage2D(dim,fracAps);
-imwrite(img(1).img,'output/synthetic.tif'); 
+imwrite(img(1).img,[targetdir,filesep,'synthetic.tif']); 
 img(1).description  = "Synthetic Fracture Image (SFI)";
 img(2).img          = MakeFracImage2D(dim,fracAps,true,SNR);
-imwrite(img(2).img,'output/synthetic+noise.tif'); 
+imwrite(img(2).img,[targetdir,filesep,'synthetic+noise.tif']); 
 img(2).description = "SFI + Noise";
 
 % Generating blurred images
 img(3).img          = imboxfilt(img(1).img,filterSize);
-imwrite(img(3).img,'output/synthetic+blurred.tif'); 
+imwrite(img(3).img,[targetdir,filesep,'synthetic+blurred.tif']); 
 img(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
 img(4).img          = AddNoise(img(3).img,SNR);
-imwrite(img(4).img,'output/synthetic+blurred+noise.tif'); 
+imwrite(img(4).img,[targetdir,filesep,'synthetic+blurred+noise.tif']); 
 % img(4).img          = imboxfilt(img(2).img,filterSize);
 img(4).description  = "SBFI + Noise";
 

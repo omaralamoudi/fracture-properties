@@ -16,3 +16,6 @@ InitColormaps();
 generateSynthFracs2D;
 
 FracMap_Prototype2D;
+
+%% In order to clean the output from the previous session, run the following
+cleanSynthFracs2D; 
