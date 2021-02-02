@@ -29,11 +29,15 @@ SNR = 10;
 filterSize = 3;
 
 % IMAGE GENERATION AND DISPLAY
-% Creating a folder named output with a subdirectory of yyymmdd-HHMMSS that
-% contains the results of what follows
-targetdir = ['output',filesep,'2D',filesep,'synth images',filesep,datestr(now,'yyyymmdd-HHMM')];
+% Creating a folder named output with a subdirectory structure 
+% 2D/yyymmdd-HHMM that contains the generated synthetic 2D images
+
+% to add a date to the name of the directory use 
+% datestr(now,'yyyymmdd-HHMM')
+targetdir = ['output',filesep,'2D',filesep,'synth images'];
 mkdir(targetdir);
 addpath(genpath(targetdir)); 
+
 % Generating crisp (not blurred) images
 img(1).img          = MakeFracImage2D(dim,fracAps);
 imwrite(img(1).img,[targetdir,filesep,'synthetic.tif']); 
