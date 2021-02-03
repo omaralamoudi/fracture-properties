@@ -7,11 +7,12 @@ if (ispc)
 elseif (ismac)
     cd '~/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts';    
 end
+
 addpath(genpath('.'));
 
 home;
-InitColormaps();
 
+InitColormaps();
 %% Generating 2D synthetic imags
 generateSynthFracs2D;
 
