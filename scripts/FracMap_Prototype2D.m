@@ -5,7 +5,7 @@ dx = 1;
 dy = 1;
 
 % computing the first and second derivative
-for k = 1:4
+for k = 1:4 % k is the index for the image type
     [img(k).ddx, img(k).ddy]            = gradient(double(img(k).img),dx,dy);
     [img(k).ddxddx, img(k).ddyddx]      = gradient(img(k).ddx,dx,dy);
     [img(k).ddxddy, img(k).ddyddy]      = gradient(img(k).ddy,dx,dy);
@@ -23,6 +23,8 @@ for k = 1:4
     
     % Finite difference Hessian Implementation
     tic
+    % create a cell array the same size as the image for the Hessian matrix
+    % , the eigenvectors and eigenvalues
     img(k).hessian(1).matrix = cell(size(img(k).img));
     img(k).hessian(1).EigVec = cell(size(img(k).img));
     img(k).hessian(1).EigVal = cell(size(img(k).img));

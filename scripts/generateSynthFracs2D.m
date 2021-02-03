@@ -38,7 +38,7 @@ targetdir = ['output',filesep,'2D',filesep,'synth images'];
 mkdir(targetdir);
 addpath(genpath(targetdir)); 
 
-% Generating crisp (not blurred) images
+%% Generating crisp (not blurred) images
 img(1).img          = MakeFracImage2D(dim,fracAps);
 imwrite(img(1).img,[targetdir,filesep,'synthetic.tif']); 
 img(1).description  = "Synthetic Fracture Image (SFI)";
@@ -46,7 +46,7 @@ img(2).img          = MakeFracImage2D(dim,fracAps,true,SNR);
 imwrite(img(2).img,[targetdir,filesep,'synthetic+noise.tif']); 
 img(2).description = "SFI + Noise";
 
-% Generating blurred images
+%% Generating blurred images
 img(3).img          = imboxfilt(img(1).img,filterSize);
 imwrite(img(3).img,[targetdir,filesep,'synthetic+blurred.tif']); 
 img(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
@@ -55,7 +55,7 @@ imwrite(img(4).img,[targetdir,filesep,'synthetic+blurred+noise.tif']);
 % img(4).img          = imboxfilt(img(2).img,filterSize);
 img(4).description  = "SBFI + Noise";
 
-% Displaying produced images
+%% Displaying produced images
 % Crisp images
 fig1 = figure('Position',[100 100 800 800],'Name','Crisp Images');
 subplot(2,2,1);
