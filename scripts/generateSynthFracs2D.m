@@ -50,7 +50,7 @@ img(2).description = "SFI + Noise";
 img(3).img          = imboxfilt(img(1).img,filterSize);
 imwrite(img(3).img,[targetdir,filesep,'synthetic+blurred.tif']); 
 img(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
-img(4).img          = AddNoise(img(3).img,SNR);
+img(4).img          = imboxfilt(img(2).img,filterSize);
 imwrite(img(4).img,[targetdir,filesep,'synthetic+blurred+noise.tif']); 
 % img(4).img          = imboxfilt(img(2).img,filterSize);
 img(4).description  = "SBFI + Noise";
