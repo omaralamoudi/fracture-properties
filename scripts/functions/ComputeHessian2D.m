@@ -20,8 +20,6 @@ if nargin < 2
 end
 
 if (implementation == 1)
-    
-    tic
     [ddx, ddy]            = gradient(img);
     [ddxddx, ddyddx]      = gradient(ddx);
     [ddxddy, ddyddy]      = gradient(ddy);
@@ -33,8 +31,6 @@ if (implementation == 1)
             hessian(j,i) = {[ddxddx(j,i),ddxddy(j,i); ddyddx(j,i),ddyddy(j,i)]};
         end
     end
-    toc
-    
 elseif (implementation == 2)
     h = fspecial('gaussian',hsize,sigma);
     [~,h_xx,h_xy,h_yx,h_yy] = ComputeHessian2D(h);
