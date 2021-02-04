@@ -45,8 +45,17 @@
 
 \begin{document}
 \maketitle
-\subsubsection*{A comment Nicola made during our meeting}
+\subsubsection*{Comment by Nicola on Jan 27, 2021}
 We should measure the point spread function, or edge spread function of our machine using properly calibrated materials (standard point, or cube, or bar) and use the resultant estimate of the point spread function in the image analysis. 
+
+\subsubsection*{Discussion with Nicola on Feb 3, 2012}
+A few ideas arise regarding extending the work donw in \cite{Voorn2013}. As per Richard Ketcham's feedback for the course project, the incorporation of blurred images analysis and sub-voxel fractures are good extensions of this work. Other ideas discussed:
+\begin{itemize}
+	\item After measuring the Point Spread Function (PSF) using Rich Ketcham's program, we can try to deconvolve the PSF with the microCT image with the objective of enhancing the details in the image, this could help improve the detection of small planer features such as fractures. 
+	\item in \cite{Voorn2013}, the Gaussian function used in the convolution operation is of the form $ G(x,y,z,s)$, so it is safe to assume that the parameter $s$ that corresponds to the width of the spike in a 1-D Gaussian is uniform in all directions, i.e. isotropic (spherical). Since fractures are more planer than spherical, maybe we should consider an ellipsoidal form instead. 
+\end{itemize} 
+
+Also
 
 
 \section{Introduction}
