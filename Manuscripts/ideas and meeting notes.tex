@@ -1,5 +1,8 @@
-\documentclass[{project report}.tex]{subfiles}
+\documentclass{article}
 
+% definling the package use for referencing
+\usepackage[style=authoryear]{biblatex}
+\bibliography{references}
 
 \begin{document}
 \subsection{Ideas, and meeting notes}
@@ -13,4 +16,5 @@ A few ideas arise regarding extending the work donw in \cite{Voorn2013}. As per 
 	\item in \cite{Voorn2013}, the Gaussian function used in the convolution operation is of the form $ G(x,y,z,s)$, so it is safe to assume that the parameter $s$ that corresponds to the width of the spike in a 1-D Gaussian, and the  is uniform in all directions, i.e. isotropic (spherical). Since fractures are more planer than spherical, maybe we should consider an ellipsoidal form instead. 
 	\item An idea that I need to workout has to do with the question: what is the appropriate $\sigma$  needed to illuminate a specific aperture of fractures? Another way to think about
 \end{itemize} 
+
 \end{document}
