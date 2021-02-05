@@ -42,21 +42,10 @@
 % a command to number a particular equation
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
+\usepackage{docmute} % used to supress the preamble of the files added using input{}
 
 \begin{document}
 \maketitle
-\subsubsection*{Comment by Nicola on Jan 27, 2021}
-We should measure the point spread function, or edge spread function of our machine using properly calibrated materials (standard point, or cube, or bar) and use the resultant estimate of the point spread function in the image analysis. 
-
-\subsubsection*{Discussion with Nicola on Feb 3, 2012}
-A few ideas arise regarding extending the work donw in \cite{Voorn2013}. As per Richard Ketcham's feedback for the course project, the incorporation of blurred images analysis and sub-voxel fractures are good extensions of this work. Other ideas discussed:
-\begin{itemize}
-	\item After measuring the Point Spread Function (PSF) using Rich Ketcham's program, we can try to deconvolve the PSF with the microCT image with the objective of enhancing the details in the image, this could help improve the detection of small planer features such as fractures. 
-	\item in \cite{Voorn2013}, the Gaussian function used in the convolution operation is of the form $ G(x,y,z,s)$, so it is safe to assume that the parameter $s$ that corresponds to the width of the spike in a 1-D Gaussian is uniform in all directions, i.e. isotropic (spherical). Since fractures are more planer than spherical, maybe we should consider an ellipsoidal form instead. 
-\end{itemize} 
-
-Also
-
 
 \section{Introduction}
 In applications that utilize and depend on the understanding of multi-phase composite material properties, understanding the effective or apparent properties is essential. The behavior of such materials varies under the influence of different physical and chemical processes. It is also very important to understand how constituents of such composites affect one another along boundaries of contact. Rocks, soils, and rock melts are three composite material examples that geologist, geophysicists, and engineers want to understand. Rocks are very rarely composed of a single physical material phase, in most likelihood, a rock sample is composed of at least two phases: a solid, and a fluid phase. The interaction between these phases is governed by the physical properties of each phase, and the law of conservation of mass, momentum, and energy of their system. With this broad view points in mind, a particular physical process that we interested in is the processes governing fluid flow within fractured rocks. The question of how the fluid flow is affected by the induction and eveolution of fractures in such rocks is of interest. Since fluid flow is generally dominated by flow through fracture [citations needed], one can deduce that the geometric properties of these fracture are primary influences on the fluid flow. Also, the evolution of these fractures due to deformation is relevant. In order to understand how these properties affect the fluid flow, we need to detect and measure these fractures [cite different techniques that measure fractures].
@@ -254,4 +243,8 @@ The approach proposed by \cite{Voorn2013} seems to be successful at detecting fr
 \newpage
 \printbibliography
 
+\appendix
+\section{Appendix}
+\input{{gaussian functions}}
+\input{{ideas and meeting notes}}
 \end{document}
