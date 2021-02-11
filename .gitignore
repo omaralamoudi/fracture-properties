@@ -21,3 +21,6 @@
 
 # Manuscripts
 *.pdf
+
+# Temporary powerpoint files
+~*.pptx
