@@ -23,4 +23,7 @@
 *.pdf
 
 # Temporary powerpoint files
-~*.pptx
+~*.pptxi
+
+# Directory I shared with Nicola
+using Voorn-2013-shared with Nicola/
