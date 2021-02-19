@@ -1,0 +1,114 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.1
+network  {
+  watchlist = ""
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "93 149 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "2127 -856 532 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "1 1 1"
+    rotation = "0 0 1 0"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Ignore
+    elementaryUsage = Ignore
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "125 21 104 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1940 -944 421 496"
+        sizeHint = "421 492"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave
+    taskVerboseLogging = FALSE
+    filename = "$(NETWORK)/SaveManyTIFF2DICOM output/input.dcm"
+    addFileExtension = TRUE
+    format = DICOM
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input/12_slcies0450.tif"
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = None
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    tiffLinearRGB = FALSE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "85 337 136 48"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1978 -1075 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input"
+    searchPattern = "***"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input/12_slcies0600.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Contiguous
+    rawDataOffset = 0
+  }
+}
+connections  {
+  SetWorldMatrix.input0 = Compose3DFrom2DFiles.output0
+  ImageSave.input0 = SetWorldMatrix.output0
+}
+networkModel = ""

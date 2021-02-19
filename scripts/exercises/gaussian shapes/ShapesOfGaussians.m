@@ -4,12 +4,20 @@
 
 x = -2:0.02:2;
 amp = 1;
-center = 0;
-sig = 0.2;
+x_0 = 0;
+y_0 = 0;
+z_0 = 0; 
 
-g.oneD = @(A,x_0,x,sigma_x) A*exp( -(1/2)*((x-x_0).^2/(sigma_x.^2)) );
-plot(x,g.oneD(amp,center,x,sig)); 
+sig_x = 0.2;
+sig_y = 0.4;
+sig_z = 0.8;
 
-g.twoD = @(A,bx,cx,x,ay,by,cy,y) ...
-    A*exp((1/2)*((x-bx).^2/(cx.^2)) + ((y-y_0).^2/(sigma_y.^2)));
+
+figure
+g.oneD = @(A,x,x_0,sigma_x) A*exp( -(1/2) * ( (x-x_0).^2/(sigma_x.^2) ) );
+plot(x,g.oneD(amp,x_0,x,sig_x)); 
+
+
+g.twoD = @(A,x,x_0,sig_x,y,y_0,sig_y) ...
+    A*exp( -(1/2) * ( ((x-x_0).^2/(sig_x.^2)) + ((y-y_0).^2/(sig_y.^2)) ) );
 

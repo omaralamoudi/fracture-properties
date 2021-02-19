@@ -1,0 +1,415 @@
+// MDL v1 utf8
+mevislabVersion = 3.4
+network  {
+  watchlist  {
+    field = View3D.camPosition
+    field = View3D1.colorFactor
+  }
+}
+module ImageLoad {
+  internal  {
+    frame = "933 557 104 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "313 193 332 369"
+        sizeHint = "332 369"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageLoad
+    filename = $(NETWORK)/Hessian_25um.dcm
+    autoLoad = TRUE
+    readRaw = FALSE
+    rawX = 554
+    rawY = 184
+    rawZ = 914
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    dataTypeRaw = int16
+    planarConfig = Contiguous
+    byteOrder = LittleEndian
+    dataOffset = 0
+    pageSizeHint = "0 0 0 0 0 0"
+    suppressErrorLog = FALSE
+    dicomIgnoreHalfVoxelShift = FALSE
+    enableCheckSumTests = TRUE
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "561 217 160 80"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "566 278 443 500"
+        sizeHint = "443 500"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = bone_renderer
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = FALSE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = TRUE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "1 1 0.498039215803146"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "1 1 1"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0 0 0.498039215803146"
+    faceAlphaValue = 0.498
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 1
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "453 -195 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "26 59 511 360"
+        sizeHint = "511 360"
+        wasOpen = no
+      }
+      window _viewer {
+        geometry = "11 223 681 654"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0.415686011314392 0.576470971107483 0.447059005498886"
+    transparency = DELAYED_BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = TRUE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539801
+    position = "505.647186279297 227.315307617188 586.051513671875"
+    orientation = "0.321934342384338 0.390299409627914 0.86256867647171 0.786083340644836"
+    nearDistance = 365.49356
+    farDistance = 769.19489
+    focalDistance = 567.14337
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = FALSE
+    wheelRotationEnabled = FALSE
+  }
+}
+module WEMIsoSurface {
+  internal  {
+    frame = "625 393 160 80"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "546 390 405 337"
+        sizeHint = "405 337"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = bone_iso_surface
+    id = 0
+    autoApply = TRUE
+    updateMode = AutoUpdate
+    overwriteLabelDescription = TRUE
+    label = ""
+    description = ""
+    shouldComputeNormals = TRUE
+    isoMinValue = 0.5
+    isoMaxValue = 2000
+    useMinValue = FALSE
+    useMaxValue = TRUE
+    cellExtend = "1 1 1"
+    useWorldCoords = TRUE
+    useInterpolation = TRUE
+    useQuadrification = FALSE
+    useFaceValueList = FALSE
+    useLUTValueList = TRUE
+    useValenceThreeRemoval = TRUE
+    useZeroLengthEdgeRemoval = TRUE
+    useEdgeRemoval = FALSE
+    timePointIndex = 0
+    taskVerboseLogging = FALSE
+    useVoxelSampling = FALSE
+    voxelSampling = 3
+  }
+}
+module SoBackground {
+  internal  {
+    frame = "273 229 112 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "898 504 125 133"
+        sizeHint = "125 133"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoBackground
+    rotate = TRUE
+    flip = FALSE
+    on = TRUE
+    depthBuffer = TRUE
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "993 181 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "918 125 334 318"
+        sizeHint = "334 318"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface
+    isoValue = 0.5
+    quality = 1
+    useInterpolation = TRUE
+    useSmoothing = FALSE
+    smoothingPasses = 5
+    smoothingFactor = 0.2
+    usePolygonReduction = FALSE
+    targetReduction = 70
+    autoUpdate = FALSE
+    autoApply = FALSE
+    selectedTab = 1
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "945 -187 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "26 59 511 360"
+        sizeHint = "511 360"
+        wasOpen = no
+      }
+      window _viewer {
+        geometry = "1285 251 485 515"
+        sizeHint = "400 400"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer1
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0.415686011314392 0.576470971107483 0.447059005498886"
+    transparency = DELAYED_BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = TRUE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539819
+    position = "551.483276367188 801.656005859375 597.926330566406"
+    orientation = "-0.00874230172485113 0.433461487293243 0.901129722595215 2.26285982131958"
+    nearDistance = 445.31131
+    farDistance = 1105.5134
+    focalDistance = 775.08295
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = FALSE
+    wheelRotationEnabled = FALSE
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "949 -3 168 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "566 278 443 500"
+        sizeHint = "443 500"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer1
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = FALSE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = TRUE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "1 1 0.498039215803146"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "1 1 1"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0 0 0.498039215803146"
+    faceAlphaValue = 0.498
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+connections  {
+  bone_renderer.inWEM = bone_iso_surface.outWEM
+  SoExaminerViewer.children = "SoBackground.self bone_renderer.self"
+  bone_iso_surface.input0 = ImageLoad.output0
+  IsoSurface.inImage = ImageLoad.output0
+  SoExaminerViewer1.children = "SoBackground.self SoWEMRenderer1.self"
+  SoWEMRenderer1.inWEM = IsoSurface.outWEM
+}
+networkModel = ""
