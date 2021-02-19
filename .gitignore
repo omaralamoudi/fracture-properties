@@ -12,6 +12,7 @@
 *.synctex.gz
 *.bak
 *.dvi
+*.tks		# texmaker session file
 
 # Matlab files, especially temporary files *.*~
 *.m~
