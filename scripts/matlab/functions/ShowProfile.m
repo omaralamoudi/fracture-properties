@@ -8,7 +8,9 @@ function ShowProfile(img,traverseXCoor)
     % Date: April 28, 2019
     
     dim = size(img.img,1); 
-    plot(1:dim,img(1).img(:,traverseXCoor),'r','LineWidth',1.5);
+    p = oastairs(1:dim,img(1).img(:,traverseXCoor));
+    p.Color = 'r';
+    p.LineWidth = 1.5;
     ylim([-.5 2]);
     yticks([-0.5:0.25:2]);
     xlim([1 dim]);
