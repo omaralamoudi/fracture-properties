@@ -6,18 +6,6 @@ run("Appearance...", "open 16-bit=Automatic gui=1");
 // Setting ROI manager preferences
 setROIManager();
 
-
-
-
-
-
-
-
-
-
-
-
-
 // FUNCTIONS
 function setROIManager() { 
 	roiManager("Show All with labels");

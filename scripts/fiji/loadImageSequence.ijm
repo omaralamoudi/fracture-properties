@@ -1,3 +1,3 @@
-#@ File (style="directory") imageSequenceDirectory;
-
+#@ File (style="directory") imageSequenceDirectory
+//
 print(imageSequenceDirectory);
