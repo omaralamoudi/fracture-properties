@@ -42,7 +42,7 @@ addpath(genpath(targetdir));
 img(1).img          = MakeFracImage2D(dim,fracAps);
 imwrite(img(1).img,[targetdir,filesep,'synthetic.tif']); 
 img(1).description  = "Synthetic Fracture Image (SFI)";
-img(2).img          = MakeFracImage2D(dim,fracAps,true,SNR);
+img(2).img          = AddNoise(img(1).img,SNR);
 imwrite(img(2).img,[targetdir,filesep,'synthetic+noise.tif']); 
 img(2).description = "SFI + Noise";
 
