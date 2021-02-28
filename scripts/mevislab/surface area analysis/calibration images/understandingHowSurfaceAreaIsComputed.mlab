@@ -1,0 +1,1597 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.1
+network  {
+  watchlist = ""
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "-2011 1021 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-648 -699 532 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix1
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "1 1 1"
+    rotation = "0 0 1 0"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Forward
+    elementaryUsage = Ignore
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = FALSE
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "-2039 1133 160 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "171 105 1026 731"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SingleVoxel1Slice
+    dirPath = $(NETWORK)/3d/
+    searchPattern = "***"
+    currentFile = "$(NETWORK)/calibration images/clibrationimage2d.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Contiguous
+    rawDataOffset = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-1887 477 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface3
+    isoValue = 127
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-1887 349 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer3
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Arithmetic1 {
+  internal  {
+    frame = "-1775 789 112 88"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "809 593 309 69"
+        sizeHint = "301 69"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Invert
+    function = Invert
+    constant = 1
+  }
+}
+module Threshold {
+  internal  {
+    frame = "-1627 589 88 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold1
+    threshold = 127
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-1639 477 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface4
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-1639 349 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer4
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.30000001
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "-963 1149 168 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1051 370 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SingleVoxel3Slices
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/mevislab/surface area analysis/calibration images/3d"
+    searchPattern = "**.tif*"
+    currentFile = "$(NETWORK)/calibration images/3d/clibrationimage3d_3.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Separate
+    rawDataOffset = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "-1747 421 88 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment
+    comment = "This is for the pixels enclosing the central one
+
+The volume is correct = 8
+and the surface area is correct too = 32
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-2423 469 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface7
+    isoValue = 127
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-2423 341 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer7
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Threshold {
+  internal  {
+    frame = "-2167 581 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold3
+    threshold = 127
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-2175 469 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface8
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-2175 341 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer8
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "-2283 413 88 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment1
+    comment = "This is for the enterior voxel
+
+The volume is correct = 1
+and the surface area is correct too = 6
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "-963 1021 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-648 -699 532 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix2
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "1 1 1"
+    rotation = "0 0 1 0"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Forward
+    elementaryUsage = Ignore
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = FALSE
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-839 477 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface5
+    isoValue = 127
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-839 349 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer5
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Arithmetic1 {
+  internal  {
+    frame = "-727 797 112 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "809 593 309 69"
+        sizeHint = "301 69"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Arithmetic11
+    function = Invert
+    constant = 1
+  }
+}
+module Threshold {
+  internal  {
+    frame = "-583 589 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold2
+    threshold = 127
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-591 477 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface6
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-591 349 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer6
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "-699 421 88 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment2
+    comment = "This is for the pixels enclosing the central one
+
+The volume is correct = 26
+and the surface area is correct too = 60
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-1375 469 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface9
+    isoValue = 127
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-1375 341 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer9
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Threshold {
+  internal  {
+    frame = "-1119 581 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold4
+    threshold = 127
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-1131 469 136 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface10
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-1131 341 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 355 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer10
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "-1239 413 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment3
+    comment = "This is for the enterior voxel
+
+The volume is correct = 1
+and the surface area is correct too = 6
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "109 1165 168 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-192 -994 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles1
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/calibration images/synth images/synthetic"
+    searchPattern = "**.tif*"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/calibration images/synth images/synthetic/synthetic_3.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Separate
+    rawDataOffset = 0
+  }
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "109 1037 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-648 -699 532 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix3
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "1 1 1"
+    rotation = "0 0 1 0"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Forward
+    elementaryUsage = Ignore
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = FALSE
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "233 493 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface1
+    isoValue = 63
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "233 365 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer1
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Arithmetic1 {
+  internal  {
+    frame = "345 813 112 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "809 593 309 69"
+        sizeHint = "301 69"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Arithmetic12
+    function = Invert
+    constant = 1
+  }
+}
+module Threshold {
+  internal  {
+    frame = "489 605 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold5
+    threshold = 63
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "481 493 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface2
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "481 365 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer2
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "369 437 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment4
+    comment = "This is for the pixels enclosing the central one
+
+The volume is correct = 26
+and the surface area is correct too = 60
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-303 485 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface11
+    isoValue = 255
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-307 357 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer11
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Threshold {
+  internal  {
+    frame = "-47 597 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "828 478 300 298"
+        sizeHint = "262 298"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Threshold6
+    threshold = 255
+    relativeThreshold = FALSE
+    comparisonOperator = GreaterEqual
+    conditionTrueWriteValue = UserDef
+    userConditionTrueValue = 1
+    conditionFalseWriteValue = UserDef
+    userConditionFalseValue = 0
+  }
+}
+module IsoSurface {
+  internal  {
+    frame = "-59 485 136 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "785 457 349 340"
+        sizeHint = "349 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = IsoSurface12
+    isoValue = 1
+    quality = 1
+    useInterpolation = FALSE
+    useSmoothing = FALSE
+    smoothingPasses = 100
+    smoothingFactor = 0.40000001
+    usePolygonReduction = FALSE
+    targetReduction = 22
+    autoUpdate = TRUE
+    autoApply = TRUE
+    selectedTab = 0
+  }
+}
+module SoWEMRenderer {
+  internal  {
+    frame = "-59 357 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "723 356 473 543"
+        sizeHint = "473 543"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoWEMRenderer12
+    interactionProviderID = ""
+    autoApply = TRUE
+    autoUpdate = TRUE
+    autoClear = TRUE
+    enableCreaseAngle = TRUE
+    creaseAngle = 75
+    useHighlightSelected = FALSE
+    highlightColor = "1 0 0"
+    highlightIntensity = 0.5
+    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
+    allowHits = FALSE
+    performPreHitTest = FALSE
+    cursorShape = CROSS_CURSOR
+    colorMode = WEM_COLOR_GENERAL
+    drawFaces = TRUE
+    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
+    useFaceAmbientColor = TRUE
+    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
+    useFaceSpecularColor = TRUE
+    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
+    faceAlphaValue = 0.5
+    faceShininessValue = 1
+    primitiveValueLists = LUT
+    selectedPrimitiveValueList = LUT
+    selectedPrimitiveValueAlphaList = LUT
+    primitiveValueListValid = TRUE
+    primitiveValueListAlphaValid = TRUE
+    overwriteAlphaWithPVL = FALSE
+    wemPatchToRender = -1
+    maxWEMPatchIndex = 0
+    cachePatches = FALSE
+    sendAdjacency = FALSE
+    hitModifierKey = AllModifiersMask
+    selectedTab = 0
+  }
+}
+module Comment {
+  internal  {
+    frame = "-167 429 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-821 -800 256 208"
+        sizeHint = "256 208"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Comment5
+    comment = "This is for the enterior voxel
+
+The volume is correct = 1
+and the surface area is correct too = 6
+
+So it seems like we can ignore what the renderer shows us"
+  }
+}
+connections  {
+  SetWorldMatrix1.input0 = SingleVoxel1Slice.output0
+  IsoSurface3.inImage = Invert.output0
+  SoWEMRenderer3.inWEM = IsoSurface3.outWEM
+  Invert.input0 = SetWorldMatrix1.output0
+  Threshold1.input0 = Invert.output0
+  IsoSurface4.inImage = Threshold1.output0
+  SoWEMRenderer4.inWEM = IsoSurface4.outWEM
+  IsoSurface7.inImage = SetWorldMatrix1.output0
+  SoWEMRenderer7.inWEM = IsoSurface7.outWEM
+  Threshold3.input0 = SetWorldMatrix1.output0
+  IsoSurface8.inImage = Threshold3.output0
+  SoWEMRenderer8.inWEM = IsoSurface8.outWEM
+  SetWorldMatrix2.input0 = SingleVoxel3Slices.output0
+  IsoSurface5.inImage = Arithmetic11.output0
+  SoWEMRenderer5.inWEM = IsoSurface5.outWEM
+  Arithmetic11.input0 = SetWorldMatrix2.output0
+  Threshold2.input0 = Arithmetic11.output0
+  IsoSurface6.inImage = Threshold2.output0
+  SoWEMRenderer6.inWEM = IsoSurface6.outWEM
+  IsoSurface9.inImage = SetWorldMatrix2.output0
+  SoWEMRenderer9.inWEM = IsoSurface9.outWEM
+  Threshold4.input0 = SetWorldMatrix2.output0
+  IsoSurface10.inImage = Threshold4.output0
+  SoWEMRenderer10.inWEM = IsoSurface10.outWEM
+  SetWorldMatrix3.input0 = Compose3DFrom2DFiles1.output0
+  IsoSurface1.inImage = Arithmetic12.output0
+  SoWEMRenderer1.inWEM = IsoSurface1.outWEM
+  Arithmetic12.input0 = SetWorldMatrix3.output0
+  Threshold5.input0 = Arithmetic12.output0
+  IsoSurface2.inImage = Threshold5.output0
+  SoWEMRenderer2.inWEM = IsoSurface2.outWEM
+  IsoSurface11.inImage = SetWorldMatrix3.output0
+  SoWEMRenderer11.inWEM = IsoSurface11.outWEM
+  Threshold6.input0 = SetWorldMatrix3.output0
+  IsoSurface12.inImage = Threshold6.output0
+  SoWEMRenderer12.inWEM = IsoSurface12.outWEM
+}
+networkModel  {
+  parentItems  {
+    0  {
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 61
+        objectName = ""
+        parentUniqueId = 0
+        frame = "-2432 124 916 202"
+        backgroundColor  {
+          r = 247
+          g = 221
+          b = 91
+          a = 255
+        }
+        text = "This network tree is for for a single pixel with a value of 1 in the center of 3x3 matrix."
+        richText = "*<html>
+  <head>
+    <style type="text/css">
+      a.headerlink {
+        visibility: hidden;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+
+  <p>This network tree is for for a single pixel with a value of 1 in the center of 3x3 matrix.</p>
+
+
+  </body>
+</html>*"
+        titleText = "2D calibration images"
+        isCollapsed = False
+        drawAsComment = False
+        titleFrame = "-2427 129 906 22"
+      }
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 193
+        objectName = ""
+        parentUniqueId = 0
+        frame = "-1371 131 916 202"
+        backgroundColor  {
+          r = 247
+          g = 221
+          b = 91
+          a = 255
+        }
+        text = "This network tree is for for a single pixel with a value of 1 in the center of 3x3x3 matrix."
+        richText = "*<html>
+  <head>
+    <style type="text/css">
+      a.headerlink {
+        visibility: hidden;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+
+  <p>This network tree is for for a single pixel with a value of 1 in the center of 3x3x3 matrix.</p>
+
+
+  </body>
+</html>*"
+        titleText = "2D calibration images"
+        isCollapsed = False
+        drawAsComment = False
+        titleFrame = "-1366 136 906 22"
+      }
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 194
+        objectName = ""
+        parentUniqueId = 0
+        frame = "-302 143 916 202"
+        backgroundColor  {
+          r = 247
+          g = 221
+          b = 91
+          a = 255
+        }
+        text = "This network tree is for for a single pixel with a value of 1 in the center of 3x3x3 matrix."
+        richText = "*<html>
+  <head>
+    <style type="text/css">
+      a.headerlink {
+        visibility: hidden;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+
+  <p>This network tree is for for a single pixel with a value of 1 in the center of 3x3x3 matrix.</p>
+
+
+  </body>
+</html>*"
+        titleText = "2D calibration images"
+        isCollapsed = False
+        drawAsComment = False
+        titleFrame = "-297 148 906 22"
+      }
+    }
+  }
+}

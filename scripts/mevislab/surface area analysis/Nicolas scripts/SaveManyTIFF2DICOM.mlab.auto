@@ -5,12 +5,12 @@ network  {
 }
 module SetWorldMatrix {
   internal  {
-    frame = "93 149 120 56"
+    frame = "97 157 112 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "2127 -856 532 345"
-        sizeHint = "468 345"
+        geometry = "435 235 561 352"
+        sizeHint = "497 352"
         wasOpen = no
       }
     }
@@ -19,11 +19,11 @@ module SetWorldMatrix {
     instanceName = SetWorldMatrix
     center = "0 0 0"
     scaleOrientation = "0 0 1 0"
-    scale = "1 1 1"
+    scale = "25 25 25"
     rotation = "0 0 1 0"
     translation = "0 0 0"
     sourceUsage = Ignore
-    referenceUsage = Ignore
+    referenceUsage = Forward
     elementaryUsage = Ignore
     invertResult = FALSE
     setCInfo = FALSE
@@ -37,22 +37,22 @@ module ImageSave {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "1940 -944 421 496"
-        sizeHint = "421 492"
-        wasOpen = yes
+        geometry = "460 222 401 478"
+        sizeHint = "401 476"
+        wasOpen = no
       }
     }
   }
   fields  {
     instanceName = ImageSave
     taskVerboseLogging = FALSE
-    filename = "$(NETWORK)/SaveManyTIFF2DICOM output/input.dcm"
+    filename = $(NETWORK)/Hessian_25um.dcm
     addFileExtension = TRUE
     format = DICOM
     comment = MeVisLab
     allowOverwrite = TRUE
     autoFilename = FALSE
-    sourceName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input/12_slcies0450.tif"
+    sourceName = ""
     postfix = .result1
     dicomNameUsed = TRUE
     dicomMetaHeader = TRUE
@@ -83,17 +83,17 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "1978 -1075 426 525"
-        sizeHint = "426 525"
+        geometry = "655 115 420 500"
+        sizeHint = "420 500"
         wasOpen = no
       }
     }
   }
   fields  {
     instanceName = Compose3DFrom2DFiles
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input"
+    dirPath = C:/Users/Nicola/Desktop/OmarMeVisLab/Output
     searchPattern = "***"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/input/12_slcies0600.tif"
+    currentFile = $(NETWORK)/Output/Hessian_12_slcies0586.tif
     readRaw = FALSE
     rawX = 1
     rawY = 1
