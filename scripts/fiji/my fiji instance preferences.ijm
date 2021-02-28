@@ -12,7 +12,7 @@ function setROIManager() {
 	roiManager("Associate", "true");
 	roiManager("Centered", "false");
 	roiManager("UseNames", "true");
-	roiManager("Show All");
+	roiManager("Show All with labels");
 	selectWindow("ROI Manager");
 	wait(200);
 	run("Close")
