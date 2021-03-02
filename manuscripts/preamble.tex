@@ -1,0 +1,34 @@
+%% Preamble for EDGER paper
+% PACKAGES
+\usepackage{color,graphicx,subcaption,float,listings,wrapfig}
+\usepackage[inline]{enumitem}
+\usepackage{mathtools,commath,amssymb,cancel,siunitx}
+\usepackage{xcolor,hyperref,comment}
+\usepackage[normalem]{ulem}
+\usepackage[noabbrev]{cleveref}
+\usepackage[perpage]{footmisc}
+\usepackage{lineno}
+\usepackage{xcolor,soul} % for highlighting text
+\usepackage{marginnote,ragged2e} % <-- used for margine notes
+\renewcommand*{\raggedleftmarginnote}{\RaggedLeft}
+\renewcommand*{\raggedrightmarginnote}{\RaggedRight}
+
+% MY COMMANDS
+\newcommand{\tmpcite}[2]{\texttt{[#1\footnote{#2}]}} % <-- temporary cite with a link to the source
+\newcommand{\update}[1]{\textcolor{blue}{#1}} 
+\newcommand{\rethink}[1]{\textcolor{orange}{#1}} % <-- command for an update that is needed
+\newcommand{\instruction}[1]{\marginnote{\scriptsize{\textcolor{red}{\noindent #1}}}} %<-- instuction
+\newcommand{\ilinstruction}[1]{\textcolor{red}{[#1]}}	% <-- in-line instruction
+\newcommand{\spinstruction}[2]{\noindent\textcolor{red}{\hrulefill \\ \instruction{#2} #1 \noindent\hrulefill}} % <-- specific instruction
+\newcommand{\moredetails}[1]{\textcolor{magenta}{#1}}
+\renewcommand*{\thefootnote}{(\arabic{footnote})}     % <-- adds parantheses around footnote numbers
+\newcommand{\D}[2]{\frac{D#1}{D#2}}
+\newcommand{\vel}{\mathbf{v}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% MY ENVIRONMENTS
+\newenvironment{tight_enumerate}{
+\begin{enumerate}[label=\textbf{(\arabic*)}, ref=\arabic*]
+  \setlength{\itemsep}{0.4em}
+  \setlength{\parskip}{-0.25em}
+}{\end{enumerate}}
