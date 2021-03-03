@@ -1,0 +1,829 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.1
+network  {
+  watchlist = ""
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "481 1037 160 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "186 -954 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised"
+    searchPattern = "**.tif*"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised/0_degree_cropped_denoised_619.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Contiguous
+    rawDataOffset = 0
+  }
+}
+module Bypass {
+  internal  {
+    frame = "1133 413 104 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass
+    noBypass = TRUE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "185 653 112 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass1
+    noBypass = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "1137 277 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-723 -959 442 492"
+        sizeHint = "421 492"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageSave
+    taskVerboseLogging = FALSE
+    filename = test.dcm
+    addFileExtension = TRUE
+    format = DICOMTIFF
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    tiffLinearRGB = FALSE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module OrthoView2D {
+  internal  {
+    frame = "365 109 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "401 -1385 637 635"
+        sizeHint = "400 436"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoView2D
+    inventorInputOn = TRUE
+    inventorOutputOn = TRUE
+    synchronizePosition = TRUE
+    layout = LAYOUT_CUBE_EQUAL
+    filterMode = FILTER_LINEAR
+    synchronizeZoom = TRUE
+    synchronizePanning = FALSE
+    useGlobalInputImage = TRUE
+    snapToCenter = FALSE
+    alternCubeLayout = FALSE
+    timePoint = 0
+    useManagedInteraction = FALSE
+    enableSlicing = TRUE
+    borderOn = TRUE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    grayWidth = 65535
+    grayCenter = 32767.5
+    annotationOn = TRUE
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationFontSize = ANNO_SIZE_AUTO
+    valueHighPrecision = TRUE
+    annoCoords = Voxel
+    showCurrentPos = TRUE
+    worldPosition = "209.6728515625 120.130859375 356.5"
+    coloredMode = FALSE
+  }
+}
+module Info {
+  internal  {
+    frame = "1205 637 56 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "93 -882 612 380"
+        sizeHint = "612 380"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Info
+  }
+}
+module SoView2DMarkerEditor {
+  internal  {
+    frame = "541 565 152 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "80 -996 638 609"
+        sizeHint = "638 609"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MarkerListEditor
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = TRUE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = PRESSED
+    wantsAllEvents = FALSE
+    wantsKeyEvents = TRUE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = FALSE
+    cursorShape = CROSS_PLUS_CURSOR
+    depthVisibility = 1
+    snapToVoxel = TRUE
+    snapToSlice = TRUE
+    currentType = 0
+    deleteOnClick = FALSE
+    addOnClick = TRUE
+    alphaFactor = 1
+    minimumAlpha = 0.1
+    iconFile = $(MLAB_MeVisLab_Standard)/Modules/Resources/Images/markerIcons.tif
+    useIconFile = FALSE
+    iconIdx = 0
+    drawMarkerShapesWithLines = FALSE
+    selectingOn = TRUE
+    alwaysPerformHitTest = FALSE
+    actOnReleaseOnly = FALSE
+    editorMode = EDIT_MARKER
+    colorMode = COLOR_BY_TYPE
+    textColorMode = COLOR_TEXT
+    textMode = TEXT_OFF
+    textPosition = TEXT_POSITION_RIGHT_BELOW
+    textColor = "1 1 1"
+    textShadow = TRUE
+    textFontSize = 12
+    showTextOnlyForSelectedMarker = FALSE
+    cutText = FALSE
+    maxNumberOfLines = 1
+    vectorArrow = VECTOR_END_ARROW
+    vectorLineWidth = 1
+    useAntiAlias = TRUE
+    useVectorLengthAsMarkerSize = FALSE
+    depthVectorDrawMode = DRAW_HIGHLIGHT_SLICE_SEGMENT
+    drawMode = DRAW_MARKER
+    highlightSelection = TRUE
+    selectiveDrawing = FALSE
+    selectionBoxesForCurrentOnly = FALSE
+    cooperative = FALSE
+    overwriteCurrentTimePoint = FALSE
+    newCurrentTimePoint = 0
+    depthVisibilityMode = DEPTH_IN_SLICES
+    cursorShapeDragStartPoint = CROSS_MOVE_CURSOR
+    cursorShapeDragEndPoint = CROSS_MOVE_CURSOR
+    cursorShapeDragResize = CROSS_MOVE_CURSOR
+    cursorShapeDragOffset = MOVE_ALL_CURSOR
+    cursorShapeDragMove = MOVE_ALL_CURSOR
+    cursorShapeDelete = CROSS_MINUS_CURSOR
+    listString = ""
+    index = -1
+    persistent = TRUE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "0 0 0"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module XMarkerListContainer {
+  internal  {
+    frame = "557 677 152 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "667 -780 560 664"
+        sizeHint = "548 664"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = XMarkerListContainer1
+    listString = "[(209.5 120.5 356.5) #1]"
+    index = 0
+    persistent = TRUE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "209.5 120.5 356.5"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module RegionGrowing {
+  internal  {
+    frame = "537 365 160 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "402 -1179 707 595"
+        sizeHint = "675 595"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = RegionGrowing
+    autoUpdateMode = AutoUpdate
+    lowerThreshold = 17748.02
+    upperThreshold = 21417.98
+    enableAutoThresholdInterval = TRUE
+    basicNeighborhoodType = BNBH_3D_6_XYZ
+    extendedNeighborhoodType = ENBH_3D_6_XYZ
+    useAdditionalSeed = FALSE
+    additionalSeed = "0 0 0 0 0 0"
+    additionalSeedType = 0
+    additionalSeedCoordSystem = VoxelCoordinates
+    initStackSizeTweak = 0.100000001490116
+    prohibitInputScalingTweak = FALSE
+    incrementalUpdateMode = Smart
+    useExtendedNBH = TRUE
+    calcBoundaryOverlap = FALSE
+    unitType = UnitTypeGrayValue
+    internalAccuracy = Auto
+    autoUpdateUnitType = TRUE
+    stretchOutputOverTime = FALSE
+    showPartialResults = FALSE
+    acceptedMarkerType = -1
+    autoSelectHigherCoords = TRUE
+    cCoord = 0
+    uCoord = 0
+    posFillValue = -1
+    negFillValue = 0
+    invertResult = FALSE
+    showOuterBoundariesOnly = FALSE
+    upperVolumeLimit_ml = 100
+    enableUpperVolumeLimit = FALSE
+    autoThresholdIntervalSizeInPercent = 2.8
+  }
+}
+module SoView2DOverlay {
+  internal  {
+    frame = "529 229 160 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-768 -946 459 464"
+        sizeHint = "459 464"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoView2DOverlay
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = TRUE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = IGNORED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = TRUE
+    wantsKeyEvents = TRUE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = TRUE
+    clipToSlice = TRUE
+    cursorShape = UNDEFINED_CURSOR
+    overlayName = ""
+    cacheTextures = TRUE
+    blendMode = BLEND_ADD
+    overwriteCurrentTimePoint = TRUE
+    timePoint = 0
+    maxTimePoint = 0
+    filterMode = FILTER_LINEAR
+    inheritFilterMode = TRUE
+    lutPrecision = VIEW2D_LUT_AUTO
+    alphaFactor = 0.47499999
+    baseColor = "0.992156863212585 0.501960813999176 0.0313725508749485"
+    useWorldCoords = TRUE
+    applyLut = TRUE
+    isCheckerTiling = FALSE
+    checkerTileSize = 2
+    areCheckerTilesInverted = FALSE
+  }
+}
+module View2D {
+  internal  {
+    frame = "445 -307 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1039 -1387 576 644"
+        sizeHint = "400 400"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = View2DOutput
+    inventorInputOn = FALSE
+    inventorOutputOn = FALSE
+    view2DExtensionsOn = TRUE
+    startSlice = 310
+    numSlices = 1
+    numXSlices = 1
+    sliceStep = 1
+    slab = 1
+    blendMode = BLEND_REPLACE
+    timePoint = 0
+    maxTimePoint = 0
+    filterMode = FILTER_LINEAR
+    standardKeys = TRUE
+    cineMode = CINE_ZT
+    cineDirection = CINE_FORWARD
+    cineRepeat = CINE_ONCE
+    cineSpeed = 0.1
+    cineAlwaysReset = TRUE
+    snapToCenter = TRUE
+    zoomMode = VIEW2D_AUTO_ZOOM
+    unzoomOnImageChange = FALSE
+    sliceZoom = 1
+    sliceZoomSynced = 1
+    baseColor = "1 1 1"
+    margin = "2 2"
+    sliceOrigin = "0 0"
+    useShaders = TRUE
+    useManagedInteraction = FALSE
+    lutCenter = 32767.5
+    lutWidth = 65535
+    annotationOn = TRUE
+    annotationMode = ANNO_MODE_AUTO
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationCol = "0.899999976158142 0.899999976158142 0.899999976158142"
+    annotationFontSize = ANNO_SIZE_AUTO
+    annoCoords = Voxel
+    annoCTValue = AsIs
+    borderOn = FALSE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    valueHighPrecision = TRUE
+    showColorChannelValues = FALSE
+    colorChannelSeparator = " / "
+    maxPrecision = 4
+    enableSlicing = TRUE
+    useRelativeLUTIfNoInputImage = TRUE
+  }
+}
+module DicomSEGSave {
+  internal  {
+    frame = "53 309 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-403 -1066 1604 749"
+        sizeHint = "1604 749"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = DicomSEGSave
+    unresolvedFileName = ""
+    inputSelector = ImageConnector
+    inputVolumeIndex = 0
+    warnNonExistingFileOnBrowsing = TRUE
+    warnDirectoriesOnBrowsing = TRUE
+    tagDumpSize = 10000
+    dumpPrivateTagValues = FALSE
+    numShownBinaryEntries = 8
+    annotate = FALSE
+    regExLineFilter = ""
+    copyOtherInputTags = FALSE
+    fileName = ""
+    postBadParamErrors = TRUE
+    segSaveDerivationMode = Automatic
+    makeCIDEditGUIInsensitive = TRUE
+    contextGroupSequence = ""
+    cidEntry = "113076 - Segmentation"
+    patientsName = ""
+    patientID = ""
+    patientBirthDateYearEnum = 1900
+    patientBirthDateYearString = 1900
+    patientBirthDateMonthEnum = 01-January
+    patientBirthDateMonthString = 01-January
+    patientBirthDateDayEnum = 01
+    patientBirthDateDayString = 01
+    patientSexEnum = Other
+    patientSexString = Other
+    instanceNumber = 0
+    contentLabel = ""
+    contentDescription = ""
+    contentCreatorsName = ""
+    studyInstanceUID = ""
+    autoCreateStudyInstanceUID = TRUE
+    studyDate = ""
+    studyTime = ""
+    referringPhysicianName = ""
+    studyID = ""
+    accessionNumber = ""
+    studyDescription = ""
+    seriesInstanceUID = ""
+    inheritSeriesInstanceUID = DoNotInherit
+    autoCreateSeriesInstanceUID = DoNotAutoCreate
+    seriesNumber = ""
+    inheritSeriesNumber = TRUE
+    laterality = DoNotWriteTagValue
+    useEmptyLateralityTagIfNotFoundOnInheritance = TRUE
+    seriesDescription = ""
+    writeBodyPartExamined = FALSE
+    bodyPartExamined = ""
+    bodyPartExaminedValues = ABDOMEN,ABDOMENPELVIS,ADRENAL,ANKLE,AORTA,ARM,ATLANTOAXIAL,ATLANTOOCCIPITAL,AXILLA,BACK,BLADDER,BRAIN,BREAST,BRONCHUS,BUTTOCK,CALCANEUS,CALF,CAROTID,CARPUS,CEREBELLUM,CERVIX,CHEEK,CHEST,CHESTABDOMEN,CHESTABDPELVIS,CIRCLEOFWILLIS,CLAVICLE,COCCYX,COLON,CORNEA,CORONARYARTERY,CSPINE,CTSPINE,DIGIT,DISTALPHALANX,DUODENUM,EAR,ELBOW,ESOPHAGUS,EXTREMITY,EYE,EYELID,FACE,FEMUR,FIBULA,FINGER,FOOT,FOREFETLOCK,FOREFOOT,FORENAVICULAR,FOREPASTERN,FRONTALSINUS,GALLBLADDER,HAND,HEAD,HEADNECK,HEART,HINDFETLOCK,HINDFOOT,HINDNAVICULAR,HINDPASTERN,HIP,HUMERUS,IAC,ILEUM,ILIUM,JAW,JEJUNUM,KIDNEY,KNEE,LARYNX,LEG,LEGS,LIVER,LSPINE,LSSPINE,LUNG,MAXILLA,MEDIASTINUM,METACARPUS,METATARSUS,MOUTH,NECK,NECKCHEST,NECKCHESTABDOMEN,NECKCHESTABDPELV,NOSE,ORBIT,OVARY,PANCREAS,PAROTID,PATELLA,PELVIS,PENIS,PHARYNX,PROSTATE,RADIUS,RADIUSULNA,RECTUM,RIB,SCALP,SCAPULA,SCLERA,SCROTUM,SHOULDER,SKULL,SPINE,SPLEEN,SSPINE,STERNUM,STIFLE,STOMACH,SUBMANDIBULAR,TAIL,TARSUS,TESTIS,THIGH,THUMB,THYMUS,THYROID,TIBIA,TIBIAFIBULA,TLSPINE,TMJ,TOE,TONGUE,TRACHEA,TSPINE,UGITRACT,ULNA,URETER,URETHRA,URINARYTRACT,UTERUS,VAGINA,VULVA,WHOLEBODY,WING,WRIST,ZYGOMA
+    makeFrameOfReferenceGUIInsensitive = FALSE
+    frameOfReferenceUID = ""
+    positionReferenceIndicator = ""
+    manufacturer = ""
+    manufacturerModelName = ""
+    deviceSerialNumber = ""
+    softwareVersions = ""
+    contentDate = ""
+    contentTime = ""
+    patientOrientation = ""
+    numberOfSegments = 0
+    currentSegment = 0
+    segmentNumber = -1
+    segmentLabel = ""
+    segmentDescription = ""
+    recommendedDisplayCIELabValue = "0 0 0"
+    rgb = "1 1 1"
+    codedSegmentSequence = ""
+    segmentationType = BINARY
+    segmentationFractionalType = PROBABILITY
+    maximumFractionalValueMode = USE_LARGEST_VOXEL_VALUE
+    makeCommonInstanceReferenceModuleGUIInsensitive = TRUE
+    autoUpdateOnStudyInstanceUIDChanges = TRUE
+    referencedSeriesReferencedSOPClassUIDs = ""
+    referencedSeriesReferencedSOPInstanceUIDs = ""
+    referencedSeriesSeriesInstanceUID = ""
+    referencedStudiesReferencedSOPClassUIDs = ""
+    referencedStudiesReferencedSOPInstanceUIDs = ""
+    commonInstanceReferenceStudyInstanceUID = ""
+    referencedStudiesSeriesInstanceUID = ""
+    sopClassUID = 1.2.840.10008.5.1.4.1.1.66.4
+    sopInstanceUID = ""
+  }
+}
+module SetFileName {
+  internal  {
+    frame = "1337 301 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-786 -539 561 52"
+        sizeHint = "561 52"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetFileName
+    fileName = test
+    modifyFileName = TRUE
+  }
+}
+module MakeName {
+  internal  {
+    frame = "993 981 96 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-515 -990 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = outputName
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_shrink-wrap-masked"
+    extensions = "\\.mlimage \\.di?co?m \\.dic \\.tiff? \\.hdr \\.img \\.ima \\.raw \\.p[gpn]m \\.png \\.jpe?g"
+    extRegExp = TRUE
+    outputTemplate = $n/$T_$S
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_shrink-wrap-masked/0_degree_cropped_denoised_shrink-wrap-masked"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = shrink-wrap-masked
+    userStringT = 0_degree_cropped_denoised
+    trimSpaces = TRUE
+  }
+}
+module FileDirectory {
+  internal  {
+    frame = "712 1117 152 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-359 -948 528 555"
+        sizeHint = "517 555"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OutputDirectory
+    rootPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_shrink-wrap-masked"
+    recursive = FALSE
+    maxRecursionDepth = -1
+    fileType = Dirs
+    joinImagePairs = FALSE
+    include = ""
+    includeRegExp = FALSE
+    predefined = void
+    exclude = ""
+    excludeRegExp = FALSE
+    ignoreCase = TRUE
+    dirMode = Relative
+  }
+}
+module MakeName {
+  internal  {
+    frame = "768 1005 96 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-290 -864 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = inputName
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised"
+    extensions = "\\.[^.]*"
+    extRegExp = TRUE
+    outputTemplate = $f
+    outputName = 0_degree_cropped_denoised
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = ""
+    userStringT = ""
+    trimSpaces = TRUE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "377 509 112 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass2
+    noBypass = FALSE
+  }
+}
+module Mask {
+  internal  {
+    frame = "585 -19 80 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-804 -853 470 137"
+        sizeHint = "377 137"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Mask
+    mode = Mask
+    outputImageSize = InvalidateOutputIfSizesDiffer
+    blending = 0.5
+    background = 0
+  }
+}
+module Bypass {
+  internal  {
+    frame = "837 -315 168 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "345 -703 108 23"
+        sizeHint = "108 23"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = savingOutputBypass
+    noBypass = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "873 -443 96 88"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-431 -983 442 496"
+        sizeHint = "421 492"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = savingOuput
+    taskVerboseLogging = FALSE
+    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_shrink-wrap-masked/0_degree_cropped_denoised_shrink-wrap-masked.tif"
+    addFileExtension = TRUE
+    format = TIFF
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised/0_degree_cropped_denoised_000.tif"
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = None
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    tiffLinearRGB = FALSE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module ExportImageAsSlices {
+  internal  {
+    frame = "641 -451 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-260 -843 470 155"
+        sizeHint = "470 155"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ExportImageAsSlices
+    targetFileName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_shrink-wrap-masked/0_degree_cropped_denoised_shrink-wrap-masked.jpeg"
+    dimensionSeparator = -
+  }
+}
+connections  {
+  Bypass.input0 = Compose3DFrom2DFiles.output0
+  Bypass1.input0 = Compose3DFrom2DFiles.output0
+  ImageSave.input0 = Bypass.output0
+  ImageSave.filename = SetFileName.fileName
+  OrthoView2D.image = Bypass1.output0
+  OrthoView2D.inInvPreLUT = SoView2DOverlay.self
+  OrthoView2D.inInvPostLUT = MarkerListEditor.self
+  Info.input0 = Compose3DFrom2DFiles.output0
+  MarkerListEditor.inXMarkerList = XMarkerListContainer1.outXMarkerList
+  RegionGrowing.input0 = Bypass2.output0
+  RegionGrowing.inMarkerList = MarkerListEditor.outXMarkerList
+  SoView2DOverlay.image = RegionGrowing.output0
+  View2DOutput.inImage = Mask.output0
+  outputName.inputName = OutputDirectory.rootPath
+  outputName.userStringT = inputName.outputName
+  inputName.inputName = Compose3DFrom2DFiles.dirPath
+  Bypass2.input0 = Bypass1.output0
+  Mask.input0 = Bypass1.output0
+  Mask.input1 = RegionGrowing.output1
+  savingOutputBypass.input0 = Mask.output0
+  savingOuput.input0 = savingOutputBypass.output0
+  savingOuput.filename = outputName.outputName
+  ExportImageAsSlices.input0 = savingOutputBypass.output0
+  ExportImageAsSlices.targetFileName = savingOuput.filename
+}
+networkModel = ""

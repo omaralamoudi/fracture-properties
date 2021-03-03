@@ -1,0 +1,465 @@
+// MDL v1 utf8
+mevislabVersion = 3.4.1
+network  {
+  watchlist = ""
+}
+module OrthoView2D {
+  internal  {
+    frame = "317 -147 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "2960 -1387 1280 1387"
+        sizeHint = "400 436"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoView2D
+    inventorInputOn = TRUE
+    inventorOutputOn = TRUE
+    synchronizePosition = TRUE
+    layout = LAYOUT_CUBE_EQUAL
+    filterMode = FILTER_NEAREST
+    synchronizeZoom = TRUE
+    synchronizePanning = FALSE
+    useGlobalInputImage = TRUE
+    snapToCenter = FALSE
+    alternCubeLayout = FALSE
+    timePoint = 0
+    useManagedInteraction = FALSE
+    enableSlicing = TRUE
+    borderOn = TRUE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    grayWidth = 1
+    grayCenter = 1
+    annotationOn = TRUE
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationFontSize = ANNO_SIZE_AUTO
+    valueHighPrecision = TRUE
+    annoCoords = Voxel
+    showCurrentPos = TRUE
+    worldPosition = "4.12972021102905 6.37500333786011 11.0375003814697"
+    coloredMode = TRUE
+  }
+}
+module SoView2DMarkerEditor {
+  internal  {
+    frame = "509 413 152 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "80 -996 638 609"
+        sizeHint = "638 609"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MarkerListEditor
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = TRUE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = PRESSED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = PRESSED
+    wantsAllEvents = FALSE
+    wantsKeyEvents = TRUE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = FALSE
+    clipToSlice = FALSE
+    cursorShape = CROSS_PLUS_CURSOR
+    depthVisibility = 1
+    snapToVoxel = TRUE
+    snapToSlice = TRUE
+    currentType = 0
+    deleteOnClick = FALSE
+    addOnClick = TRUE
+    alphaFactor = 1
+    minimumAlpha = 0.1
+    iconFile = $(MLAB_MeVisLab_Standard)/Modules/Resources/Images/markerIcons.tif
+    useIconFile = FALSE
+    iconIdx = 0
+    drawMarkerShapesWithLines = FALSE
+    selectingOn = TRUE
+    alwaysPerformHitTest = FALSE
+    actOnReleaseOnly = FALSE
+    editorMode = EDIT_MARKER
+    colorMode = COLOR_BY_TYPE
+    textColorMode = COLOR_TEXT
+    textMode = TEXT_OFF
+    textPosition = TEXT_POSITION_RIGHT_BELOW
+    textColor = "1 1 1"
+    textShadow = TRUE
+    textFontSize = 12
+    showTextOnlyForSelectedMarker = FALSE
+    cutText = FALSE
+    maxNumberOfLines = 1
+    vectorArrow = VECTOR_END_ARROW
+    vectorLineWidth = 1
+    useAntiAlias = TRUE
+    useVectorLengthAsMarkerSize = FALSE
+    depthVectorDrawMode = DRAW_HIGHLIGHT_SLICE_SEGMENT
+    drawMode = DRAW_MARKER
+    highlightSelection = TRUE
+    selectiveDrawing = FALSE
+    selectionBoxesForCurrentOnly = FALSE
+    cooperative = FALSE
+    overwriteCurrentTimePoint = FALSE
+    newCurrentTimePoint = 0
+    depthVisibilityMode = DEPTH_IN_SLICES
+    cursorShapeDragStartPoint = CROSS_MOVE_CURSOR
+    cursorShapeDragEndPoint = CROSS_MOVE_CURSOR
+    cursorShapeDragResize = CROSS_MOVE_CURSOR
+    cursorShapeDragOffset = MOVE_ALL_CURSOR
+    cursorShapeDragMove = MOVE_ALL_CURSOR
+    cursorShapeDelete = CROSS_MINUS_CURSOR
+    listString = ""
+    index = -1
+    persistent = TRUE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "0 0 0"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module XMarkerListContainer {
+  internal  {
+    frame = "533 525 152 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "-276 -1032 560 664"
+        sizeHint = "548 664"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = XMarkerListContainer1
+    listString = "[(4.1125 6.4875 11.0125) #1, (4.1375 6.3875 11.0125) #2]"
+    index = 0
+    persistent = TRUE
+    listStringEnable = FALSE
+    applySelect = FALSE
+    name = ""
+    newName = ""
+    overflowMode = None
+    maxSize = 0
+    useInsertTemplate = FALSE
+    posXYZ = "4.1125 6.4875 11.0125"
+    posC = 0
+    posT = 0
+    posU = 0
+    vecXYZ = "0 0 0"
+    type = 0
+    newPosXYZ = "0 0 0"
+    newPosC = 0
+    newPosT = 0
+    newPosU = 0
+    newVecXYZ = "0 0 0"
+    newType = 0
+  }
+}
+module RegionGrowing {
+  internal  {
+    frame = "513 213 144 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "402 -1179 707 595"
+        sizeHint = "675 595"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = RegionGrowing
+    autoUpdateMode = AutoUpdate
+    lowerThreshold = 17562.52
+    upperThreshold = 21232.48
+    enableAutoThresholdInterval = TRUE
+    basicNeighborhoodType = BNBH_3D_6_XYZ
+    extendedNeighborhoodType = ENBH_3D_6_XYZ
+    useAdditionalSeed = FALSE
+    additionalSeed = "0 0 0 0 0 0"
+    additionalSeedType = 0
+    additionalSeedCoordSystem = VoxelCoordinates
+    initStackSizeTweak = 0.100000001490116
+    prohibitInputScalingTweak = FALSE
+    incrementalUpdateMode = Smart
+    useExtendedNBH = TRUE
+    calcBoundaryOverlap = FALSE
+    unitType = UnitTypeGrayValue
+    internalAccuracy = Auto
+    autoUpdateUnitType = TRUE
+    stretchOutputOverTime = FALSE
+    showPartialResults = FALSE
+    acceptedMarkerType = -1
+    autoSelectHigherCoords = TRUE
+    cCoord = 0
+    uCoord = 0
+    posFillValue = -1
+    negFillValue = 0
+    invertResult = FALSE
+    showOuterBoundariesOnly = FALSE
+    upperVolumeLimit_ml = 100
+    enableUpperVolumeLimit = FALSE
+    autoThresholdIntervalSizeInPercent = 2.8
+  }
+}
+module SoView2DOverlay {
+  internal  {
+    frame = "497 101 160 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-768 -946 459 464"
+        sizeHint = "459 464"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoView2DOverlay
+    interactionProviderID = ""
+    drawingOn = TRUE
+    editingOn = TRUE
+    fixZOn = TRUE
+    color = "1 1 1"
+    selectionTolerance = 4
+    needsValidVoxel = TRUE
+    button1 = IGNORED
+    button2 = IGNORED
+    button3 = IGNORED
+    shift = IGNORED
+    control = IGNORED
+    alt = IGNORED
+    wantsAllEvents = TRUE
+    wantsKeyEvents = TRUE
+    wantsMouseWheelEvents = FALSE
+    setEventHandled = FALSE
+    ignoreHandledEvents = FALSE
+    createNewMode = FALSE
+    renderOnSlab = TRUE
+    clipToSlice = TRUE
+    cursorShape = UNDEFINED_CURSOR
+    overlayName = ""
+    cacheTextures = TRUE
+    blendMode = BLEND_ADD
+    overwriteCurrentTimePoint = TRUE
+    timePoint = 0
+    maxTimePoint = 0
+    filterMode = FILTER_LINEAR
+    inheritFilterMode = TRUE
+    lutPrecision = VIEW2D_LUT_AUTO
+    alphaFactor = 0.47499999
+    baseColor = "0.992156863212585 0.501960813999176 0.0313725508749485"
+    useWorldCoords = TRUE
+    applyLut = TRUE
+    isCheckerTiling = FALSE
+    checkerTileSize = 2
+    areCheckerTilesInverted = FALSE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "277 605 120 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "345 -703 108 23"
+        sizeHint = "108 23"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = InputImage
+    noBypass = FALSE
+  }
+}
+module Mask {
+  internal  {
+    frame = "553 -251 80 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-804 -853 470 137"
+        sizeHint = "377 137"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Mask
+    mode = Mask
+    outputImageSize = InvalidateOutputIfSizesDiffer
+    blending = 0.492
+    background = 0
+  }
+}
+module Bypass {
+  internal  {
+    frame = "773 13 136 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "345 -703 108 23"
+        sizeHint = "108 23"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OutputImage
+    noBypass = FALSE
+  }
+}
+module ImageSave {
+  internal  {
+    frame = "865 -243 96 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = ImageSave1
+    taskVerboseLogging = FALSE
+    filename = ""
+    addFileExtension = TRUE
+    format = DICOMTIFF
+    comment = MeVisLab
+    allowOverwrite = TRUE
+    autoFilename = FALSE
+    sourceName = ""
+    postfix = .result1
+    dicomNameUsed = TRUE
+    dicomMetaHeader = TRUE
+    dicomDerived = TRUE
+    dicomDerivedImageType = "OTHER\\MEVISLAB"
+    dicomDiscardTags = FrameSpecific
+    dicomStoreTimeInfo = None
+    dicomSetWindow = FALSE
+    dicomWindowCenter = 0
+    dicomWindowWidth = 0
+    dicomIgnoreHalfVoxelShift = FALSE
+    tiffCompression = LZW
+    tiffTileX = 128
+    tiffTileY = 128
+    tiffTileXAuto = TRUE
+    tiffTileYAuto = TRUE
+    tiffLinearRGB = FALSE
+    saveDicomHeaderOnly = FALSE
+    pngCompression = Default
+    pngInterlaced = FALSE
+    jpegQuality = 75
+    jpegProgressive = FALSE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "833 -123 128 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = SaveOutput
+    noBypass = TRUE
+  }
+}
+connections  {
+  OrthoView2D.image = InputImage.output0
+  OrthoView2D.inInvPreLUT = SoView2DOverlay.self
+  OrthoView2D.inInvPostLUT = MarkerListEditor.self
+  MarkerListEditor.inXMarkerList = XMarkerListContainer1.outXMarkerList
+  RegionGrowing.input0 = InputImage.output0
+  RegionGrowing.inMarkerList = MarkerListEditor.outXMarkerList
+  SoView2DOverlay.image = RegionGrowing.output0
+  Mask.input0 = InputImage.output0
+  Mask.input1 = OutputImage.output0
+  OutputImage.input0 = RegionGrowing.output1
+  ImageSave1.input0 = SaveOutput.output0
+  SaveOutput.input0 = OutputImage.output0
+}
+networkModel  {
+  parentItems  {
+    0  {
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 24
+        objectName = ""
+        parentUniqueId = 0
+        frame = "-4 18 298 293"
+        backgroundColor  {
+          r = 247
+          g = 221
+          b = 91
+          a = 255
+        }
+        text = "*1. Connect an input image into InputImage Bypass block
+2. Launch the OrthoView2D module to view the image in orthogonal view
+3. Use the mouse left button to navigate the image
+4. When ready to choose a voxel from which a RegionGrowing algorithm will launch
+5. You can tweak the RegionGrowing algorithm parameters by opening the RegionGrowing module block (double-click it, or use the right-mouse button and choose "Show Window -> Panel")*"
+        richText = "*<html>
+  <head>
+    <style type="text/css">
+      a.headerlink {
+        visibility: hidden;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+
+  <ol class="arabic simple">
+<li>Connect an input image into InputImage Bypass block</li>
+<li>Launch the OrthoView2D module to view the image in orthogonal view</li>
+<li>Use the mouse left button to navigate the image</li>
+<li>When ready to choose a voxel from which a RegionGrowing algorithm will launch</li>
+<li>You can tweak the RegionGrowing algorithm parameters by opening the RegionGrowing module block (double-click it, or use the right-mouse button and choose &quot;Show Window -&gt; Panel&quot;)</li>
+</ol>
+
+
+  </body>
+</html>*"
+        titleText = Workflow
+        isCollapsed = False
+        drawAsComment = False
+        titleFrame = "1 23 288 22"
+      }
+    }
+  }
+}
