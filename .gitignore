@@ -34,3 +34,6 @@ using Voorn-2013-shared with Nicola/**
 
 # MeVisLab autosave files
 *.mlab.auto
+
+# Powerpoint temporary files
+**/~$*.pptx
