@@ -1,4 +1,4 @@
-function ShowImage3D(img)
+function ShowImage3D(img,fontSize)
     % this function just to show the image I would like to show with a few
     % additional parameters that I would like to keep consistent.
     %
@@ -10,7 +10,7 @@ function ShowImage3D(img)
     slice = 2;
     
     imshow(img.img(:,:,slice)); hold on;
-    title(strcat(img.description, ', Slice \# ', num2str(slice)));
+    title(strcat(img.description, ', middle slice'));
     axis('on','image');
     xLength = size(img.img(:,:,slice),2);
     yLength = size(img.img(:,:,slice),1);
@@ -19,6 +19,9 @@ function ShowImage3D(img)
     c = colorbar;
     c.Location = 'east';
     c.Ticks = [0 1];
+   
+    ax = gca; 
+    ax.FontSize = fontSize;
     
     plot([floor(xLength/2) floor(xLength/2)],[1 yLength],'r','LineWidth',1.5,...
         'DisplayName','Traverse');

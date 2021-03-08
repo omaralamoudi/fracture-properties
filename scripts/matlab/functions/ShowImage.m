@@ -1,4 +1,4 @@
-function ShowImage(img)
+function ShowImage(img,fontSize)
     % this function just to show the image I would like to show with a few
     % additional parameters that I would like to keep consistent.
     %
@@ -8,10 +8,13 @@ function ShowImage(img)
     % Date: April 28, 2019
     
     imshow(img.img); hold on;
+    ax = gca;
+    
+    ax.FontSize = fontSize; 
     title(img.description);
     axis('on','image');
     xLength = size(img.img,2);
-    yLength = size(img.img,1);
+    yLength = size(img.img,1); 
     xticks([1, xLength]);
     yticks([1, yLength]);
     c = colorbar;
