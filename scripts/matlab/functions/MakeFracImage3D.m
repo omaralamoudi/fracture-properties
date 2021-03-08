@@ -52,12 +52,10 @@ function img = MakeFracImage3D(dim,apertures,noisy,SNR)
     if (noisy)
         % make sure no value is less than 0;
         tmp1 = AddNoise(img,SNR);
-        tmp1(tmp1 < 0) = 0;
         tmp2 = AddNoise(img,SNR);
-        tmp2(tmp2 < 0) = 0;
         tmp3 = AddNoise(img,SNR);
-        tmp2(tmp2 < 0) = 0; 
         img = cat(3,tmp1,tmp2,tmp3);
+        img(img < 0) = 0; 
     else
         tmp = cat(3,img,img,img);
         img = tmp;
