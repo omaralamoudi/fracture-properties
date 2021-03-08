@@ -51,6 +51,7 @@ function img = MakeFracImage2D(dim,apertures,noisy,SNR)
     
     if (noisy)
         img = AddNoise(img,SNR);
+        img(img < 0) = 0; 
     end
     
 end
