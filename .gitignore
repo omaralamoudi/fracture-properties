@@ -19,6 +19,7 @@
 
 # Image files
 *.tif
+*.dcm
 
 # Manuscripts
 *.pdf
