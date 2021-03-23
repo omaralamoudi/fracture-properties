@@ -10,7 +10,7 @@ function ShowImage3D(img,fontSize)
     slice = 2;
     
     imshow(img.img(:,:,slice)); hold on;
-    title(strcat(img.description, ', middle slice'));
+    title(strcat(img.description));
     axis('on','image');
     xLength = size(img.img(:,:,slice),2);
     yLength = size(img.img(:,:,slice),1);

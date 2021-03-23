@@ -17,7 +17,7 @@ function img = MakeFracImage2D(dim,apertures,noisy,SNR)
     %   May 1, 2019: added the capability of adding fractures with
     %   apertures < 1 by assigning the aperture as the pixel value.
     
-    if nargin < 3 ; noisy = false; SNR = 1; end
+    if nargin < 3 ; noisy = false; SNR = -1; end
     nFracs      = length(apertures);
     totalFracAp = sum(ceil(apertures));
     img         = ones(dim);

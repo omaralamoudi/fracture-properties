@@ -14,28 +14,12 @@ addpath('functions');
 % Givin an image dimentions (either 2D or 3D)
 imgDim = 2; 
 
-% Given length of a single edge [pixels or voxels]
-% dim = 512;
-dim = 40;           % smaller for testing code
-
-% Given fracture aparturs
-% fracAps = [2,10,15,30];
-fracAps = [0.25 0.5 1 2];      % simpler for testign code
-
-% Given Signal to noise ratio (5 --> noise amp is 1/5 of the signal) 
-SNR = 10;
-
-% Given box filter size (must be an odd integer)
-filterSize = 3;
-
 % IMAGE GENERATION AND DISPLAY
 % Creating a folder named output with a subdirectory structure 
-% 2D/yyymmdd-HHMM that contains the generated synthetic 2D images
+% 2D/synth images that contains the generated synthetic 2D images
 
-% to add a date to the name of the directory use 
-% datestr(now,'yyyymmdd-HHMM')
 targetdir = ['output',filesep,'2D',filesep,'synth images'];
-mkdir(targetdir);
+if not(exist(targetdir,'dir')), mkdir(targetdir); end
 addpath(genpath(targetdir)); 
 
 %% Generating crisp (not blurred) images
@@ -59,37 +43,39 @@ img(4).description  = "SBFI + Noise";
 % Crisp images
 fig1 = figure('Position',[100 100 800 800],'Name','Crisp Images');
 subplot(2,2,1);
-ShowImage(img(1));
+ShowImage(img(1),fontSize);
 
 subplot(2,2,2);
-ShowImage(img(2));
+ShowImage(img(2),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
 dim = size(img(1).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(1),traverseXCoor); 
+ShowProfile(img(1),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
 dim = size(img(2).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(2),traverseXCoor); 
+ShowProfile(img(2),traverseXCoor,fontSize); 
 
 % blurred images
 fig2 = figure('Position',[100 100 800 800],'Name','Blured Images');
 subplot(2,2,1);
-ShowImage(img(3));
+ShowImage(img(3),fontSize);
 
 subplot(2,2,2);
-ShowImage(img(4));
+ShowImage(img(4),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
 dim = size(img(3).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(3),traverseXCoor); 
+ShowProfile(img(3),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
 dim = size(img(4).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(4),traverseXCoor); 
+ShowProfile(img(4),traverseXCoor,fontSize);
+
+fig = gcf;

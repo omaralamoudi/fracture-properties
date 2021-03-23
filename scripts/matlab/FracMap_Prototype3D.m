@@ -1,20 +1,3 @@
-clear variables; home
-InitColormaps();
-
-if (ispc)
-    cd 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\scripts'
-    addpath(genpath('C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project'));
-else
-    cd '/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/CourseWork/Spring2019/3DAnalysisOfVolumetricData/Project/scripts';
-    addpath(genpath('/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/CourseWork/Spring2019/3DAnalysisOfVolumetricData/Project'));
-end
-
-%%
-generateSynthFracs3D_v2;
-
-% clear fig1 fig2 dim filterSize fracAps imgDim SNR traverseXCoor
-pause(0.1); close all;
-clc
 %%  COMPUTING TRADITIONAL DERIVATIVE OPERATIONS
 % defining the pixle/voxel dimentions
 
@@ -65,30 +48,33 @@ disp("Computing the Hessian using finite difference scheme COMPLETED");
 
 %}
 %% Convolution Hessian implementation
-sigma = 0.5*fracAps;
-hSizeOdd = 19;
-hSizeEven = (hSizeOdd-1);
-tol = 0;
-directory = '../Presentation/figures/hessian_results/';
+sigma       = 0.5*fracAps;
+hSizeOdd    = 19;
+hSizeEven   = (hSizeOdd-1);
+tol         = 0;
+directory   = [figuresDirectory,'hessian_results/'];
+if (not(exist(directory,'dir'))), mkdir(directory);end
 disp("Computing the Hessian using convolutional scheme ...");
 tic
-finalTol = 0.60 ;
+finalTol    = 0.70 ;
 % figure 
+implementation = 2; % 1: finite diff. 2: convolution
 % this loop is for all 4 synthetic images
 for k = 1:4
+    
     img(k).hessian(2).finalResult.A_s = zeros(size(img(k).img));
     % this loop is for different gaussian scallings (s);
     for  s = 1:length(sigma)
         % aplying either an odd or even node number filter
-        if mod(fracAps(s),2) == 0
+        if mod(2*fracAps(s),2) == 0
             hsize = hSizeEven;
         else
             hsize = hSizeOdd;
         end
             
-            img(k).hessian(2).result(s).s = sigma(s);
-            img(k).hessian(2).result(s).aperture = fracAps(s);
-            img(k).hessian(2).result(s).hSize = hsize;
+            img(k).hessian(2).result(s).s           = sigma(s);
+            img(k).hessian(2).result(s).aperture    = fracAps(s);
+            img(k).hessian(2).result(s).hSize       = hsize;
 
             img(k).hessian(2).matrix = cell(size(img(k).img));
             img(k).hessian(2).EigVec = cell(size(img(k).img));
@@ -96,15 +82,15 @@ for k = 1:4
             img(k).hessian(2).EigValSorted = cell(size(img(k).img));
             
             [img(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(img(k).img,2,hsize,sigma(s));
-           
+            
+            % looping over every voxel
             for m = 1:size(img(k).img,3)
                 for j = 1:size(img(k).img,1)
                     for i = 1:size(img(k).img,2)
-                        img(k).hessian(2).magnitude(j,i,m)  = ComputeTensorMag(img(k).hessian(2).matrix{j,i,m});
+                        img(k).hessian(2).magnitude(j,i,m)                                      = ComputeTensorMag(img(k).hessian(2).matrix{j,i,m});
                         [img(k).hessian(2).EigVec{j,i,m},img(k).hessian(2).EigValMatrix{j,i,m}] = eig(img(k).hessian(2).matrix{j,i,m});
-                        img(k).hessian(2).EigValSorted{j,i,m} = sortEigenValues(img(k).hessian(2).EigValMatrix{j,i,m});
-                        
-                        img(k).hessian(2).result(s).A_s(j,i,m) =  real(img(k).hessian(2).EigValSorted{j,i,m}(3) - abs(img(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(img(k).hessian(2).EigValSorted{j,i,m}(1)));
+                        img(k).hessian(2).EigValSorted{j,i,m}                                   = sortEigenValues(img(k).hessian(2).EigValMatrix{j,i,m});                       
+                        img(k).hessian(2).result(s).A_s(j,i,m)                                  = real(img(k).hessian(2).EigValSorted{j,i,m}(3) - abs(img(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(img(k).hessian(2).EigValSorted{j,i,m}(1)));
                         
                         % modifying computing A_s
                         if img(k).hessian(2).result(s).A_s(j,i,m) <= tol
@@ -115,10 +101,12 @@ for k = 1:4
                 end
             end
             % normalize
-            img(k).hessian(2).result(s).B_s = img(k).hessian(2).result(s).A_s ./ max(max(max(img(k).hessian(2).result(s).A_s)));
+            img(k).hessian(2).result(s).B_s = img(k).hessian(2).result(s).A_s ./ max(img(k).hessian(2).result(s).A_s(:));
             %img(k).hessian(2).result(s).C_s = img(k).hessian(2).result(s).B_s ./ max(max(max(img(k).hessian(2).result(s).B_s)));
+            
             % logical
-            img(k).hessian(2).result(s).C_s = double(img(k).hessian(2).result(s).B_s >= (max(max(max(img(k).hessian(2).result(s).B_s))) * finalTol));
+%             img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (max(img(k).hessian(2).result(s).B_s(:)) * finalTol));
+            img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (1 - finalTol));
             %img(k).hessian(2).result(s).D_s = double(img(k).hessian(2).result(s).C_s >= (max(max(max(img(k).hessian(2).result(s).C_s))) - finalTol));
             
             % assembling the final result
@@ -127,12 +115,11 @@ for k = 1:4
 %             a = img(k).hessian(2).finalResult.A_s(:,:,2)/(max(max(max(img(k).hessian(2).finalResult.A_s(:,:,2)))));
 %             imagesc(a); colormap gray; colorbar;
 %             if s == length(sigma)
-%                 SaveResults(img(k).hessian(2).finalResult.A_s, fracAps,img(k).abreriation);
+%                 SaveResults(img(k).hessian(2).finalResult.A_s, fracAps,img(k).abreviation);
 %             end
 %             title(['image \# ',num2str(k), ', A = ',num2str(fracAps(s))]);
 %             %keyboard
 %             
-            % keyboard
             % display a result of the last steps
             if k == 1 || k == 4
                 slice = 2;
@@ -180,10 +167,10 @@ for k = 1:4
                 drawnow
                 
                 
-                fixFigure(gcf,14);
+                fixFigure(gcf,fontSize);
                 suptitle(commTitle);
-                print(strcat(directory, img(k).abreriation,', ',commTitle,'.png'),'-dpng');
-                print(strcat(directory, img(k).abreriation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
+                print(strcat(directory, img(k).abreviation,', ',commTitle,'.png'),'-dpng');
+                print(strcat(directory, img(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
                 % keyboard
                 % close(gcf);
             end
@@ -195,54 +182,54 @@ end
 toc
 
 disp("Computing the Hessian using convolutional scheme COMPLETED");
-keyboard
+
 %% displaying the final results
 for k = 1:4
    % figure 
    img(k).hessian(2).finalResult.A_s_norm = img(k).hessian(2).finalResult.A_s / (max(max(max(img(k).hessian(2).finalResult.A_s))));
    img(k).hessian(2).finalResult.A_s_norm_inv = (1 - img(k).hessian(2).finalResult.A_s_norm) ;
    Img(k).img = img(k).hessian(2).finalResult.A_s_norm_inv;
-   Img(k).description = [char(img(k).abreriation),' Result'];
+   Img(k).description = [char(img(k).abreviation),' Result'];
 end
 
 %% Displaying produced images
 % Crisp images
 fig1 = figure('Position',[100 100 800 800],'Name','Crisp Images');
 subplot(2,2,1);
-ShowImage3D(Img(1));
+ShowImage3D(Img(1),fontSize);
 
 subplot(2,2,2);
-ShowImage3D(Img(2));
+ShowImage3D(Img(2),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
 dim = size(Img(1).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile3D(Img(1),traverseXCoor); 
+ShowProfile(Img(1),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
 dim = size(Img(2).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile3D(Img(2),traverseXCoor); 
+ShowProfile(Img(2),traverseXCoor,fontSize); 
 
-print('..\Presentation\figures\HessianResultsSFI_N','-dpng');
+print([figuresDirectory,'HessianResultsSFI_N'],'-dpng');
 
 % blurred images
 fig2 = figure('Position',[100 100 800 800],'Name','Blured Images');
 subplot(2,2,1);
-ShowImage3D(Img(3));
+ShowImage3D(Img(3),fontSize);
 
 subplot(2,2,2);
-ShowImage3D(Img(4));
+ShowImage3D(Img(4),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
 dim = size(Img(3).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(Img(3),traverseXCoor); 
+ShowProfile(Img(3),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
 dim = size(img(4).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(Img(4),traverseXCoor);
-print('..\Presentation\figures\HessianResultsSBFI_N','-dpng');
+ShowProfile(Img(4),traverseXCoor,fontSize);
+print([figuresDirectory,'HessianResultsSBFI_N'],'-dpng');
