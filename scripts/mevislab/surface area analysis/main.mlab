@@ -99,14 +99,14 @@ module SoWEMRenderer {
     faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
     faceAlphaValue = 0.75
     faceShininessValue = 1
-    primitiveValueLists = ""
+    primitiveValueLists = LUT
     selectedPrimitiveValueList = LUT
     selectedPrimitiveValueAlphaList = LUT
     primitiveValueListValid = TRUE
     primitiveValueListAlphaValid = TRUE
     overwriteAlphaWithPVL = FALSE
     wemPatchToRender = -1
-    maxWEMPatchIndex = -1
+    maxWEMPatchIndex = 0
     cachePatches = FALSE
     sendAdjacency = FALSE
     hitModifierKey = AllModifiersMask
@@ -813,7 +813,7 @@ module ImageLoad {
   }
   fields  {
     instanceName = ImageLoad
-    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/output/2D/synth images/synthetic/synthetic copy 3d.dcm"
+    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/matlab/output/3D/synth images/synthetic_1.tif"
     autoLoad = TRUE
     readRaw = FALSE
     rawX = 1
@@ -896,14 +896,14 @@ module SoWEMRenderer {
     faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
     faceAlphaValue = 0.75
     faceShininessValue = 1
-    primitiveValueLists = ""
+    primitiveValueLists = LUT
     selectedPrimitiveValueList = LUT
     selectedPrimitiveValueAlphaList = LUT
     primitiveValueListValid = TRUE
     primitiveValueListAlphaValid = TRUE
     overwriteAlphaWithPVL = FALSE
     wemPatchToRender = -1
-    maxWEMPatchIndex = -1
+    maxWEMPatchIndex = 0
     cachePatches = FALSE
     sendAdjacency = FALSE
     hitModifierKey = AllModifiersMask
@@ -1418,14 +1418,14 @@ module SoWEMRenderer {
     faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
     faceAlphaValue = 0.5
     faceShininessValue = 1
-    primitiveValueLists = LUT
+    primitiveValueLists = ""
     selectedPrimitiveValueList = LUT
     selectedPrimitiveValueAlphaList = LUT
     primitiveValueListValid = TRUE
     primitiveValueListAlphaValid = TRUE
     overwriteAlphaWithPVL = FALSE
     wemPatchToRender = -1
-    maxWEMPatchIndex = 0
+    maxWEMPatchIndex = -1
     cachePatches = FALSE
     sendAdjacency = FALSE
     hitModifierKey = AllModifiersMask
@@ -1541,10 +1541,10 @@ module SoDiagram2D {
   }
   fields  {
     instanceName = SoDiagram2D
-    minX = 0
-    maxX = 793
+    minX = 1
+    maxX = 269.951843261719
     minY = 0
-    maxY = 0.989309728145599
+    maxY = 1
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -1637,7 +1637,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 50
+    startSlice = 0
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -1702,7 +1702,7 @@ module ProfileCurve {
     posC = 0
     posT = 0
     posU = 0
-    length = 794
+    length = 0
     referencePosition = 269
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
@@ -1820,7 +1820,7 @@ module SoRenderArea {
       window _viewer {
         geometry = "1680 -680 1280 680"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -1867,8 +1867,8 @@ module CurveCursor {
   fields  {
     instanceName = CurveCursor
     posX = 269.951843261719
-    posY = 0.0169071069437337
-    maxSeriesIndex = 0
+    posY = 0
+    maxSeriesIndex = -1
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
@@ -1876,7 +1876,7 @@ module CurveCursor {
     maxX = 793
     minY = 0
     maxY = 0.989309728145599
-    autoRange = TRUE
+    autoRange = FALSE
     cursorX = TRUE
     cursorY = TRUE
     curveStyle = 8
@@ -2233,7 +2233,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "230.322448730469 -136.647201538086 340.531646728516"
-    camOrientation = "-0.837458491325378 -0.197050124406815 -0.509739756584167 5.31399440765381"
+    camOrientation = "-0.837458431720734 -0.197050124406815 -0.509739756584167 5.31399440765381"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 534.68677
     camNear = 205.74947
@@ -2352,7 +2352,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "218.888702392578 -284.197570800781 275.055541992188"
-    camOrientation = "-0.941587865352631 -0.0950334817171097 -0.323080390691757 5.06561231613159"
+    camOrientation = "-0.941587865352631 -0.0950334891676903 -0.323080390691757 5.06561231613159"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 603.55389
     camNear = 287.90979
@@ -2471,7 +2471,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "196.220947265625 -110.503356933594 466.939361572266"
-    camOrientation = "-0.668931186199188 -0.0798713341355324 -0.739020645618439 5.42545080184937"
+    camOrientation = "-0.668931245803833 -0.079871341586113 -0.739020645618439 5.42545080184937"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 594.28955
     camNear = 289.5795
@@ -2612,7 +2612,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "0.207700908184052 -0.93541419506073 2.4311089515686"
-    camOrientation = "-0.500283658504486 0.0570338889956474 -0.863981068134308 5.52381038665771"
+    camOrientation = "-0.500283718109131 0.057033896446228 -0.863981127738953 5.52381038665771"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 3.6131265
     camNear = 1.6131265

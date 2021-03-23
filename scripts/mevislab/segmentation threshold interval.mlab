@@ -9,17 +9,17 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "186 -954 426 525"
+        geometry = "192 -915 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = Compose3DFrom2DFiles
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised"
+    instanceName = 6_degree
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/6_degree"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised/0_degree_cropped_denoised_619.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/6_degree/06_slices0780.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -35,7 +35,7 @@ module Compose3DFrom2DFiles {
 }
 module Bypass {
   internal  {
-    frame = "-467 869 104 56"
+    frame = "-396 376 104 56"
     moduleGroupName = "Saving Input as DICOM"
     showNetworkPanel = true
   }
@@ -57,7 +57,7 @@ module Bypass {
 }
 module ImageSave {
   internal  {
-    frame = "-463 733 96 72"
+    frame = "-392 240 96 72"
     moduleGroupName = "Saving Input as DICOM"
     showNetworkPanel = true
     windows  {
@@ -71,7 +71,7 @@ module ImageSave {
   fields  {
     instanceName = ImageSave
     taskVerboseLogging = FALSE
-    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised.dcm"
+    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/6_degree"
     addFileExtension = TRUE
     format = DICOMTIFF
     comment = MeVisLab
@@ -104,7 +104,7 @@ module ImageSave {
 }
 module Info {
   internal  {
-    frame = "749 861 56 56"
+    frame = "357 277 56 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -120,11 +120,11 @@ module Info {
 }
 module MakeName {
   internal  {
-    frame = "889 405 96 72"
+    frame = "665 413 96 72"
     moduleGroupName = "Output directory and file names"
     windows  {
       window _default {
-        geometry = "-515 -990 518 443"
+        geometry = "-840 -537 518 443"
         sizeHint = "509 443"
         wasOpen = no
       }
@@ -135,8 +135,8 @@ module MakeName {
     inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented"
     extensions = "\\.mlimage \\.di?co?m \\.dic \\.tiff? \\.hdr \\.img \\.ima \\.raw \\.p[gpn]m \\.png \\.jpe?g"
     extRegExp = TRUE
-    outputTemplate = $n/$T_$S
-    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/0_degree_cropped_denoised_segmented"
+    outputTemplate = $n/$T_$S/$T_$S
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/6_degree_segmented/6_degree_segmented"
     predefined = void
     dicomTagA = PatientsName
     dicomTagB = PatientID
@@ -151,19 +151,19 @@ module MakeName {
     dicomValueE = ""
     dicomValueF = ""
     userStringS = segmented
-    userStringT = 0_degree_cropped_denoised
+    userStringT = 6_degree
     trimSpaces = TRUE
   }
 }
 module FileDirectory {
   internal  {
-    frame = "893 517 152 72"
+    frame = "453 413 152 72"
     moduleGroupName = "Output directory and file names"
     showNetworkPanel = true
     windows  {
       window _default {
-        geometry = "-359 -948 528 555"
-        sizeHint = "517 555"
+        geometry = "264 -1100 528 566"
+        sizeHint = "517 566"
         wasOpen = no
       }
     }
@@ -186,11 +186,11 @@ module FileDirectory {
 }
 module MakeName {
   internal  {
-    frame = "577 517 96 72"
+    frame = "505 338 96 72"
     moduleGroupName = "Output directory and file names"
     windows  {
       window _default {
-        geometry = "-290 -864 518 443"
+        geometry = "-68 -1156 518 443"
         sizeHint = "509 443"
         wasOpen = no
       }
@@ -198,11 +198,11 @@ module MakeName {
   }
   fields  {
     instanceName = inputName
-    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/2_denoised/0_degree_cropped_denoised"
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/6_degree"
     extensions = "\\.[^.]*"
     extRegExp = TRUE
     outputTemplate = $f
-    outputName = 0_degree_cropped_denoised
+    outputName = 6_degree
     predefined = void
     dicomTagA = PatientsName
     dicomTagB = PatientID
@@ -255,13 +255,13 @@ module ImageSave {
   fields  {
     instanceName = savingOuput
     taskVerboseLogging = FALSE
-    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/0_degree_cropped_denoised_segmented.dcm"
+    filename = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/6_degree_segmented/6_degree_segmented"
     addFileExtension = TRUE
     format = DICOM
     comment = MeVisLab
     allowOverwrite = TRUE
     autoFilename = FALSE
-    sourceName = ""
+    sourceName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/6_degree/06_slcies0000.tif"
     postfix = .result1
     dicomNameUsed = TRUE
     dicomMetaHeader = TRUE
@@ -314,92 +314,10 @@ module SetWorldMatrix {
     setUInfo = FALSE
   }
 }
-module Mask {
-  internal  {
-    frame = "305 -691 80 72"
-    moduleGroupName = ""
-    showNetworkPanel = true
-    windows  {
-      window _default {
-        geometry = "211 -760 470 137"
-        sizeHint = "377 137"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = Mask1
-    mode = Mask
-    outputImageSize = UseSmallestInput
-    blending = 0.5
-    background = 0
-  }
-}
-module View2D {
-  internal  {
-    frame = "381 -971 120 72"
-    moduleGroupName = ""
-    windows  {
-      window _default {
-        geometry = "2113 -808 400 400"
-        sizeHint = "400 400"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = FinalOutput
-    inventorInputOn = TRUE
-    inventorOutputOn = FALSE
-    view2DExtensionsOn = TRUE
-    startSlice = 0
-    numSlices = 1
-    numXSlices = 1
-    sliceStep = 1
-    slab = 1
-    blendMode = BLEND_REPLACE
-    timePoint = 0
-    maxTimePoint = 0
-    filterMode = FILTER_LINEAR
-    standardKeys = TRUE
-    cineMode = CINE_ZT
-    cineDirection = CINE_FORWARD
-    cineRepeat = CINE_ONCE
-    cineSpeed = 0.1
-    cineAlwaysReset = TRUE
-    snapToCenter = TRUE
-    zoomMode = VIEW2D_AUTO_ZOOM
-    unzoomOnImageChange = FALSE
-    sliceZoom = 1
-    sliceZoomSynced = 1
-    baseColor = "1 1 1"
-    margin = "2 2"
-    sliceOrigin = "0 0"
-    useShaders = TRUE
-    useManagedInteraction = FALSE
-    lutCenter = 4.71698112960439e-05
-    lutWidth = 0
-    annotationOn = TRUE
-    annotationMode = ANNO_MODE_AUTO
-    annotationSizeMode = ANNO_SHOW_DETAILED
-    annotationCol = "0.899999976158142 0.899999976158142 0.899999976158142"
-    annotationFontSize = ANNO_SIZE_AUTO
-    annoCoords = Voxel
-    annoCTValue = AsIs
-    borderOn = FALSE
-    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    valueHighPrecision = TRUE
-    showColorChannelValues = FALSE
-    colorChannelSeparator = " / "
-    maxPrecision = 4
-    enableSlicing = TRUE
-    useRelativeLUTIfNoInputImage = TRUE
-  }
-}
 module SoDiagram2DBackground {
   internal  {
-    frame = "-803 -811 168 56"
-    moduleGroupName = ""
+    frame = "-710 -869 168 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "829 539 309 171"
@@ -424,8 +342,8 @@ module SoDiagram2DBackground {
 }
 module SoDiagram2D {
   internal  {
-    frame = "-603 -779 104 56"
-    moduleGroupName = ""
+    frame = "-510 -837 104 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-556 -1048 571 631"
@@ -437,9 +355,9 @@ module SoDiagram2D {
   fields  {
     instanceName = SoDiagram2D
     minX = 0
-    maxX = 509
-    minY = 16490
-    maxY = 25090
+    maxX = 793
+    minY = 17600
+    maxY = 20554
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -512,8 +430,8 @@ module SoDiagram2D {
 }
 module View2D {
   internal  {
-    frame = "-1371 -883 120 56"
-    moduleGroupName = ""
+    frame = "-1278 -941 120 56"
+    moduleGroupName = "View Profile"
     windows  {
       window Settings {
         geometry = "204 226 265 290"
@@ -523,7 +441,7 @@ module View2D {
       window _default {
         geometry = "2352 -1387 690 680"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -532,7 +450,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 280
+    startSlice = 512
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -557,8 +475,8 @@ module View2D {
     sliceOrigin = "18.4487590789795 -1.62751960754395"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 23264.92578125
-    lutWidth = 23920.28125
+    lutCenter = 19080
+    lutWidth = 2960
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -578,8 +496,8 @@ module View2D {
 }
 module ProfileCurve {
   internal  {
-    frame = "-771 -515 104 56"
-    moduleGroupName = ""
+    frame = "-678 -573 104 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-237 -1205 392 295"
@@ -592,13 +510,13 @@ module ProfileCurve {
     instanceName = ProfileCurve1
     axis = X
     posX = 0
-    posY = 266
-    posZ = 280
+    posY = 78
+    posZ = 619
     posC = 0
     posT = 0
     posU = 0
-    length = 510
-    referencePosition = 239
+    length = 794
+    referencePosition = 401
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
     xMode = Voxel
@@ -607,8 +525,8 @@ module ProfileCurve {
 }
 module SoView2DPosition {
   internal  {
-    frame = "-1191 -531 128 72"
-    moduleGroupName = ""
+    frame = "-1098 -565 128 72"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-71 -1117 514 829"
@@ -641,7 +559,7 @@ module SoView2DPosition {
     renderOnSlab = FALSE
     clipToSlice = FALSE
     cursorShape = UNDEFINED_CURSOR
-    worldPosition = "5.98747634887695 6.65494775772095 7.01250028610229"
+    worldPosition = "10.0425796508789 1.95857238769531 15.4875001907349"
     drawingModel = DRAWINGMODEL_CROSSHAIRS
     drawingModelSizeUnit = SIZEUNIT_VOXEL
     drawingModelSize = -1
@@ -665,8 +583,8 @@ module SoView2DPosition {
 }
 module WorldVoxelConvert {
   internal  {
-    frame = "-987 -523 136 56"
-    moduleGroupName = ""
+    frame = "-894 -581 136 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-711 -652 488 256"
@@ -677,14 +595,14 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert
-    voxelX = 239.499053955078
-    voxelY = 266.197910308838
-    voxelZ = 280.500011444092
-    worldX = 5.98747634887695
-    worldY = 6.65494775772095
-    worldZ = 7.01250028610229
-    voxelPos = "239.499053955078 266.197910308838 280.500011444092"
-    worldPos = "5.98747634887695 6.65494775772095 7.01250028610229"
+    voxelX = 401.703186035156
+    voxelY = 78.3428955078125
+    voxelZ = 619.500007629395
+    worldX = 10.0425796508789
+    worldY = 1.95857238769531
+    worldZ = 15.4875001907349
+    voxelPos = "401.703186035156 78.3428955078125 619.500007629395"
+    worldPos = "10.0425796508789 1.95857238769531 15.4875001907349"
     voxelMode = FALSE
     worldMode = TRUE
     intVoxelCoords = FALSE
@@ -693,8 +611,8 @@ module WorldVoxelConvert {
 }
 module Info {
   internal  {
-    frame = "-523 -523 56 56"
-    moduleGroupName = ""
+    frame = "-430 -581 56 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "91 -1347 612 380"
@@ -709,13 +627,13 @@ module Info {
 }
 module SoRenderArea {
   internal  {
-    frame = "-623 -955 128 56"
-    moduleGroupName = ""
+    frame = "-530 -1013 128 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _viewer {
         geometry = "1680 -680 1280 680"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -749,8 +667,8 @@ module SoRenderArea {
 }
 module CurveCursor {
   internal  {
-    frame = "-767 -611 96 56"
-    moduleGroupName = ""
+    frame = "-674 -669 96 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-726 -934 377 344"
@@ -761,16 +679,16 @@ module CurveCursor {
   }
   fields  {
     instanceName = CurveCursor
-    posX = 5.98747634887695
-    posY = 24645.5886116028
+    posX = 10.0425796508789
+    posY = 18841.4101028442
     maxSeriesIndex = 0
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
     minX = 0
-    maxX = 509
-    minY = 16490
-    maxY = 25090
+    maxX = 793
+    minY = 17600
+    maxY = 20554
     autoRange = TRUE
     cursorX = TRUE
     cursorY = TRUE
@@ -779,8 +697,8 @@ module CurveCursor {
 }
 module StylePalette {
   internal  {
-    frame = "-599 -643 96 56"
-    moduleGroupName = ""
+    frame = "-506 -701 96 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "70 88 689 560"
@@ -888,8 +806,8 @@ module StylePalette {
 }
 module GetVoxelValue {
   internal  {
-    frame = "-1423 -531 144 72"
-    moduleGroupName = ""
+    frame = "-1330 -589 144 72"
+    moduleGroupName = "View Profile"
     showNetworkPanel = true
     windows  {
       window _default {
@@ -901,7 +819,7 @@ module GetVoxelValue {
   }
   fields  {
     instanceName = GetVoxelValue
-    position = "5.98747634887695 6.65494775772095 7.01250028610229 0 0 0"
+    position = "10.0425796508789 1.95857238769531 15.4875001907349 0 0 0"
     updateMode = AutoUpdate
     coordinateType = World
     interpolation = NearestNeighbor
@@ -909,8 +827,8 @@ module GetVoxelValue {
 }
 module SoView2DSlicePan {
   internal  {
-    frame = "-1199 -747 128 56"
-    moduleGroupName = ""
+    frame = "-1106 -805 128 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "225 -851 348 317"
@@ -950,8 +868,8 @@ module SoView2DSlicePan {
 }
 module PrintCurves {
   internal  {
-    frame = "-927 -667 96 56"
-    moduleGroupName = ""
+    frame = "-834 -725 96 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "203 -903 393 423"
@@ -975,26 +893,26 @@ module PrintCurves {
 }
 module Bypass {
   internal  {
-    frame = "-191 -227 112 56"
-    moduleGroupName = ""
+    frame = "-1134 -333 120 72"
+    moduleGroupName = "View Profile"
     showNetworkPanel = true
     windows  {
       window _default {
-        geometry = "345 -703 246 93"
+        geometry = "-775 -703 246 93"
         sizeHint = "108 23"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = Bypass3
+    instanceName = ViewProfile
     noBypass = FALSE
   }
 }
 module SoView2DPosition {
   internal  {
-    frame = "-459 -787 136 56"
-    moduleGroupName = ""
+    frame = "-366 -845 136 56"
+    moduleGroupName = "View Profile"
     windows  {
       window _default {
         geometry = "-71 -1117 514 829"
@@ -1051,13 +969,13 @@ module SoView2DPosition {
 }
 module SynchroView2D {
   internal  {
-    frame = "37 -1107 120 72"
+    frame = "93 -283 120 72"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "318 -1093 804 400"
+        geometry = "2548 -1153 1330 668"
         sizeHint = "804 400"
-        wasOpen = no
+        wasOpen = yes
       }
     }
   }
@@ -1072,15 +990,15 @@ module SynchroView2D {
     disconnectOnHide = TRUE
     snapToCenter1 = FALSE
     snapToCenter2 = FALSE
-    slice1 = 113
+    slice1 = 172
     timepoint1 = 0
     filterMode = FILTER_LINEAR
-    slice2 = 0
+    slice2 = 172
     timepoint2 = 0
     lut1w = 65535
     lut1c = 32767.5
-    lut2w = 1
-    lut2c = 0.5
+    lut2w = 2960
+    lut2c = 19080
     annotationColor = "0.899999976158142 0.899999976158142 0.899999976158142"
     borderOn = FALSE
     drawCurrentPos = FALSE
@@ -1091,11 +1009,11 @@ module SynchroView2D {
 }
 module IntervalThreshold {
   internal  {
-    frame = "277 -275 120 56"
+    frame = "157 -27 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "-594 -814 437 421"
+        geometry = "-832 -1012 437 421"
         sizeHint = "437 421"
         wasOpen = no
       }
@@ -1103,60 +1021,128 @@ module IntervalThreshold {
   }
   fields  {
     instanceName = IntervalThreshold
-    lowerType = UserDef
+    lowerType = IntervalMin
     innerType = ImgOrig
-    upperType = UserDef
+    upperType = IntervalMin
     centerWidthSet = FALSE
-    threshCenter = 18685
-    threshWidth = 2515
-    threshMin = 18685
-    threshMax = 21200
+    threshCenter = 19080
+    threshWidth = 2960
+    threshMin = 17600
+    threshMax = 20560
     lowerUserValue = 0
     innerUserValue = 1
     upperUserValue = 0
     changeMinMax = TRUE
-    changedMin = 18685
-    changedMax = 21200
+    changedMin = 1760
+    changedMax = 20560
+  }
+}
+module ExportImageAsSlices {
+  internal  {
+    frame = "425 -779 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "313 -1065 470 155"
+        sizeHint = "470 155"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ExportImageAsSlices
+    targetFileName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/slices/18_degree_cropped_denoised_segmented/18_degree_cropped_denoised_segmented_001.jpg"
+    dimensionSeparator = -
+  }
+}
+module MakeName {
+  internal  {
+    frame = "663 338 136 72"
+    moduleGroupName = "Output directory and file names"
+    windows  {
+      window _default {
+        geometry = "-474 -914 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = outputName_Slices
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented"
+    extensions = "\\.mlimage \\.di?co?m \\.dic \\.tiff? \\.hdr \\.img \\.ima \\.raw \\.p[gpn]m \\.png \\.jpe?g"
+    extRegExp = TRUE
+    outputTemplate = $n/slices/$T_$S/$T_$S_$3#.jpg
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/3_segmented/slices/18_degree_cropped_denoised_segmented/18_degree_cropped_denoised_segmented_001.jpg"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = segmented
+    userStringT = 18_degree_cropped_denoised
+    trimSpaces = TRUE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "393 -555 112 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass2
+    noBypass = FALSE
   }
 }
 connections  {
+  6_degree.instanceName = inputName.outputName
   Bypass.input0 = SetWorldMatrix.output0
   Bypass1.input0 = SetWorldMatrix.output0
   ImageSave.input0 = Bypass.output0
-  ImageSave.filename = Compose3DFrom2DFiles.dirPath
+  ImageSave.filename = 6_degree.dirPath
   Info.input0 = SetWorldMatrix.output0
   outputName.inputName = OutputDirectory.rootPath
   outputName.userStringT = inputName.outputName
-  inputName.inputName = Compose3DFrom2DFiles.dirPath
-  savingOutputBypass.input0 = Mask1.output0
+  inputName.inputName = 6_degree.dirPath
+  inputName.outputName = outputName_Slices.userStringT
+  savingOutputBypass.input0 = IntervalThreshold.output0
   savingOuput.input0 = savingOutputBypass.output0
   savingOuput.filename = outputName.outputName
-  SetWorldMatrix.input0 = Compose3DFrom2DFiles.output0
-  Mask1.input1 = IntervalThreshold.output0
-  FinalOutput.inImage = Mask1.output0
+  SetWorldMatrix.input0 = 6_degree.output0
   SoDiagram2D.inCurveList = CurveCursor.outCurveList
   SoDiagram2D.inStylePalette = StylePalette.outStylePalette
-  View2D.inImage = Bypass3.output0
+  View2D.inImage = ViewProfile.output0
   View2D.inInvPreLUT = pos.self
   View2D.inInvPostLUT = SoView2DSlicePan.self
-  ProfileCurve1.input0 = Bypass3.output0
+  ProfileCurve1.input0 = ViewProfile.output0
   ProfileCurve1.posY = WorldVoxelConvert.voxelY
   ProfileCurve1.posZ = WorldVoxelConvert.voxelZ
   ProfileCurve1.length = Info1.sizeX
   ProfileCurve1.referencePosition = WorldVoxelConvert.voxelX
-  WorldVoxelConvert.input0 = Bypass3.output0
+  WorldVoxelConvert.input0 = ViewProfile.output0
   WorldVoxelConvert.worldPos = pos.worldPosition
-  Info1.input0 = Bypass3.output0
+  Info1.input0 = ViewProfile.output0
   SoRenderArea.children = "SoDiagram2DBackground.self SoDiagram2D.self SoView2DPosition1.self"
   CurveCursor.inCurveList = ProfileCurve1.outCurve
   CurveCursor.posX = WorldVoxelConvert.worldX
-  GetVoxelValue.input0 = Bypass3.output0
+  GetVoxelValue.input0 = ViewProfile.output0
   GetVoxelValue.position = pos.worldPosition
   PrintCurves.inCurveList = ProfileCurve1.outCurve
-  Bypass3.input0 = Bypass1.output0
+  ViewProfile.input0 = IntervalThreshold.output0
   Input_vs_Output.inImage1 = Bypass1.output0
-  Input_vs_Output.inImage2 = Mask1.output0
+  Input_vs_Output.inImage2 = IntervalThreshold.output0
   IntervalThreshold.input0 = Bypass1.output0
+  ExportImageAsSlices.targetFileName = outputName_Slices.outputName
+  outputName_Slices.inputName = OutputDirectory.rootPath
 }
 networkModel  {
   parentItems  {
@@ -1172,23 +1158,6 @@ networkModel  {
           a = 40
         }
       }
-      MLABNetworkModelItem MLABNoteItem {
-        uniqueId = 135
-        objectName = ""
-        parentUniqueId = 0
-        frame = "-110 -56 200 200"
-        backgroundColor  {
-          r = 252
-          g = 242
-          b = 2
-          a = 255
-        }
-        text = "Click into the 2D viewer to see the profile curve in the diagram."
-        titleText = "How To"
-        isCollapsed = False
-        drawAsComment = False
-        titleFrame = "-105 -51 190 22"
-      }
       MLABNetworkModelItem MLABNetworkModelItemGroup {
         uniqueId = 177
         objectName = "Saving Input as DICOM"
@@ -1203,6 +1172,17 @@ networkModel  {
       MLABNetworkModelItem MLABNetworkModelItemGroup {
         uniqueId = 195
         objectName = "Saving Output"
+        parentUniqueId = 0
+        color  {
+          r = 140
+          g = 140
+          b = 140
+          a = 40
+        }
+      }
+      MLABNetworkModelItem MLABNetworkModelItemGroup {
+        uniqueId = 230
+        objectName = "View Profile"
         parentUniqueId = 0
         color  {
           r = 140

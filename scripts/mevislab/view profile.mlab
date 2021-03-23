@@ -5,7 +5,7 @@ network  {
 }
 module SoDiagram2DBackground {
   internal  {
-    frame = "1181 269 168 56"
+    frame = "1109 325 168 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -31,7 +31,7 @@ module SoDiagram2DBackground {
 }
 module SoDiagram2D {
   internal  {
-    frame = "1381 301 104 56"
+    frame = "1285 325 104 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -43,10 +43,10 @@ module SoDiagram2D {
   }
   fields  {
     instanceName = SoDiagram2D
-    minX = 1
-    maxX = 269.951843261719
+    minX = 0.5
+    maxX = 63.5
     minY = 0
-    maxY = 1
+    maxY = 4095
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -87,7 +87,7 @@ module SoDiagram2D {
     curveLineWidthNotHighlighted = 1
     curveIndexHighlighted = ""
     reorderHighlightedCurves = FALSE
-    borderH = 36
+    borderH = 39
     borderV = 26
     autoBorderH = TRUE
     autoBorderV = TRUE
@@ -119,7 +119,7 @@ module SoDiagram2D {
 }
 module View2D {
   internal  {
-    frame = "613 197 120 56"
+    frame = "893 261 120 56"
     moduleGroupName = "View Profile"
     windows  {
       window Settings {
@@ -128,7 +128,7 @@ module View2D {
         wasOpen = no
       }
       window _default {
-        geometry = "-32 -1353 850 729"
+        geometry = "-715 -1190 850 729"
         sizeHint = "400 400"
         wasOpen = no
       }
@@ -137,9 +137,9 @@ module View2D {
   fields  {
     instanceName = View2D
     inventorInputOn = TRUE
-    inventorOutputOn = TRUE
+    inventorOutputOn = FALSE
     view2DExtensionsOn = TRUE
-    startSlice = 0
+    startSlice = 32
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -149,23 +149,23 @@ module View2D {
     maxTimePoint = 0
     filterMode = FILTER_LINEAR
     standardKeys = TRUE
-    cineMode = CINE_Z
-    cineDirection = CINE_PINGPONG
+    cineMode = CINE_ZT
+    cineDirection = CINE_FORWARD
     cineRepeat = CINE_ONCE
     cineSpeed = 0.1
     cineAlwaysReset = TRUE
     snapToCenter = TRUE
     zoomMode = VIEW2D_AUTO_ZOOM
     unzoomOnImageChange = FALSE
-    sliceZoom = 1.9000002
-    sliceZoomSynced = 1.9000002
+    sliceZoom = 1
+    sliceZoomSynced = 1
     baseColor = "1 1 1"
     margin = "2 2"
-    sliceOrigin = "162.452041625977 23.4930057525635"
+    sliceOrigin = "0 0"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 0.5
-    lutWidth = 1
+    lutCenter = 2047.5
+    lutWidth = 4095
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -185,11 +185,11 @@ module View2D {
 }
 module ProfileCurve {
   internal  {
-    frame = "1213 565 104 56"
+    frame = "1277 461 104 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
-        geometry = "-237 -1205 392 295"
+        geometry = "119 -1209 392 295"
         sizeHint = "392 295"
         wasOpen = no
       }
@@ -199,22 +199,22 @@ module ProfileCurve {
     instanceName = ProfileCurve1
     axis = X
     posX = 0
-    posY = 240
-    posZ = 50
+    posY = 32
+    posZ = 32
     posC = 0
     posT = 0
     posU = 0
-    length = 0
-    referencePosition = 269
+    length = 64
+    referencePosition = 41
     referenceEnable = FALSE
-    useImageMinMaxForYRange = FALSE
-    xMode = Voxel
+    useImageMinMaxForYRange = TRUE
+    xMode = World
     curveStyle = 0
   }
 }
 module SoView2DPosition {
   internal  {
-    frame = "793 541 128 72"
+    frame = "977 461 128 72"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -248,7 +248,7 @@ module SoView2DPosition {
     renderOnSlab = FALSE
     clipToSlice = FALSE
     cursorShape = UNDEFINED_CURSOR
-    worldPosition = "269.951843261719 240.798263549805 50.5"
+    worldPosition = "41.7103462219238 32.0441360473633 32.5"
     drawingModel = DRAWINGMODEL_CROSSHAIRS
     drawingModelSizeUnit = SIZEUNIT_VOXEL
     drawingModelSize = -1
@@ -272,7 +272,7 @@ module SoView2DPosition {
 }
 module WorldVoxelConvert {
   internal  {
-    frame = "997 549 136 56"
+    frame = "1117 461 136 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -284,14 +284,14 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert
-    voxelX = 269.951843261719
-    voxelY = 240.798263549805
-    voxelZ = 50.5
-    worldX = 269.951843261719
-    worldY = 240.798263549805
-    worldZ = 50.5
-    voxelPos = "269.951843261719 240.798263549805 50.5"
-    worldPos = "269.951843261719 240.798263549805 50.5"
+    voxelX = 41.7103462219238
+    voxelY = 32.0441360473633
+    voxelZ = 32.5
+    worldX = 41.7103462219238
+    worldY = 32.0441360473633
+    worldZ = 32.5
+    voxelPos = "41.7103462219238 32.0441360473633 32.5"
+    worldPos = "41.7103462219238 32.0441360473633 32.5"
     voxelMode = FALSE
     worldMode = TRUE
     intVoxelCoords = FALSE
@@ -300,7 +300,7 @@ module WorldVoxelConvert {
 }
 module Info {
   internal  {
-    frame = "1461 557 56 56"
+    frame = "1405 461 56 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -316,7 +316,7 @@ module Info {
 }
 module SoRenderArea {
   internal  {
-    frame = "1361 125 128 56"
+    frame = "1265 261 128 56"
     moduleGroupName = "View Profile"
     windows  {
       window _viewer {
@@ -356,7 +356,7 @@ module SoRenderArea {
 }
 module CurveCursor {
   internal  {
-    frame = "1217 469 96 56"
+    frame = "1281 389 96 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -368,17 +368,17 @@ module CurveCursor {
   }
   fields  {
     instanceName = CurveCursor
-    posX = 269.951843261719
-    posY = 0
-    maxSeriesIndex = -1
+    posX = 41.7103462219238
+    posY = 1064.4031791687
+    maxSeriesIndex = 0
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
-    minX = 0
-    maxX = 793
+    minX = 0.5
+    maxX = 63.5
     minY = 0
-    maxY = 0.989309728145599
-    autoRange = FALSE
+    maxY = 4095
+    autoRange = TRUE
     cursorX = TRUE
     cursorY = TRUE
     curveStyle = 8
@@ -386,11 +386,11 @@ module CurveCursor {
 }
 module StylePalette {
   internal  {
-    frame = "1385 437 96 56"
+    frame = "1401 389 96 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
-        geometry = "70 88 689 560"
+        geometry = "368 136 689 560"
         sizeHint = "679 560"
         wasOpen = no
       }
@@ -417,12 +417,12 @@ module StylePalette {
     lineStyle5 = Solid
     lineStyle6 = Solid
     lineStyle7 = Solid
-    lineStyle8 = Dotted
+    lineStyle8 = Dashed
     lineStyle9 = Solid
     lineStyle10 = Solid
     lineStyle11 = Solid
     lineStyle12 = Solid
-    lineWidth1 = 1
+    lineWidth1 = 2
     lineWidth2 = 1
     lineWidth3 = 1
     lineWidth4 = 1
@@ -446,7 +446,7 @@ module StylePalette {
     markerType10 = None
     markerType11 = None
     markerType12 = None
-    markerSize1 = 3
+    markerSize1 = 6
     markerSize2 = 10
     markerSize3 = 10
     markerSize4 = 10
@@ -495,7 +495,7 @@ module StylePalette {
 }
 module GetVoxelValue {
   internal  {
-    frame = "561 541 144 72"
+    frame = "817 461 144 72"
     moduleGroupName = "View Profile"
     showNetworkPanel = true
     windows  {
@@ -508,7 +508,7 @@ module GetVoxelValue {
   }
   fields  {
     instanceName = GetVoxelValue
-    position = "269.951843261719 240.798263549805 50.5 0 0 0"
+    position = "41.7103462219238 32.0441360473633 32.5 0 0 0"
     updateMode = AutoUpdate
     coordinateType = World
     interpolation = NearestNeighbor
@@ -516,7 +516,7 @@ module GetVoxelValue {
 }
 module SoView2DSlicePan {
   internal  {
-    frame = "785 333 128 56"
+    frame = "977 325 128 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -557,7 +557,7 @@ module SoView2DSlicePan {
 }
 module PrintCurves {
   internal  {
-    frame = "1057 413 96 56"
+    frame = "1177 389 96 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -582,7 +582,7 @@ module PrintCurves {
 }
 module SoView2DPosition {
   internal  {
-    frame = "1525 293 136 56"
+    frame = "1389 325 136 56"
     moduleGroupName = "View Profile"
     windows  {
       window _default {
@@ -638,21 +638,57 @@ module SoView2DPosition {
     colorBorderWidth = 2
   }
 }
+module Bypass {
+  internal  {
+    frame = "821 589 120 72"
+    moduleGroupName = "View Profile"
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = InputImage
+    noBypass = FALSE
+  }
+}
+module LocalImage {
+  internal  {
+    frame = "817 725 128 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "130 -781 539 179"
+        sizeHint = "539 179"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = LocalImage
+    name = $(DemoDataPath)/Bone.tiff
+    autoLoad = TRUE
+  }
+}
 connections  {
   SoDiagram2D.inCurveList = CurveCursor.outCurveList
   SoDiagram2D.inStylePalette = StylePalette.outStylePalette
+  View2D.inImage = InputImage.output0
   View2D.inInvPreLUT = pos.self
   View2D.inInvPostLUT = SoView2DSlicePan.self
+  ProfileCurve1.input0 = InputImage.output0
   ProfileCurve1.posY = WorldVoxelConvert.voxelY
   ProfileCurve1.posZ = WorldVoxelConvert.voxelZ
   ProfileCurve1.length = Info1.sizeX
   ProfileCurve1.referencePosition = WorldVoxelConvert.voxelX
+  WorldVoxelConvert.input0 = InputImage.output0
   WorldVoxelConvert.worldPos = pos.worldPosition
+  Info1.input0 = InputImage.output0
   SoRenderArea.children = "SoDiagram2DBackground.self SoDiagram2D.self SoView2DPosition1.self"
   CurveCursor.inCurveList = ProfileCurve1.outCurve
   CurveCursor.posX = WorldVoxelConvert.worldX
+  GetVoxelValue.input0 = InputImage.output0
   GetVoxelValue.position = pos.worldPosition
   PrintCurves.inCurveList = ProfileCurve1.outCurve
+  InputImage.input0 = LocalImage.outImage
 }
 networkModel  {
   parentItems  {
@@ -667,6 +703,49 @@ networkModel  {
           b = 140
           a = 40
         }
+      }
+      MLABNetworkModelItem MLABNoteItem {
+        uniqueId = 49
+        objectName = ""
+        parentUniqueId = 0
+        frame = "545 188 236 245"
+        backgroundColor  {
+          r = 247
+          g = 221
+          b = 91
+          a = 255
+        }
+        text = "1. Connect an image to the Bypass input (bottom triangle)
+2. Double click on ViewWD and SoRenderArea
+3. Click anywhere in the View2D window
+4. You can pan by pressing 'shift' and the left mouse button"
+        richText = "*<html>
+  <head>
+    <style type="text/css">
+      a.headerlink {
+        visibility: hidden;
+      }
+      table {
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+
+  <ol class="arabic simple">
+<li>Connect an image to the Bypass input (bottom triangle)</li>
+<li>Double click on ViewWD and SoRenderArea</li>
+<li>Click anywhere in the View2D window</li>
+<li>You can pan by pressing 'shift' and the left mouse button</li>
+</ol>
+
+
+  </body>
+</html>*"
+        titleText = "How to use"
+        isCollapsed = False
+        drawAsComment = False
+        titleFrame = "550 193 226 22"
       }
     }
   }

@@ -33,14 +33,14 @@ module OrthoView2D {
     borderOn = TRUE
     borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
     grayWidth = 1
-    grayCenter = 1
+    grayCenter = 0.5
     annotationOn = TRUE
     annotationSizeMode = ANNO_SHOW_DETAILED
     annotationFontSize = ANNO_SIZE_AUTO
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "4.12972021102905 6.37500333786011 11.0375003814697"
+    worldPosition = "2.03127336502075 10.6125001907349 13.5033512115479"
     coloredMode = TRUE
   }
 }
@@ -163,7 +163,7 @@ module XMarkerListContainer {
   }
   fields  {
     instanceName = XMarkerListContainer1
-    listString = "[(4.1125 6.4875 11.0125) #1, (4.1375 6.3875 11.0125) #2]"
+    listString = "[(2.1125 0.5125 9.6875) #1, (1.0375 10.8375 9.6875) #2, (2.0375 10.8125 13.5125) #3]"
     index = 0
     persistent = TRUE
     listStringEnable = FALSE
@@ -173,7 +173,7 @@ module XMarkerListContainer {
     overflowMode = None
     maxSize = 0
     useInsertTemplate = FALSE
-    posXYZ = "4.1125 6.4875 11.0125"
+    posXYZ = "2.1125 0.5125 9.6875"
     posC = 0
     posT = 0
     posU = 0
@@ -203,8 +203,8 @@ module RegionGrowing {
   fields  {
     instanceName = RegionGrowing
     autoUpdateMode = AutoUpdate
-    lowerThreshold = 17562.52
-    upperThreshold = 21232.48
+    lowerThreshold = 19581
+    upperThreshold = 20173
     enableAutoThresholdInterval = TRUE
     basicNeighborhoodType = BNBH_3D_6_XYZ
     extendedNeighborhoodType = ENBH_3D_6_XYZ
@@ -232,7 +232,7 @@ module RegionGrowing {
     showOuterBoundariesOnly = FALSE
     upperVolumeLimit_ml = 100
     enableUpperVolumeLimit = FALSE
-    autoThresholdIntervalSizeInPercent = 2.8
+    autoThresholdIntervalSizeInPercent = 10
   }
 }
 module SoView2DOverlay {
@@ -305,7 +305,7 @@ module Bypass {
   }
   fields  {
     instanceName = InputImage
-    noBypass = FALSE
+    noBypass = TRUE
   }
 }
 module Mask {
@@ -398,6 +398,99 @@ module Bypass {
     noBypass = TRUE
   }
 }
+module ImageLoad {
+  internal  {
+    frame = "117 773 120 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-693 -776 507 394"
+        sizeHint = "507 394"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ImageLoad
+    filename = $(NETWORK)../../data/rotary/images_FL-I/original/18_degree/
+    autoLoad = FALSE
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    dataTypeRaw = "unsigned int8"
+    planarConfig = Contiguous
+    byteOrder = LittleEndian
+    dataOffset = 0
+    pageSizeHint = "0 0 0 0 0 0"
+    suppressErrorLog = FALSE
+    dicomIgnoreHalfVoxelShift = FALSE
+    enableCheckSumTests = FALSE
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "393 773 160 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "186 -954 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/original/18_degree"
+    searchPattern = "**.tif*"
+    currentFile = ""
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Contiguous
+    rawDataOffset = 0
+  }
+}
+module FileDirectory {
+  internal  {
+    frame = "993 373 128 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "141 -969 528 555"
+        sizeHint = "517 555"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = FileDirectory
+    rootPath = $(NETWORK)
+    recursive = FALSE
+    maxRecursionDepth = -1
+    fileType = Files
+    joinImagePairs = FALSE
+    include = ""
+    includeRegExp = FALSE
+    predefined = void
+    exclude = ""
+    excludeRegExp = FALSE
+    ignoreCase = TRUE
+    dirMode = Absolute
+  }
+}
 connections  {
   OrthoView2D.image = InputImage.output0
   OrthoView2D.inInvPreLUT = SoView2DOverlay.self
@@ -406,6 +499,7 @@ connections  {
   RegionGrowing.input0 = InputImage.output0
   RegionGrowing.inMarkerList = MarkerListEditor.outXMarkerList
   SoView2DOverlay.image = RegionGrowing.output0
+  InputImage.input0 = Compose3DFrom2DFiles.output0
   Mask.input0 = InputImage.output0
   Mask.input1 = OutputImage.output0
   OutputImage.input0 = RegionGrowing.output1

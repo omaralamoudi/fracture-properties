@@ -1,7 +1,9 @@
 // MDL v1 utf8
 mevislabVersion = 3.4.1
 network  {
-  watchlist = ""
+  watchlist  {
+    field = IsoSurface1.surfaceArea
+  }
 }
 module SetWorldMatrix {
   internal  {
@@ -23,8 +25,8 @@ module SetWorldMatrix {
     rotation = "0 0 1 0"
     translation = "0 0 0"
     sourceUsage = Ignore
-    referenceUsage = Forward
-    elementaryUsage = Ignore
+    referenceUsage = Ignore
+    elementaryUsage = Forward
     invertResult = FALSE
     setCInfo = FALSE
     setTInfo = FALSE
@@ -45,9 +47,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = SingleVoxel1Slice
-    dirPath = $(NETWORK)/3d/
-    searchPattern = "***"
-    currentFile = "$(NETWORK)/calibration images/clibrationimage2d.tif"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/mevislab/surface area analysis/calibration images/2d"
+    searchPattern = "**.tif*"
+    currentFile = $(NETWORK)/2d/clibrationimage2d.tif
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -276,7 +278,7 @@ module Compose3DFrom2DFiles {
     instanceName = SingleVoxel3Slices
     dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/mevislab/surface area analysis/calibration images/3d"
     searchPattern = "**.tif*"
-    currentFile = "$(NETWORK)/calibration images/3d/clibrationimage3d_3.tif"
+    currentFile = $(NETWORK)/3d/clibrationimage3d_3.tif
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -1011,12 +1013,12 @@ module SetWorldMatrix {
     instanceName = SetWorldMatrix3
     center = "0 0 0"
     scaleOrientation = "0 0 1 0"
-    scale = "1 1 1"
+    scale = "0.025 0.025 0.025"
     rotation = "0 0 1 0"
     translation = "0 0 0"
     sourceUsage = Ignore
-    referenceUsage = Forward
-    elementaryUsage = Ignore
+    referenceUsage = Ignore
+    elementaryUsage = Forward
     invertResult = FALSE
     setCInfo = FALSE
     setTInfo = FALSE
@@ -1446,6 +1448,67 @@ and the surface area is correct too = 6
 So it seems like we can ignore what the renderer shows us"
   }
 }
+module View2D {
+  internal  {
+    frame = "-1763 997 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "199 -892 400 400"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View2D
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    view2DExtensionsOn = TRUE
+    startSlice = 0
+    numSlices = 1
+    numXSlices = 1
+    sliceStep = 1
+    slab = 1
+    blendMode = BLEND_REPLACE
+    timePoint = 0
+    maxTimePoint = 0
+    filterMode = FILTER_LINEAR
+    standardKeys = TRUE
+    cineMode = CINE_ZT
+    cineDirection = CINE_FORWARD
+    cineRepeat = CINE_ONCE
+    cineSpeed = 0.1
+    cineAlwaysReset = TRUE
+    snapToCenter = TRUE
+    zoomMode = VIEW2D_AUTO_ZOOM
+    unzoomOnImageChange = FALSE
+    sliceZoom = 1
+    sliceZoomSynced = 1
+    baseColor = "1 1 1"
+    margin = "2 2"
+    sliceOrigin = "0 0"
+    useShaders = TRUE
+    useManagedInteraction = FALSE
+    lutCenter = 127.5
+    lutWidth = 255
+    annotationOn = TRUE
+    annotationMode = ANNO_MODE_AUTO
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationCol = "0.899999976158142 0.899999976158142 0.899999976158142"
+    annotationFontSize = ANNO_SIZE_AUTO
+    annoCoords = Voxel
+    annoCTValue = AsIs
+    borderOn = FALSE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    valueHighPrecision = TRUE
+    showColorChannelValues = FALSE
+    colorChannelSeparator = " / "
+    maxPrecision = 4
+    enableSlicing = TRUE
+    useRelativeLUTIfNoInputImage = TRUE
+  }
+}
 connections  {
   SetWorldMatrix1.input0 = SingleVoxel1Slice.output0
   IsoSurface3.inImage = Invert.output0
@@ -1483,6 +1546,7 @@ connections  {
   Threshold6.input0 = SetWorldMatrix3.output0
   IsoSurface12.inImage = Threshold6.output0
   SoWEMRenderer12.inWEM = IsoSurface12.outWEM
+  View2D.inImage = SetWorldMatrix1.output0
 }
 networkModel  {
   parentItems  {
