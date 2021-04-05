@@ -1,0 +1,28 @@
+// learn more about using numi here: https://github.com/nikolaeu/Numi/wiki/Documentation
+# Calculating the number of slices
+677-168+1 = 510
+640	-131+1 = 510
+x range = 168,677 = 168,677
+y range = 131,640 = 131,640
+z range = 172,791 = 172,791
+
+# Super crop
+x range = 127,127+255 = 127,382
+y range = 60,60.+255 = 6,315
+z range = 280,250+255 = 280,505
+
+# Comparing the deNoise parameters for 16-bit and 8-bit
+max16 = 2^16 = 65,536
+16-bit range = 0 to max16 = 65,536
+max8 = 2^8 = 256
+8-bit ragne  = 0 to max8 = 256
+
+Zhao uses the value 280 in a 16-bit image which corresponds to 
+sigma16 = 280 = 280
+sigma8 = sigma16/max16*max8 = 1.094
+
+## Threshold conversion
+min_0_degree16 = 18685 = 18,685
+max_0_degree16 = 21200 = 21,200
+min_0_degree08 = floor(min_0_degree16*(max8/max16)) = 72
+max_0_degree08 = ceil(max_0_degree16*(max8/max16)) = 83

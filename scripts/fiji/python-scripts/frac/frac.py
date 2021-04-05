@@ -1,0 +1,3 @@
+'''
+This file contains methods used in my workflow. The name frac is similar to the project name Fracture ...
+'''

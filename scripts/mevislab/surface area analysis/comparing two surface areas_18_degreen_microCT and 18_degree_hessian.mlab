@@ -2,24 +2,27 @@
 mevislabVersion = 3.4.1
 network  {
   watchlist  {
-    field = SoDiagram2D.minY
-    field = 18_degreeProfile.instanceName
+    field = 0_degree_IsoSurface.isoValue
+    field = 18_degree_IsoSurface.isoValue
+    field = 18_degree_IsoSurface.apply
+    field = 18_degree_IsoSurface.quality
+    field = SurfaceArea_Diff.resultScalar1
   }
 }
 module Compose3DFrom2DFiles {
   internal  {
-    frame = "-1355 965 168 56"
+    frame = "-1347 1109 168 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "151 -935 426 525"
+        geometry = "-522 -805 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = 18_degree_hessian
+    instanceName = 18_degreeVolume
     dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output"
     searchPattern = "**.tif*"
     currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output/Hessian_18_degree_cropped2_601.tif"
@@ -38,11 +41,11 @@ module Compose3DFrom2DFiles {
 }
 module SetWorldMatrix {
   internal  {
-    frame = "-1331 893 120 56"
+    frame = "-1323 1037 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "183 -686 532 345"
+        geometry = "81 -687 532 345"
         sizeHint = "468 345"
         wasOpen = no
       }
@@ -53,7 +56,7 @@ module SetWorldMatrix {
     center = "0 0 0"
     scaleOrientation = "0 0 1 0"
     scale = "0.025 0.025 0.025"
-    rotation = "1 0 0 3.14"
+    rotation = "1 0 0 3"
     translation = "0 0 0"
     sourceUsage = Ignore
     referenceUsage = Ignore
@@ -71,16 +74,16 @@ module IsoSurface {
     showNetworkPanel = true
     windows  {
       window _default {
-        geometry = "-314 -636 349 340"
-        sizeHint = "349 340"
+        geometry = "-307 -736 365 365"
+        sizeHint = "365 365"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = IsoSurface3
-    isoValue = 0.015
-    quality = 2
+    instanceName = 0_degree_IsoSurface
+    isoValue = 0.9
+    quality = 5
     useInterpolation = FALSE
     useSmoothing = FALSE
     smoothingPasses = 100
@@ -89,57 +92,6 @@ module IsoSurface {
     targetReduction = 22
     autoUpdate = FALSE
     autoApply = FALSE
-    selectedTab = 0
-  }
-}
-module SoWEMRenderer {
-  internal  {
-    frame = "-1835 294 160 72"
-    moduleGroupName = "Volume 1"
-    showNetworkPanel = true
-    windows  {
-      window _default {
-        geometry = "723 356 473 543"
-        sizeHint = "473 543"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = SoWEMRenderer3
-    interactionProviderID = ""
-    autoApply = FALSE
-    autoUpdate = FALSE
-    autoClear = TRUE
-    enableCreaseAngle = TRUE
-    creaseAngle = 75
-    useHighlightSelected = FALSE
-    highlightColor = "1 0 0"
-    highlightIntensity = 0.5
-    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
-    allowHits = FALSE
-    performPreHitTest = FALSE
-    cursorShape = CROSS_CURSOR
-    colorMode = WEM_COLOR_GENERAL
-    drawFaces = TRUE
-    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
-    useFaceAmbientColor = TRUE
-    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
-    useFaceSpecularColor = TRUE
-    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
-    faceAlphaValue = 0.5
-    faceShininessValue = 1
-    primitiveValueLists = ""
-    selectedPrimitiveValueList = LUT
-    selectedPrimitiveValueAlphaList = LUT
-    primitiveValueListValid = TRUE
-    primitiveValueListAlphaValid = TRUE
-    overwriteAlphaWithPVL = FALSE
-    wemPatchToRender = -1
-    maxWEMPatchIndex = -1
-    cachePatches = FALSE
-    sendAdjacency = FALSE
-    hitModifierKey = AllModifiersMask
     selectedTab = 0
   }
 }
@@ -175,7 +127,7 @@ module SoDiagram2D {
     moduleGroupName = "Profile View 2"
     windows  {
       window _default {
-        geometry = "-556 -1046 571 631"
+        geometry = "-84 -892 571 631"
         sizeHint = "571 631"
         wasOpen = no
       }
@@ -186,7 +138,7 @@ module SoDiagram2D {
     minX = 0.0125
     maxX = 14.7375
     minY = 0
-    maxY = 0.0421480759978294
+    maxY = 0.0453595146536827
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -227,8 +179,8 @@ module SoDiagram2D {
     curveLineWidthNotHighlighted = 1
     curveIndexHighlighted = ""
     reorderHighlightedCurves = FALSE
-    borderH = 43
-    borderV = 26
+    borderH = 63
+    borderV = 36
     autoBorderH = TRUE
     autoBorderV = TRUE
     drawAxisX = FALSE
@@ -243,8 +195,8 @@ module SoDiagram2D {
     axisTitleStringY = "Y [dn]"
     axisTitleFontHeightX = 12
     axisTitleFontHeightY = 12
-    axisLabelFontHeightX = 12
-    axisLabelFontHeightY = 12
+    axisLabelFontHeightX = 20
+    axisLabelFontHeightY = 20
     tickMinDistance = 30
     curveColor = "1 1 1"
     lineStyle = LINE_STYLE_NONE
@@ -279,7 +231,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 292
+    startSlice = 204
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -304,8 +256,8 @@ module View2D {
     sliceOrigin = "-1.46849060058594 -7.77928161621094"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 0.0149999996647239
-    lutWidth = 0.0349999964237213
+    lutCenter = 0.0199999995529652
+    lutWidth = 0.0900006219744682
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -329,8 +281,8 @@ module ProfileCurve {
     moduleGroupName = "Profile View 2"
     windows  {
       window _default {
-        geometry = "-237 -1205 392 295"
-        sizeHint = "392 295"
+        geometry = "369 193 408 309"
+        sizeHint = "408 309"
         wasOpen = no
       }
     }
@@ -339,13 +291,13 @@ module ProfileCurve {
     instanceName = ProfileCurve1
     axis = X
     posX = 0
-    posY = 125
-    posZ = 292
+    posY = 352
+    posZ = 204
     posC = 0
     posT = 0
     posU = 0
     length = 590
-    referencePosition = 273
+    referencePosition = 459
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
     xMode = World
@@ -388,7 +340,7 @@ module SoView2DPosition {
     renderOnSlab = FALSE
     clipToSlice = FALSE
     cursorShape = UNDEFINED_CURSOR
-    worldPosition = "6.82552862167358 -3.15554785728455 -7.3074836730957"
+    worldPosition = "11.4949083328247 -9.45022201538086 -3.81708383560181"
     drawingModel = DRAWINGMODEL_CROSSHAIRS
     drawingModelSizeUnit = SIZEUNIT_VOXEL
     drawingModelSize = -1
@@ -416,7 +368,7 @@ module WorldVoxelConvert {
     moduleGroupName = "Profile View 2"
     windows  {
       window _default {
-        geometry = "-711 -652 488 256"
+        geometry = "-568 -649 488 256"
         sizeHint = "488 256"
         wasOpen = no
       }
@@ -424,14 +376,14 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert
-    voxelX = 273.021144866943
-    voxelY = 125.756222800239
-    voxelZ = 292.500003908537
-    worldX = 6.82552862167358
-    worldY = -3.15554785728455
-    worldZ = -7.3074836730957
-    voxelPos = "273.021144866943 125.756222800239 292.500003908537"
-    worldPos = "6.82552862167358 -3.15554785728455 -7.3074836730957"
+    voxelX = 459.796333312988
+    voxelY = 352.679279391603
+    voxelZ = 204.499990524749
+    worldX = 11.4949083328247
+    worldY = -9.45022201538086
+    worldZ = -3.81708383560181
+    voxelPos = "459.796333312988 352.679279391603 204.499990524749"
+    worldPos = "11.4949083328247 -9.45022201538086 -3.81708383560181"
     voxelMode = FALSE
     worldMode = TRUE
     intVoxelCoords = FALSE
@@ -508,8 +460,8 @@ module CurveCursor {
   }
   fields  {
     instanceName = CurveCursor
-    posX = 6.82552862167358
-    posY = 0
+    posX = 11.4949083328247
+    posY = 0.000173430219512209
     maxSeriesIndex = 0
     seriesIndex = 0
     interpolate = TRUE
@@ -517,7 +469,7 @@ module CurveCursor {
     minX = 0.0125
     maxX = 14.7375
     minY = 0
-    maxY = 0.0421480759978294
+    maxY = 0.0453595146536827
     autoRange = TRUE
     cursorX = TRUE
     cursorY = TRUE
@@ -562,7 +514,7 @@ module StylePalette {
     lineStyle10 = Solid
     lineStyle11 = Solid
     lineStyle12 = Solid
-    lineWidth1 = 2
+    lineWidth1 = 1
     lineWidth2 = 1
     lineWidth3 = 1
     lineWidth4 = 1
@@ -648,7 +600,7 @@ module GetVoxelValue {
   }
   fields  {
     instanceName = GetVoxelValue
-    position = "6.82552862167358 -3.15554785728455 -7.3074836730957 0 0 0"
+    position = "11.4949083328247 -9.45022201538086 -3.81708383560181 0 0 0"
     updateMode = AutoUpdate
     coordinateType = World
     interpolation = NearestNeighbor
@@ -796,125 +748,6 @@ module SoView2DPosition {
     colorBorderWidth = 2
   }
 }
-module View3D {
-  internal  {
-    frame = "-1827 158 144 56"
-    moduleGroupName = "Volume 1"
-    windows  {
-      window _default {
-        geometry = "-640 -999 1164 640"
-        sizeHint = "1164 640"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = View3D1
-    autoViewAll = TRUE
-    inventorInputOn = TRUE
-    inventorOutputOn = FALSE
-    lutType = Editor
-    rendererType = Slicer
-    currentTimePoint = 0
-    staticSamplingRate = 1
-    quality = 1
-    filterVolumeData = FilterLinear
-    lutEditorColorPoints = "[ 0 0.331000000238419 0.331000000238419 0.331000000238419, 0.00409500021487474 0.340514749288559 0.340514749288559 0.340514749288559, 2739.55493164062 1 1 1, 4095 1 1 1 ]"
-    lutEditorAlphaPoints = "[ 0 0, 0.00409500021487474 0.883289098739624, 2739.55493164062 1, 4095 1 ]"
-    lutEditorRelativeLut = FALSE
-    lutEditorColorInterpolation = InterpolateRGB
-    lutEditorAlphaFactor = 1
-    orientationProjectionType = PERSPECTIVE
-    orientationLocation = LOWER_RIGHT
-    orientationOn = TRUE
-    orientationModel = CUBE
-    greyCenter = 0.5
-    greyWidth = 0.5
-    alphaFactor = 1
-    colorFactor = "1 1 1"
-    camType = TRUE
-    camPosition = "30.9383182525635 -16.1883163452148 7.2999963760376"
-    camOrientation = "0.862856209278107 0.357406735420227 0.357406735420227 1.71777164936066"
-    initialCameraOrientation = CAMERA_KEEP_AS_IS
-    camFar = 43.814835
-    camNear = 22.85318
-    camFocal = 33.323559
-    camHeight = 0.78539801
-    decoration = FALSE
-    annotations = TRUE
-    background = TRUE
-    mode = VolumeRendering
-    interactiveQuality = Medium
-  }
-  internalFields  {
-    renderer.gradientQuality = GradientQualityAutomatic
-    renderer.enhancementAlphaMix = 0.25
-    renderer.boundaryEnhancement = FALSE
-    renderer.boundaryEnhancementFactor = 1
-    renderer.boundaryEnhancementExponent = 1
-    renderer.boundaryEnhancementGradientBias = 0
-    renderer.silhouetteEnhancement = FALSE
-    renderer.silhouetteEnhancementExponent = 1
-    renderer.silhouetteEnhancementFactor = 1
-    renderer.toneShading = FALSE
-    renderer.toneShadingWarmColor = "0.67451000213623 0.533333003520966 0.141176000237465"
-    renderer.toneShadingColdColor = "0 0 0.400000005960464"
-    renderer.toneShadingWarmDiffuse = 0.60000002
-    renderer.toneShadingColdDiffuse = 0.2
-    renderer.toneShadingAngle = 45
-    renderer.materialAmbient = 0.60000002
-    renderer.materialDiffuse = 1
-    renderer.materialSpecular = 1
-    renderer.materialSpecularity = 32
-    renderer.light1Enabled = TRUE
-    renderer.light1DiffuseIntensity = 1
-    renderer.light1SpecularIntensity = 1
-    renderer.light1Color = "1 1 1"
-    renderer.light1PolarPhi = 45
-    renderer.light1PolarRho = 0
-    renderer.light2Enabled = FALSE
-    renderer.light2DiffuseIntensity = 0.79699999
-    renderer.light2SpecularIntensity = 1
-    renderer.light2Color = "1 1 1"
-    renderer.light2PolarPhi = 127
-    renderer.light2PolarRho = 159
-    renderer.light3Enabled = FALSE
-    renderer.light3DiffuseIntensity = 1
-    renderer.light3SpecularIntensity = 1
-    renderer.light3Color = "1 1 1"
-    renderer.light3PolarPhi = -45
-    renderer.light3PolarRho = 0
-    renderer.sizeOutputX = 590
-    renderer.sizeOutputY = 590
-    renderer.sizeOutputZ = 584
-    renderer.subVolumeStartX = 0
-    renderer.subVolumeStartY = 0
-    renderer.subVolumeStartZ = 0
-    renderer.subVolumeEndX = 590
-    renderer.subVolumeEndY = 590
-    renderer.subVolumeEndZ = 584
-    clip.hideGeometry = FALSE
-    clip.on = FALSE
-    clip.left = TRUE
-    clip.right = TRUE
-    clip.top = TRUE
-    clip.bottom = TRUE
-    clip.rear = TRUE
-    clip.front = TRUE
-    clip.translation0 = "1 0 0"
-    clip.translation1 = "-1 0 0"
-    clip.translation2 = "0 1 0"
-    clip.translation3 = "0 -1 0"
-    clip.translation4 = "0 0 1"
-    clip.translation5 = "0 0 -1"
-    clip.rotation0 = "0 0 0.999999940395355 1.57079637050629"
-    clip.rotation1 = "0 0 -0.999999940395355 1.57079637050629"
-    clip.rotation2 = "0 0 -1 3.14159274101257"
-    clip.rotation3 = "0 0 1 0"
-    clip.rotation4 = "-0.999999940395355 0 0 1.57079601287842"
-    clip.rotation5 = "0.999999940395355 0 0 1.57079601287842"
-  }
-}
 module Bypass {
   internal  {
     frame = "-1811 501 112 56"
@@ -928,7 +761,7 @@ module Bypass {
 }
 module Info {
   internal  {
-    frame = "-1175 829 64 56"
+    frame = "-1187 909 88 72"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -944,17 +777,12 @@ module Info {
 }
 module Calculator {
   internal  {
-    frame = "-1571 565 120 72"
+    frame = "-1555 589 88 56"
     moduleGroupName = ""
     windows  {
       window _default {
         geometry = "-727 -940 700 615"
         sizeHint = "700 624"
-        wasOpen = no
-      }
-      window _automatic {
-        geometry = "149 -992 500 600"
-        sizeHint = "256 192"
         wasOpen = no
       }
     }
@@ -1063,7 +891,7 @@ module SoDiagram2D {
     moduleGroupName = "Profile View 1"
     windows  {
       window _default {
-        geometry = "-556 -1046 571 631"
+        geometry = "-668 -888 571 631"
         sizeHint = "571 631"
         wasOpen = no
       }
@@ -1073,8 +901,8 @@ module SoDiagram2D {
     instanceName = SoDiagram2D1
     minX = 0.0125
     maxX = 14.7375
-    minY = 39842
-    maxY = 50881
+    minY = 40034
+    maxY = 51133
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -1115,8 +943,8 @@ module SoDiagram2D {
     curveLineWidthNotHighlighted = 1
     curveIndexHighlighted = ""
     reorderHighlightedCurves = FALSE
-    borderH = 46
-    borderV = 26
+    borderH = 68
+    borderV = 36
     autoBorderH = TRUE
     autoBorderV = TRUE
     drawAxisX = FALSE
@@ -1131,8 +959,8 @@ module SoDiagram2D {
     axisTitleStringY = "Y [dn]"
     axisTitleFontHeightX = 12
     axisTitleFontHeightY = 12
-    axisLabelFontHeightX = 12
-    axisLabelFontHeightY = 12
+    axisLabelFontHeightX = 20
+    axisLabelFontHeightY = 20
     tickMinDistance = 30
     curveColor = "1 1 1"
     lineStyle = LINE_STYLE_NONE
@@ -1167,7 +995,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 292
+    startSlice = 204
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -1192,8 +1020,8 @@ module View2D {
     sliceOrigin = "0.277071833610535 4.4396538734436"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 50134.27734375
-    lutWidth = 11140.8857421875
+    lutCenter = 48496.05859375
+    lutWidth = 5242.79931640625
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -1217,7 +1045,7 @@ module ProfileCurve {
     moduleGroupName = "Profile View 1"
     windows  {
       window _default {
-        geometry = "-237 -1205 392 295"
+        geometry = "-596 -989 392 295"
         sizeHint = "392 295"
         wasOpen = no
       }
@@ -1227,13 +1055,13 @@ module ProfileCurve {
     instanceName = ProfileCurve2
     axis = X
     posX = 0
-    posY = 125
-    posZ = 292
+    posY = 352
+    posZ = 204
     posC = 0
     posT = 0
     posU = 0
     length = 590
-    referencePosition = 273
+    referencePosition = 459
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
     xMode = World
@@ -1276,7 +1104,7 @@ module SoView2DPosition {
     renderOnSlab = FALSE
     clipToSlice = FALSE
     cursorShape = UNDEFINED_CURSOR
-    worldPosition = "6.82552862167358 -3.15554785728455 -7.3074836730957"
+    worldPosition = "11.4949083328247 -9.45022201538086 -3.81708383560181"
     drawingModel = DRAWINGMODEL_CROSSHAIRS
     drawingModelSizeUnit = SIZEUNIT_VOXEL
     drawingModelSize = -1
@@ -1312,14 +1140,14 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert1
-    voxelX = 273.021144866943
-    voxelY = 125.756222800239
-    voxelZ = 292.500003908537
-    worldX = 6.82552862167358
-    worldY = -3.15554785728455
-    worldZ = -7.3074836730957
-    voxelPos = "273.021144866943 125.756222800239 292.500003908537"
-    worldPos = "6.82552862167358 -3.15554785728455 -7.3074836730957"
+    voxelX = 459.796333312988
+    voxelY = 352.679279391603
+    voxelZ = 204.499990524749
+    worldX = 11.4949083328247
+    worldY = -9.45022201538086
+    worldZ = -3.81708383560181
+    voxelPos = "459.796333312988 352.679279391603 204.499990524749"
+    worldPos = "11.4949083328247 -9.45022201538086 -3.81708383560181"
     voxelMode = FALSE
     worldMode = TRUE
     intVoxelCoords = FALSE
@@ -1396,16 +1224,16 @@ module CurveCursor {
   }
   fields  {
     instanceName = CurveCursor1
-    posX = 6.82552862167358
-    posY = 46908.8158874512
+    posX = 11.4949083328247
+    posY = 46415.265663147
     maxSeriesIndex = 0
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
     minX = 0.0125
     maxX = 14.7375
-    minY = 39842
-    maxY = 50881
+    minY = 40034
+    maxY = 51133
     autoRange = TRUE
     cursorX = TRUE
     cursorY = TRUE
@@ -1450,7 +1278,7 @@ module StylePalette {
     lineStyle10 = Solid
     lineStyle11 = Solid
     lineStyle12 = Solid
-    lineWidth1 = 2
+    lineWidth1 = 1
     lineWidth2 = 1
     lineWidth3 = 1
     lineWidth4 = 1
@@ -1536,7 +1364,7 @@ module GetVoxelValue {
   }
   fields  {
     instanceName = GetVoxelValue1
-    position = "6.82552862167358 -3.15554785728455 -7.3074836730957 0 0 0"
+    position = "11.4949083328247 -9.45022201538086 -3.81708383560181 0 0 0"
     updateMode = AutoUpdate
     coordinateType = World
     interpolation = NearestNeighbor
@@ -1686,7 +1514,7 @@ module SoView2DPosition {
 }
 module IsoSurface {
   internal  {
-    frame = "-1333 430 128 56"
+    frame = "-1360 422 184 72"
     moduleGroupName = "Volume 2"
     showNetworkPanel = true
     windows  {
@@ -1698,9 +1526,9 @@ module IsoSurface {
     }
   }
   fields  {
-    instanceName = IsoSurface1
-    isoValue = 0.015
-    quality = 2
+    instanceName = 18_degree_IsoSurface
+    isoValue = 0.875
+    quality = 5
     useInterpolation = FALSE
     useSmoothing = FALSE
     smoothingPasses = 100
@@ -1710,176 +1538,6 @@ module IsoSurface {
     autoUpdate = FALSE
     autoApply = FALSE
     selectedTab = 0
-  }
-}
-module SoWEMRenderer {
-  internal  {
-    frame = "-1349 310 160 72"
-    moduleGroupName = "Volume 2"
-    showNetworkPanel = true
-    windows  {
-      window _default {
-        geometry = "723 356 473 543"
-        sizeHint = "473 543"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = SoWEMRenderer1
-    interactionProviderID = ""
-    autoApply = FALSE
-    autoUpdate = FALSE
-    autoClear = TRUE
-    enableCreaseAngle = TRUE
-    creaseAngle = 75
-    useHighlightSelected = FALSE
-    highlightColor = "1 0 0"
-    highlightIntensity = 0.5
-    faceRenderingMode = WEM_FACE_RENDERING_MODE_AUTO
-    allowHits = FALSE
-    performPreHitTest = FALSE
-    cursorShape = CROSS_CURSOR
-    colorMode = WEM_COLOR_GENERAL
-    drawFaces = TRUE
-    faceDiffuseColor = "0.792156994342804 0.792156994342804 0.792156994342804"
-    useFaceAmbientColor = TRUE
-    faceAmbientColor = "0.266667008399963 0.266667008399963 0.266667008399963"
-    useFaceSpecularColor = TRUE
-    faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
-    faceAlphaValue = 0.5
-    faceShininessValue = 1
-    primitiveValueLists = ""
-    selectedPrimitiveValueList = LUT
-    selectedPrimitiveValueAlphaList = LUT
-    primitiveValueListValid = TRUE
-    primitiveValueListAlphaValid = TRUE
-    overwriteAlphaWithPVL = FALSE
-    wemPatchToRender = -1
-    maxWEMPatchIndex = -1
-    cachePatches = FALSE
-    sendAdjacency = FALSE
-    hitModifierKey = AllModifiersMask
-    selectedTab = 0
-  }
-}
-module View3D {
-  internal  {
-    frame = "-1341 174 144 56"
-    moduleGroupName = "Volume 2"
-    windows  {
-      window _default {
-        geometry = "-640 -999 1164 640"
-        sizeHint = "1164 640"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = View3D2
-    autoViewAll = TRUE
-    inventorInputOn = TRUE
-    inventorOutputOn = FALSE
-    lutType = Editor
-    rendererType = Slicer
-    currentTimePoint = 0
-    staticSamplingRate = 1
-    quality = 1
-    filterVolumeData = FilterLinear
-    lutEditorColorPoints = "[ 0 0.331000000238419 0.331000000238419 0.331000000238419, 0.00409500021487474 0.340514749288559 0.340514749288559 0.340514749288559, 2739.55493164062 1 1 1, 4095 1 1 1 ]"
-    lutEditorAlphaPoints = "[ 0 0, 0.00409500021487474 0.883289098739624, 2739.55493164062 1, 4095 1 ]"
-    lutEditorRelativeLut = FALSE
-    lutEditorColorInterpolation = InterpolateRGB
-    lutEditorAlphaFactor = 1
-    orientationProjectionType = PERSPECTIVE
-    orientationLocation = LOWER_RIGHT
-    orientationOn = TRUE
-    orientationModel = CUBE
-    greyCenter = 0.5
-    greyWidth = 0.5
-    alphaFactor = 1
-    colorFactor = "1 1 1"
-    camType = TRUE
-    camPosition = "0.805001735687256 -2.0929114818573 1.34168696403503"
-    camOrientation = "0.882140159606934 0.0551438927650452 0.467747807502747 1.18405282497406"
-    initialCameraOrientation = CAMERA_KEEP_AS_IS
-    camFar = 3.6131265
-    camNear = 1.6131265
-    camFocal = 2.6131265
-    camHeight = 0.78539801
-    decoration = FALSE
-    annotations = TRUE
-    background = TRUE
-    mode = VolumeRendering
-    interactiveQuality = Medium
-  }
-  internalFields  {
-    renderer.gradientQuality = GradientQualityAutomatic
-    renderer.enhancementAlphaMix = 0.25
-    renderer.boundaryEnhancement = FALSE
-    renderer.boundaryEnhancementFactor = 1
-    renderer.boundaryEnhancementExponent = 1
-    renderer.boundaryEnhancementGradientBias = 0
-    renderer.silhouetteEnhancement = FALSE
-    renderer.silhouetteEnhancementExponent = 1
-    renderer.silhouetteEnhancementFactor = 1
-    renderer.toneShading = FALSE
-    renderer.toneShadingWarmColor = "0.67451000213623 0.533333003520966 0.141176000237465"
-    renderer.toneShadingColdColor = "0 0 0.400000005960464"
-    renderer.toneShadingWarmDiffuse = 0.60000002
-    renderer.toneShadingColdDiffuse = 0.2
-    renderer.toneShadingAngle = 45
-    renderer.materialAmbient = 0.60000002
-    renderer.materialDiffuse = 1
-    renderer.materialSpecular = 1
-    renderer.materialSpecularity = 32
-    renderer.light1Enabled = TRUE
-    renderer.light1DiffuseIntensity = 1
-    renderer.light1SpecularIntensity = 1
-    renderer.light1Color = "1 1 1"
-    renderer.light1PolarPhi = 45
-    renderer.light1PolarRho = 0
-    renderer.light2Enabled = FALSE
-    renderer.light2DiffuseIntensity = 0.79699999
-    renderer.light2SpecularIntensity = 1
-    renderer.light2Color = "1 1 1"
-    renderer.light2PolarPhi = 127
-    renderer.light2PolarRho = 159
-    renderer.light3Enabled = FALSE
-    renderer.light3DiffuseIntensity = 1
-    renderer.light3SpecularIntensity = 1
-    renderer.light3Color = "1 1 1"
-    renderer.light3PolarPhi = -45
-    renderer.light3PolarRho = 0
-    renderer.sizeOutputX = 590
-    renderer.sizeOutputY = 590
-    renderer.sizeOutputZ = 584
-    renderer.subVolumeStartX = 0
-    renderer.subVolumeStartY = 0
-    renderer.subVolumeStartZ = 0
-    renderer.subVolumeEndX = 590
-    renderer.subVolumeEndY = 590
-    renderer.subVolumeEndZ = 584
-    clip.hideGeometry = FALSE
-    clip.on = FALSE
-    clip.left = TRUE
-    clip.right = TRUE
-    clip.top = TRUE
-    clip.bottom = TRUE
-    clip.rear = TRUE
-    clip.front = TRUE
-    clip.translation0 = "1 0 0"
-    clip.translation1 = "-1 0 0"
-    clip.translation2 = "0 1 0"
-    clip.translation3 = "0 -1 0"
-    clip.translation4 = "0 0 1"
-    clip.translation5 = "0 0 -1"
-    clip.rotation0 = "0 0 0.999999940395355 1.57079637050629"
-    clip.rotation1 = "0 0 -0.999999940395355 1.57079637050629"
-    clip.rotation2 = "0 0 -1 3.14159274101257"
-    clip.rotation3 = "0 0 1 0"
-    clip.rotation4 = "-0.999999940395355 0 0 1.57079601287842"
-    clip.rotation5 = "0.999999940395355 0 0 1.57079601287842"
   }
 }
 module Bypass {
@@ -1895,7 +1553,7 @@ module Bypass {
 }
 module Compose3DFrom2DFiles {
   internal  {
-    frame = "-1843 965 168 56"
+    frame = "-1843 1101 168 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -1906,7 +1564,7 @@ module Compose3DFrom2DFiles {
     }
   }
   fields  {
-    instanceName = 18_degree_microCT
+    instanceName = 0_degreeVolume
     dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/comparable to output"
     searchPattern = "**.tif*"
     currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/comparable to output/18_degree_cropped2_601.tif"
@@ -1925,11 +1583,11 @@ module Compose3DFrom2DFiles {
 }
 module SetWorldMatrix {
   internal  {
-    frame = "-1819 893 120 56"
+    frame = "-1819 1029 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "-648 -701 532 345"
+        geometry = "-648 -702 532 345"
         sizeHint = "468 345"
         wasOpen = no
       }
@@ -1940,7 +1598,7 @@ module SetWorldMatrix {
     center = "0 0 0"
     scaleOrientation = "0 0 1 0"
     scale = "0.025 0.025 0.025"
-    rotation = "1 0 0 3.14"
+    rotation = "1 0 0 3"
     translation = "0 0 0"
     sourceUsage = Ignore
     referenceUsage = Ignore
@@ -1948,12 +1606,12 @@ module SetWorldMatrix {
     invertResult = FALSE
     setCInfo = FALSE
     setTInfo = FALSE
-    setUInfo = FALSE
+    setUInfo = TRUE
   }
 }
 module Info {
   internal  {
-    frame = "-1663 829 64 56"
+    frame = "-1671 909 80 72"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -1969,7 +1627,7 @@ module Info {
 }
 module SyncFloat {
   internal  {
-    frame = "-1547 21 88 56"
+    frame = "-1583 -83 96 72"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -1981,8 +1639,8 @@ module SyncFloat {
   }
   fields  {
     instanceName = Sync_Slices
-    float1 = 292
-    float2 = 292
+    float1 = 204
+    float2 = 204
     epsilon = 9.9999997e-05
   }
 }
@@ -2000,8 +1658,8 @@ module SyncVector {
   }
   fields  {
     instanceName = Sync_View2DCursorPosition
-    vector1 = "6.82552862167358 -3.15554785728455 -7.3074836730957 0"
-    vector2 = "6.82552862167358 -3.15554785728455 -7.3074836730957 0"
+    vector1 = "11.4949083328247 -9.45022201538086 -3.81708383560181 0"
+    vector2 = "11.4949083328247 -9.45022201538086 -3.81708383560181 0"
     epsilon = 9.9999997e-05
     epsilonVec = "0.001 0.001 0.001 0.001"
     mode = EpsilonScalar
@@ -2009,7 +1667,7 @@ module SyncVector {
 }
 module Arithmetic1 {
   internal  {
-    frame = "-1814 733 112 72"
+    frame = "-1319 821 112 72"
     moduleGroupName = ""
     showNetworkPanel = true
     windows  {
@@ -2026,13 +1684,355 @@ module Arithmetic1 {
     constant = 1
   }
 }
-module OrthoView2D {
+module Arithmetic1 {
   internal  {
-    frame = "-2195 829 120 56"
+    frame = "-1823 853 112 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "249 -726 309 69"
+        sizeHint = "301 69"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Arithmetic11
+    function = Invert
+    constant = 1
+  }
+}
+module Scale {
+  internal  {
+    frame = "-1419 733 136 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "274 -862 256 340"
+        sizeHint = "251 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale1
+    inputMin = 21116
+    inputMax = 52914
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = Automatic
+    outputMin = 0
+    outputMax = 1
+  }
+}
+module Scale {
+  internal  {
+    frame = "-1755 749 136 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "274 -862 256 340"
+        sizeHint = "251 340"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Scale2
+    inputMin = 21116
+    inputMax = 52762
+    updateMode = AutoUpdateMinMaxOn
+    useTrueRange = TRUE
+    typeSelect = Automatic
+    outputMin = 0
+    outputMax = 1
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "-1823 53 128 56"
+    moduleGroupName = "Volume 1"
+    windows  {
+      window _viewer {
+        geometry = "-871 -1387 625 574"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+      window _default {
+        geometry = "-613 -856 608 356"
+        sizeHint = "608 356"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0 0 0"
+    transparency = BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = TRUE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539819
+    position = "7.36250019073486 7.36250019073486 41.6924285888672"
+    orientation = "0 0 1 0"
+    nearDistance = 26.216185
+    farDistance = 41.784172
+    focalDistance = 33.954929
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = FALSE
+    wheelRotationEnabled = FALSE
+  }
+}
+module Mask {
+  internal  {
+    frame = "-639 901 80 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "-601 -683 470 137"
+        sizeHint = "377 137"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Mask
+    mode = Mask
+    outputImageSize = InvalidateOutputIfSizesDiffer
+    blending = 0.5
+    background = 0
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "-611 1109 168 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "424 -1037 1044 997"
+        geometry = "151 -935 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles3
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/fiji/mask"
+    searchPattern = "**.tif*"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/fiji/mask/18-degree_mask_0619.tif"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Separate
+    rawDataOffset = 0
+  }
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "-587 1037 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "81 -687 532 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix2
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "0.025 0.025 0.025"
+    rotation = "0 0 1 0"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Ignore
+    elementaryUsage = Forward
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = TRUE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "-1323 957 104 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass
+    noBypass = FALSE
+  }
+}
+module Bypass {
+  internal  {
+    frame = "-1815 941 112 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass1
+    noBypass = FALSE
+  }
+}
+module SoExaminerViewer {
+  internal  {
+    frame = "-1355 61 136 56"
+    moduleGroupName = "Volume 2"
+    windows  {
+      window _viewer {
+        geometry = "-871 -784 639 640"
+        sizeHint = "400 400"
+        wasOpen = no
+      }
+      window _default {
+        geometry = "95 -870 608 356"
+        sizeHint = "608 356"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SoExaminerViewer1
+    renderCaching = AUTO
+    boundingBoxCaching = AUTO
+    renderCulling = AUTO
+    pickCulling = AUTO
+    border = FALSE
+    background = "0 0 0"
+    transparency = BLEND
+    antialiasing = FALSE
+    antialiasingNumPasses = 1
+    useSampleBuffers = FALSE
+    numSamples = 8
+    grabKeyFocus = TRUE
+    enableKeyCommands = TRUE
+    snapshotFormat = SNAPSHOT_RGB
+    outputAviFile = ""
+    autoRedrawWhenRecording = TRUE
+    frameRate = 7
+    frameRateAvi = 15
+    outputSnapshotFile = none
+    outputSnapshotFileWritten = none
+    autoIncreaseFile = TRUE
+    showSnapshotWithShell = FALSE
+    snapCount = 0
+    inputDevicesList = ""
+    headlight = TRUE
+    decoration = TRUE
+    popupMenuEnabled = FALSE
+    viewing = TRUE
+    autoClipping = TRUE
+    drawStyle = VIEW_AS_IS
+    interactiveDrawStyle = VIEW_LOW_COMPLEXITY
+    viewAllFlag = FALSE
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    applyCameraOrientation = CAMERA_KEEP_AS_IS
+    cameraType = CAMERA_PERSPECTIVE
+    autoApplyUserSettingOrientation = FALSE
+    userSettingOrientation = "0 0 1 0"
+    automaticViewAll = FALSE
+    storeCurrentState = TRUE
+    saveCamera = TRUE
+    cursor = TRUE
+    isCameraStored = TRUE
+    perspective = TRUE
+    stereoViewing = FALSE
+    stereoOffset = 3
+    height = 0.78539819
+    position = "7.36250019073486 7.36250019073486 41.6924285888672"
+    orientation = "0 0 1 0"
+    nearDistance = 26.216185
+    farDistance = 41.784172
+    focalDistance = 33.954929
+    forceRedrawOnInteraction = FALSE
+    button1events = TO_VIEWER
+    button2events = TO_VIEWER
+    button3events = TO_VIEWER
+    keyEvents = TO_VIEWER
+    animationEnabled = FALSE
+    feedback = FALSE
+    feedbackSize = 32
+    mouseInteraction = ""
+    rotationAxis = "0 1 0"
+    rotationAngle = 360
+    rotationSteps = 80
+    recordRotation = TRUE
+    wheelZoomEnabled = FALSE
+    wheelRotationEnabled = FALSE
+  }
+}
+module OrthoView2D {
+  internal  {
+    frame = "-2123 901 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "979 -1387 701 680"
         sizeHint = "400 436"
         wasOpen = no
       }
@@ -2063,29 +2063,27 @@ module OrthoView2D {
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "7.3125 -7.05578660964966 -7.38835191726685"
+    worldPosition = "7.33750009536743 7.79874277114868 5.94654083251953"
     coloredMode = FALSE
   }
 }
 connections  {
-  SetWorldMatrix3.input0 = 18_degree_hessian.output0
-  SetWorldMatrix3.center = SetWorldMatrix1.center
-  SetWorldMatrix3.scaleOrientation = SetWorldMatrix1.scaleOrientation
+  SetWorldMatrix3.input0 = 18_degreeVolume.output0
   SetWorldMatrix3.scale = SetWorldMatrix1.scale
   SetWorldMatrix3.rotation = SetWorldMatrix1.rotation
-  SetWorldMatrix3.translation = SetWorldMatrix1.translation
-  IsoSurface3.inImage = Bypass3.output0
-  IsoSurface3.isoValue = IsoSurface1.isoValue
-  IsoSurface3.quality = IsoSurface1.quality
-  IsoSurface3.useInterpolation = IsoSurface1.useInterpolation
-  IsoSurface3.useSmoothing = IsoSurface1.useSmoothing
-  IsoSurface3.usePolygonReduction = IsoSurface1.usePolygonReduction
-  IsoSurface3.apply = IsoSurface1.apply
-  IsoSurface3.autoUpdate = IsoSurface1.autoUpdate
-  IsoSurface3.autoApply = IsoSurface1.autoApply
-  SoWEMRenderer3.inWEM = IsoSurface3.outWEM
+  0_degree_IsoSurface.inImage = Bypass3.output0
+  0_degree_IsoSurface.quality = 18_degree_IsoSurface.quality
+  0_degree_IsoSurface.useInterpolation = 18_degree_IsoSurface.useInterpolation
+  0_degree_IsoSurface.useSmoothing = 18_degree_IsoSurface.useSmoothing
+  0_degree_IsoSurface.usePolygonReduction = 18_degree_IsoSurface.usePolygonReduction
+  0_degree_IsoSurface.apply = 18_degree_IsoSurface.apply
+  0_degree_IsoSurface.autoUpdate = 18_degree_IsoSurface.autoUpdate
+  0_degree_IsoSurface.autoApply = 18_degree_IsoSurface.autoApply
   SoDiagram2D.inCurveList = CurveCursor.outCurveList
   SoDiagram2D.inStylePalette = StylePalette.outStylePalette
+  SoDiagram2D.autoRangeY = SoDiagram2D1.autoRangeY
+  SoDiagram2D.axisLabelFontHeightX = SoDiagram2D1.axisLabelFontHeightX
+  SoDiagram2D.axisLabelFontHeightY = SoDiagram2D1.axisLabelFontHeightY
   18_degreeView2D.inImage = InputImage.output0
   18_degreeView2D.inInvPreLUT = pos.self
   18_degreeView2D.inInvPostLUT = SoView2DSlicePan.self
@@ -2095,6 +2093,9 @@ connections  {
   ProfileCurve1.posZ = WorldVoxelConvert.voxelZ
   ProfileCurve1.length = Info1.sizeX
   ProfileCurve1.referencePosition = WorldVoxelConvert.voxelX
+  ProfileCurve1.referenceEnable = ProfileCurve2.referenceEnable
+  ProfileCurve1.useImageMinMaxForYRange = ProfileCurve2.useImageMinMaxForYRange
+  ProfileCurve1.xMode = ProfileCurve2.xMode
   pos.worldPosition = Sync_View2DCursorPosition.vector2
   WorldVoxelConvert.input0 = InputImage.output0
   WorldVoxelConvert.worldPos = pos.worldPosition
@@ -2105,14 +2106,16 @@ connections  {
   GetVoxelValue.input0 = InputImage.output0
   GetVoxelValue.position = pos.worldPosition
   PrintCurves.inCurveList = ProfileCurve1.outCurve
-  InputImage.input0 = SetWorldMatrix3.output0
-  View3D1.inInvPreLUT = SoWEMRenderer3.self
-  Bypass3.input0 = Arithmetic1.output0
+  InputImage.input0 = Bypass.output0
+  Bypass3.input0 = Arithmetic11.output0
   18_degree.input0 = SetWorldMatrix3.output0
-  SurfaceArea_Diff.i1 = IsoSurface3.surfaceArea
-  SurfaceArea_Diff.i2 = IsoSurface1.surfaceArea
+  SurfaceArea_Diff.i1 = 0_degree_IsoSurface.surfaceArea
+  SurfaceArea_Diff.i2 = 18_degree_IsoSurface.surfaceArea
   SoDiagram2D1.inCurveList = CurveCursor1.outCurveList
   SoDiagram2D1.inStylePalette = StylePalette1.outStylePalette
+  SoDiagram2D1.autoRangeY = SoDiagram2D.autoRangeY
+  SoDiagram2D1.axisLabelFontHeightX = SoDiagram2D.axisLabelFontHeightX
+  SoDiagram2D1.axisLabelFontHeightY = SoDiagram2D.axisLabelFontHeightY
   0_degreeView2D.inImage = Bypass2.output0
   0_degreeView2D.inInvPreLUT = SoView2DPosition2.self
   0_degreeView2D.inInvPostLUT = SoView2DSlicePan1.self
@@ -2122,6 +2125,9 @@ connections  {
   ProfileCurve2.posZ = WorldVoxelConvert1.voxelZ
   ProfileCurve2.length = Info3.sizeX
   ProfileCurve2.referencePosition = WorldVoxelConvert1.voxelX
+  ProfileCurve2.referenceEnable = ProfileCurve1.referenceEnable
+  ProfileCurve2.useImageMinMaxForYRange = ProfileCurve1.useImageMinMaxForYRange
+  ProfileCurve2.xMode = ProfileCurve1.xMode
   SoView2DPosition2.worldPosition = Sync_View2DCursorPosition.vector1
   WorldVoxelConvert1.input0 = Bypass2.output0
   WorldVoxelConvert1.worldPos = SoView2DPosition2.worldPosition
@@ -2132,31 +2138,45 @@ connections  {
   GetVoxelValue1.input0 = Bypass2.output0
   GetVoxelValue1.position = SoView2DPosition2.worldPosition
   PrintCurves1.inCurveList = ProfileCurve2.outCurve
-  Bypass2.input0 = Arithmetic1.output0
-  IsoSurface1.inImage = Bypass4.output0
-  IsoSurface1.isoValue = IsoSurface3.isoValue
-  IsoSurface1.quality = IsoSurface3.quality
-  IsoSurface1.useInterpolation = IsoSurface3.useInterpolation
-  IsoSurface1.useSmoothing = IsoSurface3.useSmoothing
-  IsoSurface1.usePolygonReduction = IsoSurface3.usePolygonReduction
-  IsoSurface1.apply = IsoSurface3.apply
-  IsoSurface1.autoUpdate = IsoSurface3.autoUpdate
-  IsoSurface1.autoApply = IsoSurface3.autoApply
-  SoWEMRenderer1.inWEM = IsoSurface1.outWEM
-  View3D2.inInvPreLUT = SoWEMRenderer1.self
-  Bypass4.input0 = SetWorldMatrix3.output0
-  SetWorldMatrix1.input0 = 18_degree_microCT.output0
-  SetWorldMatrix1.center = SetWorldMatrix3.center
-  SetWorldMatrix1.scaleOrientation = SetWorldMatrix3.scaleOrientation
+  Bypass2.input0 = Arithmetic11.output0
+  18_degree_IsoSurface.inImage = Bypass4.output0
+  18_degree_IsoSurface.quality = 0_degree_IsoSurface.quality
+  18_degree_IsoSurface.useInterpolation = 0_degree_IsoSurface.useInterpolation
+  18_degree_IsoSurface.useSmoothing = 0_degree_IsoSurface.useSmoothing
+  18_degree_IsoSurface.usePolygonReduction = 0_degree_IsoSurface.usePolygonReduction
+  18_degree_IsoSurface.apply = 0_degree_IsoSurface.apply
+  18_degree_IsoSurface.autoUpdate = 0_degree_IsoSurface.autoUpdate
+  18_degree_IsoSurface.autoApply = 0_degree_IsoSurface.autoApply
+  Bypass4.input0 = Arithmetic1.output0
+  SetWorldMatrix1.input0 = 0_degreeVolume.output0
   SetWorldMatrix1.scale = SetWorldMatrix3.scale
   SetWorldMatrix1.rotation = SetWorldMatrix3.rotation
-  SetWorldMatrix1.translation = SetWorldMatrix3.translation
   0_degree.input0 = SetWorldMatrix1.output0
   Sync_Slices.float1 = 0_degreeView2D.startSlice
   Sync_Slices.float2 = 18_degreeView2D.startSlice
   Sync_View2DCursorPosition.vector1 = SoView2DPosition2.worldPosition
   Sync_View2DCursorPosition.vector2 = pos.worldPosition
-  Arithmetic1.input0 = SetWorldMatrix1.output0
+  Arithmetic11.input0 = Bypass1.output0
+  Scale1.input0 = Arithmetic1.output0
+  Scale2.input0 = Arithmetic11.output0
+  SoExaminerViewer.height = SoExaminerViewer1.height
+  SoExaminerViewer.position = SoExaminerViewer1.position
+  SoExaminerViewer.orientation = SoExaminerViewer1.orientation
+  SoExaminerViewer.nearDistance = SoExaminerViewer1.nearDistance
+  SoExaminerViewer.farDistance = SoExaminerViewer1.farDistance
+  SoExaminerViewer.focalDistance = SoExaminerViewer1.focalDistance
+  SoExaminerViewer.children = 0_degree_IsoSurface.outScene
+  Mask.input1 = SetWorldMatrix2.output0
+  SetWorldMatrix2.input0 = Compose3DFrom2DFiles3.output0
+  Bypass.input0 = SetWorldMatrix3.output0
+  Bypass1.input0 = SetWorldMatrix1.output0
+  SoExaminerViewer1.height = SoExaminerViewer.height
+  SoExaminerViewer1.position = SoExaminerViewer.position
+  SoExaminerViewer1.orientation = SoExaminerViewer.orientation
+  SoExaminerViewer1.nearDistance = SoExaminerViewer.nearDistance
+  SoExaminerViewer1.farDistance = SoExaminerViewer.farDistance
+  SoExaminerViewer1.focalDistance = SoExaminerViewer.focalDistance
+  SoExaminerViewer1.children = 18_degree_IsoSurface.outScene
   OrthoView2D.image = SetWorldMatrix1.output0
 }
 networkModel  {
