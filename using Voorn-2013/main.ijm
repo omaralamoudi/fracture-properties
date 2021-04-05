@@ -25,3 +25,4 @@ run("Properties...", "pixel_width=1 pixel_height=1 voxel_depth=1");
 run("Threshold...");
 
 // more work needs to be done. 
+run("Record...");

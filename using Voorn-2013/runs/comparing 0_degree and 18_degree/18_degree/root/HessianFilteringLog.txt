@@ -1,0 +1,112 @@
+3D Multiscale Hessian Fracture Filtering
+Macro started: 2021-03-03 16:57:51
+___________________________________
+>Used settings<
+Input folder: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/input/
+Folder for input for Hessian calculation: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/InputHess/
+Folder for Hessian calculation: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Calc/
+Folder for final output: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output/
+Number of files to be analysed: 620
+Input files for Hessian calculation will be created
+**Average material greyscale (used for calibration of the Hessian output) [avgmat]: 65535
+**Conservative threshold for clear fractures [consthresh]: 0
+**Maximum material greyscale; to exclude bright spots [maxmat]: 65535
+Padding turned off
+The Hessian calculations will be performed
+**Hessian calculations for Gaussian kernels from 1 to 9 , with stepsize 2
+**Size of analysis blocks (Hessian): 100
+The results of the Hessian calculations on various Gaussian kernels will be combined
+**Hessian calculations to be included in final output: Gaussian kernels from 1 to 9 , with stepsize 2
+___________________________________
+Check the ROI and control lines: Awaiting input...
+**ROI Bounds set:  x coordinates = 22 , y coordinates = 16 , width = 552 , height = 552
+**ROI and lines OK'd by user!
+Continuing analysis!
+___________________________________
+Check the set conservative threshold / fracture greyscale and bright spot removal: Awaiting input...
+**Conservative threshold / fracture greyscale of 0 OK'd by user!
+**Removal of greyscales above 65535 (bright spots removal) OK'd by user!
+Continuing analysis!
+___________________________________
+Generating input files for Hessian analysis: applying the bright spot removal, the ROI, and the addition of control lines...
+Generating input files for Hessian analysis finished!
+___________________________________
+Padding turned off
+___________________________________
+Applying Hessian analysis...
+**Analysing block 1 of 10 . Non-overlapping part of slices: 19 - 82
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 2 of 10 . Non-overlapping part of slices: 83 - 146
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 3 of 10 . Non-overlapping part of slices: 147 - 210
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 4 of 10 . Non-overlapping part of slices: 211 - 274
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 5 of 10 . Non-overlapping part of slices: 275 - 338
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 6 of 10 . Non-overlapping part of slices: 339 - 402
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 7 of 10 . Non-overlapping part of slices: 403 - 466
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 8 of 10 . Non-overlapping part of slices: 467 - 530
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 9 of 10 . Non-overlapping part of slices: 531 - 594
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+**Analysing block 10 of 10 (LAST block). Non-overlapping part of slices: 539 - 602
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 3
+****Analysing Gaussian Kernel: 5
+****Analysing Gaussian Kernel: 7
+****Analysing Gaussian Kernel: 9
+Hessian analysis finished!
+___________________________________
+Normalising the slices using the control lines...
+Normalising finished!
+___________________________________
+Combining the selected range of normalised Hessian scales...
+**Gaussian kernel sizes combined: 1 to 9 , with stepsize 2
+**First combined: Hessian analysis slice 19 to file /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output/Hessian_18_degree_cropped2_018.tif (Overlap is 18 , Check if correct)
+Combining finished!
+___________________________________
+Selected analysis finished!
+___________________________________
+Macro finished: 2021-03-03 17:29:37
+Duration of analysis: 0 Hours and 32 Minutes
+End memory usage: 4302.5024 MB of 17269.5 MB (24.9139 %) NOTE: Differs from Windows Task Manager memory usage!
+Logfile saved to /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root//HessianFilteringLog.txt

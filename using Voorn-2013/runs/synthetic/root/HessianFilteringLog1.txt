@@ -1,0 +1,59 @@
+3D Multiscale Hessian Fracture Filtering
+Macro started: 2021-03-08 11:46:25
+___________________________________
+>Used settings<
+Input folder: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root/input/
+Folder for input for Hessian calculation: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root/input_hessian/
+Folder for Hessian calculation: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root/calc/
+Folder for final output: /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root/output/
+Number of files to be analysed: 27
+Input files for Hessian calculation will be created
+**Average material greyscale (used for calibration of the Hessian output) [avgmat]: 246
+**Conservative threshold for clear fractures [consthresh]: 180
+**Maximum material greyscale; to exclude bright spots [maxmat]: 255
+Padding turned off
+The Hessian calculations will be performed
+**Hessian calculations for Gaussian kernels from 0.5 to 3 , with stepsize 0.5
+**Size of analysis blocks (Hessian): 27
+The results of the Hessian calculations on various Gaussian kernels will be combined
+**Hessian calculations to be included in final output: Gaussian kernels from 0.5 to 3 , with stepsize 0.5
+___________________________________
+Check the ROI and control lines: Awaiting input...
+**ROI Bounds set:  x coordinates = 22 , y coordinates = 9 , width = 55 , height = 79
+**ROI and lines OK'd by user!
+Continuing analysis!
+___________________________________
+Check the set conservative threshold / fracture greyscale and bright spot removal: Awaiting input...
+**Conservative threshold / fracture greyscale of 180 OK'd by user!
+**Removal of greyscales above 255 (bright spots removal) OK'd by user!
+Continuing analysis!
+___________________________________
+Generating input files for Hessian analysis: applying the bright spot removal, the ROI, and the addition of control lines...
+Generating input files for Hessian analysis finished!
+___________________________________
+Padding turned off
+___________________________________
+Applying Hessian analysis...
+**Analysing block 1 of 1 (LAST block). Non-overlapping part of slices: 7 - 21
+****Analysing Gaussian Kernel: 0.5
+****Analysing Gaussian Kernel: 1
+****Analysing Gaussian Kernel: 1.5
+****Analysing Gaussian Kernel: 2
+****Analysing Gaussian Kernel: 2.5
+****Analysing Gaussian Kernel: 3
+Hessian analysis finished!
+___________________________________
+Normalising the slices using the control lines...
+Normalising finished!
+___________________________________
+Combining the selected range of normalised Hessian scales...
+**Gaussian kernel sizes combined: 0.5 to 3 , with stepsize 0.5
+**First combined: Hessian analysis slice 7 to file /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root/output/Hessian_voorn-input_15.tif (Overlap is 6 , Check if correct)
+Combining finished!
+___________________________________
+Selected analysis finished!
+___________________________________
+Macro finished: 2021-03-08 11:46:31
+Duration of analysis: 0 Hours and 0 Minutes
+End memory usage: 311.356 MB of 19275 MB (1.6153 %) NOTE: Differs from Windows Task Manager memory usage!
+Logfile saved to /Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/runs/synthetic/root//HessianFilteringLog1.txt
