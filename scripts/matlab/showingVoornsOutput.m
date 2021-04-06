@@ -1,6 +1,5 @@
-
 %% loading the data by choosing the correct directory
-voorndata = loadImage(1,'tif');
+voorndata = uiloadimageseq(1,'tif');
 voorndata.img = 1-voorndata.image; 
 voorndata.description = 'Voorn''s Result';
 

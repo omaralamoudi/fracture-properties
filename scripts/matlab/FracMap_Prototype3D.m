@@ -56,12 +56,12 @@ directory   = [figuresDirectory,'hessian_results/'];
 if (not(exist(directory,'dir'))), mkdir(directory);end
 disp("Computing the Hessian using convolutional scheme ...");
 tic
-finalTol    = 0.70 ;
+gamma    = 0.70 ;
 % figure 
 implementation = 2; % 1: finite diff. 2: convolution
 % this loop is for all 4 synthetic images
 for k = 1:4
-    
+%     img(k).mshff = mshff(img(k).img,s,gamma);
     img(k).hessian(2).finalResult.A_s = zeros(size(img(k).img));
     % this loop is for different gaussian scallings (s);
     for  s = 1:length(sigma)
@@ -93,7 +93,7 @@ for k = 1:4
                         img(k).hessian(2).result(s).A_s(j,i,m)                                  = real(img(k).hessian(2).EigValSorted{j,i,m}(3) - abs(img(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(img(k).hessian(2).EigValSorted{j,i,m}(1)));
                         
                         % modifying computing A_s
-                        if img(k).hessian(2).result(s).A_s(j,i,m) <= tol
+                        if img(k).hessian(2).result(s).A_s(j,i,m) <= 0
                             img(k).hessian(2).result(s).A_s(j,i,m) = 0;
                         end
                         
@@ -106,7 +106,7 @@ for k = 1:4
             
             % logical
 %             img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (max(img(k).hessian(2).result(s).B_s(:)) * finalTol));
-            img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (1 - finalTol));
+            img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (1 - gamma));
             %img(k).hessian(2).result(s).D_s = double(img(k).hessian(2).result(s).C_s >= (max(max(max(img(k).hessian(2).result(s).C_s))) - finalTol));
             
             % assembling the final result
