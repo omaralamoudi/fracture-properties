@@ -1,7 +1,7 @@
 function [hessianMatrix,ddxddx,ddxddy,ddxddz,ddyddx,ddyddy,ddyddz,ddzddx,ddzddy,ddzddz] = ComputeHessian3D(img,implementation,hsize,sigma)
     %COMPUTEHESSIAN2D Computes the hessian of each pixel within in image.
-    % if implementation == 1  : use the central difference
-    % if implementation == 2  : use convolution
+    %   if implementation == 1  : use the central difference
+    %   if implementation == 2  : use convolution
     % INPUTS:
     % img: input image
     % implementation: either 1 or 2. 1 --> centerl difference Hessian
@@ -14,7 +14,11 @@ function [hessianMatrix,ddxddx,ddxddy,ddxddz,ddyddx,ddyddy,ddyddz,ddzddx,ddzddy,
     % compute the 2D Gaussian.
     % sigma: the 'standard deviation' of the Gaussian. SEE
     % fspecial('gaussian',hsize,sigma);
+    
+    
     img = double(img);
+    
+    
     if nargin < 2
         implementation = 1;
     end

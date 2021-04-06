@@ -24,8 +24,9 @@ function img = MakeFracImage3D(dim,apertures,noisy,SNR)
     
     % vertical spacing
     vSpacing    = floor((dim - totalFracAp)/(nFracs+1));
+    % fracture width
     l           = floor(dim/4);     % left edge
-    r           = ceil(dim*3/4);    % right edge
+    r           = floor(dim*3/4);   % right edge
     
     
     % the first fractures

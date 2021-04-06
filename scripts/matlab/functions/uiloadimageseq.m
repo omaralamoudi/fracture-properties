@@ -1,17 +1,15 @@
-% LOADIMAGESEQ load either a single tif image or a sequence of files into a
+% UILOADIMAGESEQ load either a single tif image or a sequence of files into a
 % matlab variable. 
 %
-% data = LOADIMAGE(1,'.tif')
+% data = LOADIMAGESEQ('.tif')
 
 
-function data = loadimageseq(isStack,imageExtension)
+function data = uiloadimageseq(isStack,imageExtension)
 order = {'folder','filename','fileext','isStack','image'};
+    if nargin < 2; isStack = 1; end
     if (not(isStack)) % for individual image files
-        [data.filename, data.folder] = uigetfile(['*.',imageExtension]);
-        data.fileext = imageExtension;
-        data.isStack = isStack;
-        data.image   = imread([data.folder,filesep,data.filename]);
-        data         = orderfields(data,order);
+        data = uiloadimage(imageExtension);
+        data = orderfields(data,order);
     else % for directories that containt a stack of images (slices)
         data.folder = uigetdir(".","Image directory");
 %         data.filename ... ;
