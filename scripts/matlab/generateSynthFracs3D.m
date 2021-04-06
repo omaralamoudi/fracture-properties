@@ -57,6 +57,7 @@ img(4).abreviation  = "SBFIN";
 if writeImages; writeimageseq(img(4).img,targetdir,'synthetic+blurred+noise','.tif'); end %#ok<*UNRCH>
 
 % % generating a sequence of 27 images to use with Voorn
+% mkdir([targetdir,filesep,'voorn'])
 % for i = 1:27
 %     tmp = MakeFracImage2D(dim,fracAps,true,SNR);
 %     tmp = imboxfilt(tmp,filterSize);
