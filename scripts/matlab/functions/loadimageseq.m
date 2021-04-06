@@ -16,8 +16,9 @@ lst = filterImages(lst,extenstion);
 data.filename       = {lst.name}';
 data.fileext        = extenstion;
 l                   = length(lst);
-data.image          = zeros([size(firstImage) l]);
-data.image(:,:,1)   = imread([lst(1).folder,filesep,lst(1).name]);
+firstimage          = imread([lst(1).folder,filesep,lst(1).name]);
+data.image          = zeros([size(firstimage) l]);
+data.image(:,:,1)   = firstimage;
 
 % progress bar vvvv
 wb = waitbar(0,'Please Wait ...');
