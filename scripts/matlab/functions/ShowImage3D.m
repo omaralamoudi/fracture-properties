@@ -7,7 +7,7 @@ function ShowImage3D(img,fontSize)
     % Written by: Omar Alamoudi
     % Date: April 28, 2019
     
-    slice = 2;
+    slice = round(size(img,3)/2);
     
     imshow(img.img(:,:,slice)); hold on;
     title(strcat(img.description));
