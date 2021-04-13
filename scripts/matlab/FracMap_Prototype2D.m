@@ -6,9 +6,9 @@ dy = 1;
 
 % computing the first and second derivative
 for k = 1:4 % k is the index for the image type
-    [img(k).ddx, img(k).ddy]            = gradient(double(img(k).img),dx,dy);
-    [img(k).ddxddx, img(k).ddyddx]      = gradient(img(k).ddx,dx,dy);
-    [img(k).ddxddy, img(k).ddyddy]      = gradient(img(k).ddy,dx,dy);
+    [data(k).ddx, data(k).ddy]            = gradient(double(data(k).img),dx,dy);
+    [data(k).ddxddx, data(k).ddyddx]      = gradient(data(k).ddx,dx,dy);
+    [data(k).ddxddy, data(k).ddyddy]      = gradient(data(k).ddy,dx,dy);
 end
 
 clear k;
@@ -25,16 +25,16 @@ for k = 1:4
     tic
     % create a cell array the same size as the image for the Hessian matrix
     % , the eigenvectors and eigenvalues
-    img(k).hessian(1).matrix = cell(size(img(k).img));
-    img(k).hessian(1).EigVec = cell(size(img(k).img));
-    img(k).hessian(1).EigVal = cell(size(img(k).img));
-    for j = 1:size(img(k).img,1)
+    data(k).hessian(1).matrix = cell(size(data(k).img));
+    data(k).hessian(1).EigVec = cell(size(data(k).img));
+    data(k).hessian(1).EigVal = cell(size(data(k).img));
+    for j = 1:size(data(k).img,1)
         % loop along the x-direction first
-        for i = 1:size(img(k).img,2)
-            img(k).hessian(1).matrix{j,i} = [img(k).ddxddx(j,i),img(k).ddxddy(j,i);...
-                img(k).ddyddx(j,i),img(k).ddyddy(j,i)];
-            img(k).hessian(1).magnitude(j,i)  = ComputeTensorMag(img(k).hessian(1).matrix{j,i});
-            [img(k).hessian(1).EigVec{j,i},img(k).hessian(1).EigValMatrix{j,i}] = eig(img(k).hessian(1).matrix{j,i});
+        for i = 1:size(data(k).img,2)
+            data(k).hessian(1).matrix{j,i} = [data(k).ddxddx(j,i),data(k).ddxddy(j,i);...
+                data(k).ddyddx(j,i),data(k).ddyddy(j,i)];
+            data(k).hessian(1).magnitude(j,i)  = ComputeTensorMag(data(k).hessian(1).matrix{j,i});
+            [data(k).hessian(1).EigVec{j,i},data(k).hessian(1).EigValMatrix{j,i}] = eig(data(k).hessian(1).matrix{j,i});
         end
     end
     toc
@@ -42,11 +42,11 @@ for k = 1:4
     % Convolution Hessian implementation
     sigma = 1;
     hsize = 5;
-    [img(k).hessian(2).matrix,~,~,~,~] = ComputeHessian2D(img(k).img,2,hsize,sigma);
-    for j = 1:size(img(k).img,1)
-        for i = 1:size(img(k).img,2)
-            img(k).hessian(2).magnitude(j,i)  = ComputeTensorMag(img(k).hessian(2).matrix{j,i});
-            [img(k).hessian(2).EigVec{j,i},img(k).hessian(2).EigValMatrix{j,i}] = eig(img(k).hessian(2).matrix{j,i});
+    [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian2D(data(k).img,2,hsize,sigma);
+    for j = 1:size(data(k).img,1)
+        for i = 1:size(data(k).img,2)
+            data(k).hessian(2).magnitude(j,i)  = ComputeTensorMag(data(k).hessian(2).matrix{j,i});
+            [data(k).hessian(2).EigVec{j,i},data(k).hessian(2).EigValMatrix{j,i}] = eig(data(k).hessian(2).matrix{j,i});
         end
     end
     
@@ -57,25 +57,25 @@ end
 hessImp = 1;
 k = 4;
 figure;
-imagesc(img(k).img); colormap gray; hold on;
-u1 = zeros(size(img(k).img)); % the fist componenet of the first vector
-u2 = zeros(size(img(k).img)); % the second componenet of the first vector
-v2 = zeros(size(img(k).img)); % the fist componenet of the second vector
-v2 = zeros(size(img(k).img)); % the second componenet of the second vector
+imagesc(data(k).img); colormap gray; hold on;
+u1 = zeros(size(data(k).img)); % the fist componenet of the first vector
+u2 = zeros(size(data(k).img)); % the second componenet of the first vector
+v2 = zeros(size(data(k).img)); % the fist componenet of the second vector
+v2 = zeros(size(data(k).img)); % the second componenet of the second vector
 % extracting the eigen vectors
-for j = 1:size(img(k).img,1)
-    for i = 1:size(img(k).img,2)
-        u1(j,i) = img(1).hessian(hessImp).EigVec{j,i}(1,1);
-        u2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(2,1);
-        Eu(j,i) = img(k).hessian(hessImp).EigValMatrix{j,i}(1,1);
-        v2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(1,2);
-        v2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(2,2);
-        Ev(j,i) = img(k).hessian(hessImp).EigValMatrix{j,i}(2,2);
+for j = 1:size(data(k).img,1)
+    for i = 1:size(data(k).img,2)
+        u1(j,i) = data(1).hessian(hessImp).EigVec{j,i}(1,1);
+        u2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(2,1);
+        Eu(j,i) = data(k).hessian(hessImp).EigValMatrix{j,i}(1,1);
+        v2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(1,2);
+        v2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(2,2);
+        Ev(j,i) = data(k).hessian(hessImp).EigValMatrix{j,i}(2,2);
     end
 end
 
 
-[x,y] = meshgrid(1:dx:dx*size(img(k).img,2),1:dy:dy*size(img(k).img,1));
+[x,y] = meshgrid(1:dx:dx*size(data(k).img,2),1:dy:dy*size(data(k).img,1));
 quiver(x,y,u1,u2,'AutoScale','off'); hold on;
 quiver(x,y,v2,v2,'AutoScale','off');
 axis tight
@@ -118,25 +118,25 @@ title('Min Eigenvalue');
 hessImp = 2;
 k = 4;
 figure;
-imagesc(img(k).img); colormap gray; hold on;
-u1 = zeros(size(img(k).img));
-u2 = zeros(size(img(k).img));
-v2 = zeros(size(img(k).img));
-v2 = zeros(size(img(k).img));
+imagesc(data(k).img); colormap gray; hold on;
+u1 = zeros(size(data(k).img));
+u2 = zeros(size(data(k).img));
+v2 = zeros(size(data(k).img));
+v2 = zeros(size(data(k).img));
 % extracting the eigen vectors
-for j = 1:size(img(k).img,1)
-    for i = 1:size(img(k).img,2)
-        u1(j,i) = img(1).hessian(hessImp).EigVec{j,i}(1,1);
-        u2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(2,1);
-        Eu(j,i) = img(k).hessian(hessImp).EigValMatrix{j,i}(1,1);
-        v2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(1,2);
-        v2(j,i) = img(k).hessian(hessImp).EigVec{j,i}(2,2);
-        Ev(j,i) = img(k).hessian(hessImp).EigValMatrix{j,i}(2,2);
+for j = 1:size(data(k).img,1)
+    for i = 1:size(data(k).img,2)
+        u1(j,i) = data(1).hessian(hessImp).EigVec{j,i}(1,1);
+        u2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(2,1);
+        Eu(j,i) = data(k).hessian(hessImp).EigValMatrix{j,i}(1,1);
+        v2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(1,2);
+        v2(j,i) = data(k).hessian(hessImp).EigVec{j,i}(2,2);
+        Ev(j,i) = data(k).hessian(hessImp).EigValMatrix{j,i}(2,2);
     end
 end
 
 
-[x,y] = meshgrid(1:dx:dx*size(img(k).img,2),1:dy:dy*size(img(k).img,1));
+[x,y] = meshgrid(1:dx:dx*size(data(k).img,2),1:dy:dy*size(data(k).img,1));
 quiver(x,y,u1,u2,'AutoScale','off'); hold on;
 quiver(x,y,v2,v2,'AutoScale','off');
 axis tight

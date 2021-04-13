@@ -27,34 +27,34 @@ addpath(genpath(targetdir));
 
 %% Generating crisp (not blurred) images
 
-img(1).img          = MakeFracImage3D(dim,fracAps);
-img(1).description  = "Synthetic Fracture Image (SFI)";
-img(1).abreviation  = "SFI";
+data(1).img          = MakeFracImage3D(dim,fracAps);
+data(1).description  = "Synthetic Fracture Image (SFI)";
+data(1).abreviation  = "SFI";
 
-if writeImages; writeimageseq(img(1).img,targetdir,'synthetic_','.tif'); end %#ok<*UNRCH>
+if writeImages; writeimageseq(data(1).img,targetdir,'synthetic_','.tif'); end %#ok<*UNRCH>
 
 % Crips noisy image
-img(2).img          = MakeFracImage3D(dim,fracAps,true,SNR);
-img(2).description  = "SFI + Noise";
-img(2).abreviation  = "SFIN";
+data(2).img          = MakeFracImage3D(dim,fracAps,true,SNR);
+data(2).description  = "SFI + Noise";
+data(2).abreviation  = "SFIN";
 
-if writeImages; writeimageseq(img(2).img,targetdir,'synthetic+noise','.tif'); end %#ok<*UNRCH>
+if writeImages; writeimageseq(data(2).img,targetdir,'synthetic+noise','.tif'); end %#ok<*UNRCH>
 
 % Blurring clean image
-img(3).img          = imboxfilt3(img(1).img,filterSize);
-img(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
-img(3).abreviation  = "SBFI";
+data(3).img          = imboxfilt3(data(1).img,filterSize);
+data(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
+data(3).abreviation  = "SBFI";
 
-if writeImages; writeimageseq(img(3).img,targetdir,'synthetic+blurred','.tif'); end %#ok<*UNRCH>
+if writeImages; writeimageseq(data(3).img,targetdir,'synthetic+blurred','.tif'); end %#ok<*UNRCH>
 
 % Blurry noisy image
 for i = 1:3
-    img(4).img      = AddNoise(img(3).img,SNR);
+    data(4).img      = AddNoise(data(3).img,SNR);
 end
-img(4).description  = "SBFI + Noise";
-img(4).abreviation  = "SBFIN";
+data(4).description  = "SBFI + Noise";
+data(4).abreviation  = "SBFIN";
 
-if writeImages; writeimageseq(img(4).img,targetdir,'synthetic+blurred+noise','.tif'); end %#ok<*UNRCH>
+if writeImages; writeimageseq(data(4).img,targetdir,'synthetic+blurred+noise','.tif'); end %#ok<*UNRCH>
 
 % % generating a sequence of 27 images to use with Voorn
 % mkdir([targetdir,filesep,'voorn'])
@@ -68,40 +68,40 @@ if writeImages; writeimageseq(img(4).img,targetdir,'synthetic+blurred+noise','.t
 % Crisp images
 fig1 = figure('Position',[100 100 800 800],'Name','Crisp Images');
 subplot(2,2,1);
-ShowImage3D(img(1),fontSize);
+ShowImage3D(data(1),fontSize);
 
 subplot(2,2,2);
-ShowImage3D(img(2),fontSize);
+ShowImage3D(data(2),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
-dim = size(img(1).img,1);
+dim = size(data(1).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(1),traverseXCoor,fontSize); 
+ShowProfile(data(1),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
-dim = size(img(2).img,1);
+dim = size(data(2).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(2),traverseXCoor,fontSize); 
+ShowProfile(data(2),traverseXCoor,fontSize); 
 % the following line is to save the figures
 if (saveFigures), print([figuresDirectory,'3DSyntheticFractureImages'],'-dpng'); end 
 
 % blurred images
 fig2 = figure('Position',[100 100 800 800],'Name','Blured Images');
 subplot(2,2,1);
-ShowImage3D(img(3),fontSize);
+ShowImage3D(data(3),fontSize);
 
 subplot(2,2,2);
-ShowImage3D(img(4),fontSize);
+ShowImage3D(data(4),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
-dim = size(img(3).img,1);
+dim = size(data(3).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(3),traverseXCoor,fontSize); 
+ShowProfile(data(3),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
-dim = size(img(4).img,1);
+dim = size(data(4).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(4),traverseXCoor,fontSize);
+ShowProfile(data(4),traverseXCoor,fontSize);
 if (saveFigures), print([figuresDirectory,'3DSyntheticBlurredFractureImages'],'-dpng');end  

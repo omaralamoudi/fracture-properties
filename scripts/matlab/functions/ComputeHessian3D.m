@@ -30,6 +30,7 @@ function [hessianMatrix,ddxddx,ddxddy,ddxddz,ddyddx,ddyddy,ddyddz,ddzddx,ddzddy,
         [ddxddz, ddyddz, ddzddz]        = gradient(ddz);
         
         hessianMatrix = cell(size(img));
+        
         for k = 1:size(img,3)
             for j = 1:size(img,1)
                 % loop along the x-direction first

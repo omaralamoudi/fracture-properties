@@ -23,59 +23,59 @@ if not(exist(targetdir,'dir')), mkdir(targetdir); end
 addpath(genpath(targetdir)); 
 
 %% Generating crisp (not blurred) images
-img(1).img          = MakeFracImage2D(dim,fracAps);
-imwrite(img(1).img,[targetdir,filesep,'synthetic.tif']); 
-img(1).description  = "Synthetic Fracture Image (SFI)";
-img(2).img          = AddNoise(img(1).img,SNR);
-imwrite(img(2).img,[targetdir,filesep,'synthetic+noise.tif']); 
-img(2).description = "SFI + Noise";
+data(1).img          = MakeFracImage2D(dim,fracAps);
+imwrite(data(1).img,[targetdir,filesep,'synthetic.tif']); 
+data(1).description  = "Synthetic Fracture Image (SFI)";
+data(2).img          = AddNoise(data(1).img,SNR);
+imwrite(data(2).img,[targetdir,filesep,'synthetic+noise.tif']); 
+data(2).description = "SFI + Noise";
 
 %% Generating blurred images
-img(3).img          = imboxfilt(img(1).img,filterSize);
-imwrite(img(3).img,[targetdir,filesep,'synthetic+blurred.tif']); 
-img(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
-img(4).img          = imboxfilt(img(2).img,filterSize);
-imwrite(img(4).img,[targetdir,filesep,'synthetic+blurred+noise.tif']); 
-% img(4).img          = imboxfilt(img(2).img,filterSize);
-img(4).description  = "SBFI + Noise";
+data(3).img          = imboxfilt(data(1).img,filterSize);
+imwrite(data(3).img,[targetdir,filesep,'synthetic+blurred.tif']); 
+data(3).description  = "Synthetic Blurred Fracture Image (SBFI)";
+data(4).img          = imboxfilt(data(2).img,filterSize);
+imwrite(data(4).img,[targetdir,filesep,'synthetic+blurred+noise.tif']); 
+% data(4).img          = imboxfilt(data(2).img,filterSize);
+data(4).description  = "SBFI + Noise";
 
 %% Displaying produced images
 % Crisp images
 fig1 = figure('Position',[100 100 800 800],'Name','Crisp Images');
 subplot(2,2,1);
-ShowImage(img(1),fontSize);
+ShowImage(data(1),fontSize);
 
 subplot(2,2,2);
-ShowImage(img(2),fontSize);
+ShowImage(data(2),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
-dim = size(img(1).img,1);
+dim = size(data(1).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(1),traverseXCoor,fontSize); 
+ShowProfile(data(1),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
-dim = size(img(2).img,1);
+dim = size(data(2).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(2),traverseXCoor,fontSize); 
+ShowProfile(data(2),traverseXCoor,fontSize); 
 
 % blurred images
 fig2 = figure('Position',[100 100 800 800],'Name','Blured Images');
 subplot(2,2,1);
-ShowImage(img(3),fontSize);
+ShowImage(data(3),fontSize);
 
 subplot(2,2,2);
-ShowImage(img(4),fontSize);
+ShowImage(data(4),fontSize);
 
 % plotting image profiles along the specifield traverse
 subplot(2,2,3);
-dim = size(img(3).img,1);
+dim = size(data(3).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(3),traverseXCoor,fontSize); 
+ShowProfile(data(3),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
-dim = size(img(4).img,1);
+dim = size(data(4).img,1);
 traverseXCoor = floor(dim/2);
-ShowProfile(img(4),traverseXCoor,fontSize);
+ShowProfile(data(4),traverseXCoor,fontSize);
 
 fig = gcf;
