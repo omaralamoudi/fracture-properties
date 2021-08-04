@@ -21,6 +21,7 @@
 *.tif
 *.dcm
 *.jpg
+*.png
 
 # Manuscripts
 *.pdf
