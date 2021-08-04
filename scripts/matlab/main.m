@@ -5,7 +5,7 @@
 if (ispc)
     error('Determine the path to the project'); 
 elseif (ismac)
-    cd '~/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/matlab';    
+    cd '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab';    
 end
 
 addpath(genpath('.'));
