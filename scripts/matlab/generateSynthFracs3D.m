@@ -11,7 +11,7 @@
 addpath('functions'); 
 
 saveFigures = 0; 
-writeImages = 1;
+writeImages = 0;
 
 % USER SPECIFIED PARAMETERS 
 % Givin an image dimentions (either 2D or 3D)

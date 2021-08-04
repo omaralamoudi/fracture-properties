@@ -1,18 +1,6 @@
 %%  COMPUTING TRADITIONAL DERIVATIVE OPERATIONS
 % defining the pixle/voxel dimentions
 
-dx = 1;
-dy = 1;
-dz = 1;
-
-% computing the first and second derivative
-for k = 1:4
-    [data(k).ddx, data(k).ddy, data(k).ddz]            = gradient(double(data(k).img),dx,dy,dz);
-    [data(k).ddxddx, data(k).ddyddx, data(k).ddzddx]   = gradient(data(k).ddx,dx,dy,dz);
-    [data(k).ddxddy, data(k).ddyddy, data(k).ddzddy]   = gradient(data(k).ddy,dx,dy,dz);
-    [data(k).ddxddz, data(k).ddyddz, data(k).ddzddz]   = gradient(data(k).ddz,dx,dy,dz);
-end
-
 clear k;
 %% All Hessian Operations
 % The structure of the hessian shown below is as following. A 4D array was
@@ -76,12 +64,12 @@ for k = 1:4
             data(k).hessian(2).result(s).aperture    = fracAps(s);
             data(k).hessian(2).result(s).hSize       = hsize;
 
-            data(k).hessian(2).matrix = cell(size(data(k).img));
-            data(k).hessian(2).EigVec = cell(size(data(k).img));
+            data(k).hessian(2).matrix       = cell(size(data(k).img));
+            data(k).hessian(2).EigVec       = cell(size(data(k).img));
             data(k).hessian(2).EigValMatrix = cell(size(data(k).img));
             data(k).hessian(2).EigValSorted = cell(size(data(k).img));
             
-            [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(data(k).img,2,hsize,sigma(s));
+            [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(data(k).img,implementation,hsize,sigma(s));
             
             % looping over every voxel
             for m = 1:size(data(k).img,3)
