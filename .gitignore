@@ -21,15 +21,13 @@
 *.tif
 *.dcm
 *.jpg
+*.png
 
 # Manuscripts
 *.pdf
 
 # Temporary powerpoint files
 ~*.pptxi
-
-# Directory I shared with Nicola
-using Voorn-2013-shared with Nicola/**
 
 # Any directory called deletethis and its content
 **/deletethis**
