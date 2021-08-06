@@ -1,4 +1,4 @@
-function data = loadimageseq(path,extenstion)
+function data = loadImageSeq(path,extenstion)
 %LOADIMAGESEQ loads multiple images files with the same extension.
 %   data = LOADIMAGESEQ(path,extension) returns a structure data with
 %   fields describing corresponding to the file properties associated with

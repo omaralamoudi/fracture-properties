@@ -2,7 +2,7 @@
 %
 % data = UILOADIMAGE('.tif')
 
-function data = uiloadimage(imageExtension)
+function data = uiLoadImage(imageExtension)
 [data.filename, data.folder] = uigetfile(['*.',imageExtension]);
         data.fileext = imageExtension;
         data.isStack = false;

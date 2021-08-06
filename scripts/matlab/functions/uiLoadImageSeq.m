@@ -1,4 +1,4 @@
-function data = uiloadimageseq(imageExtension)
+function data = uiLoadImageSeq(imageExtension)
 %UILOADIMAGESEQ loads image sequence of files into a matlab variable.
 %   data = LOADIMAGESEQ('.tif')
 %
