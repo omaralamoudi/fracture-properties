@@ -25,13 +25,12 @@ targetdir = ['output',filesep,'3D',filesep,'synth images'];
 if not(exist(targetdir,'dir')), mkdir(targetdir); end
 addpath(genpath(targetdir));
 
-%% Generating crisp (not blurred) images
-
+%% Generating synthetic images
+% Crisp (not blurred) images
 data(1).img          = MakeFracImage3D(dim,fracAps);
 data(1).description  = "Synthetic Fracture Image (SFI)";
 data(1).abreviation  = "SFI";
-
-if writeImages; writeimageseq(data(1).img,targetdir,'synthetic_','.tif'); end %#ok<*UNRCH>
+if writeImages; writeimageseq(data(1).img,targetdir,'synthetic','.tif'); end %#ok<*UNRCH>
 
 % Crips noisy image
 data(2).img          = MakeFracImage3D(dim,fracAps,true,SNR);
@@ -56,6 +55,7 @@ data(4).abreviation  = "SBFIN";
 
 if writeImages; writeimageseq(data(4).img,targetdir,'synthetic+blurred+noise','.tif'); end %#ok<*UNRCH>
 
+%% Generating images to use with Voorn's code
 % % generating a sequence of 27 images to use with Voorn
 % mkdir([targetdir,filesep,'voorn'])
 % for i = 1:27
