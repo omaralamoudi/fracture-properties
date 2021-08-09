@@ -6,8 +6,8 @@ s = fracAps/2;
 cumresult = zeros(size(data2.image));
 for i = 1:length(s)
     svalue = ones(1,3) * s(i);
-    results = mshff(data2.image,svalue);
-    cumresult = cumresult + results.Cs.image; 
+    result(i) = mshff(data2.image,svalue);
+    cumresult = cumresult + result(i).Cs.image; 
 end
 cumresult_norm = cumresult / max(cumresult(:));
 TT = toc(tt);
