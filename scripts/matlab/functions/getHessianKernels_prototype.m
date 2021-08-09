@@ -7,7 +7,7 @@ sz = 9;
 % s  = [sx, sy, sz];
 s  = [sx, sy];
 kernel_multiplier = 9;
-kernels = getHessianKernels(s,kernel_multiplier);
+kernels = getHessianKernels(s);
 
 % clim = max(abs([kernels.min kernels.max]));
 % clims = clim*[-1 1]*.8;
