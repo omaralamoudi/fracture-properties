@@ -7,77 +7,51 @@ clear k;
 % created as following hessian(i,j,k,l), where i, and j correspond to the
 % pixel, and k, and l correspond to the hessian index.
 
-%{
-
-disp("Computing the Hessian using finite difference scheme ...");
-tic
-for k = 1:4
-    % Finite difference Hessian Implementation
-    data(k).hessian(1).matrix = cell(size(data(k).img));
-    data(k).hessian(1).EigVec = cell(size(data(k).img));
-    data(k).hessian(1).EigValMatrix = cell(size(data(k).img));
-    data(k).hessian(1).EigValSorted = cell(size(data(k).img));
-    for m = 1:size(data(k).img,3)
-        for j = 1:size(data(k).img,1)
-            % loop along the x-direction first
-            for i = 1:size(data(k).img,2)
-                data(k).hessian(1).matrix{j,i,m} = [data(k).ddxddx(j,i,m),data(k).ddxddy(j,i,m),data(k).ddxddz(j,i,m);...
-                    data(k).ddyddx(j,i,m),data(k).ddyddy(j,i,m),data(k).ddyddz(j,i,m);...
-                    data(k).ddzddx(j,i,m),data(k).ddzddy(j,i,m),data(k).ddzddz(j,i,m)];
-                data(k).hessian(1).magnitude(j,i,m)  = ComputeTensorMag(data(k).hessian(1).matrix{j,i,m});
-                [data(k).hessian(1).EigVec{j,i,m},data(k).hessian(1).EigValMatrix{j,i,m}] = eig(data(k).hessian(1).matrix{j,i,m});
-            end
-        end
-    end
-    disp(["Hessian computaion for Image # " + num2str(k) + " completed."]);
-end
-toc
-disp("Computing the Hessian using finite difference scheme COMPLETED");
-
-%}
 %% Convolution Hessian implementation
 sigma       = 0.5*fracAps;
-hSizeOdd    = 19;
-hSizeEven   = (hSizeOdd-1);
-tol         = 0;
-directory   = [figuresDirectory,'hessian_results/'];
-if (not(exist(directory,'dir'))), mkdir(directory);end
+hsizeOdd    = 19;
+hsizeEven   = (hsizeOdd-1);
+outputFigureDirectory = [figuresDirectory,'hessian_results/'];
+if (not(exist(outputFigureDirectory,'dir'))), mkdir(outputFigureDirectory);end
+
 disp("Computing the Hessian using convolutional scheme ...");
+
 tic
-gamma    = 0.70 ;
-% figure 
+result.Cs.gamma    = 0.70 ; 
 implementation = 2; % 1: finite diff. 2: convolution
 showIntermeidateResults = true;
 
 % this loop is for all 4 synthetic images
 for k = 1:4
-%     data(k).mshff = mshff(data(k).img,s,gamma);
-    data(k).hessian(2).finalResult.A_s = zeros(size(data(k).img));
+    inputimage  = data(k).img;
+    data(k).hessian(2).finalResult.A_s = zeros(size(inputimage));
     % this loop is for different gaussian scallings (s);
     for  s = 1:length(sigma)
         % aplying either an odd or even node number filter
-%         if mod(2*fracAps(s),2) == 0
-%             hsize = hSizeEven;
-%         else
-            hsize = hSizeOdd;
-%         end
+        if mod(2*fracAps(s),2) == 0
+            hsize = hsizeEven;
+        else
+            hsize = hsizeOdd;
+        end
 %             hsize = 2*ceil(2*sigma(s))+1;
             data(k).hessian(2).result(s).s           = sigma(s);
             data(k).hessian(2).result(s).aperture    = fracAps(s);
             data(k).hessian(2).result(s).hSize       = hsize;
 
-            data(k).hessian(2).matrix       = cell(size(data(k).img));
-            data(k).hessian(2).EigVec       = cell(size(data(k).img));
-            data(k).hessian(2).EigValMatrix = cell(size(data(k).img));
-            data(k).hessian(2).EigValSorted = cell(size(data(k).img));
+            data(k).hessian(2).matrix       = cell(size(inputimage));
+            data(k).hessian(2).EigVec       = cell(size(inputimage));
+            data(k).hessian(2).EigValMatrix = cell(size(inputimage));
+            data(k).hessian(2).EigValSorted = cell(size(inputimage));
             
-            [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(data(k).img,implementation,hsize,sigma(s));
+            [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(inputimage,implementation,hsize,sigma(s));
             
             % looping over every voxel
-            for m = 1:size(data(k).img,3)
-                for j = 1:size(data(k).img,1)
-                    for i = 1:size(data(k).img,2)
-                        data(k).hessian(2).magnitude(j,i,m)                                      = ComputeTensorMag(data(k).hessian(2).matrix{j,i,m});
+            for m = 1:size(inputimage,3)
+                for j = 1:size(inputimage,1)
+                    for i = 1:size(inputimage,2)
+%                         data(k).hessian(2).magnitude(j,i,m)
+%                         =
+%                         ComputeTensorMag(data(k).hessian(2).matrix{j,i,m}); % this quantity is not used yet 
                         [data(k).hessian(2).EigVec{j,i,m},data(k).hessian(2).EigValMatrix{j,i,m}] = eig(data(k).hessian(2).matrix{j,i,m});
                         data(k).hessian(2).EigValSorted{j,i,m}                                   = sortEigenValues(data(k).hessian(2).EigValMatrix{j,i,m});                       
                         data(k).hessian(2).result(s).A_s(j,i,m)                                  = real(data(k).hessian(2).EigValSorted{j,i,m}(3) - abs(data(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(data(k).hessian(2).EigValSorted{j,i,m}(1)));
@@ -95,7 +69,7 @@ for k = 1:4
             
             % logical
 %             data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (max(data(k).hessian(2).result(s).B_s(:)) * finalTol));
-            data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (1 - gamma));
+            data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (1 - result.Cs.gamma));
             
             % assembling the final result
             % data(k).hessian(2).finalResult.A_s = double(data(k).hessian(2).finalResult.A_s) + double(data(k).hessian(2).result(s).D_s);
@@ -157,8 +131,8 @@ for k = 1:4
                 
                 fixFigure(gcf,fontSize);
                 suptitle(commTitle);
-                print(strcat(directory, data(k).abreviation,', ',commTitle,'.png'),'-dpng');
-                print(strcat(directory, data(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
+                print(strcat(outputFigureDirectory, data(k).abreviation,', ',commTitle,'.png'),'-dpng');
+                print(strcat(outputFigureDirectory, data(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
                 % keyboard
                 % close(gcf);
             end
