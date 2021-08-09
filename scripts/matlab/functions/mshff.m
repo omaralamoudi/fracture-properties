@@ -1,4 +1,4 @@
-function results = mshff(img,s)
+function result = mshff(img,s)
 %MSHFF impelements Voorn et al. (2013) algorith for multi-scale Hessian
 %fracture filtering.
 %   MSHFF(image, s) computes an enhanced image by convolving different
@@ -11,25 +11,26 @@ function results = mshff(img,s)
 % Last updated:     April 6, 2021
 
 imgdims = ndims(img);
-results.hessianFilteredComponents.description = 'an image that contains as slices the Hessian component filtered image';
-results.hessianFilteredComponents.image = zeros([size(img),imgdims.^2]);
-results.As.description = 'lambda_3 - |lambada_2| - |lambda_1|';
-results.As.image = zeros(size(img));
-results.Bs.description = 'normalized As';
-results.Bs.image = results.As.image;
-results.Cs.description = 'threshold binarization';
-results.Cs.image = results.As.image;
-results.Cs.gamma = .7;
-results.voxel.description = 'results per voxel';
+result.s = s;
+result.hessian.description = 'an image that contains a slices of one of the Hessian-component-filtered image';
+result.hessian.image = zeros([size(img),imgdims.^2]);
+result.As.description = 'lambda_3 - |lambada_2| - |lambda_1|';
+result.As.image = zeros(size(img));
+result.Bs.description = 'normalized As';
+result.Bs.image = result.As.image;
+result.Cs.description = 'threshold binarization';
+result.Cs.image = result.As.image;
+result.Cs.gamma = .9;
+result.voxel.description = 'results per voxel';
 
     hessianKernels = getHessianKernels(s,imgdims);
     
     % apply hessian component filters
     for j = 1:hessianKernels.nslices
         if hessianKernels.dims == 2
-            results.hessianFilteredComponents.image(:,:,j) = imfilter(img,hessianKernels.slice{j});
+            result.hessian.image(:,:,j) = imfilter(img,hessianKernels.slice{j},'conv');
         elseif hessianKernels.dims == 3
-            results.hessianFilteredComponents.image(:,:,:,j) = imfilter(img,hessianKernels.slice{j});
+            result.hessian.image(:,:,:,j) = imfilter(img,hessianKernels.slice{j},'conv');
         else
             error('mshff: a problem with dimensions');
         end
@@ -41,11 +42,11 @@ results.voxel.description = 'results per voxel';
         tHessian3d = tic;
         for j = 1:size(img,1)
             for i = 1:size(img,2)
-                results.voxel(j,i).hessian.matrix = reshape(results.hessianFilteredComponents.image(j,i,:),[imgdims,imgdims]);
-                [results.voxel(j,i).hessian.eigvec, results.voxel(j,i).hessian.eigval] = myeig(results.voxel(j,i).hessian.matrix);
-                results.As.image(j,i) = results.voxel(j,i).hessian.eigval(1) ...
-                    - abs(results.voxel(j,i).hessian.eigval(2)) ...
-                    - abs(results.voxel(j,i).hessian.eigval(3));
+                result.voxel(j,i).hessian.matrix = reshape(result.hessian.image(j,i,:),[imgdims,imgdims]);
+                [result.voxel(j,i).hessian.eigvec, result.voxel(j,i).hessian.eigval] = myeig(result.voxel(j,i).hessian.matrix);
+                result.As.image(j,i) = result.voxel(j,i).hessian.eigval(1) ...
+                    - abs(result.voxel(j,i).hessian.eigval(2)) ...
+                    - abs(result.voxel(j,i).hessian.eigval(3));
             end
         end
         t = toc(tHessian3d);
@@ -56,11 +57,11 @@ results.voxel.description = 'results per voxel';
         for k = 1:size(img,3)
             for j = 1:size(img,1)
                 for i = 1:size(img,2)
-                    results.voxel(j,i,k).hessian.matrix = reshape(results.hessianFilteredComponents.image(j,i,k,:),[imgdims,imgdims]);
-                    [results.voxel(j,i,k).hessian.eigvec, results.voxel(j,i,k).hessian.eigval] = myeig(results.voxel(j,i,k).hessian.matrix);
-                    results.As.image(j,i,k) = results.voxel(j,i,k).hessian.eigval(1) ...
-                        - abs(results.voxel(j,i,k).hessian.eigval(2)) ...
-                        - abs(results.voxel(j,i,k).hessian.eigval(3));
+                    result.voxel(j,i,k).hessian.matrix = reshape(result.hessian.image(j,i,k,:),[imgdims,imgdims]);
+                    [result.voxel(j,i,k).hessian.eigvec, result.voxel(j,i,k).hessian.eigval] = myeig(result.voxel(j,i,k).hessian.matrix);
+                    result.As.image(j,i,k) = result.voxel(j,i,k).hessian.eigval(1) ...
+                        - abs(result.voxel(j,i,k).hessian.eigval(2)) ...
+                        - abs(result.voxel(j,i,k).hessian.eigval(3));
                 end
             end
         end
@@ -69,9 +70,9 @@ results.voxel.description = 'results per voxel';
     else
         error('mshff: unable to determine dimentions');
     end
-    results.As.image(results.As.image <= 0) = 0;
-    results.Bs.image = results.As.image / max(results.As.image(:));
-    results.Cs.image(results.Bs.image > 1 - results.Cs.gamma) = 1; 
+    result.As.image(result.As.image <= 0) = 0;
+    result.Bs.image = result.As.image / max(result.As.image(:));
+    result.Cs.image(result.Bs.image > 1 - result.Cs.gamma) = 1; 
     
 hsize = size(hessianKernels);
 hessianComponentCount = hsize(end);
