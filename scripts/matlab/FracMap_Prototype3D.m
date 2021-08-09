@@ -47,6 +47,8 @@ tic
 gamma    = 0.70 ;
 % figure 
 implementation = 2; % 1: finite diff. 2: convolution
+showIntermeidateResults = true;
+
 % this loop is for all 4 synthetic images
 for k = 1:4
 %     data(k).mshff = mshff(data(k).img,s,gamma);
@@ -54,12 +56,12 @@ for k = 1:4
     % this loop is for different gaussian scallings (s);
     for  s = 1:length(sigma)
         % aplying either an odd or even node number filter
-        if mod(2*fracAps(s),2) == 0
-            hsize = hSizeEven;
-        else
+%         if mod(2*fracAps(s),2) == 0
+%             hsize = hSizeEven;
+%         else
             hsize = hSizeOdd;
-        end
-            
+%         end
+%             hsize = 2*ceil(2*sigma(s))+1;
             data(k).hessian(2).result(s).s           = sigma(s);
             data(k).hessian(2).result(s).aperture    = fracAps(s);
             data(k).hessian(2).result(s).hSize       = hsize;
@@ -90,12 +92,10 @@ for k = 1:4
             end
             % normalize
             data(k).hessian(2).result(s).B_s = data(k).hessian(2).result(s).A_s ./ max(data(k).hessian(2).result(s).A_s(:));
-            %data(k).hessian(2).result(s).C_s = data(k).hessian(2).result(s).B_s ./ max(max(max(data(k).hessian(2).result(s).B_s)));
             
             % logical
 %             data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (max(data(k).hessian(2).result(s).B_s(:)) * finalTol));
             data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (1 - gamma));
-            %data(k).hessian(2).result(s).D_s = double(data(k).hessian(2).result(s).C_s >= (max(max(max(data(k).hessian(2).result(s).C_s))) - finalTol));
             
             % assembling the final result
             % data(k).hessian(2).finalResult.A_s = double(data(k).hessian(2).finalResult.A_s) + double(data(k).hessian(2).result(s).D_s);
@@ -109,7 +109,7 @@ for k = 1:4
 %             %keyboard
 %             
             % display a result of the last steps
-            if k == 1 || k == 4
+            if k == 1 || k == 4 && showIntermeidateResults
                 slice = 2;
                 commTitle = ['s = ',num2str(sigma(s)), ', Aperture = ', num2str(sigma(s)*2),', Frac (',num2str(s),' of ',num2str(length(sigma)),'), hsize = ',num2str(hsize)];
                 figure('Position',[10 100 1850 450]);
@@ -133,7 +133,7 @@ for k = 1:4
                 colorbar
                 %title(commTitle,'FontSize',14);
                 drawnow
-                xlabel('$B_s$');
+                xlabel('B_s');
                 
                 subplot(1,4,3);
                 imagesc(data(k).hessian(2).result(s).C_s(:,:,slice));ax = gca;
