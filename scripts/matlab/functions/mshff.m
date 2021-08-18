@@ -1,4 +1,4 @@
-function result = mshff(img,s)
+function result = mshff(img,s,gamma)
 %MSHFF impelements Voorn et al. (2013) algorith for multi-scale Hessian
 %fracture filtering.
 %   MSHFF(image, s) computes an enhanced image by convolving different
@@ -11,6 +11,7 @@ function result = mshff(img,s)
 % Last updated:     April 6, 2021
 
 imgdims = ndims(img);
+result.inputimage = img;
 result.s = s;
 result.hessian.description = 'an image that contains a slices of one of the Hessian-component-filtered image';
 result.hessian.image = zeros([size(img),imgdims.^2]);
@@ -20,17 +21,17 @@ result.Bs.description = 'normalized As';
 result.Bs.image = result.As.image;
 result.Cs.description = 'threshold binarization';
 result.Cs.image = result.As.image;
-result.Cs.gamma = .9;
-result.voxel.description = 'results per voxel';
+result.Cs.gamma = gamma;
+result.voxel.description = 'result per voxel';
 
     hessianKernels = getHessianKernels(s,imgdims);
     
     % apply hessian component filters
     for j = 1:hessianKernels.nslices
         if hessianKernels.dims == 2
-            result.hessian.image(:,:,j) = imfilter(img,hessianKernels.slice{j},'conv');
+            result.hessian.image(:,:,j) = imfilter(img,hessianKernels.slice{j},'conv','replicate');
         elseif hessianKernels.dims == 3
-            result.hessian.image(:,:,:,j) = imfilter(img,hessianKernels.slice{j},'conv');
+            result.hessian.image(:,:,:,j) = imfilter(img,hessianKernels.slice{j},'conv','replicate');
         else
             error('mshff: a problem with dimensions');
         end
