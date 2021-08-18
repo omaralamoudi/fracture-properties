@@ -1,6 +1,6 @@
 %% loading the data by choosing the correct directory
 voornsynth = '/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/synthetic/root/output';
-voorndata = loadimageseq(voornsynth,'.tif');
+voorndata = loadImageSeq(voornsynth,'.tif');
 % invert imaage
 voorndata.img = max(voorndata.image(:))-voorndata.image; 
 voorndata.description = 'Voorn''s Result';

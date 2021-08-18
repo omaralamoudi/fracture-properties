@@ -15,7 +15,7 @@ dim = 100;           % smaller for testing code
 SNR = 5;
 
 % definig blurring box filter size (must be an odd integer)
-filterSize = 3;
+filterSize = 5;
 
 % font size for figures
 fontSize = 16; 
