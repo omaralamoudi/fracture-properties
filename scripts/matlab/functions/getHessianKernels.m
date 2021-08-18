@@ -9,8 +9,6 @@ find_middle_point_position = @(x) x(ceil(length(x)/2));
 
 if nargin < 2
     m = 9;
-    dims = getDims(s);
-    s    = formatS(s);
     if isvector(s)
         if length(s) > 1 && length(s) < 4
             dims = length(s);  % physiscal dimentions
@@ -37,13 +35,18 @@ g  = @(x,B,A) (A * exp((-1/2)*((x)'*B*(x))));
 B  = getB(s);
 
 X = 0:1:s(1)*kernel_multiplier;
+% X = 0:1:2*ceil(2*s(1))+1; % similar to using fspecial3('gaussian',[],sigma)
+% X = 1:1:19; % the original not adaptive way of doing 
 X = insure_odd_length(X);
 x0= find_middle_point_position(X);
 Y = 0:1:s(2)*kernel_multiplier;
+% Y = 0:1:2*ceil(2*s(2))+1; % similar to using fspecial3('gaussian',[],sigma)
+% Y = 1:1:19;
 Y = insure_odd_length(Y);
 y0= find_middle_point_position(Y);
 
 if dims == 2 % 2d
+    t = tic;
     disp('getHessianKernels: 2d');
     [x,y] = meshgrid(X,Y);
     % initilizing H
@@ -59,6 +62,8 @@ elseif dims == 3 % 3d
     t = tic;
     disp(['getHessianKernels: 3d kernel computation started for s = [',num2str(s),']']);
     Z = 0:1:s(3)*kernel_multiplier;
+%     Z = 0:1:2*ceil(2*s(3))+1; % similar to using fspecial3('gaussian',[],sigma)
+%     Z = 1:1:19;
     Z = insure_odd_length(Z);
     z0= find_middle_point_position(Z);
     [x,y,z] = meshgrid(X,Y,Z);

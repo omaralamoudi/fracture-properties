@@ -4,8 +4,9 @@ close all
 sx = 3;
 sy = 5;
 sz = 9;
-% s  = [sx, sy, sz];
-s  = [sx, sy];
+s  = [sx, sy, sz];
+s = [3 3 3];
+% s  = [sx, sy];
 kernel_multiplier = 9;
 kernels = getHessianKernels(s);
 
