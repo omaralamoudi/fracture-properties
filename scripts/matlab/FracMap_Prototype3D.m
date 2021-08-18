@@ -1,135 +1,97 @@
 %%  COMPUTING TRADITIONAL DERIVATIVE OPERATIONS
 % defining the pixle/voxel dimentions
 
-dx = 1;
-dy = 1;
-dz = 1;
-
-% computing the first and second derivative
-for k = 1:4
-    [img(k).ddx, img(k).ddy, img(k).ddz]            = gradient(double(img(k).img),dx,dy,dz);
-    [img(k).ddxddx, img(k).ddyddx, img(k).ddzddx]   = gradient(img(k).ddx,dx,dy,dz);
-    [img(k).ddxddy, img(k).ddyddy, img(k).ddzddy]   = gradient(img(k).ddy,dx,dy,dz);
-    [img(k).ddxddz, img(k).ddyddz, img(k).ddzddz]   = gradient(img(k).ddz,dx,dy,dz);
-end
-
 clear k;
 %% All Hessian Operations
 % The structure of the hessian shown below is as following. A 4D array was
 % created as following hessian(i,j,k,l), where i, and j correspond to the
 % pixel, and k, and l correspond to the hessian index.
 
-%{
-
-disp("Computing the Hessian using finite difference scheme ...");
-tic
-for k = 1:4
-    % Finite difference Hessian Implementation
-    img(k).hessian(1).matrix = cell(size(img(k).img));
-    img(k).hessian(1).EigVec = cell(size(img(k).img));
-    img(k).hessian(1).EigValMatrix = cell(size(img(k).img));
-    img(k).hessian(1).EigValSorted = cell(size(img(k).img));
-    for m = 1:size(img(k).img,3)
-        for j = 1:size(img(k).img,1)
-            % loop along the x-direction first
-            for i = 1:size(img(k).img,2)
-                img(k).hessian(1).matrix{j,i,m} = [img(k).ddxddx(j,i,m),img(k).ddxddy(j,i,m),img(k).ddxddz(j,i,m);...
-                    img(k).ddyddx(j,i,m),img(k).ddyddy(j,i,m),img(k).ddyddz(j,i,m);...
-                    img(k).ddzddx(j,i,m),img(k).ddzddy(j,i,m),img(k).ddzddz(j,i,m)];
-                img(k).hessian(1).magnitude(j,i,m)  = ComputeTensorMag(img(k).hessian(1).matrix{j,i,m});
-                [img(k).hessian(1).EigVec{j,i,m},img(k).hessian(1).EigValMatrix{j,i,m}] = eig(img(k).hessian(1).matrix{j,i,m});
-            end
-        end
-    end
-    disp(["Hessian computaion for Image # " + num2str(k) + " completed."]);
-end
-toc
-disp("Computing the Hessian using finite difference scheme COMPLETED");
-
-%}
 %% Convolution Hessian implementation
 sigma       = 0.5*fracAps;
-hSizeOdd    = 19;
-hSizeEven   = (hSizeOdd-1);
-tol         = 0;
-directory   = [figuresDirectory,'hessian_results/'];
-if (not(exist(directory,'dir'))), mkdir(directory);end
+hsizeOdd    = 19;
+hsizeEven   = (hsizeOdd-1);
+outputFigureDirectory = [figuresDirectory,'hessian_results/'];
+if (not(exist(outputFigureDirectory,'dir'))), mkdir(outputFigureDirectory);end
+
 disp("Computing the Hessian using convolutional scheme ...");
+
 tic
-gamma    = 0.70 ;
-% figure 
+result.Cs.gamma    = 0.70 ; 
 implementation = 2; % 1: finite diff. 2: convolution
+showIntermeidateResults = true;
+
 % this loop is for all 4 synthetic images
 for k = 1:4
-%     img(k).mshff = mshff(img(k).img,s,gamma);
-    img(k).hessian(2).finalResult.A_s = zeros(size(img(k).img));
+    inputimage  = data(k).img;
+    data(k).hessian(2).finalResult.A_s = zeros(size(inputimage));
     % this loop is for different gaussian scallings (s);
     for  s = 1:length(sigma)
         % aplying either an odd or even node number filter
         if mod(2*fracAps(s),2) == 0
-            hsize = hSizeEven;
+            hsize = hsizeEven;
         else
-            hsize = hSizeOdd;
+            hsize = hsizeOdd;
         end
-            
-            img(k).hessian(2).result(s).s           = sigma(s);
-            img(k).hessian(2).result(s).aperture    = fracAps(s);
-            img(k).hessian(2).result(s).hSize       = hsize;
+%             hsize = 2*ceil(2*sigma(s))+1;
+            data(k).hessian(2).result(s).s           = sigma(s);
+            data(k).hessian(2).result(s).aperture    = fracAps(s);
+            data(k).hessian(2).result(s).hSize       = hsize;
 
-            img(k).hessian(2).matrix = cell(size(img(k).img));
-            img(k).hessian(2).EigVec = cell(size(img(k).img));
-            img(k).hessian(2).EigValMatrix = cell(size(img(k).img));
-            img(k).hessian(2).EigValSorted = cell(size(img(k).img));
+            data(k).hessian(2).matrix       = cell(size(inputimage));
+            data(k).hessian(2).EigVec       = cell(size(inputimage));
+            data(k).hessian(2).EigValMatrix = cell(size(inputimage));
+            data(k).hessian(2).EigValSorted = cell(size(inputimage));
             
-            [img(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(img(k).img,2,hsize,sigma(s));
+            [data(k).hessian(2).matrix,~,~,~,~] = ComputeHessian3D(inputimage,implementation,hsize,sigma(s));
             
             % looping over every voxel
-            for m = 1:size(img(k).img,3)
-                for j = 1:size(img(k).img,1)
-                    for i = 1:size(img(k).img,2)
-                        img(k).hessian(2).magnitude(j,i,m)                                      = ComputeTensorMag(img(k).hessian(2).matrix{j,i,m});
-                        [img(k).hessian(2).EigVec{j,i,m},img(k).hessian(2).EigValMatrix{j,i,m}] = eig(img(k).hessian(2).matrix{j,i,m});
-                        img(k).hessian(2).EigValSorted{j,i,m}                                   = sortEigenValues(img(k).hessian(2).EigValMatrix{j,i,m});                       
-                        img(k).hessian(2).result(s).A_s(j,i,m)                                  = real(img(k).hessian(2).EigValSorted{j,i,m}(3) - abs(img(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(img(k).hessian(2).EigValSorted{j,i,m}(1)));
+            for m = 1:size(inputimage,3)
+                for j = 1:size(inputimage,1)
+                    for i = 1:size(inputimage,2)
+%                         data(k).hessian(2).magnitude(j,i,m)
+%                         =
+%                         ComputeTensorMag(data(k).hessian(2).matrix{j,i,m}); % this quantity is not used yet 
+                        [data(k).hessian(2).EigVec{j,i,m},data(k).hessian(2).EigValMatrix{j,i,m}] = eig(data(k).hessian(2).matrix{j,i,m});
+                        data(k).hessian(2).EigValSorted{j,i,m}                                   = sortEigenValues(data(k).hessian(2).EigValMatrix{j,i,m});                       
+                        data(k).hessian(2).result(s).A_s(j,i,m)                                  = real(data(k).hessian(2).EigValSorted{j,i,m}(3) - abs(data(k).hessian(2).EigValSorted{j,i,m}(2)) - abs(data(k).hessian(2).EigValSorted{j,i,m}(1)));
                         
                         % modifying computing A_s
-                        if img(k).hessian(2).result(s).A_s(j,i,m) <= 0
-                            img(k).hessian(2).result(s).A_s(j,i,m) = 0;
+                        if data(k).hessian(2).result(s).A_s(j,i,m) <= 0
+                            data(k).hessian(2).result(s).A_s(j,i,m) = 0;
                         end
                         
                     end
                 end
             end
             % normalize
-            img(k).hessian(2).result(s).B_s = img(k).hessian(2).result(s).A_s ./ max(img(k).hessian(2).result(s).A_s(:));
-            %img(k).hessian(2).result(s).C_s = img(k).hessian(2).result(s).B_s ./ max(max(max(img(k).hessian(2).result(s).B_s)));
+            data(k).hessian(2).result(s).B_s = data(k).hessian(2).result(s).A_s ./ max(data(k).hessian(2).result(s).A_s(:));
             
             % logical
-%             img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (max(img(k).hessian(2).result(s).B_s(:)) * finalTol));
-            img(k).hessian(2).result(s).C_s = (img(k).hessian(2).result(s).B_s > (1 - gamma));
-            %img(k).hessian(2).result(s).D_s = double(img(k).hessian(2).result(s).C_s >= (max(max(max(img(k).hessian(2).result(s).C_s))) - finalTol));
+%             data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (max(data(k).hessian(2).result(s).B_s(:)) * finalTol));
+            data(k).hessian(2).result(s).C_s = (data(k).hessian(2).result(s).B_s > (1 - result.Cs.gamma));
             
             % assembling the final result
-            % img(k).hessian(2).finalResult.A_s = double(img(k).hessian(2).finalResult.A_s) + double(img(k).hessian(2).result(s).D_s);
-            img(k).hessian(2).finalResult.A_s = double(img(k).hessian(2).finalResult.A_s) + double(img(k).hessian(2).result(s).C_s);
-%             a = img(k).hessian(2).finalResult.A_s(:,:,2)/(max(max(max(img(k).hessian(2).finalResult.A_s(:,:,2)))));
+            % data(k).hessian(2).finalResult.A_s = double(data(k).hessian(2).finalResult.A_s) + double(data(k).hessian(2).result(s).D_s);
+            data(k).hessian(2).finalResult.A_s = double(data(k).hessian(2).finalResult.A_s) + double(data(k).hessian(2).result(s).C_s);
+%             a = data(k).hessian(2).finalResult.A_s(:,:,2)/(max(max(max(data(k).hessian(2).finalResult.A_s(:,:,2)))));
 %             imagesc(a); colormap gray; colorbar;
 %             if s == length(sigma)
-%                 SaveResults(img(k).hessian(2).finalResult.A_s, fracAps,img(k).abreviation);
+%                 SaveResults(data(k).hessian(2).finalResult.A_s, fracAps,data(k).abreviation);
 %             end
 %             title(['image \# ',num2str(k), ', A = ',num2str(fracAps(s))]);
 %             %keyboard
 %             
             % display a result of the last steps
-            if k == 1 || k == 4
+            if k == 1 || k == 4 && showIntermeidateResults
                 slice = 2;
                 commTitle = ['s = ',num2str(sigma(s)), ', Aperture = ', num2str(sigma(s)*2),', Frac (',num2str(s),' of ',num2str(length(sigma)),'), hsize = ',num2str(hsize)];
                 figure('Position',[10 100 1850 450]);
                 subplot(1,4,1);
-                imagesc(img(k).hessian(2).result(s).A_s(:,:,slice));
+                imagesc(data(k).hessian(2).result(s).A_s(:,:,slice));
                 ax = gca;
-                ax.XTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),2)];
-                ax.YTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),1)];
+                ax.XTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),2)];
+                ax.YTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),1)];
                 axis equal; axis tight;
                 colormap(gray);
                 colorbar
@@ -137,29 +99,29 @@ for k = 1:4
                 
                 drawnow
                 subplot(1,4,2);
-                imagesc(img(k).hessian(2).result(s).B_s(:,:,slice));
+                imagesc(data(k).hessian(2).result(s).B_s(:,:,slice));
                 ax = gca;
-                ax.XTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),2)];
-                ax.YTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),1)];
+                ax.XTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),2)];
+                ax.YTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),1)];
                 axis equal; axis tight;
                 colorbar
                 %title(commTitle,'FontSize',14);
                 drawnow
-                xlabel('$B_s$');
+                xlabel('B_s');
                 
                 subplot(1,4,3);
-                imagesc(img(k).hessian(2).result(s).C_s(:,:,slice));ax = gca;
-                ax.XTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),2)];
-                ax.YTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),1)];
+                imagesc(data(k).hessian(2).result(s).C_s(:,:,slice));ax = gca;
+                ax.XTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),2)];
+                ax.YTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),1)];
                 axis equal; axis tight;
                 colorbar
                 xlabel('$C_s$');
                 drawnow
                 
                 subplot(1,4,4);
-                imagesc(img(k).hessian(2).finalResult.A_s(:,:,slice));ax = gca;
-                ax.XTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),2)];
-                ax.YTick = [1 size(img(k).hessian(2).result(s).A_s(:,:,slice),1)];
+                imagesc(data(k).hessian(2).finalResult.A_s(:,:,slice));ax = gca;
+                ax.XTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),2)];
+                ax.YTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),1)];
                 axis equal; axis tight;
                 ax.CLim = [0 length(sigma)];
                 colorbar
@@ -169,8 +131,8 @@ for k = 1:4
                 
                 fixFigure(gcf,fontSize);
                 suptitle(commTitle);
-                print(strcat(directory, img(k).abreviation,', ',commTitle,'.png'),'-dpng');
-                print(strcat(directory, img(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
+                print(strcat(outputFigureDirectory, data(k).abreviation,', ',commTitle,'.png'),'-dpng');
+                print(strcat(outputFigureDirectory, data(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
                 % keyboard
                 % close(gcf);
             end
@@ -186,10 +148,10 @@ disp("Computing the Hessian using convolutional scheme COMPLETED");
 %% displaying the final results
 for k = 1:4
    % figure 
-   img(k).hessian(2).finalResult.A_s_norm = img(k).hessian(2).finalResult.A_s / (max(max(max(img(k).hessian(2).finalResult.A_s))));
-   img(k).hessian(2).finalResult.A_s_norm_inv = (1 - img(k).hessian(2).finalResult.A_s_norm) ;
-   Img(k).img = img(k).hessian(2).finalResult.A_s_norm_inv;
-   Img(k).description = [char(img(k).abreviation),' Result'];
+   data(k).hessian(2).finalResult.A_s_norm = data(k).hessian(2).finalResult.A_s / (max(max(max(data(k).hessian(2).finalResult.A_s))));
+   data(k).hessian(2).finalResult.A_s_norm_inv = (1 - data(k).hessian(2).finalResult.A_s_norm) ;
+   Img(k).img = data(k).hessian(2).finalResult.A_s_norm_inv;
+   Img(k).description = [char(data(k).abreviation),' Result'];
 end
 
 %% Displaying produced images
@@ -229,7 +191,7 @@ traverseXCoor = floor(dim/2);
 ShowProfile(Img(3),traverseXCoor,fontSize); 
 
 subplot(2,2,4);
-dim = size(img(4).img,1);
+dim = size(data(4).img,1);
 traverseXCoor = floor(dim/2);
 ShowProfile(Img(4),traverseXCoor,fontSize);
 print([figuresDirectory,'HessianResultsSBFI_N'],'-dpng');

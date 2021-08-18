@@ -18,56 +18,42 @@ function [hessianMatrix,ddxddx,ddxddy,ddxddz,ddyddx,ddyddy,ddyddz,ddzddx,ddzddy,
     
     img = double(img);
     
-    
     if nargin < 2
         implementation = 1;
     end
+    
+    hessianMatrix = cell(size(img));
     
     if (implementation == 1)
         [ddx, ddy, ddz]                 = gradient(img);
         [ddxddx, ddyddx, ddzddx]        = gradient(ddx);
         [ddxddy, ddyddy, ddzddy]        = gradient(ddy);
-        [ddxddz, ddyddz, ddzddz]        = gradient(ddz);
-        
-        hessianMatrix = cell(size(img));
-        for k = 1:size(img,3)
-            for j = 1:size(img,1)
-                % loop along the x-direction first
-                for i = 1:size(img,2)
-                    hessianMatrix(j,i,k) = {[ddxddx(j,i,k),ddxddy(j,i,k),ddxddz(j,i,k);...
-                                     ddyddx(j,i,k),ddyddy(j,i,k),ddyddz(j,i,k);...
-                                     ddzddx(j,i,k),ddzddy(j,i,k),ddzddz(j,i,k)]};
-                end
-            end
-        end
-        
+        [ddxddz, ddyddz, ddzddz]        = gradient(ddz); 
     elseif (implementation == 2)
         h = fspecial3('gaussian',hsize,sigma);
         [~,h_xx,h_xy,h_xz,h_yx,h_yy,h_yz,h_zx,h_zy,h_zz] = ComputeHessian3D(h);
-        ddxddx = imfilter(img,h_xx,'replicate','conv');
-        ddxddy = imfilter(img,h_xy,'replicate','conv');
-        ddxddz = imfilter(img,h_xz,'replicate','conv');
-        ddyddx = imfilter(img,h_yx,'replicate','conv');
-        ddyddy = imfilter(img,h_yy,'replicate','conv');
-        ddyddz = imfilter(img,h_yz,'replicate','conv');
-        ddzddx = imfilter(img,h_zx,'replicate','conv');
-        ddzddy = imfilter(img,h_zy,'replicate','conv');
-        ddzddz = imfilter(img,h_zz,'replicate','conv');
-        
-        for k = 1:size(img,3)
-            for j = 1:size(img,1)
-                % loop along the x-direction first
-                for i = 1:size(img,2)
-                    hessianMatrix(j,i,k) = {[ddxddx(j,i,k),ddxddy(j,i,k),ddxddz(j,i,k);...
-                        ddyddx(j,i,k),ddyddy(j,i,k),ddyddz(j,i,k);...
-                        ddzddx(j,i,k),ddzddy(j,i,k),ddzddz(j,i,k)]};
-                end
-            end
-        end
-        
+        ddxddx = imfilter(img,h_xx,'conv','replicate');
+        ddxddy = imfilter(img,h_xy,'conv','replicate');
+        ddxddz = imfilter(img,h_xz,'conv','replicate');
+        ddyddx = imfilter(img,h_yx,'conv','replicate');
+        ddyddy = imfilter(img,h_yy,'conv','replicate');
+        ddyddz = imfilter(img,h_yz,'conv','replicate');
+        ddzddx = imfilter(img,h_zx,'conv','replicate');
+        ddzddy = imfilter(img,h_zy,'conv','replicate');
+        ddzddz = imfilter(img,h_zz,'conv','replicate');
     else
         error('an implementation has to be made');
         
     end
-    
+    % collecting the voxel wise valuse into a matrix
+    for k = 1:size(img,3)
+            for j = 1:size(img,1)
+                % loop along the x-direction first
+                for i = 1:size(img,2)
+                    hessianMatrix(j,i,k) = {[ddxddx(j,i,k),ddxddy(j,i,k),ddxddz(j,i,k);...
+                                             ddyddx(j,i,k),ddyddy(j,i,k),ddyddz(j,i,k);...
+                                             ddzddx(j,i,k),ddzddy(j,i,k),ddzddz(j,i,k)]};
+                end
+            end
+    end
 end

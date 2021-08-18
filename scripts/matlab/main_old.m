@@ -5,7 +5,7 @@
 if (ispc)
     error('Determine the path to the project'); 
 elseif (ismac)
-    cd '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab';    
+    cd '~/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/scripts/matlab';    
 end
 
 addpath(genpath('.'));
@@ -13,7 +13,7 @@ addpath(genpath('.'));
 clearvars; close all; home;
 
 %% loading parameters
-loadSyntheticImageParams; 
+loadparams; 
 %% setting some style parametrs
 home;
 InitColormaps();
@@ -21,11 +21,10 @@ setEdgerStyle();
 
 %% Generating 2D synthetic imags
 % generateSynthFracs2D;
-%% Enhancing 2d image
 % FracMap_Prototype2D;
+
 %% Generating 3D synthtic images
 generateSynthFracs3D;
-%% Enhancing 3d image
 FracMap_Prototype3D;
 %% Showing Voorns output
 showingVoornsOutput;
