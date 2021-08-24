@@ -8,5 +8,5 @@ function data = uiLoadImageSeq(imageExtension)
 %   See also LOADIMAGESEQ, UILOADIMAGE, LOADIMAGE
 
 data.folder = uigetdir(".","Image sequence directory");
-data        = loadimageseq(data.folder,imageExtension);
+data        = loadImageSeq(data.folder,imageExtension);
 end
