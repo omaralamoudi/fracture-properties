@@ -23,9 +23,14 @@ result.Cs.description = 'threshold binarization';
 result.Cs.image = result.As.image;
 result.Cs.gamma = gamma;
 result.voxel.description = 'result per voxel';
-
+    t.kernels.init = tic;
+    disp('mshff: kernel computation started ...');
     hessianKernels = getHessianKernels(s,imgdims);
+    t.kernels.end = toc(t.kernels.init);
+    disp(['mshff: kernel computation ended in ', num2str(t.kernels.end),' sec']);
     
+    disp('mshff: image filtering started ...');
+    t.filtering.init = tic;
     % apply hessian component filters
     for j = 1:hessianKernels.nslices
         if hessianKernels.dims == 2
@@ -36,11 +41,19 @@ result.voxel.description = 'result per voxel';
             error('mshff: a problem with dimensions');
         end
     end
+    t.filtering.end = toc(t.filtering.init);
+    disp(['mshff: image filtering ended in ', num2str(t.filtering.end),' sec']);
     
     % collecting per voxel hessian results
+    % progress bar vvvv
+    wb = waitbar(0,'Please Wait ...');
+    pause(.1);
+    vox = 0;
+    nvox = numel(img);
+    % progress bar ^^^
     if hessianKernels.dims == 2
         disp('mshff: 2d: started voxel wise operations');
-        tHessian3d = tic;
+        t.hessian.init = tic;
         for j = 1:size(img,1)
             for i = 1:size(img,2)
                 result.voxel(j,i).hessian.matrix = reshape(result.hessian.image(j,i,:),[imgdims,imgdims]);
@@ -48,13 +61,15 @@ result.voxel.description = 'result per voxel';
                 result.As.image(j,i) = result.voxel(j,i).hessian.eigval(1) ...
                     - abs(result.voxel(j,i).hessian.eigval(2)) ...
                     - abs(result.voxel(j,i).hessian.eigval(3));
+                waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);
+                vox = vox + 1;
             end
         end
-        t = toc(tHessian3d);
-        disp(['mshff: 2d: completed voxel-wise operations in ',num2str(t),' secs']);
+        t.hessian.end = toc(t.hessian.init);
+        disp(['mshff: 2d: completed voxel-wise operations in ',num2str(t.hessian.end),' sec']);
     elseif hessianKernels.dims == 3
         disp('mshff: 3d: started voxel wise operations');
-        tHessian3d = tic;
+        t.hessian.init = tic;
         for k = 1:size(img,3)
             for j = 1:size(img,1)
                 for i = 1:size(img,2)
@@ -63,11 +78,13 @@ result.voxel.description = 'result per voxel';
                     result.As.image(j,i,k) = result.voxel(j,i,k).hessian.eigval(1) ...
                         - abs(result.voxel(j,i,k).hessian.eigval(2)) ...
                         - abs(result.voxel(j,i,k).hessian.eigval(3));
+                    waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);
+                    vox = vox + 1;
                 end
             end
         end
-        t = toc(tHessian3d);
-        disp(['mshff: 3d: completed voxel-wise operations in ',num2str(t),' secs']);
+        t.hessian.end = toc(t.hessian.init);
+        disp(['mshff: 3d: completed voxel-wise operations in ',num2str(t.hessian.end),' secs']);
     else
         error('mshff: unable to determine dimentions');
     end

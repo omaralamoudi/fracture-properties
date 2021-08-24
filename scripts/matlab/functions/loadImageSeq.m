@@ -5,11 +5,12 @@ function data = loadImageSeq(path,extenstion)
 %   the loaded image. To access the image use data.image
 %
 %   By Omar Alamoudi:   omar.alamoudi@gmail.com
-%   Last updated:       April 6, 2021
+%   Last updated:       August 24, 2021
 %
 % See also UILOADIMAGESEQ,
 
 data.folder = path;
+disp(['loadImageSeq: loading image sequence from: ',path]);
 lst = dir(data.folder);
 lst = filterDirectories(lst);
 lst = filterImages(lst,extenstion);
@@ -38,7 +39,7 @@ close(wb);
 
 order   = {'folder','filename','fileext','image'};
 data    = orderfields(data,order);
-
+disp(['loadImageSeq: loading image sequence completed']);
 end
 
 function result = filterDirectories(lst)
