@@ -1,11 +1,15 @@
 function result = mshff_prototype(img,s,gamma)
-%MSHFF_PROTOTYPE implemented improvements on mshff
-% The purpose of having this file is that I can then compare multiple old
-% and new implementations of mshff.
-%
-% see also MSHFF
+%MSHFF impelements Voorn et al. (2013) algorith for multi-scale Hessian
+%fracture filtering.
+%   MSHFF(image, s) computes an enhanced image by convolving different
+%   hessian kernals corresponding to the scaling parameter s. s is either a
+%   scalar or a vector with different scales measured in voxels. E.g.,
+%   result = MSHFF(image, [1 2 6]) produces an image after enhancing
+%   features that are 1, 2, and 6 voxels in scale.
 
-% determining the number of image dimensions i.e. 2d or 3d
+% By Omar Alamoudi: omar.alamoudi@gmail.com
+% Last updated:     April 6, 2021
+
 imgdims = ndims(img);
 
 result.inputimage = img;
