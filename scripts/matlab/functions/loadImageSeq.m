@@ -8,14 +8,15 @@ function data = loadImageSeq(path,extenstion)
 %   Last updated:       August 24, 2021
 %
 % See also UILOADIMAGESEQ,
-
-data.folder = path;
+tmp = what(path);
+data.folder = tmp.path;
+ext = formatExt(extenstion);
 disp(['loadImageSeq: loading image sequence from: ',path]);
 lst = dir(data.folder);
 lst = filterDirectories(lst);
-lst = filterImages(lst,extenstion);
+lst = filterImages(lst,ext);
 data.filename       = {lst.name}';
-data.fileext        = extenstion;
+data.fileext        = ext;
 l                   = length(lst);
 firstimage          = imread([lst(1).folder,filesep,lst(1).name]);
 data.image          = zeros([size(firstimage) l]);
@@ -56,5 +57,13 @@ while( i < l+1)
         l = l - 1;
     end
     i = i + 1;
+end
+end
+
+function ext = formatExt(extension)
+if extension(1) == '.'
+    ext = extension(2:end); 
+else 
+    disp(['loadImageSeq: file extension are properly formatted as ', extension]);
 end
 end
