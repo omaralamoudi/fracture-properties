@@ -78,22 +78,20 @@ result.voxel.description = 'result per voxel';
                     result.As.image(j,i,k) = result.voxel(j,i,k).hessian.eigval(1) ...
                         - abs(result.voxel(j,i,k).hessian.eigval(2)) ...
                         - abs(result.voxel(j,i,k).hessian.eigval(3));
-                    waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);
+                    if mod(vox,10) == 0, waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);end
                     vox = vox + 1;
                 end
             end
         end
+        close(wb);
         t.hessian.end = toc(t.hessian.init);
         disp(['mshff: 3d: completed voxel-wise operations in ',num2str(t.hessian.end),' secs']);
     else
         error('mshff: unable to determine dimentions');
     end
-    result.As.image(result.As.image <= 0) = 0;
+    result.As.image(result.As.image < 0) = 0;
     result.Bs.image = result.As.image / max(result.As.image(:));
     result.Cs.image(result.Bs.image > 1 - result.Cs.gamma) = 1; 
-    
-hsize = size(hessianKernels);
-hessianComponentCount = hsize(end);
 end
 
 function [eigvec, eigval] = myeig(M)
