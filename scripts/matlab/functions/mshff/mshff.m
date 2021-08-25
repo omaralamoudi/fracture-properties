@@ -106,7 +106,8 @@ eigval = tmp.eigval(indx,indx);
 eigval = diag(eigval);
 eigvec = tmp.eigvec(:,indx);
 % keyboard
-if cross(eigvec(:,1),eigvec(:,2))' * eigvec(:,3) < 0
-    eigvec(:,3) = -eigvec(:,3);
+if det(eigvec) < 0
+    % Right handedness: https://math.stackexchange.com/questions/537090/eigenvectors-for-the-equation-of-the-second-degree-and-right-hand-rule
+    eigvec(:,end) = -eigvec(:,end);
 end
 end
