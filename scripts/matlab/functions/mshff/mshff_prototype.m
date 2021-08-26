@@ -23,6 +23,7 @@ result.Cs.description = 'threshold binarization';
 result.Cs.image = result.As.image;
 result.Cs.gamma = gamma;
 result.voxel.description = 'result per voxel';
+result.loxel.description = 'result per linear voxel';
 t.kernels.init = tic;
 disp('mshff: kernel computation started ...');
 hessianKernels = getHessianKernels(s,imgdims);
@@ -70,6 +71,23 @@ if hessianKernels.dims == 2
 elseif hessianKernels.dims == 3
     disp('mshff: 3d: started voxel wise operations');
     t.hessian.init = tic;
+    t.linindex.init = tic;
+    % linear indexing
+    for i = 1:numel(img)
+        [row,col,lay] = ind2sub(size(img),i);
+        result.loxel(i).hessian.matrix = reshape(result.hessian.image(row,col,lay,:),[imgdims,imgdims]);
+        [result.loxel(i).hessian.eigvec, result.loxel(i).hessian.eigval] = myeig(result.loxel(i).hessian.matrix);
+        result.As.image(i) = result.loxel(i).hessian.eigval(1) ...
+            - abs(result.loxel(i).hessian.eigval(2)) ...
+            - abs(result.loxel(i).hessian.eigval(3));
+        if mod(vox,10) == 0, waitbar(vox/nvox,wb,{'Linear indexing',['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']});end
+        vox = vox + 1;
+    end
+    vox = 0; % reset for wait bar
+    t.linindex.end = toc(t.linindex.init);
+    disp(['mshff: 3d: completed voxel-wise operations (linear indexing) in ',num2str(t.linindex.end),' secs']);
+    % subscript indexing
+    t.subindex.init = tic;
     for lay = 1:size(img,3) % along the z direction
         for row = 1:size(img,1) % along the y direction
             for col = 1:size(img,2) % along the x direction
@@ -78,11 +96,13 @@ elseif hessianKernels.dims == 3
                 result.As.image(row,col,lay) = result.voxel(row,col,lay).hessian.eigval(1) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(2)) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(3));
-                if mod(vox,10) == 0, waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);end
+                if mod(vox,10) == 0, waitbar(vox/nvox,wb,{'Subscript indexing',['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']});end
                 vox = vox + 1;
             end
         end
     end
+    t.subindex.end = toc(t.subindex.init);
+    disp(['mshff: 3d: completed voxel-wise operations (subscript indexing) in ',num2str(t.subindex.end),' secs']);
     t.hessian.end = toc(t.hessian.init);
     disp(['mshff: 3d: completed voxel-wise operations in ',num2str(t.hessian.end),' secs']);
 else
