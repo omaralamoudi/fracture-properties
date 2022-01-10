@@ -65,5 +65,6 @@ if extension(1) == '.'
     ext = extension(2:end); 
 else 
     disp(['loadImageSeq: file extension are properly formatted as ', extension]);
+    ext = extension;
 end
 end
