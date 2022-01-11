@@ -17,9 +17,9 @@ lst = filterDirectories(lst);
 lst = filterImages(lst,ext);
 data.filename       = {lst.name}';
 data.fileext        = ext;
-l                   = length(lst);
+nimages             = length(lst);
 firstimage          = imread([lst(1).folder,filesep,lst(1).name]);
-data.image          = zeros([size(firstimage) l]);
+data.image          = zeros([size(firstimage) nimages]);
 data.image(:,:,1)   = firstimage;
 
 % progress bar vvvv
@@ -30,7 +30,7 @@ pause(.2);
 %% reading the images
 for j = 2:length(lst)
     data.image(:,:,j) = imread([lst(j).folder,filesep,lst(j).name]);
-    waitbar(j/l,wb,['Loading Images (',num2str(j),' of ',num2str(length(lst)),')']); % <-- progress bar
+    waitbar(j/nimages,wb,['Loading Images (',num2str(j),' of ',num2str(length(lst)),')']); % <-- progress bar
 end
 waitbar(1,wb,'Done.');
 % progress bar vvvv
