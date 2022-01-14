@@ -1,3 +1,7 @@
+% the objective of this script is to assess the performance of the cpu and
+% gpu. The operation of interest was the convolving a gaussial kernal with 
+% a random image. 
+
 clear; close all; clc
 a=rand(794,794,151);
 b=fspecial3('gaussian',19,3);
