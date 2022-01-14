@@ -44,3 +44,6 @@ presentation
 
 # Fiji app
 fiji/
+
+# Blob3D software (Richard Ketcham's)
+Blob3D/
