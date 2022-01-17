@@ -13,7 +13,7 @@ function result = mshff_prototype(img,s,gamma)
 imgdims = ndims(img);
 result.inputimage = img;
 result.s = s;
-result.hessian.description = 'an image that contains slices of one of the Hessian-component-filtered image';
+result.hessian.description = 'an image that contains a slices of one of the Hessian-component-filtered image';
 result.hessian.image = zeros([size(img),imgdims.^2]);
 result.As.description = 'lambda_3 - |lambada_2| - |lambda_1|';
 result.As.image = zeros(size(img));
@@ -23,14 +23,12 @@ result.Cs.description = 'threshold binarization';
 result.Cs.image = result.As.image;
 result.Cs.gamma = gamma;
 result.voxel.description = 'result per voxel';
-t.kernels.init = tic;
-disp('mshff: kernel computation started ...');
-hessianKernels = getHessianKernels(s,imgdims);
-t.kernels.end = toc(t.kernels.init);
-disp(['mshff: kernel computation ended in ', num2str(t.kernels.end),' sec']);
 
-disp('mshff: image filtering started ...');
-t.filtering.init = tic;
+tpb = TextProgressBar('mshff kernel computation');
+hessianKernels = getHessianKernels(s,imgdims);
+tpb.update(1); 
+
+filteringPB = TextProgressBar('mshff image filtering','.');
 % apply hessian component filters
 for row = 1:hessianKernels.nslices
     if hessianKernels.dims == 2
@@ -41,19 +39,15 @@ for row = 1:hessianKernels.nslices
         error('mshff: a problem with dimensions');
     end
 end
-t.filtering.end = toc(t.filtering.init);
-disp(['mshff: image filtering ended in ', num2str(t.filtering.end),' sec']);
+filteringPB.update(1);
 
 % collecting per voxel hessian results
 % progress bar vvvv
-wb = waitbar(0,'Please Wait ...');
-pause(.1);
 vox = 0;
 nvox = numel(img);
 % progress bar ^^^
 if hessianKernels.dims == 2
-    disp('mshff: 2d: started voxel wise operations');
-    t.hessian.init = tic;
+    tpb = TextProgressBar('mshff_prototype 2d voxel operations','.');
     for row = 1:size(img,1)
         for col = 1:size(img,2)
             result.voxel(row,col).hessian.matrix = reshape(result.hessian.image(row,col,:),[imgdims,imgdims]);
@@ -61,15 +55,12 @@ if hessianKernels.dims == 2
             result.As.image(row,col) = result.voxel(row,col).hessian.eigval(1) ...
                 - abs(result.voxel(row,col).hessian.eigval(2)) ...
                 - abs(result.voxel(row,col).hessian.eigval(3));
-            waitbar(vox/nvox,wb,['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']);
+            if ( mod(vox/nvox*100,1) == 0) tpb.update(vox/nvox); end
             vox = vox + 1;
         end
     end
-    t.hessian.end = toc(t.hessian.init);
-    disp(['mshff: 2d: completed voxel-wise operations in ',num2str(t.hessian.end),' sec']);
 elseif hessianKernels.dims == 3
-    disp('mshff: 3d: started voxel wise operations');
-    t.hessian.init = tic;
+    tpb = TextProgressBar('mshff_prototype 3d voxel operations','.');
     for lay = 1:size(img,3) % along the z direction
         for row = 1:size(img,1) % along the y direction
             for col = 1:size(img,2) % along the x direction
@@ -78,17 +69,17 @@ elseif hessianKernels.dims == 3
                 result.As.image(row,col,lay) = result.voxel(row,col,lay).hessian.eigval(1) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(2)) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(3));
-                if mod(vox,10) == 0, waitbar(vox/nvox,wb,{'Subscript indexing',['Collecting info from voxel (',num2str(vox),' of ',num2str(nvox),') completed']});end
                 vox = vox + 1;
+                if ( mod(vox/nvox,0.01) == 0) 
+                    tpb.update(vox/nvox); 
+                end                
             end
         end
     end
-    t.hessian.end = toc(t.hessian.init);
-    disp(['mshff: 3d: completed voxel-wise operations in ',num2str(t.hessian.end),' secs']);
 else
     error('mshff: unable to determine dimentions');
 end
-close(wb);
+% close(wb);
 result.As.image(result.As.image < 0) = 0;
 result.Bs.image = result.As.image / max(result.As.image(:));
 result.Cs.image(result.Bs.image > 1 - result.Cs.gamma) = 1;
