@@ -45,7 +45,6 @@ else
     zslice = 1;    
 end
 
-
 figure
 subplot(2,2,1);
 imagesc(inputimage(:,:,zslice));
