@@ -22,25 +22,17 @@ firstimage          = imread([lst(1).folder,filesep,lst(1).name]);
 data.image          = zeros([size(firstimage) nimages]);
 data.image(:,:,1)   = firstimage;
 
-% progress bar vvvv
-wb = waitbar(0,'Please Wait ...');
-pause(.2);
-% progress bar ^^^
+progressBar = TextProgressBar('loadImageSeq');
 
 %% reading the images
 for j = 2:length(lst)
     data.image(:,:,j) = imread([lst(j).folder,filesep,lst(j).name]);
-    waitbar(j/nimages,wb,['Loading Images (',num2str(j),' of ',num2str(length(lst)),')']); % <-- progress bar
+    progressBar.update(j/nimages);
 end
-waitbar(1,wb,'Done.');
-% progress bar vvvv
-pause(0.1);
-close(wb);
-% progress bar ^^^^
+progressBar.complete();
 
 order   = {'folder','filename','fileext','image'};
 data    = orderfields(data,order);
-disp(['loadImageSeq: loading image sequence completed']);
 end
 
 function result = filterDirectories(lst)

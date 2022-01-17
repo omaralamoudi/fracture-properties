@@ -46,21 +46,23 @@ Y = insure_odd_length(Y);
 y0= find_middle_point_position(Y);
 
 if dims == 2 % 2d
-    t = tic;
-    disp('getHessianKernels: 2d');
     [x,y] = meshgrid(X,Y);
     % initilizing H
     H = initH(x,dims);
+    progressBar = TextProgressBar(['getHessianKernals 2d for s = [',num2str(s),']']);
+    total = H.n;
+    counter  = 0;
     for j = 1:H.nx % loop over columns (x-direction)
         for i = 1:H.ny % loop over rows (y-direction)
             x_tmp = [x(i,j) y(i,j)]' - [x0 y0]';
             H.matrix{i,j} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
             H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
+            counter = counter + 1;
+            if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
         end
     end
+    progressBar.complete();
 elseif dims == 3 % 3d
-    t = tic;
-    disp(['getHessianKernels: 3d kernel computation started for s = [',num2str(s),']']);
     Z = 0:1:s(3)*kernel_multiplier;
 %     Z = 0:1:2*ceil(2*s(3))+1; % similar to using fspecial3('gaussian',[],sigma)
 %     Z = 1:1:19;
@@ -69,15 +71,26 @@ elseif dims == 3 % 3d
     [x,y,z] = meshgrid(X,Y,Z);
     % initilizing H
     H = initH(x,dims);
+    progressBar = TextProgressBar(['getHessianKernals 3d for s = [',num2str(s),']']);
+    total       = H.n;
+    counter     = 0;
     for k = 1:H.nz
         for j = 1:H.nx % loop over columns (x-direction)
             for i = 1:H.ny % loop over rows (y-direction)
                 x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [x0 y0 z0]';
                 H.matrix{i,j,k} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+                counter = counter + 1;
+                if (mod(counter/total,0.01) == 0)
+                    if (counter/total) > 1
+                        keyboard
+                    end
+                    progressBar.update(counter/total);
+                end
             end
         end
     end
+    progressBar.complete();
 else
     error('get_hessian_kernels: physical dimension undetermined');
 end
@@ -95,8 +108,6 @@ end
 H.min = min(H.values(:));
 H.max = max(H.values(:));
 hessianKernels = H;
-T = toc(t);
-disp(['getHessianKernels: kernel computation for s = [',num2str(s),'] finished in ', num2str(T)]);
 end
 
 function H = initH(x,dims)
