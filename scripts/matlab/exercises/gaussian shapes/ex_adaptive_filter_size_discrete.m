@@ -12,7 +12,7 @@ gauss   = @(A,x,x0,sx) A * (exp(-(1/2)*((x-x0).^2/(sx.^2))));
 gauss_x = @(A,x,x0,sx) A * (exp(-(1/2)*((x-x0).^2/(sx.^2))) .* (-1*(x-x0)./(sx.^2)));
 gauss_xx= @(A,x,x0,sx) A * (exp(-(1/2)*((x-x0).^2/(sx.^2))) .* (-1*(x-x0)./(sx.^2)) .* (-(x-x0)./sx.^2) + (exp(-(1/2)*((x-x0).^2/(sx.^2)))) .* (-1./(sx.^2)));
 
-s   = [1,2,5];
+s   = [2,5];
 x0  = 0;
 smultiplier = 9;
 slimitfactor_oneside = smultiplier/2;    % filter size = 2 x psi
@@ -22,17 +22,16 @@ x   = x0:dx:a*slimitfactor_oneside*max(s);
 tmp = x0-dx:-dx:-max(x);
 x   = [tmp(end:-1:1),x];
 A   = 1;
-e   = .5*A;
-
-figure('Position',[500 500 1000 800]);
+marker = '*';
+figure('Position',[100 100 1000 800]);
 subplot(3,1,1);
 plotf(x,gauss,A,x0,s,'$G(x)$','');
 
 subplot(3,1,2);
-plotf(x,gauss_x,A,x0,s,'$G,_x$','');
+plotf(x,gauss_x,A,x0,s,'$G,_x$',marker);
 
 subplot(3,1,3);
-plotf(x,gauss_xx,A,x0,s,'$G,_{xx}$','');
+plotf(x,gauss_xx,A,x0,s,'$G,_{xx}$',marker);
 
 function plotf(x,anonfunc,A,x0,s,title,marker)
     s = sort(s,'ascend');
@@ -41,8 +40,10 @@ function plotf(x,anonfunc,A,x0,s,title,marker)
         p = stairs_centered(x,y);
         p.DisplayName = ['s = ',num2str(s(i))];
         hold on;
-        q = plot(x,y,marker,'LineWidth',2,'Color',p.Color);
-        q.Annotation.LegendInformation.IconDisplayStyle = 'off';
+        if ~isempty(marker)
+            q = plot(x,y,marker,'Color',p.Color);
+            q.Annotation.LegendInformation.IconDisplayStyle = 'off';
+        end
         ax = gca;
         slimitfactor = determintslimitfactor(s(i));
         % plot the left side limiter
