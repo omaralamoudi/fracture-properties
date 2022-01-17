@@ -16,7 +16,7 @@ s   = [2,5];
 x0  = 0;
 smultiplier = 9;
 slimitfactor_oneside = smultiplier/2;    % filter size = 2 x psi
-dx  = .05;
+dx  = 1;
 a   = 5; % arbitrary multiplier for the range of x 
 x   = x0:dx:a*slimitfactor_oneside*max(s);
 tmp = x0-dx:-dx:-max(x);
@@ -25,7 +25,7 @@ A   = 1;
 marker = '*';
 figure('Position',[100 100 1000 800]);
 subplot(3,1,1);
-plotf(x,gauss,A,x0,s,'$G(x)$','');
+plotf(x,gauss,A,x0,s,'$G(x)$',marker);
 
 subplot(3,1,2);
 plotf(x,gauss_x,A,x0,s,'$G,_x$',marker);
