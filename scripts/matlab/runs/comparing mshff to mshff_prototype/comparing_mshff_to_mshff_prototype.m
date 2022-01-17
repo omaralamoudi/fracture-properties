@@ -1,3 +1,8 @@
+% this script will serve as a comparison point for adding features or
+% improving mshff. The basic approach is to add modifications to
+% mshff_prototype.m and compare the performance with mshff.m. If the
+% prototype is more performant, we adopt the change
+
 clearvars;
 data(1).path.pc = 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\Projects\fracture properties\using Voorn-2013\runs\test run 01\root\input';
 data(1).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/test run 01/root/input';
@@ -14,16 +19,18 @@ s = 1:2:7;
 fracAps = 2*s;
 gamma = 0.7;
 
-%%
+%% mshff_prototype
 tt = tic;
-FracMapCumResult = zeros(size(inputimage));
+s = fracAps/2;
+mshff_prototypeCumResult = zeros(size(inputimage));
 for i = 1:length(s)
-    FracMapResult(i) = FracMap(inputimage,fracAps(i),s(i),gamma);
-    FracMapCumResult = FracMapCumResult + FracMapResult(i).Cs.image; 
+    svalue = ones(1,ndims(inputimage)) * s(i);
+    mshff_prototypeResult(i) = mshff_prototype(inputimage,svalue,gamma);
+    mshff_prototypeCumResult = mshff_prototypeCumResult + mshff_prototypeResult(i).Cs.image; 
 end
-FracMapCumResult_norm = FracMapCumResult / max(FracMapCumResult(:));
+mshff_prototypeCumResult_norm = mshff_prototypeCumResult / max(mshff_prototypeCumResult(:));
 TT = toc(tt);
-disp(['FracMap finished in: ',num2str(TT),' secs']);
+disp(['mshff finished in: ',num2str(TT),' secs']);
 
 %%
 tt = tic;
@@ -50,7 +57,7 @@ subplot(2,2,1);
 imagesc(inputimage(:,:,zslice));
 colorbar
 subplot(2,2,2);
-imagesc(1-FracMapCumResult_norm(:,:,zslice));
+imagesc(1-mshff_prototypeCumResult_norm(:,:,zslice));
 title('FracMap');
 colormap gray
 colorbar

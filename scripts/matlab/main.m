@@ -2,11 +2,7 @@
 
 %% Go to primary directory
 
-if (ispc)
-    error('Determine the path to the project'); 
-elseif (ismac)
-    cd '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab';    
-end
+goto(3); 
 
 addpath(genpath('.'));
 
