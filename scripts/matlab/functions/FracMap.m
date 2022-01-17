@@ -26,6 +26,9 @@ result.Cs.gamma = gamma;
 implementation = 2;
 [result.voxel.matrix,~,~,~,~]   = ComputeHessian3D(img,implementation,hsize,s);
 
+counter     = 0;
+total       = numel(img);
+progressBar = TextProgressBar(['FracMap voxel operations for s = ',num2str(s)]);
 % looping over every voxel
 for k = 1:size(img,3)
     for j = 1:size(img,1)
@@ -34,9 +37,12 @@ for k = 1:size(img,3)
             [result.voxel.EigVec{j,i,k},result.voxel.EigValMatrix{j,i,k}] = eig(result.voxel.matrix{j,i,k});
             result.voxel.EigValSorted{j,i,k}                              = sortEigenValues(result.voxel.EigValMatrix{j,i,k});
             result.As.image(j,i,k)                             = real(result.voxel.EigValSorted{j,i,k}(3) - abs(result.voxel.EigValSorted{j,i,k}(2)) - abs(result.voxel.EigValSorted{j,i,k}(1)));
+            counter = counter + 1;
+            if (mod(counter/total,0.01) == 0), progressBar.update(counter/total);end
         end
     end
 end
+progressBar.complete();
 % filter elements < 0
 result.As.image(result.As.image < 0) = 0;
 % normalize

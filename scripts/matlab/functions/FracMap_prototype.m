@@ -1,12 +1,14 @@
+clearvars; clc; close all;
+data2 = loadImageSeq('output/3D/synth images/blurred+noisy','.tif');
+loadSyntheticImageParams;
 
-% data2 = loadImageSeq('output/3D/synth images/blurred+noisy','.tif');
 %%
 tt = tic;
 s = fracAps/2;
 cumresult = zeros(size(data2.image));
 gamma = 0.7;
 for i = 1:length(s)
-    FracMapResult(i) = FracMap(data2.image,fracAps(i),s(i));
+    FracMapResult(i) = FracMap(data2.image,fracAps(i),s(i),gamma);
     cumresult = cumresult + FracMapResult(i).Cs.image; 
 end
 cumresult_norm = cumresult / max(cumresult(:));
