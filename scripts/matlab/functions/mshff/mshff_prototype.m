@@ -26,7 +26,7 @@ result.voxel.description = 'result per voxel';
 
 tpb = TextProgressBar('mshff kernel computation');
 hessianKernels = getHessianKernels(s,imgdims);
-tpb.update(1); 
+tpb.update(1);
 
 filteringPB = TextProgressBar('mshff image filtering','.');
 % apply hessian component filters
@@ -70,16 +70,15 @@ elseif hessianKernels.dims == 3
                     - abs(result.voxel(row,col,lay).hessian.eigval(2)) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(3));
                 vox = vox + 1;
-                if ( mod(vox/nvox,0.01) == 0) 
-                    tpb.update(vox/nvox); 
-                end                
+                if ( mod(vox/nvox,0.01) == 0)
+                    tpb.update(vox/nvox);
+                end
             end
         end
     end
 else
     error('mshff: unable to determine dimentions');
 end
-% close(wb);
 result.As.image(result.As.image < 0) = 0;
 result.Bs.image = result.As.image / max(result.As.image(:));
 result.Cs.image(result.Bs.image > 1 - result.Cs.gamma) = 1;
@@ -94,7 +93,6 @@ function [eigvec, eigval] = myeig(M)
 eigval = tmp.eigval(indx,indx);
 eigval = diag(eigval);
 eigvec = tmp.eigvec(:,indx);
-% keyboard
 if det(eigvec) < 0
     % Right handedness: https://math.stackexchange.com/questions/537090/eigenvectors-for-the-equation-of-the-second-degree-and-right-hand-rule
     eigvec(:,end) = -eigvec(:,end);
