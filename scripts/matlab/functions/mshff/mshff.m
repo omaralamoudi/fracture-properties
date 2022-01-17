@@ -30,9 +30,7 @@ result.Cs.image = result.As.image;
 result.Cs.gamma = gamma;
 result.voxel.description = 'result per voxel';
 
-tpb = TextProgressBar('mshff kernel computation');
 hessianKernels = getHessianKernels(s,imgdims);
-tpb.update(1); % complete task
 
 filteringPB = TextProgressBar('mshff image filtering','.');
 % apply hessian component filters
@@ -51,7 +49,7 @@ filteringPB.update(1);
 vox = 0;
 nvox = numel(img);
 if hessianKernels.dims == 2
-    tpb = TextProgressBar('mshff_prototype 2d voxel operations','.');
+    tpb = TextProgressBar('mshff 2d voxel operations','.');
     for row = 1:size(img,1)
         for col = 1:size(img,2)
             result.voxel(row,col).hessian.matrix = reshape(result.hessian.image(row,col,:),[imgdims,imgdims]);
@@ -64,7 +62,7 @@ if hessianKernels.dims == 2
         end
     end
 elseif hessianKernels.dims == 3
-    tpb = TextProgressBar('mshff_prototype 3d voxel operations','.');
+    tpb = TextProgressBar('mshff 3d voxel operations','.');
     for lay = 1:size(img,3) % along the z direction
         for row = 1:size(img,1) % along the y direction
             for col = 1:size(img,2) % along the x direction
