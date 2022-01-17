@@ -4,17 +4,17 @@ close all
 sx = 3;
 sy = 5;
 sz = 9;
-s  = [sx, sy, sz];
+% s  = [sx, sy, sz];
 s = [3 3 3];
 % s  = [sx, sy];
 kernel_multiplier = 9;
 kernels = getHessianKernels(s);
-
+screenSize = get(0,'ScreenSize');
 % clim = max(abs([kernels.min kernels.max]));
 % clims = clim*[-1 1]*.8;
 clims = [kernels.min kernels.max]*.5;
 if kernels.dims == 2
-    fig = figure('Name','2D example','Position',[550 1050 575 585]);
+    fig = figure('Name','2D example','Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
@@ -58,7 +58,7 @@ elseif kernels.dims == 3
     end
     linkaxes(ax);
     
-    fig2 = figure('Position',[44 1201 510 1186]);
+    fig2 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
