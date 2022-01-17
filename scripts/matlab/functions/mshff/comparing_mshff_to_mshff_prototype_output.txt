@@ -1,0 +1,19 @@
+loadImageSeq: loading image sequence from: C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/blurred+noisy
+loadImageSeq: loading image sequence completed
+mshff kernel computation:0%getHessianKernels: 3d kernel computation started for s = [3  3  3]
+getHessianKernels: kernel computation for s = [3  3  3] finished in 0.1315....................................................................................................100%
+mshff kernel computation completed in 0.132742.3 seconds
+mshff image filtering:....................................................................................................100%
+mshff image filtering completed in 0.240350.3 seconds
+mshff_prototype 3d voxel operations:....................................................................................................100%
+mshff_prototype 3d voxel operations completed in 1.261596.3 seconds
+All mshff_prototype finished in: 1.6389 secs
+mshff: kernel computation started ...
+getHessianKernels: 3d kernel computation started for s = [3  3  3]
+getHessianKernels: kernel computation for s = [3  3  3] finished in 0.12074
+mshff: kernel computation ended in 0.12109 sec
+mshff: image filtering started ...
+mshff: image filtering ended in 0.21814 sec
+mshff: 3d: started voxel wise operations
+mshff: 3d: completed voxel-wise operations in 14.4939 secs
+All mshff finished in: 15.0057 secs
