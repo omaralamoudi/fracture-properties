@@ -14,8 +14,8 @@ gauss_xx= @(A,x,x0,sx) A * (exp(-(1/2)*((x-x0).^2/(sx.^2))) .* (-1*(x-x0)./(sx.^
 
 s   = [2,5];
 x0  = 0;
-smultiplier = 9;
-slimitfactor_oneside = smultiplier/2;    % filter size = 2 x psi
+
+slimitfactor_oneside = 2;    % length of the x axis as a factor of max(s)
 dx  = 1;
 a   = 5; % arbitrary multiplier for the range of x 
 x   = x0:dx:a*slimitfactor_oneside*max(s);
@@ -45,7 +45,7 @@ function plotf(x,anonfunc,A,x0,s,title,marker)
             q.Annotation.LegendInformation.IconDisplayStyle = 'off';
         end
         ax = gca;
-        slimitfactor = determintslimitfactor(s(i));
+        slimitfactor = determinslimitfactor(s(i),4.5);
         % plot the left side limiter
         l = plot(x0-slimitfactor*s(i)*[1 1] ,ax.YLim,'--','LineWidth',2,'Color',p.Color);
         l.Annotation.LegendInformation.IconDisplayStyle = 'off'; % <-- turn off legend\
@@ -59,7 +59,7 @@ function plotf(x,anonfunc,A,x0,s,title,marker)
     fixFigure(gcf,20);
 end
 
-function slf = determintslimitfactor(s)
-    slf = (1-mod(s,2)) * 4.5 + mod(s,2) * 4.5;
+function slf = determinslimitfactor(s,multiplier)
+    slf = (1-mod(s,2)) * multiplier + mod(s,2) * multiplier;
     %     \_____even s_____/   \___odd s____/
 end
