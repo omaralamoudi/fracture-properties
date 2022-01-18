@@ -1,5 +1,5 @@
-clearvars;
-data = loadImageSeq('output/3D/synth images/blurred+noisy','.tif');
+clearvars; close all; clc
+data = loadImageSeq('output/3D/synth images/voorn','.tif');
 loadSyntheticImageParams;
 %%
 s = fracAps/2;
