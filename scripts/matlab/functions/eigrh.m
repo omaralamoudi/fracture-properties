@@ -1,6 +1,8 @@
-function [eigvec, eigval] = myeig(M)
+function [eigvec, eigval] = eigrh(M)
 % This computes the eigen values, sorts them from largest to smallest, and
 % makes them right handed.
+%
+% see Also EIG
 [tmp.eigvec, tmp.eigval] = eig(M);
 % [~,indx] = sort(diag(tmp.eigval),'descend');
 [~,indx] = sort(diag(tmp.eigval),'descend');
