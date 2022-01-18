@@ -57,7 +57,7 @@ if hessianKernels.dims == 2
             result.As.image(row,col) = result.voxel(row,col).hessian.eigval(1) ...
                 - abs(result.voxel(row,col).hessian.eigval(2)) ...
                 - abs(result.voxel(row,col).hessian.eigval(3));
-            if ( mod(vox/nvox*100,1) == 0) tpb.update(vox/nvox); end
+            if ( mod(vox/nvox*100,1) == 0), tpb.update(vox/nvox); end
             vox = vox + 1;
         end
     end
