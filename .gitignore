@@ -47,3 +47,6 @@ fiji/
 
 # Blob3D software (Richard Ketcham's)
 Blob3D/
+
+# large data folders
+data/Bland
