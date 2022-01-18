@@ -11,8 +11,8 @@
 clearvars; close all; clc
 data(1).path.pc = 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\Projects\fracture properties\using Voorn-2013\runs\test run 01\root\input';
 data(1).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/test run 01/root/input';
-data(2).path.pc = 'C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/blurred+noisy';
-data(2).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/blurred+noisy';
+data(2).path.pc = 'C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/voorn';
+data(2).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/voorn';
 
 i = 2;
 data2 = loadImageSeq(data(i).path.pc,'.tif');
