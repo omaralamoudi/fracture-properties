@@ -1,11 +1,5 @@
-function result = FracMap(img,fracAperture,s,gamma)
+function result = FracMap_prototype(img,fracAperture,s,gamma)
 hsize    = 19;
-% hsizeEven   = (hsizeOdd-1);
-% if mod(2*fracAperture,2) == 0
-%     hsize = hsizeEven;
-% else
-%     hsize = hsizeOdd;
-% end
 result.s         = s;
 result.aperture  = fracAperture;
 result.hsize     = hsize;
@@ -34,9 +28,7 @@ for k = 1:size(img,3)
     for j = 1:size(img,1)
         for i = 1:size(img,2)
             %                         result.voxel.magnitude(j,i,m) = ComputeTensorMag(result.voxel.matrix{j,i,m}); % this quantity is not used yet
-            [result.voxel.EigVec{j,i,k},result.voxel.EigValMatrix{j,i,k}] = myeig(result.voxel.matrix{j,i,k});
-%             result.voxel.EigValSorted{j,i,k}                              = sortEigenValues(result.voxel.EigValMatrix{j,i,k});
-            result.voxel.EigValSorted{j,i,k}                              = result.voxel.EigValMatrix{j,i,k};
+            [result.voxel.EigVec{j,i,k}, result.voxel.EigValMatrix{j,i,k}] = eigrh(result.voxel.matrix{j,i,k});
             result.As.image(j,i,k)                             = result.voxel.EigValMatrix{j,i,k}(1) - abs(result.voxel.EigValMatrix{j,i,k}(2)) - abs(result.voxel.EigValMatrix{j,i,k}(3));
             counter = counter + 1;
             if (mod(counter/total,0.01) == 0), progressBar.update(counter/total);end

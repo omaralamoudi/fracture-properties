@@ -53,7 +53,7 @@ if hessianKernels.dims == 2
     for row = 1:size(img,1)
         for col = 1:size(img,2)
             result.voxel(row,col).hessian.matrix = reshape(result.hessian.image(row,col,:),[imgdims,imgdims]);
-            [result.voxel(row,col).hessian.eigvec, result.voxel(row,col).hessian.eigval] = myeig(result.voxel(row,col).hessian.matrix);
+            [result.voxel(row,col).hessian.eigvec, result.voxel(row,col).hessian.eigval] = eigrh(result.voxel(row,col).hessian.matrix);
             result.As.image(row,col) = result.voxel(row,col).hessian.eigval(1) ...
                 - abs(result.voxel(row,col).hessian.eigval(2)) ...
                 - abs(result.voxel(row,col).hessian.eigval(3));
@@ -67,7 +67,7 @@ elseif hessianKernels.dims == 3
         for row = 1:size(img,1) % along the y direction
             for col = 1:size(img,2) % along the x direction
                 result.voxel(row,col,lay).hessian.matrix = reshape(result.hessian.image(row,col,lay,:),[imgdims,imgdims]);
-                [result.voxel(row,col,lay).hessian.eigvec, result.voxel(row,col,lay).hessian.eigval] = myeig(result.voxel(row,col,lay).hessian.matrix);
+                [result.voxel(row,col,lay).hessian.eigvec, result.voxel(row,col,lay).hessian.eigval] = eigrh(result.voxel(row,col,lay).hessian.matrix);
                 result.As.image(row,col,lay) = result.voxel(row,col,lay).hessian.eigval(1) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(2)) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(3));

@@ -51,7 +51,7 @@ if hessianKernels.dims == 2
     for row = 1:size(img,1)
         for col = 1:size(img,2)
             result.voxel(row,col).hessian.matrix = reshape(result.hessian.image(row,col,:),[imgdims,imgdims]);
-            [result.voxel(row,col).hessian.eigvec, result.voxel(row,col).hessian.eigval] = myeig(result.voxel(row,col).hessian.matrix);
+            [result.voxel(row,col).hessian.eigvec, result.voxel(row,col).hessian.eigval] = eigrh(result.voxel(row,col).hessian.matrix);
             result.As.image(row,col) = result.voxel(row,col).hessian.eigval(1) ...
                 - abs(result.voxel(row,col).hessian.eigval(2)) ...
                 - abs(result.voxel(row,col).hessian.eigval(3));
@@ -65,7 +65,7 @@ elseif hessianKernels.dims == 3
         for row = 1:size(img,1) % along the y direction
             for col = 1:size(img,2) % along the x direction
                 result.voxel(row,col,lay).hessian.matrix = reshape(result.hessian.image(row,col,lay,:),[imgdims,imgdims]);
-                [result.voxel(row,col,lay).hessian.eigvec, result.voxel(row,col,lay).hessian.eigval] = myeig(result.voxel(row,col,lay).hessian.matrix);
+                [result.voxel(row,col,lay).hessian.eigvec, result.voxel(row,col,lay).hessian.eigval] = eigrh(result.voxel(row,col,lay).hessian.matrix);
                 result.As.image(row,col,lay) = result.voxel(row,col,lay).hessian.eigval(1) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(2)) ...
                     - abs(result.voxel(row,col,lay).hessian.eigval(3));
@@ -82,19 +82,4 @@ end
 result.As.image(result.As.image < 0) = 0;
 result.Bs.image = result.As.image / max(result.As.image(:));
 result.Cs.image(result.Bs.image > 1 - result.Cs.gamma) = 1;
-end
-
-function [eigvec, eigval] = myeig(M)
-% This computes the eigen values, sorts them from largest to smallest, and
-% makes them right handed.
-[tmp.eigvec, tmp.eigval] = eig(M);
-% [~,indx] = sort(diag(tmp.eigval),'descend');
-[~,indx] = sort(diag(tmp.eigval),'descend');
-eigval = tmp.eigval(indx,indx);
-eigval = diag(eigval);
-eigvec = tmp.eigvec(:,indx);
-if det(eigvec) < 0
-    % Right handedness: https://math.stackexchange.com/questions/537090/eigenvectors-for-the-equation-of-the-second-degree-and-right-hand-rule
-    eigvec(:,end) = -eigvec(:,end);
-end
 end
