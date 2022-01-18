@@ -35,7 +35,7 @@ if kernels.dims == 2
     end
     linkaxes(ax);
 elseif kernels.dims == 3
-    fig3 = figure('Position',[605 1201 510 1186]);
+    fig3 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
