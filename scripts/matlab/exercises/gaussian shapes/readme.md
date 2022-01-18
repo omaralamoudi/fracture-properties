@@ -1,5 +1,5 @@
 # Details about the functions used in the script `ShapesOfGaussians.m`
-This script shows how the Gaussian function looks in different dimentions. 
+This script shows how the Gaussian function looks in different dimensions. 
 
 ## 1D Gaussian function
 
@@ -7,7 +7,15 @@ $$
 g(x) = A_0\exp \left[ -\frac{1}{2}\frac{(x-x_0)^2}{\sigma^2} \right]
 $$
 
-Where ... [I need to explain the variables]
+Where
+$$
+\begin{align*}
+A_0: & ~\text{amplitude at } x_0\\
+x_0: & ~\text{the point along the $x$ axis where $g(x)$ is centered}\\
+\sigma: & ~\text{a scaling coeffecient [more details are needed]}
+\end{align*}
+$$
+
 
 
 
@@ -21,9 +29,9 @@ $$
 
 ### Quadratic form
 
-Consering the exponent, this can be generalized as following
+Simplifying the exponent, this can be generalized as following:
 $$
-g(x,y) = A_0 \exp{ \left\{-\left[ \mathbf{x}^T \mathbf{B} \mathbf{x}\right] \right\} }
+g(x,y) = A_0 \exp{ \left\{-\frac{1}{2}\left[ \mathbf{x}^T \mathbf{B} \mathbf{x}\right] \right\} }
 $$
 Where 
 $$
@@ -31,7 +39,7 @@ $$
 $$
 And
 $$
-\mathbf{B} = \frac{1}{2}
+\mathbf{B} =
 \begin{bmatrix}
 \frac{1}{\sigma_x^2} & 0 \\
 0 & \frac{1}{{\sigma_y}^2}
