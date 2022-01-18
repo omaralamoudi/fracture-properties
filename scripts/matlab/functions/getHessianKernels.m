@@ -49,6 +49,7 @@ if dims == 2 % 2d
     [x,y] = meshgrid(X,Y);
     % initilizing H
     H = initH(x,dims);
+    disp(['getHessianKernals 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y)])]);
     progressBar = TextProgressBar(['getHessianKernals 2d for s = [',num2str(s),']']);
     total = H.n;
     counter  = 0;
@@ -71,6 +72,7 @@ elseif dims == 3 % 3d
     [x,y,z] = meshgrid(X,Y,Z);
     % initilizing H
     H = initH(x,dims);
+    disp(['getHessianKernals 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y) length(Z)])]);
     progressBar = TextProgressBar(['getHessianKernals 3d for s = [',num2str(s),']']);
     total       = H.n;
     counter     = 0;
