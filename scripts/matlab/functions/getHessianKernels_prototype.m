@@ -1,6 +1,6 @@
-function hessianKernels = getHessianKernels(s,dims,m)
 % input s should be a vector of size 2 or 3, e.g. [sx sy ...] where sx is
 %                              the kernal number of voxels in the x
+function hessianKernels = getHessianKernels_prototype(s,dims,m,implementation)
 %                              direction, sy is the kernel number of voxels
 %                              in the y direction ets.
 
@@ -13,11 +13,11 @@ if nargin < 2
         if length(s) > 1 && length(s) < 4
             dims = length(s);  % physiscal dimentions
         else
-            error('getHessianKernels: length of s must be either 2 or 3');
+            error('getHessianKernels_prototype: length of s must be either 2 or 3');
             return;
         end
     else
-        error('getHessianKernels: dims must be specified');
+        error('getHessianKernels_prototype: dims must be specified');
         return;
     end
 elseif nargin < 3
@@ -49,8 +49,8 @@ if dims == 2 % 2d
     [x,y] = meshgrid(X,Y);
     % initilizing H
     H = initH(x,dims);
-    disp(['getHessianKernals 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y)])]);
-    progressBar = TextProgressBar(['getHessianKernals 2d for s = [',num2str(s),']']);
+    disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y)])]);
+    progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
     total = H.n;
     counter  = 0;
     for j = 1:H.nx % loop over columns (x-direction)
@@ -72,8 +72,8 @@ elseif dims == 3 % 3d
     [x,y,z] = meshgrid(X,Y,Z);
     % initilizing H
     H = initH(x,dims);
-    disp(['getHessianKernals 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y) length(Z)])]);
-    progressBar = TextProgressBar(['getHessianKernals 3d for s = [',num2str(s),']']);
+    disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y) length(Z)])]);
+    progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
     total       = H.n;
     counter     = 0;
     for k = 1:H.nz
@@ -83,18 +83,13 @@ elseif dims == 3 % 3d
                 H.matrix{i,j,k} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
                 counter = counter + 1;
-                if (mod(counter/total,0.01) == 0)
-                    if (counter/total) > 1
-                        keyboard
-                    end
-                    progressBar.update(counter/total);
-                end
+                if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
             end
         end
     end
     progressBar.complete();
 else
-    error('get_hessian_kernels: physical dimension undetermined');
+    error('getHessianKernels_prototype: physical dimension undetermined');
 end
 H.nslices = H.dims^2;
 H.slice = cell(H.nslices,1);
@@ -104,7 +99,7 @@ for i = 1:H.nslices
     elseif H.dims == 3
         H.slice{i} = H.values(:,:,:,i);
     else
-        error('getHessianKernels: issue with determining slices');
+        error('getHessianKernels_prototype: issue with determining slices');
     end
 end
 H.min = min(H.values(:));
@@ -127,7 +122,7 @@ elseif dims == 3
     H.nz = size(x,3);
     H.n = H.nx * H.ny * H.nz;
 else
-    error('initH: number of physical dimentions is undetermined');
+    error('getHessianKernels_prototype::initH: number of physical dimentions is undetermined');
 end
 end
 
@@ -143,6 +138,6 @@ sdim = length(s);
 if (sdim == 2) || (sdim == 3)  % 2d and 3d
     B = diag(1./s.^2);
 else
-    error('getB: something is wrong in fidning B');
+    error('getHessianKernels_prototype::getB: something is wrong in fidning B');
 end
 end
