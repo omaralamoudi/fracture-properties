@@ -37,28 +37,18 @@ A = 1;
 g  = @(x,B,A) (A * exp((-1/2)*((x)'*B*(x))));
 B  = getB(s);
 
-X = 0:1:s(1)*kernel_multiplier;
-% X = 0:1:2*ceil(2*s(1))+1; % similar to using fspecial3('gaussian',[],sigma)
-% X = 1:1:19; % the original not adaptive way of doing 
-X = insure_odd_length(X);
-x0= find_middle_point_position(X);
-Y = 0:1:s(2)*kernel_multiplier;
-% Y = 0:1:2*ceil(2*s(2))+1; % similar to using fspecial3('gaussian',[],sigma)
-% Y = 1:1:19;
-Y = insure_odd_length(Y);
-y0= find_middle_point_position(Y);
-
 if dims == 2 % 2d
-    [x,y] = meshgrid(X,Y);
+    coord = getCoordinates(s,kernel_multiplier,dims);
+    [x,y] = meshgrid(coord.X,coord.Y);
     % initilizing H
     H = initH(x,dims);
-    disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y)])]);
+    disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
     progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
     total = H.n;
     counter  = 0;
     for j = 1:H.nx % loop over columns (x-direction)
         for i = 1:H.ny % loop over rows (y-direction)
-            x_tmp = [x(i,j) y(i,j)]' - [x0 y0]';
+            x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
             H.matrix{i,j} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
             H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
             counter = counter + 1;
@@ -67,22 +57,18 @@ if dims == 2 % 2d
     end
     progressBar.complete();
 elseif dims == 3 % 3d
-    Z = 0:1:s(3)*kernel_multiplier;
-%     Z = 0:1:2*ceil(2*s(3))+1; % similar to using fspecial3('gaussian',[],sigma)
-%     Z = 1:1:19;
-    Z = insure_odd_length(Z);
-    z0= find_middle_point_position(Z);
-    [x,y,z] = meshgrid(X,Y,Z);
+    coord = getCoordinates(s,kernel_multiplier,dims);
+    [x,y,z] = meshgrid(coord.X,coord.Y,coord.Z);
     % initilizing H
     H = initH(x,dims);
-    disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(X) length(Y) length(Z)])]);
+    disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
     progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
     total       = H.n;
     counter     = 0;
     for k = 1:H.nz
         for j = 1:H.nx % loop over columns (x-direction)
             for i = 1:H.ny % loop over rows (y-direction)
-                x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [x0 y0 z0]';
+                x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
                 H.matrix{i,j,k} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
                 counter = counter + 1;
@@ -94,8 +80,7 @@ elseif dims == 3 % 3d
 else
     error('getHessianKernels_prototype: physical dimension undetermined');
 end
-H.nslices = H.dims^2;
-H.slice = cell(H.nslices,1);
+
 for i = 1:H.nslices
     if H.dims == 2
         H.slice{i} = H.values(:,:,i);
@@ -110,9 +95,12 @@ H.max = max(H.values(:));
 hessianKernels = H;
 end
 
+%% helper functions
 function H = initH(x,dims)
-H.dims = dims;
-H.values = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
+H.dims      = dims;
+H.values    = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
+H.nslices   = H.dims^2;
+H.slice     = cell(H.nslices,1);
 if dims == 2
     H.component_order = reshape({'xx','yx','xy','yy'}, [1 1 dims.^2]);
     H.nx = size(x,2);
@@ -142,5 +130,30 @@ if (sdim == 2) || (sdim == 3)  % 2d and 3d
     B = diag(1./s.^2);
 else
     error('getHessianKernels_prototype::getB: something is wrong in fidning B');
+end
+end
+
+function coord = getCoordinates(s,m,dims)
+% This function provides the coordinates used in calculating the Hessian
+% kernels
+% defining an anonym function that find the middle point of the
+find_middle_point_position = @(x) x(ceil(length(x)/2));
+X = 0:1:s(1)*m;
+% coord.X = 0:1:2*ceil(2*s(1))+1; % similar to using fspecial3('gaussian',[],sigma)
+% coord.X = 1:1:19; % the original not adaptive way of doing
+coord.X = insure_odd_length(X);
+coord.x0= find_middle_point_position(coord.X);
+Y = 0:1:s(2)*m;
+% coord.Y = 0:1:2*ceil(2*s(2))+1; % similar to using fspecial3('gaussian',[],sigma)
+% coord.Y = 1:1:19;
+coord.Y = insure_odd_length(Y);
+coord.y0= find_middle_point_position(coord.Y);
+if dims == 3
+    Z = 0:1:s(3)*m;
+    %     Z = 0:1:2*ceil(2*s(3))+1; % similar to using fspecial3('gaussian',[],sigma)
+    %     Z = 1:1:19;
+    coord.Z = insure_odd_length(Z);
+    coord.z0= find_middle_point_position(coord.Z);
+else
 end
 end
