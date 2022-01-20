@@ -83,18 +83,13 @@ elseif dims == 3 % 3d
                 H.matrix{i,j,k} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
                 counter = counter + 1;
-                if (mod(counter/total,0.01) == 0)
-                    if (counter/total) > 1
-                        keyboard
-                    end
-                    progressBar.update(counter/total);
-                end
+                if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
             end
         end
     end
     progressBar.complete();
 else
-    error('get_hessian_kernels: physical dimension undetermined');
+    error('getHessianKernals: physical dimension undetermined');
 end
 H.nslices = H.dims^2;
 H.slice = cell(H.nslices,1);
