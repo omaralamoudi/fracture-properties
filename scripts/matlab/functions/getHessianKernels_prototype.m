@@ -28,13 +28,9 @@ elseif nargin < 4
     implementation = 1;
 end
 
-
 kernel_multiplier = m;
 
-% amplitude
-A = 1;
-
-g  = @(x,B,A) (A * exp((-1/2)*((x)'*B*(x))));
+g  = @(x,B) (exp((-1/2)*((x)'*B*(x))));
 B  = getB(s);
 
 if dims == 2 % 2d
@@ -49,7 +45,7 @@ if dims == 2 % 2d
     for j = 1:H.nx % loop over columns (x-direction)
         for i = 1:H.ny % loop over rows (y-direction)
             x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
-            H.matrix{i,j} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
+            H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
             H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
             counter = counter + 1;
             if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
@@ -69,7 +65,7 @@ elseif dims == 3 % 3d
         for j = 1:H.nx % loop over columns (x-direction)
             for i = 1:H.ny % loop over rows (y-direction)
                 x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
-                H.matrix{i,j,k} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
+                H.matrix{i,j,k} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
                 counter = counter + 1;
                 if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
