@@ -85,7 +85,7 @@ for k = 1:4
             % display a result of the last steps
             if k == 1 || k == 4 && showIntermeidateResults
                 slice = 2;
-                commTitle = ['s = ',num2str(sigma(s)), ', Aperture = ', num2str(sigma(s)*2),', Frac (',num2str(s),' of ',num2str(length(sigma)),'), hsize = ',num2str(hsize)];
+                commTitle = [data(k).abreviation,': ', 's = ',num2str(sigma(s)), ', Aperture = ', num2str(sigma(s)*2),', Frac (',num2str(s),' of ',num2str(length(sigma)),'), hsize = ',num2str(hsize)];
                 figure('Position',[10 100 1850 450]);
                 subplot(1,4,1);
                 imagesc(data(k).hessian(2).result(s).A_s(:,:,slice));
@@ -95,7 +95,7 @@ for k = 1:4
                 axis equal; axis tight;
                 colormap(gray);
                 colorbar
-                xlabel('$A_s$');
+                xlabel('A_s');
                 
                 drawnow
                 subplot(1,4,2);
@@ -115,7 +115,7 @@ for k = 1:4
                 ax.YTick = [1 size(data(k).hessian(2).result(s).A_s(:,:,slice),1)];
                 axis equal; axis tight;
                 colorbar
-                xlabel('$C_s$');
+                xlabel('C_s');
                 drawnow
                 
                 subplot(1,4,4);
@@ -131,8 +131,10 @@ for k = 1:4
                 
                 fixFigure(gcf,fontSize);
                 suptitle(commTitle);
-                print(strcat(outputFigureDirectory, data(k).abreviation,', ',commTitle,'.png'),'-dpng');
-                print(strcat(outputFigureDirectory, data(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
+                if saveFigures
+                    print(strcat(outputFigureDirectory, data(k).abreviation,', ',commTitle,'.png'),'-dpng');
+                    print(strcat(outputFigureDirectory, data(k).abreviation,',hsize = ',num2str(hsize),', s = ',num2str(sigma(s)), ', Apr = ', num2str(sigma(s)*2),'.png'),'-dpng');
+                end
                 % keyboard
                 % close(gcf);
             end
@@ -194,4 +196,4 @@ subplot(2,2,4);
 dim = size(data(4).img,1);
 traverseXCoor = floor(dim/2);
 ShowProfile(Img(4),traverseXCoor,fontSize);
-print([figuresDirectory,'HessianResultsSBFI_N'],'-dpng');
+if saveFigures, print([figuresDirectory,'HessianResultsSBFI_N'],'-dpng');end
