@@ -40,15 +40,15 @@ if dims == 2 % 2d
     H = initH(x,dims);
     disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
     progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
-    total = H.n;
-    counter  = 0;
+    nVoxels         = H.n;
+    completedVoxel  = 0;
     for j = 1:H.nx % loop over columns (x-direction)
         for i = 1:H.ny % loop over rows (y-direction)
             x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
             H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
             H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
-            counter = counter + 1;
-            if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
+            completedVoxel = completedVoxel + 1;
+            if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
         end
     end
     progressBar.complete();
@@ -59,16 +59,16 @@ elseif dims == 3 % 3d
     H = initH(x,dims);
     disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
     progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
-    total       = H.n;
-    counter     = 0;
+    nVoxels         = H.n;
+    completedVoxel  = 0;
     for k = 1:H.nz
         for j = 1:H.nx % loop over columns (x-direction)
             for i = 1:H.ny % loop over rows (y-direction)
                 x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
                 H.matrix{i,j,k} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                 H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
-                counter = counter + 1;
-                if (mod(counter/total,0.01) == 0),progressBar.update(counter/total);end
+                completedVoxel = completedVoxel + 1;
+                if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
             end
         end
     end
