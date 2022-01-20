@@ -1,14 +1,10 @@
-% input s should be a vector of size 2 or 3, e.g. [sx sy ...] where sx is
-%                              the kernal number of voxels in the x
 function hessianKernels = getHessianKernels_prototype(s,dims,m,implementation)
+% GEThESSIANKERNELS_PROTOTYPE input s should be a vector of length 2 or 3, e.g. [sx sy ...] where sx is
+% the kernal number of voxels in the x
 %                              direction, sy is the kernel number of voxels
 %                              in the y direction ets.
 
-% defining an anonym function that find the middle point of the
-find_middle_point_position = @(x) x(ceil(length(x)/2));
-
 if nargin < 2
-    m = 9;
     if isvector(s)
         if length(s) > 1 && length(s) < 4
             dims = length(s);  % physiscal dimentions
@@ -20,12 +16,19 @@ if nargin < 2
         error('getHessianKernels_prototype: dims must be specified');
         return;
     end
-elseif nargin < 3
     m = 9;
+    implementation = 1;
+elseif nargin < 3
+    if isscalar(s)
+        s = ones(dims,1)*s;
+    end
+    m = 9;
+    implementation = 1;
+elseif nargin < 4
+    implementation = 1;
 end
-if isscalar(s)
-    s = ones(dims,1)*s;
-end
+
+
 kernel_multiplier = m;
 
 % amplitude
