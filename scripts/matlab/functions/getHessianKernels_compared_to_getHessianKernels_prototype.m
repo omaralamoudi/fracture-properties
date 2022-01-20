@@ -26,9 +26,7 @@ if nargin < 2
     supertitle = '';
 end
 screenSize = get(0,'ScreenSize');
-% clim = max(abs([kernels.min kernels.max]));
-% clims = clim*[-1 1]*.8;
-clims = [kernels.min kernels.max]*.5;
+clims = [min(kernels.values(:)) max(kernels.values(:))]*.5;
 if kernels.dims == 2
     fig = figure('Name','2D example','Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
@@ -38,6 +36,7 @@ if kernels.dims == 2
     c  = gobjects(kernels.dims^2,1); % initializing graphics object
     for i = 1:kernels.dims^2
         ax(i) = nexttile;
+%         clims = [kernels(i).min kernels.max]*.5; % this is incorrect
         imagesc(kernels.values(:,:,i),clims);
         ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
         ax(i).XTickLabel = {};
@@ -51,6 +50,7 @@ if kernels.dims == 2
         c(i).Location = 'southoutside';
     end
     linkaxes(ax);
+    linkedAxes3d = gobjects();
     if ~strcmp(supertitle,''), suptitle(supertitle);end
 elseif kernels.dims == 3
     % 2D slice
@@ -83,10 +83,10 @@ elseif kernels.dims == 3
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
     ax3d = gobjects(kernels.dims^2,1); % initializing graphics object
-    val = mean([kernels.min kernels.max])*1.25; % mean value
+    val = mean([min(kernels.values(:)) max(kernels.values(:))])*1.25; % mean value
     for i = 1:kernels.dims^2
         ax3d(i) = nexttile;
-        val = mean([kernels.min kernels.max]); % mean value
+%         val = mean([kernels.min kernels.max]); % mean value
         p = patch(isosurface(kernels.values(:,:,:,i),val));
         p.FaceColor = 'blue';
         p.FaceAlpha = .3;
