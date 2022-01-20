@@ -1,8 +1,8 @@
-clearvars;
+clearvars; close all; clc
 data(1).path.pc = 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\Projects\fracture properties\using Voorn-2013\runs\test run 01\root\input';
 data(1).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/test run 01/root/input';
-data(2).path.pc = 'C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/blurred+noisy';
-data(2).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/blurred+noisy';
+data(2).path.pc = 'C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/voorn';
+data(2).path.mac= '~/Dropbox/GraduateSchool/PhD/Projects/fracture properties/scripts/matlab/output/3D/synth images/voorn';
 
 i = 2;
 data2 = loadImageSeq(data(i).path.pc,'.tif');
@@ -18,7 +18,7 @@ gamma = 0.7;
 tt = tic;
 FracMapCumResult = zeros(size(inputimage));
 for i = 1:length(s)
-    FracMapResult(i) = FracMap(inputimage,fracAps(i),s(i),gamma);
+    FracMapResult(i) = FracMap_prototype(inputimage,fracAps(i),s(i),gamma);
     FracMapCumResult = FracMapCumResult + FracMapResult(i).Cs.image; 
 end
 FracMapCumResult_norm = FracMapCumResult / max(FracMapCumResult(:));
@@ -31,7 +31,7 @@ s = fracAps/2;
 mshffCumResult = zeros(size(inputimage));
 for i = 1:length(s)
     svalue = ones(1,ndims(inputimage)) * s(i);
-    mshffResult(i) = mshff(inputimage,svalue,gamma);
+    mshffResult(i) = mshff_prototype(inputimage,svalue,gamma);
     mshffCumResult = mshffCumResult + mshffResult(i).Cs.image; 
 end
 mshffCumResult_norm = mshffCumResult / max(mshffCumResult(:));
