@@ -1,11 +1,18 @@
-% generate kernals for Hessian filtering
-close all
+%% Comparing getHessianKernal and its prototype to test features.
+% Here, we display and compare the results of using two different versions
+% of getHessianKernals. The reason is to observe the difference in results
+% when using these two versions in order to decide to change the original
+% implementation or not. 
+% I would like to note that mshff_prototype as of right now, uses the
+% getHessianKernal_prototype. Othe 
+% - [x] removed the  
+close all; clearvars;
 
 sx = 3;
 sy = 5;
 sz = 9;
-% s  = [sx, sy, sz];
-s = [3 3 3];
+s  = [sx, sy, sz];
+% s = [3 3 3];
 % s  = [sx, sy];
 kernel_multiplier = 9;
 k = getHessianKernels(s);
@@ -23,16 +30,18 @@ screenSize = get(0,'ScreenSize');
 % clims = clim*[-1 1]*.8;
 clims = [kernels.min kernels.max]*.5;
 if kernels.dims == 2
-    fig = figure('Name','2D example','Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
+    fig = figure('Name','2D example','Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
+    ax = gobjects(kernels.dims^2,1); % initializing graphics object
+    c  = gobjects(kernels.dims^2,1); % initializing graphics object
     for i = 1:kernels.dims^2
         ax(i) = nexttile;
         imagesc(kernels.values(:,:,i),clims);
-        ax(i).XTick = [1:size(kernels.values(:,:,i),2)+1]-1/2;
+        ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
         ax(i).XTickLabel = {};
-        ax(i).YTick = [1:size(kernels.values(:,:,i),1)+1]-1/2;
+        ax(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
         ax(i).YTickLabel = {};
         ax(i).TickDir = 'out';
         ax(i).Title.String = kernels.component_order{i};
@@ -42,21 +51,22 @@ if kernels.dims == 2
         c(i).Location = 'southoutside';
     end
     linkaxes(ax);
-    if ~strcmp(suptertitle,''), suptitle(supertitle);end
+    if ~strcmp(supertitle,''), suptitle(supertitle);end
 elseif kernels.dims == 3
     % 2D slice
-    fig3 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
+    fig3 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
-    val = mean([kernels.min kernels.max])*1.25; % mean value
+    ax = gobjects(kernels.dims^2,1); % initializing graphics object
+    c  = gobjects(kernels.dims^2,1); % initializing graphics object
     for i = 1:kernels.dims^2
         ax(i) = nexttile;
         zslice = ceil(kernels.nz/3);
         imagesc(kernels.values(:,:,zslice,i),clims); hold on
-        ax(i).XTick = [1:size(kernels.values(:,:,i),2)+1]-1/2;
+        ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
         ax(i).XTickLabel = {};
-        ax(i).YTick = [1:size(kernels.values(:,:,i),1)+1]-1/2;
+        ax(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
         ax(i).YTickLabel = {};
         ax(i).TickDir = 'out';
         ax(i).Title.String = kernels.component_order{i};
@@ -68,10 +78,11 @@ elseif kernels.dims == 3
     linkaxes(ax);
     if ~strcmp(supertitle,''), suptitle(supertitle);end
     % 3d shapes
-    fig2 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]);
+    fig2 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
+    val = mean([kernels.min kernels.max])*1.25; % mean value
     for i = 1:kernels.dims^2
         ax(i) = nexttile;
         val = mean([kernels.min kernels.max]); % mean value
@@ -83,18 +94,18 @@ elseif kernels.dims == 3
         light
         lighting gouraud
         hold on
-        xslice = ceil(kernels.nx * [1/2]);
-        yslice = ceil(kernels.ny * [1/2]);
-        zslice = ceil(kernels.nz * [1/2]);
+        xslice = ceil(kernels.nx * (1/2));
+        yslice = ceil(kernels.ny * (1/2));
+        zslice = ceil(kernels.nz * (1/2));
         sslice = slice(kernels.values(:,:,:,i),xslice,yslice,zslice);
         set(sslice,'FaceAlpha',1,'FaceColor','flat','EdgeAlpha',0);
         sslice(end).FaceAlpha = 1;
         xlabel('x'); ylabel('y'); zlabel('z');
         ax(i).XLim = [1 kernels.nx];
-        ax(i).XTick = [1:size(kernels.values(:,:,i),2)+1]-1/2;
+        ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
         ax(i).XTickLabel = {};
         ax(i).YLim = [1 kernels.ny];
-        ax(i).YTick = [1:size(kernels.values(:,:,i),1)+1]-1/2;
+        ax(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
         ax(i).YTickLabel = {};
         ax(i).TickDir = 'out';
         ax(i).Title.String = kernels.component_order{i};
