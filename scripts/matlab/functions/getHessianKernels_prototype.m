@@ -77,33 +77,41 @@ else
     error('getHessianKernels_prototype: physical dimension undetermined');
 end
 
-for i = 1:H.nslices
+for i = 1:H.component_count
     if H.dims == 2
-        H.slice{i} = H.values(:,:,i);
+        H.component{i}      = H.values(:,:,i);
+        H.component_sum(i)  = sum(H.component{i}(:));
+        H.component_min(i)  = min(H.component{i}(:));
+        H.component_max(i)  = max(H.component{i}(:));
     elseif H.dims == 3
-        H.slice{i} = H.values(:,:,:,i);
+        H.component{i}      = H.values(:,:,:,i);
+        H.component_sum(i)  = sum(H.component{i}(:));
+        H.component_min(i)  = min(H.component{i}(:));
+        H.component_max(i)  = max(H.component{i}(:));
     else
         error('getHessianKernels_prototype: issue with determining slices');
     end
 end
-H.min = min(H.values(:));
-H.max = max(H.values(:));
+
 hessianKernels = H;
 end
 
 %% helper functions
 function H = initH(x,dims)
-H.dims      = dims;
-H.values    = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
-H.nslices   = H.dims^2;
-H.slice     = cell(H.nslices,1);
+H.dims              = dims;
+H.values            = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
+H.component_count   = H.dims^2;
+H.component         = cell(H.component_count,1);
+H.component_sum     = zeros(H.component_count,1);
+H.component_min     = zeros(H.component_count,1);
+H.component_max     = zeros(H.component_count,1);
 if dims == 2
-    H.component_order = reshape({'xx','yx','xy','yy'}, [1 1 dims.^2]);
+    H.component_order = reshape({'xx','yx','xy','yy'}, [dims.^2 1]);
     H.nx = size(x,2);
     H.ny = size(x,1);
     H.n = H.nx * H.ny;
 elseif dims == 3
-    H.component_order = reshape({'xx','yx','zx','xy','yy','zy','xz','yz','zz'}, [1 1 dims.^2]);
+    H.component_order = reshape({'xx','yx','zx','xy','yy','zy','xz','yz','zz'}, [dims.^2 1]);
     H.nx = size(x,2);
     H.ny = size(x,1);
     H.nz = size(x,3);
