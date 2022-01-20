@@ -18,10 +18,10 @@ kernel_multiplier = 9;
 k = getHessianKernels(s);
 kp = getHessianKernels_prototype(s);
 
-plotKernels(k,'original');
-plotKernels(kp,'protytpe');
+linkedAxes3dO = plotKernels(k,'original');
+linkedAxes3dP = plotKernels(kp,'protytpe');
 
-function plotKernels(kernels,supertitle)
+function linkedAxes3d = plotKernels(kernels,supertitle)
 if nargin < 2
     supertitle = '';
 end
@@ -58,33 +58,34 @@ elseif kernels.dims == 3
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
-    ax = gobjects(kernels.dims^2,1); % initializing graphics object
+    axSlices = gobjects(kernels.dims^2,1); % initializing graphics object
     c  = gobjects(kernels.dims^2,1); % initializing graphics object
     for i = 1:kernels.dims^2
-        ax(i) = nexttile;
+        axSlices(i) = nexttile;
         zslice = ceil(kernels.nz/3);
         imagesc(kernels.values(:,:,zslice,i),clims); hold on
-        ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
-        ax(i).XTickLabel = {};
-        ax(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
-        ax(i).YTickLabel = {};
-        ax(i).TickDir = 'out';
-        ax(i).Title.String = kernels.component_order{i};
-        ax(i).Title.FontSize = 20;
+        axSlices(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
+        axSlices(i).XTickLabel = {};
+        axSlices(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
+        axSlices(i).YTickLabel = {};
+        axSlices(i).TickDir = 'out';
+        axSlices(i).Title.String = kernels.component_order{i};
+        axSlices(i).Title.FontSize = 20;
         grid on, axis equal tight
         c(i) = colorbar;
         c(i).Location = 'southoutside';
     end
-    linkaxes(ax);
+    linkaxes(axSlices);
     if ~strcmp(supertitle,''), suptitle(supertitle);end
     % 3d shapes
     fig2 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
     t.TileSpacing   = 'compact';
     t.Padding       = 'compact';
+    ax3d = gobjects(kernels.dims^2,1); % initializing graphics object
     val = mean([kernels.min kernels.max])*1.25; % mean value
     for i = 1:kernels.dims^2
-        ax(i) = nexttile;
+        ax3d(i) = nexttile;
         val = mean([kernels.min kernels.max]); % mean value
         p = patch(isosurface(kernels.values(:,:,:,i),val));
         p.FaceColor = 'blue';
@@ -101,25 +102,25 @@ elseif kernels.dims == 3
         set(sslice,'FaceAlpha',1,'FaceColor','flat','EdgeAlpha',0);
         sslice(end).FaceAlpha = 1;
         xlabel('x'); ylabel('y'); zlabel('z');
-        ax(i).XLim = [1 kernels.nx];
-        ax(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
-        ax(i).XTickLabel = {};
-        ax(i).YLim = [1 kernels.ny];
-        ax(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
-        ax(i).YTickLabel = {};
-        ax(i).TickDir = 'out';
-        ax(i).Title.String = kernels.component_order{i};
-        ax(i).Title.FontSize = 20;
+        ax3d(i).XLim = [1 kernels.nx];
+        ax3d(i).XTick = (1:size(kernels.values(:,:,i),2)+1)-1/2;
+        ax3d(i).XTickLabel = {};
+        ax3d(i).YLim = [1 kernels.ny];
+        ax3d(i).YTick = (1:size(kernels.values(:,:,i),1)+1)-1/2;
+        ax3d(i).YTickLabel = {};
+        ax3d(i).TickDir = 'out';
+        ax3d(i).Title.String = kernels.component_order{i};
+        ax3d(i).Title.FontSize = 20;
         c(i) = colorbar;
         c(i).Location = 'southoutside';
-        caxis(ax(i),clims);
+        caxis(ax3d(i),clims);
         %         grid on, axis equal tight
         %         c(i) = colorbar;
         %         c(i).Location = 'southoutside';
         %     ax(i).GridAlpha = 0;
         axis equal tight
     end
-    linkprop(ax,'View');
+    linkedAxes3d = linkprop(ax3d,'View'); % I need the handle to the linked properties for this to work as expected. See: https://www.mathworks.com/matlabcentral/answers/408254-linkprop-not-persisting-after-changing-scope
     if ~strcmp(supertitle,''), suptitle(supertitle);end
     rotate3d on
 end
