@@ -122,11 +122,13 @@ for i = 1:H.component_count
         H.component_sum(i)  = sum(H.component{i}(:));
         H.component_min(i)  = min(H.component{i}(:));
         H.component_max(i)  = max(H.component{i}(:));
+        H.component_norm(i) = H.component{i} / H.component_max(i);
     elseif H.dims == 3
         H.component{i}      = H.values(:,:,:,i);
         H.component_sum(i)  = sum(H.component{i}(:));
         H.component_min(i)  = min(H.component{i}(:));
         H.component_max(i)  = max(H.component{i}(:));
+        H.component_norm{i} = H.component{i} / H.component_max(i);
     else
         error('getHessianKernels_prototype: issue with determining slices');
     end
@@ -141,6 +143,7 @@ H.dims              = dims;
 H.values            = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
 H.component_count   = H.dims^2;
 H.component         = cell(H.component_count,1);
+H.component_norm    = cell(H.component_count,1);
 H.component_sum     = zeros(H.component_count,1);
 H.component_min     = zeros(H.component_count,1);
 H.component_max     = zeros(H.component_count,1);
