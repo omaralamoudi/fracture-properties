@@ -28,53 +28,109 @@ elseif nargin < 4
     implementation = 1;
 end
 
-kernel_multiplier = m;
-
-g  = @(x,B) (exp((-1/2)*((x)'*B*(x))));
-B  = getB(s);
-
-if dims == 2 % 2d
-    coord = getCoordinates(s,kernel_multiplier,dims);
-    [x,y] = meshgrid(coord.X,coord.Y);
-    % initilizing H
-    H = initH(x,dims);
-    disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
-    progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
-    nVoxels         = H.n;
-    completedVoxel  = 0;
-    for j = 1:H.nx % loop over columns (x-direction)
-        for i = 1:H.ny % loop over rows (y-direction)
-            x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
-            H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
-            H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
-            completedVoxel = completedVoxel + 1;
-            if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
-        end
-    end
-    progressBar.complete();
-elseif dims == 3 % 3d
-    coord = getCoordinates(s,kernel_multiplier,dims);
-    [x,y,z] = meshgrid(coord.X,coord.Y,coord.Z);
-    % initilizing H
-    H = initH(x,dims);
-    disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
-    progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
-    nVoxels         = H.n;
-    completedVoxel  = 0;
-    for k = 1:H.nz
+if implementation == 1
+    %% implementation 1
+    kernel_multiplier = m;
+    
+    g  = @(x,B) (exp((-1/2)*((x)'*B*(x))));
+    B  = getB(s);
+    
+    if dims == 2 % 2d
+        coord = getCoordinates(s,kernel_multiplier,dims);
+        [x,y] = meshgrid(coord.X,coord.Y);
+        % initilizing H
+        H = initH(x,dims);
+        disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
+        progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
+        nVoxels         = H.n;
+        completedVoxel  = 0;
         for j = 1:H.nx % loop over columns (x-direction)
             for i = 1:H.ny % loop over rows (y-direction)
-                x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
-                H.matrix{i,j,k} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
-                H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+                x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
+                H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
+                H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
                 completedVoxel = completedVoxel + 1;
                 if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
             end
         end
+        progressBar.complete();
+    elseif dims == 3 % 3d
+        coord = getCoordinates(s,kernel_multiplier,dims);
+        [x,y,z] = meshgrid(coord.X,coord.Y,coord.Z);
+        % initilizing H
+        H = initH(x,dims);
+        disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
+        progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
+        nVoxels         = H.n;
+        completedVoxel  = 0;
+        for k = 1:H.nz
+            for j = 1:H.nx % loop over columns (x-direction)
+                for i = 1:H.ny % loop over rows (y-direction)
+                    x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
+                    H.matrix{i,j,k} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
+                    H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+                    completedVoxel = completedVoxel + 1;
+                    if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
+                end
+            end
+        end
+        progressBar.complete();
+    else
+        error('getHessianKernels_prototype: physical dimension undetermined');
     end
-    progressBar.complete();
+elseif implementation == 2
+    %% implementation 2
+    kernel_multiplier = m;
+    if dims == 2 % 2d
+        coord = getCoordinates(s,kernel_multiplier,dims);
+        [x,y] = meshgrid(coord.X,coord.Y);
+        % initilizing H
+        H = initH(x,dims);
+        disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
+        progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
+        nVoxels         = H.n;
+        completedVoxel  = 0;
+        for j = 1:H.nx % loop over columns (x-direction)
+            for i = 1:H.ny % loop over rows (y-direction)
+                x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
+                H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
+                H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
+                completedVoxel = completedVoxel + 1;
+                if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
+            end
+        end
+        progressBar.complete();
+    elseif dims == 3 % 3d
+        coord = getCoordinates(s,kernel_multiplier,dims);
+        h = fspecial3('gaussian',[length(coord.Y), length(coord.X), length(coord.Z)],s);
+        
+        % initilizing H
+        H = initH(h,dims);
+        % H.matrix might be transposed, but since H is symmetric, this
+        % might not be an issue
+        [H.matrix,H.component{1},H.component{4},H.component{7},H.component{2},H.component{5},H.component{8},H.component{3},H.component{6},H.component{9}] = ComputeHessian3D(h);
+        disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
+        progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
+        nVoxels         = H.n;
+        completedVoxel  = 0;
+        for k = 1:H.nz
+            for j = 1:H.nx % loop over columns (x-direction)
+                for i = 1:H.ny % loop over rows (y-direction)
+                    % transposing the matrix in the following line to match
+                    % implementation 1
+                    H.matrix{i,j,k}   = H.matrix{i,j,k}';
+                    H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+                    completedVoxel = completedVoxel + 1;
+                    if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
+                end
+            end
+        end
+        progressBar.complete();
+    else
+        error('getHessianKernels_prototype: physical dimension undetermined');
+    end
 else
-    error('getHessianKernels_prototype: physical dimension undetermined');
+    error('getHessianKernels_prototype: implementation undefined undetermined');
 end
 
 for i = 1:H.component_count
