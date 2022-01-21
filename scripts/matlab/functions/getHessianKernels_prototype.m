@@ -82,24 +82,7 @@ elseif implementation == 2
     %% implementation 2
     kernel_multiplier = m;
     if dims == 2 % 2d
-        coord = getCoordinates(s,kernel_multiplier,dims);
-        [x,y] = meshgrid(coord.X,coord.Y);
-        % initilizing H
-        H = initH(x,dims);
-        disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
-        progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
-        nVoxels         = H.n;
-        completedVoxel  = 0;
-        for j = 1:H.nx % loop over columns (x-direction)
-            for i = 1:H.ny % loop over rows (y-direction)
-                x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
-                H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
-                H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
-                completedVoxel = completedVoxel + 1;
-                if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
-            end
-        end
-        progressBar.complete();
+        error('not implemented yet'); 
     elseif dims == 3 % 3d
         coord = getCoordinates(s,kernel_multiplier,dims);
         h = fspecial3('gaussian',[length(coord.Y), length(coord.X), length(coord.Z)],s);
