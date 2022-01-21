@@ -44,11 +44,11 @@ if implementation == 1
         progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
         nVoxels         = H.n;
         completedVoxel  = 0;
-        for j = 1:H.nx % loop over columns (x-direction)
-            for i = 1:H.ny % loop over rows (y-direction)
-                x_tmp = [x(i,j) y(i,j)]' - [coord.x0 coord.y0]';
-                H.matrix{i,j} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
-                H.values(i,j,:) = reshape(H.matrix{i,j}, [1 1 dims.^2]);
+        for col = 1:H.nx % loop over columns (x-direction)
+            for row = 1:H.ny % loop over rows (y-direction)
+                x_tmp = [x(row,col) y(row,col)]' - [coord.x0 coord.y0]';
+                H.matrix{row,col} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
+                H.values(row,col,:) = reshape(H.matrix{row,col}, [1 1 dims.^2]);
                 completedVoxel = completedVoxel + 1;
                 if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
             end
@@ -63,12 +63,12 @@ if implementation == 1
         progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
         nVoxels         = H.n;
         completedVoxel  = 0;
-        for k = 1:H.nz
-            for j = 1:H.nx % loop over columns (x-direction)
-                for i = 1:H.ny % loop over rows (y-direction)
-                    x_tmp = [x(i,j,k) y(i,j,k) z(i,j,k)]' - [coord.x0 coord.y0 coord.z0]';
-                    H.matrix{i,j,k} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
-                    H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+        for lay = 1:H.nz
+            for col = 1:H.nx % loop over columns (x-direction)
+                for row = 1:H.ny % loop over rows (y-direction)
+                    x_tmp = [x(row,col,lay) y(row,col,lay) z(row,col,lay)]' - [coord.x0 coord.y0 coord.z0]';
+                    H.matrix{row,col,lay} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
+                    H.values(row,col,lay,:) = reshape(H.matrix{row,col,lay}, [1 1 dims.^2]);
                     completedVoxel = completedVoxel + 1;
                     if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
                 end
@@ -96,13 +96,13 @@ elseif implementation == 2
         progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
         nVoxels         = H.n;
         completedVoxel  = 0;
-        for k = 1:H.nz
-            for j = 1:H.nx % loop over columns (x-direction)
-                for i = 1:H.ny % loop over rows (y-direction)
+        for lay = 1:H.nz
+            for col = 1:H.nx % loop over columns (x-direction)
+                for row = 1:H.ny % loop over rows (y-direction)
                     % transposing the matrix in the following line to match
                     % implementation 1
-                    H.matrix{i,j,k}   = H.matrix{i,j,k}';
-                    H.values(i,j,k,:) = reshape(H.matrix{i,j,k}, [1 1 dims.^2]);
+                    H.matrix{row,col,lay}   = H.matrix{row,col,lay}';
+                    H.values(row,col,lay,:) = reshape(H.matrix{row,col,lay}, [1 1 dims.^2]);
                     completedVoxel = completedVoxel + 1;
                     if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
                 end

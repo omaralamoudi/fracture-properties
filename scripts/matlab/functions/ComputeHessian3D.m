@@ -46,13 +46,13 @@ function [hessianMatrix,ddxddx,ddxddy,ddxddz,ddyddx,ddyddy,ddyddz,ddzddx,ddzddy,
         
     end
     % collecting the voxel wise valuse into a matrix
-    for k = 1:size(img,3)
-            for j = 1:size(img,1)
+    for lay = 1:size(img,3)
+            for row = 1:size(img,1)
                 % loop along the x-direction first
-                for i = 1:size(img,2)
-                    hessianMatrix(j,i,k) = {[ddxddx(j,i,k),ddxddy(j,i,k),ddxddz(j,i,k);...
-                                             ddyddx(j,i,k),ddyddy(j,i,k),ddyddz(j,i,k);...
-                                             ddzddx(j,i,k),ddzddy(j,i,k),ddzddz(j,i,k)]};
+                for col = 1:size(img,2)
+                    hessianMatrix(row,col,lay) = {[ddxddx(row,col,lay),ddxddy(row,col,lay),ddxddz(row,col,lay);...
+                                             ddyddx(row,col,lay),ddyddy(row,col,lay),ddyddz(row,col,lay);...
+                                             ddzddx(row,col,lay),ddzddy(row,col,lay),ddzddz(row,col,lay)]};
                 end
             end
     end
