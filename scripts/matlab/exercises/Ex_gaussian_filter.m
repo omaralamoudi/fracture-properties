@@ -1,8 +1,8 @@
 %% Analysis regarding the range of apertures possible for each filter size
 clear variables; clc;
 
-InitColormaps();
-cm = cm_viridis;
+cm = InitColormaps();
+% cm = cm_viridis;
 dcm = 8;
 
 dx = 1;

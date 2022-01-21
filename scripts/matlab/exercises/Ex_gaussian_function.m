@@ -1,8 +1,7 @@
 clear variables; clc
-
-InitColormaps;
+cm = InitColormaps;
 % The Gaussian function is f(x) = a exp{-(x-b).^2/(2c^2)}
-cm = cm_viridis;
+% cm = cm_viridis;
 dcm = 10;
 
 s = [0.1:0.4:.9,1:1:3];
