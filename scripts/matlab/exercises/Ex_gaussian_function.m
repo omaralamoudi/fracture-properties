@@ -1,4 +1,5 @@
 clear variables; clc
+doSaveFigures = 0;
 cm = InitColormaps;
 % The Gaussian function is f(x) = a exp{-(x-b).^2/(2c^2)}
 % cm = cm_viridis;
@@ -26,13 +27,13 @@ ax3 = subplot(2,1,2);
 p3(i) = plot(ax3,x,y_xx_norm,'DisplayName',['s = ',num2str(s(i))],'Color',cm(i*dcm,:));hold on; grid on;
 end
 % ax1.Color = 0.*[1 1 1];
-title(ax1, 'Gaussian Function $G(x,s) =  1 \times e^{-\frac{1}{2} (\frac{x-0}{s})^2}$, varying s');
+title(ax1, 'Gaussian Function $G(x,s) =  1 \times e^{-\frac{1}{2} (\frac{x-0}{s})^2}$, varying s','Interpreter','latex');
 legend(ax1,p);
-title(ax3, '$G_{xx}(x,s)$ Normalized, varying s');
+title(ax3, '$G_{xx}(x,s)$ Normalized, varying s','Interpreter','latex');
 legend(ax3,p3);
 fixFigure(gcf, 18);
 directory = '..\Presentation\figures\';
-saveas(gcf,[directory,'gaussian_continuous.png']);
+if doSaveFigures, saveas(gcf,[directory,'gaussian_continuous.png']);end
 %% Discrete domain
 
 dx = 1;
@@ -53,11 +54,11 @@ ax3 = subplot(2,1,2);
 p3(i) = plot(ax3,x,y_xx_norm,'DisplayName',['s = ',num2str(s(i))],'Color',cm(i*dcm,:));hold on; grid on;
 end
 
-title(ax1, 'Gaussian Function $G(x,s) =  1 \times e^{-\frac{1}{2} (\frac{x-0}{s})^2}$, varying s');
+title(ax1, 'Gaussian Function $G(x,s) =  1 \times e^{-\frac{1}{2} (\frac{x-0}{s})^2}$, varying s','Interpreter','latex');
 legend(ax1,p);
-title(ax3, '$$G_{xx}(x,s)$ Normalized, varying s');
+title(ax3, '$G_{xx}(x,s)$ Normalized, varying s','Interpreter','latex');
 legend(ax3,p3);
 fixFigure(gcf, 18);
-saveas(gcf,[directory,'gaussian_discrete.png']);
+if doSaveFigures, saveas(gcf,[directory,'gaussian_discrete.png']);end
 
 %% hsize demonstration 
