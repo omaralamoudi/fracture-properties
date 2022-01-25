@@ -89,8 +89,10 @@ elseif implementation == 2
         error('not implemented yet'); 
     elseif dims == 3 % 3d
         coord = getCoordinates(s,kernel_multiplier,dims);
-        h = fspecial3('gaussian',[length(coord.Y), length(coord.X), length(coord.Z)],s);
-        
+        h = fspecial3('gaussian',[length(coord.X), length(coord.Y), length(coord.Z)],s);
+        % after inspeciting the gaussian, I noticed that kernel needed to
+        % be permuted to match my expectations
+        h = permute(h,[2 1 3]);
         % initilizing H
         H = initH(h,dims);
         H.g = h;
