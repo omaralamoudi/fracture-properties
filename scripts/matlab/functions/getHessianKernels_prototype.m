@@ -32,7 +32,7 @@ if implementation == 1
     %% implementation 1
     kernel_multiplier = m;
     
-    g  = @(x,B) (exp((-1/2)*((x)'*B*(x))));
+    g  = @(x,B) (exp((-1/2)*(x'*B*x)));
     B  = getB(s);
     
     if dims == 2 % 2d
@@ -141,6 +141,7 @@ end
 function H = initH(x,dims)
 H.dims              = dims;
 H.values            = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
+H.gaussian          = zeros(size(x));           % the original gaussian used in the rest of the calculations
 H.component_count   = H.dims^2;
 H.component         = cell(H.component_count,1);
 H.component_norm    = cell(H.component_count,1);
