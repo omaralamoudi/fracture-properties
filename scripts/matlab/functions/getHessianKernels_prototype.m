@@ -39,16 +39,17 @@ if implementation == 1
     
     if dims == 2 % 2d
         coord = getCoordinates(s,kernel_multiplier,dims);
-        [x,y] = meshgrid(coord.X,coord.Y);
+        [pos.x,pos.y] = meshgrid(coord.X,coord.Y);
         % initilizing H
-        H = initH(x,dims);
+        H = initH(pos.x,dims);
+        H.g = getG(g,pos,coord,B,A,dims);
         disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
         progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
         nVoxels         = H.n;
         completedVoxel  = 0;
         for col = 1:H.nx % loop over columns (x-direction)
             for row = 1:H.ny % loop over rows (y-direction)
-                x_tmp = [x(row,col) y(row,col)]' - [coord.x0 coord.y0]';
+                x_tmp = [pos.x(row,col) pos.y(row,col)]' - [coord.x0 coord.y0]';
                 H.matrix{row,col} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
                 H.values(row,col,:) = reshape(H.matrix{row,col}, [1 1 dims.^2]);
                 completedVoxel = completedVoxel + 1;
@@ -58,9 +59,10 @@ if implementation == 1
         progressBar.complete();
     elseif dims == 3 % 3d
         coord = getCoordinates(s,kernel_multiplier,dims);
-        [x,y,z] = meshgrid(coord.X,coord.Y,coord.Z);
+        [pos.x,pos.y,pos.z] = meshgrid(coord.X,coord.Y,coord.Z);
         % initilizing H
-        H = initH(x,dims);
+        H = initH(pos.x,dims);
+        H.g = getG(g,pos,coord,B,A,dims);
         disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
         progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
         nVoxels         = H.n;
@@ -68,7 +70,7 @@ if implementation == 1
         for lay = 1:H.nz
             for col = 1:H.nx % loop over columns (x-direction)
                 for row = 1:H.ny % loop over rows (y-direction)
-                    x_tmp = [x(row,col,lay) y(row,col,lay) z(row,col,lay)]' - [coord.x0 coord.y0 coord.z0]';
+                    x_tmp = [pos.x(row,col,lay) pos.y(row,col,lay) pos.z(row,col,lay)]' - [coord.x0 coord.y0 coord.z0]';
                     H.matrix{row,col,lay} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                     H.values(row,col,lay,:) = reshape(H.matrix{row,col,lay}, [1 1 dims.^2]);
                     completedVoxel = completedVoxel + 1;
@@ -204,5 +206,18 @@ if dims == 3
     coord.Z = insure_odd_length(Z);
     coord.z0= find_middle_point_position(coord.Z);
 else
+end
+end
+
+function G = getG(g,pos,coord,B,A,dim)
+% the form of g is g  = @(x,B,A) (A * exp((-1/2)*(dot(x,B*x))));
+if dim == 2
+    G = g([pos.x(:) - coord.x0, pos.y(:)- coord.y0]',B,A);
+    G = reshape(G,size(pos.x));
+elseif dim == 3
+    G = g([pos.x(:)- coord.x0, pos.y(:)- coord.y0, pos.z(:)- coord.z0]',B,A);
+    G = reshape(G,size(pos.x));
+else
+    error('getG dim input is invalid'); 
 end
 end
