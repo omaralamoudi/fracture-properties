@@ -1,5 +1,5 @@
 function hessianKernels = getHessianKernels_prototype(s,dims,m,implementation)
-% GEThESSIANKERNELS_PROTOTYPE input s should be a vector of length 2 or 3, e.g. [sx sy ...] where sx is
+% GETHESSIANKERNELS_PROTOTYPE input s should be a vector of length 2 or 3, e.g. [sx sy ...] where sx is
 % the kernal number of voxels in the x
 %                              direction, sy is the kernel number of voxels
 %                              in the y direction ets.
@@ -32,7 +32,9 @@ if implementation == 1
     %% implementation 1
     kernel_multiplier = m;
     
-    g  = @(x,B) (exp((-1/2)*(x'*B*x)));
+    % amplitude
+    A = 1;
+    g  = @(x,B,A) (A * exp((-1/2)*((x)'*B*(x))));
     B  = getB(s);
     
     if dims == 2 % 2d
@@ -47,7 +49,7 @@ if implementation == 1
         for col = 1:H.nx % loop over columns (x-direction)
             for row = 1:H.ny % loop over rows (y-direction)
                 x_tmp = [x(row,col) y(row,col)]' - [coord.x0 coord.y0]';
-                H.matrix{row,col} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
+                H.matrix{row,col} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B); % g is an annonymus function
                 H.values(row,col,:) = reshape(H.matrix{row,col}, [1 1 dims.^2]);
                 completedVoxel = completedVoxel + 1;
                 if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
@@ -67,7 +69,7 @@ if implementation == 1
             for col = 1:H.nx % loop over columns (x-direction)
                 for row = 1:H.ny % loop over rows (y-direction)
                     x_tmp = [x(row,col,lay) y(row,col,lay) z(row,col,lay)]' - [coord.x0 coord.y0 coord.z0]';
-                    H.matrix{row,col,lay} = 2*g(x_tmp,B)*((2*(B*x_tmp)*(B*x_tmp)')-B);
+                    H.matrix{row,col,lay} = 2*g(x_tmp,B,A)*((2*(B*x_tmp)*(B*x_tmp)')-B);
                     H.values(row,col,lay,:) = reshape(H.matrix{row,col,lay}, [1 1 dims.^2]);
                     completedVoxel = completedVoxel + 1;
                     if (mod(completedVoxel/nVoxels,0.01) == 0),progressBar.update(completedVoxel/nVoxels);end
