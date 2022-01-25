@@ -93,6 +93,7 @@ elseif implementation == 2
         
         % initilizing H
         H = initH(h,dims);
+        H.g = h;
         % H.matrix might be transposed, but since H is symmetric, this
         % might not be an issue
         [H.matrix,H.component{1},H.component{4},H.component{7},H.component{2},H.component{5},H.component{8},H.component{3},H.component{6},H.component{9}] = ComputeHessian3D(h);
@@ -145,7 +146,7 @@ end
 function H = initH(x,dims)
 H.dims              = dims;
 H.values            = zeros([size(x) dims.^2]); % dims .^2 is the number of layers to capture all hessian tensor values
-H.gaussian          = zeros(size(x));           % the original gaussian used in the rest of the calculations
+H.g                 = zeros(size(x));           % the original gaussian used in the rest of the calculations
 H.component_count   = H.dims^2;
 H.component         = cell(H.component_count,1);
 H.component_norm    = cell(H.component_count,1);
