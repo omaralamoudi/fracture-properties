@@ -122,7 +122,7 @@ for i = 1:H.component_count
         H.component_sum(i)  = sum(H.component{i}(:));
         H.component_min(i)  = min(H.component{i}(:));
         H.component_max(i)  = max(H.component{i}(:));
-        H.component_norm(i) = H.component{i} / H.component_max(i);
+        H.component_norm{i} = H.component{i} / H.component_max(i);
     elseif H.dims == 3
         H.component{i}      = H.values(:,:,:,i);
         H.component_sum(i)  = sum(H.component{i}(:));
