@@ -34,11 +34,11 @@ hessianKernels = getHessianKernels(s,imgdims);
 
 filteringPB = TextProgressBar('mshff image filtering','.');
 % apply hessian component filters
-for slice = 1:hessianKernels.nslices
+for component = 1:hessianKernels.component_count
     if hessianKernels.dims == 2
-        result.hessian.image(:,:,slice) = imfilter(img,hessianKernels.slice{slice},'conv','replicate');
+        result.hessian.image(:,:,component) = imfilter(img,hessianKernels.component{component},'conv','replicate');
     elseif hessianKernels.dims == 3
-        result.hessian.image(:,:,:,slice) = imfilter(img,hessianKernels.slice{slice},'conv','replicate');
+        result.hessian.image(:,:,:,component) = imfilter(img,hessianKernels.component{component},'conv','replicate');
     else
         error('mshff: a problem with dimensions');
     end
