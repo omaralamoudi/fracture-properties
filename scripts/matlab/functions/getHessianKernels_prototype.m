@@ -34,7 +34,7 @@ if implementation == 1
     
     % amplitude
     A = 1;
-    g  = @(x,B,A) (A * exp((-1/2)*((x)'*B*(x))));
+    g  = @(x,B,A) (A * exp((-1/2)*(dot(x,B*x))));
     B  = getB(s);
     
     if dims == 2 % 2d
