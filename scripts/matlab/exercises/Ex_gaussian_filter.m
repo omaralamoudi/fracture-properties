@@ -1,8 +1,9 @@
 %% Analysis regarding the range of apertures possible for each filter size
 clear variables; clc;
 
+doSaveFigures = 0; % a flag that allows for saving figures if true
+
 cm = InitColormaps();
-% cm = cm_viridis;
 dcm = 8;
 
 dx = 1;
@@ -60,7 +61,7 @@ for hSize = hSizeRange
 end
 result = testParam(logical(testParam(:,5)),:);
 %
-close all;
+% close all;
 
 c = 1;
 for hSize = hSizeRange
@@ -101,7 +102,6 @@ title('Volume Under Surface');
 
 %%
 c = 1;
-cm = cm_viridis;
 directory = 'C:\Users\oma385\Dropbox\GraduateSchool\PhD\CourseWork\Spring2019\3DAnalysisOfVolumetricData\Project\Presentation\figures\';
 hSizeRange = 3:2:25;
 sRange = [0.1:0.2:0.9,1:5];
@@ -182,12 +182,12 @@ for hSize = hSizeRange
         ylabel('Amplitude');
         
         suptitle(["hSize = "+num2str(hSize)+ ", s = "+ s]);
-        saveas(gcf,[directory+"gaussian_filters\"+"s = "+s+ ", hSize = "+ num2str(hSize)+"_normalized.png"]);
-        saveas(gcf,[directory+"gaussian_filters\"+"hSize = "+num2str(hSize)+ ", s = "+s+"_normalized.png"]);
-        %saveas(gcf,[directory+"gaussian_filters\"+"s = "+s+ ", hSize = "+ num2str(hSize)+".png"]);
-        %saveas(gcf,[directory+"gaussian_filters\"+"hSize = "+num2str(hSize)+ ", s = "+s+".png"]);
+        if doSaveFigures, saveas(gcf,[directory+"gaussian_filters\"+"s = "+s+ ", hSize = "+ num2str(hSize)+"_normalized.png"]);end
+        if doSaveFigures, saveas(gcf,[directory+"gaussian_filters\"+"hSize = "+num2str(hSize)+ ", s = "+s+"_normalized.png"]);end
+        %if doSaveFigures, saveas(gcf,[directory+"gaussian_filters\"+"s = "+s+ ", hSize = "+num2str(hSize)+".png"]);end
+        %if doSaveFigures, saveas(gcf,[directory+"gaussian_filters\"+"hSize ="+num2str(hSize)+ ", s = "+s+".png"]);end
     end
     clear x y X Y
 end
 
-close all
+% close all
