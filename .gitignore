@@ -42,11 +42,8 @@
 readings
 presentation
 
-# Fiji app
-fiji/
-
-# Blob3D software (Richard Ketcham's)
-Blob3D/
+# Portable apps or programs
+apps/* 
 
 # large data folders
 data/Bland*
