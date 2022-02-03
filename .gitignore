@@ -47,3 +47,6 @@ apps/*
 
 # large data folders
 data/Bland*
+
+# Blob3D data file
+*.sav
