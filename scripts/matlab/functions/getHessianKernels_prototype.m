@@ -43,6 +43,7 @@ if implementation == 1
         % initilizing H
         H = initH(pos.x,dims);
         H.g = getG(g,pos,coord,B,A,dims);
+        A = 1/sum(H.g(:));
         disp(['getHessianKernals_prototype 2d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y)])]);
         progressBar = TextProgressBar(['getHessianKernals_prototype 2d for s = [',num2str(s),']']);
         nVoxels         = H.n;
@@ -63,6 +64,7 @@ if implementation == 1
         % initilizing H
         H = initH(pos.x,dims);
         H.g = getG(g,pos,coord,B,A,dims);
+        A = 1/sum(H.g(:));
         disp(['getHessianKernals_prototype 3d for s = [',num2str(s),']', ' kernal size = ' num2str([length(coord.X) length(coord.Y) length(coord.Z)])]);
         progressBar = TextProgressBar(['getHessianKernals_prototype 3d for s = [',num2str(s),']']);
         nVoxels         = H.n;
