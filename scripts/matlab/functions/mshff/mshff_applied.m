@@ -1,14 +1,21 @@
 clearvars; close all; clc
 data = loadImageSeq('output/3D/synth images/voorn','.tif');
 loadSyntheticImageParams;
-%%
-s = fracAps/2;
+
+% s = fracAps/2;
+s = fracAps(1)/2;
 inputimage = data.image;
-cumresult = zeros(size(data.image));
 gamma = 0.9;
+
+% adding 2d slices aling the z direction for proper results in the the 3rd
+% dimention
+
+%%
+    
+cumresult = zeros(size(data.image));    
 for i = 1:length(s)
     svalue = ones(1,ndims(inputimage)) * s(i);
-    mshffResult(i) = mshff_prototype(inputimage,svalue,gamma);
+    mshffResult(i) = mshff(inputimage,svalue,gamma);
     cumresult = cumresult + mshffResult(i).Cs.image; 
 end
 cumresult_norm = cumresult / max(cumresult(:));

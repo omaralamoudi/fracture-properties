@@ -21,9 +21,9 @@ data2 = loadImageSeq(data(i).path.pc,'.tif');
 inputimage = data2.image;
 
 % s = 1:2:7;
-s = 3;
+s = 0.5;
 fracAps = 2*s;
-gamma = 0.7;
+gamma = .9;
 
 %% mshff_prototype
 tt = tic;
