@@ -25,7 +25,7 @@ result.Cs.gamma = gamma;
 result.voxel.description = 'result per voxel';
 
 tpb = TextProgressBar('mshff kernel computation');
-hessianKernels = getHessianKernels_prototype(s,imgdims);
+hessianKernels = getHessianKernels_prototype(s,imgdims,9,2);
 tpb.update(1);
 
 filteringPB = TextProgressBar('mshff image filtering','.');

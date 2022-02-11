@@ -9,9 +9,9 @@ data2 = loadImageSeq(data(i).path.pc,'.tif');
 % data4 = uiLoadImageSeq('.tif');
 % inputimage = data4.image(:,:,5:20);
 inputimage = data2.image;
-
-s = 1:2:7;
-fracAps = 2*s;
+loadSyntheticImageParams;
+s = fracAps/2;
+s = s(3);
 gamma = 0.7;
 
 %%
@@ -19,22 +19,21 @@ tt = tic;
 FracMapCumResult = zeros(size(inputimage));
 for i = 1:length(s)
     FracMapResult(i) = FracMap_prototype(inputimage,fracAps(i),s(i),gamma);
-    FracMapCumResult = FracMapCumResult + FracMapResult(i).Cs.image; 
+    FracMapCumResult = FracMapCumResult + FracMapResult(i).As.image; 
 end
-FracMapCumResult_norm = FracMapCumResult / max(FracMapCumResult(:));
+FracMapCumResult_norm = FracMapCumResult;% / max(FracMapCumResult(:));
 TT = toc(tt);
 disp(['FracMap finished in: ',num2str(TT),' secs']);
 
 %%
 tt = tic;
-s = fracAps/2;
 mshffCumResult = zeros(size(inputimage));
 for i = 1:length(s)
     svalue = ones(1,ndims(inputimage)) * s(i);
     mshffResult(i) = mshff_prototype(inputimage,svalue,gamma);
-    mshffCumResult = mshffCumResult + mshffResult(i).Cs.image; 
+    mshffCumResult = mshffCumResult + mshffResult(i).As.image; 
 end
-mshffCumResult_norm = mshffCumResult / max(mshffCumResult(:));
+mshffCumResult_norm = mshffCumResult;% / max(mshffCumResult(:));
 TT = toc(tt);
 disp(['mshff finished in: ',num2str(TT),' secs']);
 
