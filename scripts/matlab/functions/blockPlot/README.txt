@@ -1,0 +1,1 @@
+cite as: Tripp (2022). blockPlot - A block-like 3D drawer for binary masks (https://www.mathworks.com/matlabcentral/fileexchange/31988-blockplot-a-block-like-3d-drawer-for-binary-masks), MATLAB Central File Exchange. Retrieved February 18, 2022.
