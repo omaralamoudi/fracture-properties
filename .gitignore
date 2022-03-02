@@ -16,6 +16,8 @@
 
 # Matlab files, especially temporary files *.*~
 *.m~
+## .mat data files, they are usually very large
+*.mat
 
 # Image files
 *.tif
