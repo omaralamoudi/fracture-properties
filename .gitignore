@@ -52,3 +52,4 @@ data/Bland*
 
 # Blob3D data file
 *.sav
+*.dat
