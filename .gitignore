@@ -18,6 +18,8 @@
 *.m~
 ## .mat data files, they are usually very large
 *.mat
+# figure files, they are usually large
+*.fig
 
 # Image files
 *.tif
