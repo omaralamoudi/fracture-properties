@@ -1,0 +1,15 @@
+Fit for Plot of 8bitJPG: Data Set 1: (95 data points)
+Formula: y = a + (b-a)*exp(-(x-c)*(x-c)/(2*d*d))
+Macro code: y = a+(b-a)*Math.exp(-(x-c)*(x-c)/(2*d*d))
+Status: Success
+Number of completed minimizations: 2
+Number of iterations: 136 (max: 6000)
+Time: 1 ms
+Sum of residuals squared: 333.00895
+Standard deviation: 1.88219
+R^2: 0.83397
+Parameters:
+	a = 42.86792
+	b = 15.97312
+	c = 1.54824
+	d = 0.045798
