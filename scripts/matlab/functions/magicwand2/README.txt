@@ -1,0 +1,1 @@
+cite as: Yoram Tal (2022). magicwand2 (https://www.mathworks.com/matlabcentral/fileexchange/6034-magicwand2), MATLAB Central File Exchange. Retrieved February 18, 2022.

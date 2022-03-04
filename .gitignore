@@ -16,6 +16,10 @@
 
 # Matlab files, especially temporary files *.*~
 *.m~
+## .mat data files, they are usually very large
+*.mat
+# figure files, they are usually large
+*.fig
 
 # Image files
 *.tif
@@ -47,3 +51,7 @@ apps/*
 
 # large data folders
 data/Bland*
+
+# Blob3D data file
+*.sav
+*.dat

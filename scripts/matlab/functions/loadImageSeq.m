@@ -46,6 +46,10 @@ l = length(lst);
 while( i < l+1)
     if (~endsWith(lst(i).name,ext))
         lst(i) = [];
+        % since the item was removed, the list of items are shifted upward
+        % by one, so we need to re-evaluate this statement for the same
+        % value of 1 once more
+        i = i - 1;
         l = l - 1;
     end
     i = i + 1;
