@@ -79,7 +79,10 @@ elseif kernels.dims == 3
         c(i).Location = 'southoutside';
     end
     linkaxes(axSlices);
-    if ~strcmp(supertitle,''), suptitle(supertitle);end
+    if ~strcmp(supertitle,'') 
+        txt = sgtitle(supertitle);
+        txt.Interpreter = 'latex';
+    end
     % 3d shapes
     fig2 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
     t = tiledlayout(kernels.dims,kernels.dims);
@@ -124,7 +127,10 @@ elseif kernels.dims == 3
         axis equal tight
     end
     linkedAxes3d = linkprop(ax3d,'View'); % I need the handle to the linked properties for this to work as expected. See: https://www.mathworks.com/matlabcentral/answers/408254-linkprop-not-persisting-after-changing-scope
-    if ~strcmp(supertitle,''), suptitle(supertitle);end
+    if ~strcmp(supertitle,'') 
+        txt = sgtitle(supertitle);
+        txt.Interpreter = 'latex';
+    end
     rotate3d on
 end
 end
