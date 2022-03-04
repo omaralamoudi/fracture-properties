@@ -11,9 +11,9 @@ close all; clearvars;
 sx = 3;
 sy = 5;
 sz = 9;
-s  = [sx, sy, sz];
+% s  = [sx, sy, sz];
 % s = [3 3 3];
-% s  = [sx, sy];
+s  = [sx, sy];
 kernel_multiplier = 9;
 k = getHessianKernels(s);
 kp = getHessianKernels_prototype(s);
@@ -51,7 +51,10 @@ if kernels.dims == 2
     end
     linkaxes(ax);
     linkedAxes3d = gobjects();
-    if ~strcmp(supertitle,''), suptitle(supertitle);end
+    if ~strcmp(supertitle,'') 
+        txt = sgtitle(supertitle);
+        txt.Interpreter = 'latex';
+    end
 elseif kernels.dims == 3
     % 2D slice
     fig3 = figure('Position',[screenSize(3)*.05 screenSize(4)*.05 screenSize(3)*.50 screenSize(4)*.85]); %#ok<NASGU>
