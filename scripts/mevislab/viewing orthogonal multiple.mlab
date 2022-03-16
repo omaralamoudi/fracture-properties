@@ -9,7 +9,7 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "186 -954 426 525"
+        geometry = "1135 311 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
@@ -17,9 +17,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = Compose3DFrom2DFiles
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped/"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped/0_degree_cropped_619.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped//0_degree_cropped_619.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -78,7 +78,7 @@ module OrthoView2D {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "-880 -1387 1280 1387"
+        geometry = "112 136 960 997"
         sizeHint = "400 436"
         wasOpen = no
       }
@@ -89,47 +89,113 @@ module OrthoView2D {
     inventorInputOn = TRUE
     inventorOutputOn = FALSE
     synchronizePosition = TRUE
-    layout = LAYOUT_CUBE_EQUAL
-    filterMode = FILTER_LINEAR
+    layout = LAYOUT_CUBE
+    filterMode = FILTER_LINEAR_POSTCLASS
     synchronizeZoom = TRUE
-    synchronizePanning = FALSE
+    synchronizePanning = TRUE
     useGlobalInputImage = TRUE
     snapToCenter = FALSE
     alternCubeLayout = FALSE
     timePoint = 0
     useManagedInteraction = FALSE
     enableSlicing = TRUE
-    borderOn = TRUE
-    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 255
-    grayCenter = 127.5
+    borderOn = FALSE
+    borderColor = "0 0 0"
+    grayWidth = 70.1252288818359
+    grayCenter = 85.4249649047852
     annotationOn = TRUE
-    annotationSizeMode = ANNO_SHOW_DETAILED
-    annotationFontSize = ANNO_SIZE_AUTO
+    annotationSizeMode = ANNO_SHOW_SHORT
+    annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "6.36249971389771 -7.26785087585449 -6.76318740844727"
-    coloredMode = FALSE
+    worldPosition = "6.52742004394531 -5.52594566345215 -4.55324506759644"
+    coloredMode = TRUE
+  }
+}
+module FileDirectory {
+  internal  {
+    frame = "61 789 152 72"
+    moduleGroupName = ""
+    showNetworkPanel = true
+    windows  {
+      window _default {
+        geometry = "723 420 1197 566"
+        sizeHint = "517 566"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = ProjectDirectory
+    rootPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    recursive = FALSE
+    maxRecursionDepth = -1
+    fileType = Dirs
+    joinImagePairs = FALSE
+    include = ""
+    includeRegExp = FALSE
+    predefined = void
+    exclude = ""
+    excludeRegExp = FALSE
+    ignoreCase = TRUE
+    dirMode = Absolute
+  }
+}
+module MakeName {
+  internal  {
+    frame = "361 909 96 72"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "132 188 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = InputImage
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    extensions = "\\.[^.]*"
+    extRegExp = TRUE
+    outputTemplate = $n/data/rotary/images_FL-I/processed/$S/$T/
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped/"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = 1_cropped
+    userStringT = 0_degree_cropped
+    trimSpaces = TRUE
   }
 }
 module Compose3DFrom2DFiles {
   internal  {
-    frame = "741 917 168 56"
+    frame = "861 917 168 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "186 -954 426 525"
+        geometry = "1135 311 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = Compose3DFrom2DFiles1
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/6_degree_cropped"
+    instanceName = Compose3DFrom2DFiles2
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped/"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/6_degree_cropped/6_degree_cropped_619.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped//18_degree_cropped_619.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -145,7 +211,7 @@ module Compose3DFrom2DFiles {
 }
 module Bypass {
   internal  {
-    frame = "769 717 112 56"
+    frame = "889 717 112 56"
     moduleGroupName = ""
     showNetworkPanel = true
   }
@@ -156,7 +222,7 @@ module Bypass {
 }
 module SetWorldMatrix {
   internal  {
-    frame = "773 821 120 56"
+    frame = "893 821 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -184,11 +250,11 @@ module SetWorldMatrix {
 }
 module OrthoView2D {
   internal  {
-    frame = "789 597 120 56"
+    frame = "909 597 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "400 -1387 1280 1387"
+        geometry = "960 53 960 997"
         sizeHint = "400 436"
         wasOpen = no
       }
@@ -197,7 +263,7 @@ module OrthoView2D {
   fields  {
     instanceName = OrthoView2D1
     inventorInputOn = TRUE
-    inventorOutputOn = FALSE
+    inventorOutputOn = TRUE
     synchronizePosition = TRUE
     layout = LAYOUT_CUBE_EQUAL
     filterMode = FILTER_LINEAR
@@ -210,36 +276,73 @@ module OrthoView2D {
     useManagedInteraction = FALSE
     enableSlicing = TRUE
     borderOn = TRUE
-    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 255
-    grayCenter = 127.5
+    borderColor = "0 0 0"
+    grayWidth = 70.1252288818359
+    grayCenter = 85.4249649047852
     annotationOn = TRUE
-    annotationSizeMode = ANNO_SHOW_DETAILED
-    annotationFontSize = ANNO_SIZE_AUTO
+    annotationSizeMode = ANNO_SHOW_SHORT
+    annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "6.55547285079956 -7.43598699569702 -6.90243339538574"
-    coloredMode = FALSE
+    worldPosition = "6.52742004394531 -5.52594566345215 -4.55324506759644"
+    coloredMode = TRUE
+  }
+}
+module MakeName {
+  internal  {
+    frame = "737 917 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "832 643 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = InputImage2
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    extensions = "\\.[^.]*"
+    extRegExp = TRUE
+    outputTemplate = $n/data/rotary/images_FL-I/processed/$S/$T/
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped/"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = 1_cropped
+    userStringT = 18_degree_cropped
+    trimSpaces = TRUE
   }
 }
 module Compose3DFrom2DFiles {
   internal  {
-    frame = "989 917 168 56"
+    frame = "1501 949 168 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "186 -954 426 525"
+        geometry = "1135 311 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = Compose3DFrom2DFiles2
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped"
-    searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped/18_degree_cropped_619.tif"
+    instanceName = Compose3DFrom2DFiles1
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG/"
+    searchPattern = "**.jpg*"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG//7A_1873.jpg"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -255,7 +358,7 @@ module Compose3DFrom2DFiles {
 }
 module Bypass {
   internal  {
-    frame = "1017 717 112 56"
+    frame = "1529 749 112 56"
     moduleGroupName = ""
     showNetworkPanel = true
   }
@@ -266,11 +369,11 @@ module Bypass {
 }
 module SetWorldMatrix {
   internal  {
-    frame = "1021 821 120 56"
+    frame = "1533 853 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "628 -830 527 345"
+        geometry = "725 455 527 345"
         sizeHint = "468 345"
         wasOpen = no
       }
@@ -280,7 +383,7 @@ module SetWorldMatrix {
     instanceName = SetWorldMatrix2
     center = "0 0 0"
     scaleOrientation = "0 0 1 0"
-    scale = "0.025 0.025 0.025"
+    scale = "0.033 0.033 0.033"
     rotation = "1 0 0 3"
     translation = "0 0 0"
     sourceUsage = Ignore
@@ -294,12 +397,17 @@ module SetWorldMatrix {
 }
 module OrthoView2D {
   internal  {
-    frame = "1037 597 120 56"
+    frame = "1549 629 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "1680 -1387 1280 1387"
+        geometry = "84 182 826 997"
         sizeHint = "400 436"
+        wasOpen = no
+      }
+      window Settings {
+        geometry = "771 371 377 513"
+        sizeHint = "377 513"
         wasOpen = no
       }
     }
@@ -307,154 +415,86 @@ module OrthoView2D {
   fields  {
     instanceName = OrthoView2D2
     inventorInputOn = TRUE
-    inventorOutputOn = FALSE
+    inventorOutputOn = TRUE
     synchronizePosition = TRUE
-    layout = LAYOUT_CUBE_EQUAL
-    filterMode = FILTER_LINEAR
+    layout = LAYOUT_CUBE
+    filterMode = FILTER_LINEAR_POSTCLASS
     synchronizeZoom = TRUE
-    synchronizePanning = FALSE
+    synchronizePanning = TRUE
     useGlobalInputImage = TRUE
     snapToCenter = FALSE
     alternCubeLayout = FALSE
     timePoint = 0
     useManagedInteraction = FALSE
     enableSlicing = TRUE
-    borderOn = TRUE
-    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 255
-    grayCenter = 127.5
+    borderOn = FALSE
+    borderColor = "0 0 0"
+    grayWidth = 50
+    grayCenter = 45
     annotationOn = TRUE
-    annotationSizeMode = ANNO_SHOW_DETAILED
-    annotationFontSize = ANNO_SIZE_AUTO
+    annotationSizeMode = ANNO_SHOW_SHORT
+    annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "6.37081146240234 -6.68308210372925 -7.28954887390137"
-    coloredMode = FALSE
+    worldPosition = "13.0977840423584 -17.8947792053223 -27.7993907928467"
+    coloredMode = TRUE
   }
 }
-module Compose3DFrom2DFiles {
+module MakeName {
   internal  {
-    frame = "1197 917 168 56"
+    frame = "1369 949 96 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "186 -954 426 525"
-        sizeHint = "426 525"
+        geometry = "132 188 518 443"
+        sizeHint = "509 443"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = Compose3DFrom2DFiles3
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/24_degree_cropped"
-    searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/24_degree_cropped/24_degree_cropped_619.tif"
-    readRaw = FALSE
-    rawX = 1
-    rawY = 1
-    rawZ = 1
-    rawC = 1
-    rawT = 1
-    rawU = 1
-    rawDataType = "unsigned int8"
-    rawByteOrder = LittleEndian
-    rawPlanarConfig = Contiguous
-    rawDataOffset = 0
-  }
-}
-module Bypass {
-  internal  {
-    frame = "1225 717 112 56"
-    moduleGroupName = ""
-    showNetworkPanel = true
-  }
-  fields  {
-    instanceName = Bypass3
-    noBypass = FALSE
-  }
-}
-module SetWorldMatrix {
-  internal  {
-    frame = "1229 821 120 56"
-    moduleGroupName = ""
-    windows  {
-      window _default {
-        geometry = "628 -830 527 345"
-        sizeHint = "468 345"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = SetWorldMatrix3
-    center = "0 0 0"
-    scaleOrientation = "0 0 1 0"
-    scale = "0.025 0.025 0.025"
-    rotation = "1 0 0 3"
-    translation = "0 0 0"
-    sourceUsage = Ignore
-    referenceUsage = Ignore
-    elementaryUsage = Forward
-    invertResult = FALSE
-    setCInfo = FALSE
-    setTInfo = FALSE
-    setUInfo = FALSE
-  }
-}
-module OrthoView2D {
-  internal  {
-    frame = "1245 597 120 56"
-    moduleGroupName = ""
-    windows  {
-      window _default {
-        geometry = "2960 -1387 1280 1387"
-        sizeHint = "400 436"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = OrthoView2D3
-    inventorInputOn = TRUE
-    inventorOutputOn = FALSE
-    synchronizePosition = TRUE
-    layout = LAYOUT_CUBE_EQUAL
-    filterMode = FILTER_LINEAR
-    synchronizeZoom = TRUE
-    synchronizePanning = FALSE
-    useGlobalInputImage = TRUE
-    snapToCenter = FALSE
-    alternCubeLayout = FALSE
-    timePoint = 0
-    useManagedInteraction = FALSE
-    enableSlicing = TRUE
-    borderOn = TRUE
-    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 255
-    grayCenter = 127.5
-    annotationOn = TRUE
-    annotationSizeMode = ANNO_SHOW_DETAILED
-    annotationFontSize = ANNO_SIZE_AUTO
-    valueHighPrecision = TRUE
-    annoCoords = Voxel
-    showCurrentPos = TRUE
-    worldPosition = "6.23231554031372 -7.06084394454956 -7.28233051300049"
-    coloredMode = FALSE
+    instanceName = MakeName1
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    extensions = "\\.[^.]*"
+    extRegExp = FALSE
+    outputTemplate = $n/data/Bland/$S/$T/
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG/"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = 7A
+    userStringT = 8bitJPG
+    trimSpaces = TRUE
   }
 }
 connections  {
+  Compose3DFrom2DFiles.dirPath = InputImage.outputName
   Bypass.input0 = SetWorldMatrix.output0
   SetWorldMatrix.input0 = Compose3DFrom2DFiles.output0
   OrthoView2D.image = Bypass.output0
+  InputImage.inputName = ProjectDirectory.rootPath
+  Compose3DFrom2DFiles2.dirPath = InputImage2.outputName
   Bypass1.input0 = SetWorldMatrix1.output0
-  SetWorldMatrix1.input0 = Compose3DFrom2DFiles1.output0
+  SetWorldMatrix1.input0 = Compose3DFrom2DFiles2.output0
   OrthoView2D1.image = Bypass1.output0
+  OrthoView2D1.grayWidth = OrthoView2D.grayWidth
+  OrthoView2D1.grayCenter = OrthoView2D.grayCenter
+  OrthoView2D1.worldPosition = OrthoView2D.worldPosition
+  InputImage2.inputName = ProjectDirectory.rootPath
+  Compose3DFrom2DFiles1.dirPath = MakeName1.outputName
   Bypass2.input0 = SetWorldMatrix2.output0
-  SetWorldMatrix2.input0 = Compose3DFrom2DFiles2.output0
+  SetWorldMatrix2.input0 = Compose3DFrom2DFiles1.output0
   OrthoView2D2.image = Bypass2.output0
-  Bypass3.input0 = SetWorldMatrix3.output0
-  SetWorldMatrix3.input0 = Compose3DFrom2DFiles3.output0
-  OrthoView2D3.image = Bypass3.output0
 }
 networkModel = ""
