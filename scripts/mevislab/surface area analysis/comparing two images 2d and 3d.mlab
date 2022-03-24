@@ -15,7 +15,7 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "-522 -805 426 525"
+        geometry = "746 365 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
@@ -23,9 +23,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = 18_degreeVolume
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped2"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/18_degree_cropped2/18_degree_cropped2_619.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/Output/Hessian_18_degree_cropped2_601.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -135,10 +135,10 @@ module SoDiagram2D {
   }
   fields  {
     instanceName = SoDiagram2D
-    minX = 0.0125
-    maxX = 14.7375
-    minY = 39543
-    maxY = 50224
+    minX = 1
+    maxX = 5.49453783035278
+    minY = 0
+    maxY = 51776
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -220,9 +220,9 @@ module View2D {
         wasOpen = no
       }
       window _default {
-        geometry = "1835 -680 695 680"
+        geometry = "759 427 400 400"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -231,7 +231,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 273
+    startSlice = 0
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -256,8 +256,8 @@ module View2D {
     sliceOrigin = "-1.46849060058594 -7.77928161621094"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 55049.3984375
-    lutWidth = 30473.76171875
+    lutCenter = 1
+    lutWidth = 1
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -291,13 +291,13 @@ module ProfileCurve {
     instanceName = ProfileCurve1
     axis = X
     posX = 0
-    posY = 289
-    posZ = 273
+    posY = 7
+    posZ = 6
     posC = 0
     posT = 0
     posU = 0
-    length = 590
-    referencePosition = 219
+    length = 0
+    referencePosition = 5
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
     xMode = World
@@ -376,13 +376,13 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert
-    voxelX = 219.781513214111
-    voxelY = 289.839057922363
-    voxelZ = 273.500003814697
+    voxelX = 5.49453783035278
+    voxelY = 7.24597644805908
+    voxelZ = 6.83750009536743
     worldX = 5.49453783035278
     worldY = 7.24597644805908
     worldZ = 6.83750009536743
-    voxelPos = "219.781513214111 289.839057922363 273.500003814697"
+    voxelPos = "5.49453783035278 7.24597644805908 6.83750009536743"
     worldPos = "5.49453783035278 7.24597644805908 6.83750009536743"
     voxelMode = FALSE
     worldMode = TRUE
@@ -413,9 +413,9 @@ module SoRenderArea {
     moduleGroupName = "Profile View 2"
     windows  {
       window _viewer {
-        geometry = "2532 -680 1280 680"
+        geometry = "759 427 400 400"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -462,8 +462,8 @@ module CurveCursor {
   fields  {
     instanceName = CurveCursor
     posX = 5.49453783035278
-    posY = 47587.6849403381
-    maxSeriesIndex = 0
+    posY = 0
+    maxSeriesIndex = -1
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
@@ -471,7 +471,7 @@ module CurveCursor {
     maxX = 14.7375
     minY = 40342
     maxY = 51776
-    autoRange = TRUE
+    autoRange = FALSE
     cursorX = TRUE
     cursorY = TRUE
     curveStyle = 8
@@ -900,10 +900,10 @@ module SoDiagram2D {
   }
   fields  {
     instanceName = SoDiagram2D1
-    minX = 0.0125
-    maxX = 14.7375
-    minY = 39543
-    maxY = 50224
+    minX = 1
+    maxX = 5.49453783035278
+    minY = 0
+    maxY = 51776
     scaleX = 1
     scaleY = 1
     autoRangeX = TRUE
@@ -985,9 +985,9 @@ module View2D {
         wasOpen = no
       }
       window _default {
-        geometry = "1836 -1387 695 680"
+        geometry = "759 427 400 400"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -996,7 +996,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = TRUE
     view2DExtensionsOn = TRUE
-    startSlice = 273
+    startSlice = 0
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -1021,8 +1021,8 @@ module View2D {
     sliceOrigin = "0.277071833610535 4.4396538734436"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 55049.3984375
-    lutWidth = 30473.76171875
+    lutCenter = 1
+    lutWidth = 1
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -1056,13 +1056,13 @@ module ProfileCurve {
     instanceName = ProfileCurve2
     axis = X
     posX = 0
-    posY = 289
-    posZ = 273
+    posY = 7
+    posZ = 6
     posC = 0
     posT = 0
     posU = 0
-    length = 590
-    referencePosition = 219
+    length = 0
+    referencePosition = 5
     referenceEnable = FALSE
     useImageMinMaxForYRange = FALSE
     xMode = World
@@ -1141,13 +1141,13 @@ module WorldVoxelConvert {
   }
   fields  {
     instanceName = WorldVoxelConvert1
-    voxelX = 219.781513214111
-    voxelY = 289.839057922363
-    voxelZ = 273.500003814697
+    voxelX = 5.49453783035278
+    voxelY = 7.24597644805908
+    voxelZ = 6.83750009536743
     worldX = 5.49453783035278
     worldY = 7.24597644805908
     worldZ = 6.83750009536743
-    voxelPos = "219.781513214111 289.839057922363 273.500003814697"
+    voxelPos = "5.49453783035278 7.24597644805908 6.83750009536743"
     worldPos = "5.49453783035278 7.24597644805908 6.83750009536743"
     voxelMode = FALSE
     worldMode = TRUE
@@ -1177,9 +1177,9 @@ module SoRenderArea {
     moduleGroupName = "Profile View 1"
     windows  {
       window _viewer {
-        geometry = "2532 -1387 1280 680"
+        geometry = "759 427 400 400"
         sizeHint = "400 400"
-        wasOpen = yes
+        wasOpen = no
       }
     }
   }
@@ -1226,8 +1226,8 @@ module CurveCursor {
   fields  {
     instanceName = CurveCursor1
     posX = 5.49453783035278
-    posY = 46480.4960784912
-    maxSeriesIndex = 0
+    posY = 0
+    maxSeriesIndex = -1
     seriesIndex = 0
     interpolate = TRUE
     autoPosY = TRUE
@@ -1235,7 +1235,7 @@ module CurveCursor {
     maxX = 14.7375
     minY = 39543
     maxY = 50224
-    autoRange = TRUE
+    autoRange = FALSE
     cursorX = TRUE
     cursorY = TRUE
     curveStyle = 8
@@ -1558,7 +1558,7 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "151 -935 426 525"
+        geometry = "746 365 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
@@ -1566,9 +1566,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = 0_degreeVolume
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped2"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/input"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped2/0_degree_cropped2_619.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/using Voorn-2013/runs/comparing 0_degree and 18_degree/18_degree/root/input/18_degree_cropped2_619.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -1640,8 +1640,8 @@ module SyncFloat {
   }
   fields  {
     instanceName = Sync_Slices
-    float1 = 273
-    float2 = 273
+    float1 = 0
+    float2 = 0
     epsilon = 9.9999997e-05
   }
 }
@@ -1926,7 +1926,7 @@ module Bypass {
   }
   fields  {
     instanceName = Bypass
-    noBypass = FALSE
+    noBypass = TRUE
   }
 }
 module Bypass {
@@ -1937,7 +1937,7 @@ module Bypass {
   }
   fields  {
     instanceName = Bypass1
-    noBypass = FALSE
+    noBypass = TRUE
   }
 }
 module SoExaminerViewer {
@@ -2033,7 +2033,7 @@ module OrthoView2D {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "979 -1387 701 680"
+        geometry = "759 409 400 436"
         sizeHint = "400 436"
         wasOpen = no
       }
@@ -2064,7 +2064,48 @@ module OrthoView2D {
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "7.33750009536743 7.79874277114868 5.94654083251953"
+    worldPosition = "7.45025491714478 8.12755107879639 0.0125000001862645"
+    coloredMode = FALSE
+  }
+}
+module OrthoView2D {
+  internal  {
+    frame = "-1067 917 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "649 245 1069 850"
+        sizeHint = "400 436"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoView2D1
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    synchronizePosition = TRUE
+    layout = LAYOUT_CUBE_EQUAL
+    filterMode = FILTER_LINEAR
+    synchronizeZoom = TRUE
+    synchronizePanning = FALSE
+    useGlobalInputImage = TRUE
+    snapToCenter = FALSE
+    alternCubeLayout = FALSE
+    timePoint = 0
+    useManagedInteraction = FALSE
+    enableSlicing = TRUE
+    borderOn = TRUE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    grayWidth = 0.020000483840704
+    grayCenter = 0.00499999988824129
+    annotationOn = TRUE
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationFontSize = ANNO_SIZE_AUTO
+    valueHighPrecision = TRUE
+    annoCoords = Voxel
+    showCurrentPos = TRUE
+    worldPosition = "6.9558310508728 7.13750028610229 7.35434293746948"
     coloredMode = FALSE
   }
 }
@@ -2184,6 +2225,7 @@ connections  {
   SoExaminerViewer1.focalDistance = SoExaminerViewer.focalDistance
   SoExaminerViewer1.children = 18_degree_IsoSurface.outScene
   OrthoView2D.image = SetWorldMatrix1.output0
+  OrthoView2D1.image = SetWorldMatrix3.output0
 }
 networkModel  {
   parentItems  {
