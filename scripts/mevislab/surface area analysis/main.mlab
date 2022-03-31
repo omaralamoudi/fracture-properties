@@ -99,14 +99,14 @@ module SoWEMRenderer {
     faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
     faceAlphaValue = 0.75
     faceShininessValue = 1
-    primitiveValueLists = LUT
+    primitiveValueLists = ""
     selectedPrimitiveValueList = LUT
     selectedPrimitiveValueAlphaList = LUT
     primitiveValueListValid = TRUE
     primitiveValueListAlphaValid = TRUE
     overwriteAlphaWithPVL = FALSE
     wemPatchToRender = -1
-    maxWEMPatchIndex = 0
+    maxWEMPatchIndex = -1
     cachePatches = FALSE
     sendAdjacency = FALSE
     hitModifierKey = AllModifiersMask
@@ -896,14 +896,14 @@ module SoWEMRenderer {
     faceSpecularColor = "0.0666669979691505 0.0666669979691505 0.0666669979691505"
     faceAlphaValue = 0.75
     faceShininessValue = 1
-    primitiveValueLists = LUT
+    primitiveValueLists = ""
     selectedPrimitiveValueList = LUT
     selectedPrimitiveValueAlphaList = LUT
     primitiveValueListValid = TRUE
     primitiveValueListAlphaValid = TRUE
     overwriteAlphaWithPVL = FALSE
     wemPatchToRender = -1
-    maxWEMPatchIndex = 0
+    maxWEMPatchIndex = -1
     cachePatches = FALSE
     sendAdjacency = FALSE
     hitModifierKey = AllModifiersMask
@@ -975,7 +975,7 @@ module Compose3DFrom2DFiles {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "52 -934 426 525"
+        geometry = "746 365 426 525"
         sizeHint = "426 525"
         wasOpen = no
       }
@@ -983,9 +983,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = Compose3DFrom2DFiles2
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/Output"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped"
     searchPattern = "**.tif*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/Fracture Detection and Property Measurements/using Voorn-2013/root/Output/Hessian_12_slcies0586.tif"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/rotary/images_FL-I/processed/1_cropped/0_degree_cropped/0_degree_cropped_619.tif"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -2112,7 +2112,7 @@ module Bypass {
   }
   fields  {
     instanceName = Bypass
-    noBypass = FALSE
+    noBypass = TRUE
   }
 }
 module Bypass {
@@ -2123,7 +2123,7 @@ module Bypass {
   }
   fields  {
     instanceName = Bypass1
-    noBypass = FALSE
+    noBypass = TRUE
   }
 }
 module Bypass {
@@ -2471,7 +2471,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "196.220947265625 -110.503356933594 466.939361572266"
-    camOrientation = "-0.668931245803833 -0.079871341586113 -0.739020645618439 5.42545080184937"
+    camOrientation = "-0.668931245803833 -0.079871341586113 -0.739020586013794 5.42545080184937"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 594.28955
     camNear = 289.5795
@@ -2612,7 +2612,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "0.207700908184052 -0.93541419506073 2.4311089515686"
-    camOrientation = "-0.500283718109131 0.057033896446228 -0.863981127738953 5.52381038665771"
+    camOrientation = "-0.500283718109131 0.0570339001715183 -0.863981127738953 5.52381038665771"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 3.6131265
     camNear = 1.6131265

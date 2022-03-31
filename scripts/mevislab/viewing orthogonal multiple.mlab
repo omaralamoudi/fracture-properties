@@ -78,14 +78,14 @@ module OrthoView2D {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "112 136 960 997"
+        geometry = "882 134 960 997"
         sizeHint = "400 436"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = OrthoView2D
+    instanceName = 0_degree_OrthoView2D
     inventorInputOn = TRUE
     inventorOutputOn = FALSE
     synchronizePosition = TRUE
@@ -101,15 +101,15 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = FALSE
     borderColor = "0 0 0"
-    grayWidth = 70.1252288818359
-    grayCenter = 85.4249649047852
-    annotationOn = TRUE
+    grayWidth = 47.1750106811523
+    grayCenter = 79.4250335693359
+    annotationOn = FALSE
     annotationSizeMode = ANNO_SHOW_SHORT
     annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "6.52742004394531 -5.52594566345215 -4.55324506759644"
+    worldPosition = "6.26038885116577 -6.97821855545044 -4.64926242828369"
     coloredMode = TRUE
   }
 }
@@ -155,7 +155,7 @@ module MakeName {
     }
   }
   fields  {
-    instanceName = InputImage
+    instanceName = 0_degree
     inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
     extensions = "\\.[^.]*"
     extRegExp = TRUE
@@ -209,7 +209,7 @@ module Compose3DFrom2DFiles {
     rawDataOffset = 0
   }
 }
-module Bypass {
+module FileDirectory {
   internal  {
     frame = "889 717 112 56"
     moduleGroupName = ""
@@ -226,46 +226,46 @@ module SetWorldMatrix {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "628 -830 527 345"
-        sizeHint = "468 345"
+        geometry = "723 420 1197 566"
+        sizeHint = "517 566"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = SetWorldMatrix1
-    center = "0 0 0"
-    scaleOrientation = "0 0 1 0"
-    scale = "0.025 0.025 0.025"
-    rotation = "1 0 0 3"
-    translation = "0 0 0"
-    sourceUsage = Ignore
-    referenceUsage = Ignore
-    elementaryUsage = Forward
-    invertResult = FALSE
-    setCInfo = FALSE
-    setTInfo = FALSE
-    setUInfo = FALSE
+    instanceName = ProjectDirectory
+    rootPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    recursive = FALSE
+    maxRecursionDepth = -1
+    fileType = Dirs
+    joinImagePairs = FALSE
+    include = ""
+    includeRegExp = FALSE
+    predefined = void
+    exclude = ""
+    excludeRegExp = FALSE
+    ignoreCase = TRUE
+    dirMode = Absolute
   }
 }
-module OrthoView2D {
+module MakeName {
   internal  {
     frame = "909 597 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "960 53 960 997"
+        geometry = "41 53 960 997"
         sizeHint = "400 436"
         wasOpen = no
       }
     }
   }
   fields  {
-    instanceName = OrthoView2D1
-    inventorInputOn = TRUE
+    instanceName = 18_degree_OrthoView2D1
+    inventorInputOn = FALSE
     inventorOutputOn = TRUE
     synchronizePosition = TRUE
-    layout = LAYOUT_CUBE_EQUAL
+    layout = LAYOUT_CUBE
     filterMode = FILTER_LINEAR
     synchronizeZoom = TRUE
     synchronizePanning = FALSE
@@ -277,15 +277,15 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = TRUE
     borderColor = "0 0 0"
-    grayWidth = 70.1252288818359
-    grayCenter = 85.4249649047852
-    annotationOn = TRUE
+    grayWidth = 47.1750106811523
+    grayCenter = 79.4250335693359
+    annotationOn = FALSE
     annotationSizeMode = ANNO_SHOW_SHORT
     annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "6.52742004394531 -5.52594566345215 -4.55324506759644"
+    worldPosition = "6.26038885116577 -6.97821855545044 -4.64926242828369"
     coloredMode = TRUE
   }
 }
@@ -302,7 +302,7 @@ module MakeName {
     }
   }
   fields  {
-    instanceName = InputImage2
+    instanceName = 18_degree
     inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
     extensions = "\\.[^.]*"
     extRegExp = TRUE
@@ -340,9 +340,9 @@ module Compose3DFrom2DFiles {
   }
   fields  {
     instanceName = Compose3DFrom2DFiles1
-    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG/"
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A_fractured/8bitJPG/"
     searchPattern = "**.jpg*"
-    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG//7A_1873.jpg"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A_fractured/8bitJPG//7A_fractured_1911.jpg"
     readRaw = FALSE
     rawX = 1
     rawY = 1
@@ -363,13 +363,334 @@ module Bypass {
     showNetworkPanel = true
   }
   fields  {
-    instanceName = Bypass2
+    instanceName = Bypass1
     noBypass = FALSE
   }
 }
 module SetWorldMatrix {
   internal  {
     frame = "1533 853 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "725 455 527 345"
+        sizeHint = "468 345"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = SetWorldMatrix1
+    center = "0 0 0"
+    scaleOrientation = "0 0 1 0"
+    scale = "0.033 0.033 0.033"
+    rotation = "1 0 0 3"
+    translation = "0 0 0"
+    sourceUsage = Ignore
+    referenceUsage = Ignore
+    elementaryUsage = Forward
+    invertResult = FALSE
+    setCInfo = FALSE
+    setTInfo = FALSE
+    setUInfo = FALSE
+  }
+}
+module OrthoView2D {
+  internal  {
+    frame = "1525 509 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "973 173 826 997"
+        sizeHint = "400 436"
+        wasOpen = no
+      }
+      window Settings {
+        geometry = "771 371 377 513"
+        sizeHint = "377 513"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoView2D1
+    inventorInputOn = TRUE
+    inventorOutputOn = TRUE
+    synchronizePosition = TRUE
+    layout = LAYOUT_CUBE
+    filterMode = FILTER_LINEAR_POSTCLASS
+    synchronizeZoom = TRUE
+    synchronizePanning = TRUE
+    useGlobalInputImage = TRUE
+    snapToCenter = FALSE
+    alternCubeLayout = FALSE
+    timePoint = 0
+    useManagedInteraction = FALSE
+    enableSlicing = TRUE
+    borderOn = FALSE
+    borderColor = "0 0 0"
+    grayWidth = 45.9000015258789
+    grayCenter = 44.625
+    annotationOn = FALSE
+    annotationSizeMode = ANNO_SHOW_SHORT
+    annotationFontSize = ANNO_SIZE_LARGE
+    valueHighPrecision = TRUE
+    annoCoords = Voxel
+    showCurrentPos = TRUE
+    worldPosition = "10.8359632492065 -16.6953525543213 -24.6370067596436"
+    coloredMode = TRUE
+  }
+}
+module MakeName {
+  internal  {
+    frame = "1369 949 96 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "132 188 518 443"
+        sizeHint = "509 443"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = MakeName1
+    inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
+    extensions = "\\.[^.]*"
+    extRegExp = FALSE
+    outputTemplate = $n/data/Bland/$S/$T/
+    outputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A_fractured/8bitJPG/"
+    predefined = void
+    dicomTagA = PatientsName
+    dicomTagB = PatientID
+    dicomTagC = InstitutionName
+    dicomTagD = Modality
+    dicomTagE = AcquisitionDate
+    dicomTagF = AcquisitionTime
+    dicomValueA = ""
+    dicomValueB = ""
+    dicomValueC = ""
+    dicomValueD = ""
+    dicomValueE = ""
+    dicomValueF = ""
+    userStringS = 7A_fractured
+    userStringT = 8bitJPG
+    trimSpaces = TRUE
+  }
+}
+module View2DExtensions {
+  internal  {
+    frame = "1705 613 128 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "0 321 874 742"
+        sizeHint = "800 742"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View2DExtensions
+    slicerOn = TRUE
+    zoomOn = TRUE
+    panOn = TRUE
+    autoCenterOn = TRUE
+    position = "-3.9842700958252 -7.72900009155273 32.6810989379883"
+    positionMode = Off
+    lutAlphaSync = TRUE
+    lutGrayCenter = 127.5
+    lutGrayWidth = 255
+    lutAlphaCenter = 127.5
+    lutAlphaWidth = 255
+    lutIsRelative = FALSE
+    lutSetDefaultOnce = FALSE
+    useRelativeLUTIfNoInputImage = TRUE
+    lutColorFactor = "1 1 1"
+    lutAlphaFactor = 1
+    annoCoords = Voxel
+    annoCTValue = AsIs
+    valueHighPrecision = TRUE
+    annotationOn = TRUE
+    annotFontSize = ANNO_SIZE_USER
+    annotShowOrientation = ANNO_ORIENTATION_SIZE_WEIGHTED
+    annotVerticalRuler = TRUE
+    annotHorizontalRuler = TRUE
+    annotationCol = "1 1 1"
+    annotationMode = ANNO_MODE_AUTO
+    annotShowAnnot = ANNO_SHOW_SHORT
+    annotUserTopLeft = "$(PatientsName)
+$(PatientID) $(PatientsSex)
+$(PatientsBirthDate)
+($(input00)): $(input01)"
+    annotUserTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality)"
+    annotUserBottomLeft = "slice:  $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet),$(sizeu)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)"
+    annotUserBottomRight = "User Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput03) / $(numInput04)"
+    annotUserBottomCenter = ""
+    annotShortTopLeft = "$(PatientsName)
+($(input00)):
+ $(input01) GV"
+    annotShortTopRight = $(Modality)
+    annotShortBottomLeft = "Slice: $(slice)"
+    annotShortBottomRight = "LUT C/W: $(numInput03) / $(numInput04)"
+    annotShortBottomCenter = ""
+    annotMRTopLeft = "$(PatientsName)
+$(PatientsBirthDate)  $(PatientsSex)
+$(PatientID)
+($(input00)):
+$(input01) GV"
+    annotMRTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality)"
+    annotMRBottomLeft = "Slice: $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)
+$(ImageComments)"
+    annotMRBottomRight = "MR Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput03) / $(numInput04)"
+    annotMRBottomCenter = ""
+    annotCTTopLeft = "$(PatientsName)
+$(PatientsBirthDate)  $(PatientsSex)
+$(PatientID)
+($(input00)): 
+$(numInput02) $(input09)"
+    annotCTTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality) "
+    annotCTBottomLeft = "Slice: $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)
+$(ImageComments)"
+    annotCTBottomRight = "CT Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput07) / $(numInput08)"
+    annotCTBottomCenter = ""
+    annoInput03 = 127.5
+    annoInput04 = 255
+    annoInput05 = 1
+    annoInput06 = 1
+    annoInput07 = 127.5
+    annoInput08 = 255
+    annoInput09 = GV
+    annoNumInput00 = 0
+    annoNumInput01 = 0
+    annoNumInput02 = nan
+    annoNumInput03 = 127.5
+    annoNumInput04 = 255
+    annoNumInput05 = 1
+    annoNumInput06 = 1
+    annoNumInput07 = 127.5
+    maxPrecision = 4
+    showColorChannelValues = FALSE
+    colorChannelSeparator = " / "
+    annoMouseOn = TRUE
+    borderOn = FALSE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    borderWidth = 1
+    borderEvaluateFocus = TRUE
+    borderFocusColor = "1 1 1"
+    borderFocusWidth = 2
+    mouseGrabberMode = FALSE
+    lutOn = TRUE
+    lutMouseOn = TRUE
+    lutMouseButton1 = IGNORED
+    lutMouseButton2 = IGNORED
+    lutMouseButton3 = PRESSED
+    lutMouseShift = RELEASED
+    lutMouseCtrl = RELEASED
+    lutMouseAlt = RELEASED
+    useManagedInteraction = FALSE
+    positionMouseButton1 = PRESSED
+    positionMouseButton2 = RELEASED
+    positionMouseButton3 = RELEASED
+    positionMouseShift = PRESSED
+    positionMouseCtrl = RELEASED
+    positionMouseAlt = IGNORED
+    positionColor = "0.886206984519958 0.875320017337799 0.560474991798401"
+    positionDrawingOn = FALSE
+    slicerMouseButton1 = IGNORED
+    slicerMouseButton2 = PRESSED
+    slicerMouseButton3 = IGNORED
+    slicerMouseShift = RELEASED
+    slicerMouseCtrl = RELEASED
+    slicerMouseAlt = RELEASED
+    zoomMouseButton1 = IGNORED
+    zoomMouseButton2 = PRESSED
+    zoomMouseButton3 = IGNORED
+    zoomMouseShift = RELEASED
+    zoomMouseCtrl = PRESSED
+    zoomMouseAlt = IGNORED
+    panMouseButton1 = IGNORED
+    panMouseButton2 = PRESSED
+    panMouseButton3 = IGNORED
+    panMouseShift = PRESSED
+    panMouseCtrl = RELEASED
+    panMouseAlt = IGNORED
+    autoCenterMouseButton1 = IGNORED
+    autoCenterMouseButton2 = PRESSED
+    autoCenterMouseButton3 = IGNORED
+    autoCenterMouseShift = PRESSED
+    autoCenterMouseCtrl = PRESSED
+    autoCenterMouseAlt = IGNORED
+  }
+}
+module Compose3DFrom2DFiles {
+  internal  {
+    frame = "1893 933 168 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "1135 311 426 525"
+        sizeHint = "426 525"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Compose3DFrom2DFiles3
+    dirPath = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG/"
+    searchPattern = "**.jpg*"
+    currentFile = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties/data/Bland/7A/8bitJPG//7A_1873.jpg"
+    readRaw = FALSE
+    rawX = 1
+    rawY = 1
+    rawZ = 1
+    rawC = 1
+    rawT = 1
+    rawU = 1
+    rawDataType = "unsigned int8"
+    rawByteOrder = LittleEndian
+    rawPlanarConfig = Contiguous
+    rawDataOffset = 0
+  }
+}
+module Bypass {
+  internal  {
+    frame = "1921 733 112 56"
+    moduleGroupName = ""
+    showNetworkPanel = true
+  }
+  fields  {
+    instanceName = Bypass2
+    noBypass = FALSE
+  }
+}
+module SetWorldMatrix {
+  internal  {
+    frame = "1925 837 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -397,11 +718,11 @@ module SetWorldMatrix {
 }
 module OrthoView2D {
   internal  {
-    frame = "1549 629 120 56"
+    frame = "1917 493 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "84 182 826 997"
+        geometry = "85 85 826 997"
         sizeHint = "400 436"
         wasOpen = no
       }
@@ -429,21 +750,21 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = FALSE
     borderColor = "0 0 0"
-    grayWidth = 50
-    grayCenter = 45
-    annotationOn = TRUE
+    grayWidth = 45.9000015258789
+    grayCenter = 44.625
+    annotationOn = FALSE
     annotationSizeMode = ANNO_SHOW_SHORT
     annotationFontSize = ANNO_SIZE_LARGE
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "13.0977840423584 -17.8947792053223 -27.7993907928467"
+    worldPosition = "10.8359632492065 -16.6953525543213 -24.6370067596436"
     coloredMode = TRUE
   }
 }
 module MakeName {
   internal  {
-    frame = "1369 949 96 56"
+    frame = "1761 933 96 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -454,7 +775,7 @@ module MakeName {
     }
   }
   fields  {
-    instanceName = MakeName1
+    instanceName = MakeName2
     inputName = "/Users/omaralamoudi/Dropbox/GraduateSchool/PhD/Projects/fracture properties"
     extensions = "\\.[^.]*"
     extRegExp = FALSE
@@ -478,23 +799,204 @@ module MakeName {
     trimSpaces = TRUE
   }
 }
+module View2DExtensions {
+  internal  {
+    frame = "693 701 136 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "0 321 874 742"
+        sizeHint = "800 742"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View2DExtensions1
+    slicerOn = TRUE
+    zoomOn = TRUE
+    panOn = TRUE
+    autoCenterOn = TRUE
+    position = "-3.9842700958252 -7.72900009155273 32.6810989379883"
+    positionMode = Off
+    lutAlphaSync = TRUE
+    lutGrayCenter = 0.894999980926514
+    lutGrayWidth = 0.649999916553497
+    lutAlphaCenter = 0.894999980926514
+    lutAlphaWidth = 0.649999916553497
+    lutIsRelative = FALSE
+    lutSetDefaultOnce = FALSE
+    useRelativeLUTIfNoInputImage = TRUE
+    lutColorFactor = "1 1 1"
+    lutAlphaFactor = 1
+    annoCoords = Voxel
+    annoCTValue = AsIs
+    valueHighPrecision = TRUE
+    annotationOn = TRUE
+    annotFontSize = ANNO_SIZE_USER
+    annotShowOrientation = ANNO_ORIENTATION_SIZE_WEIGHTED
+    annotVerticalRuler = TRUE
+    annotHorizontalRuler = TRUE
+    annotationCol = "1 1 1"
+    annotationMode = ANNO_MODE_AUTO
+    annotShowAnnot = ANNO_SHOW_SHORT
+    annotUserTopLeft = "$(PatientsName)
+$(PatientID) $(PatientsSex)
+$(PatientsBirthDate)
+($(input00)): $(input01)"
+    annotUserTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality)"
+    annotUserBottomLeft = "slice:  $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet),$(sizeu)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)"
+    annotUserBottomRight = "User Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput03) / $(numInput04)"
+    annotUserBottomCenter = ""
+    annotShortTopLeft = "$(PatientsName)
+($(input00)):
+ $(input01) GV"
+    annotShortTopRight = $(Modality)
+    annotShortBottomLeft = "Slice: $(slice)"
+    annotShortBottomRight = "LUT C/W: $(numInput03) / $(numInput04)"
+    annotShortBottomCenter = ""
+    annotMRTopLeft = "$(PatientsName)
+$(PatientsBirthDate)  $(PatientsSex)
+$(PatientID)
+($(input00)):
+$(input01) GV"
+    annotMRTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality)"
+    annotMRBottomLeft = "Slice: $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)
+$(ImageComments)"
+    annotMRBottomRight = "MR Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput03) / $(numInput04)"
+    annotMRBottomCenter = ""
+    annotCTTopLeft = "$(PatientsName)
+$(PatientsBirthDate)  $(PatientsSex)
+$(PatientID)
+($(input00)): 
+$(numInput02) $(input09)"
+    annotCTTopRight = "$(InstitutionName)
+$(ManufacturersModelName)
+$(Modality) "
+    annotCTBottomLeft = "Slice: $(slice)
+Timepoint: $(timepoint)
+$(sizex),$(sizey),$(sizez),$(sizec),$(sizet)
+$(voxelx),$(voxely),$(voxelz)
+$(SeriesDescription)
+$(ImageComments)"
+    annotCTBottomRight = "CT Mode
+Scan: $(AcquisitionDate)
+LUT C/W: $(numInput07) / $(numInput08)"
+    annotCTBottomCenter = ""
+    annoInput03 = 0.894999980926514
+    annoInput04 = 0.649999916553497
+    annoInput05 = 0.894999980926514
+    annoInput06 = 0.649999916553497
+    annoInput07 = 0.894999980926514
+    annoInput08 = 0.649999916553497
+    annoInput09 = GV
+    annoNumInput00 = 0
+    annoNumInput01 = 0
+    annoNumInput02 = nan
+    annoNumInput03 = 0.894999980926514
+    annoNumInput04 = 0.649999916553497
+    annoNumInput05 = 0.894999980926514
+    annoNumInput06 = 0.649999916553497
+    annoNumInput07 = 0.894999980926514
+    maxPrecision = 4
+    showColorChannelValues = FALSE
+    colorChannelSeparator = " / "
+    annoMouseOn = TRUE
+    borderOn = FALSE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    borderWidth = 1
+    borderEvaluateFocus = TRUE
+    borderFocusColor = "1 1 1"
+    borderFocusWidth = 2
+    mouseGrabberMode = FALSE
+    lutOn = TRUE
+    lutMouseOn = TRUE
+    lutMouseButton1 = IGNORED
+    lutMouseButton2 = IGNORED
+    lutMouseButton3 = PRESSED
+    lutMouseShift = RELEASED
+    lutMouseCtrl = RELEASED
+    lutMouseAlt = RELEASED
+    useManagedInteraction = FALSE
+    positionMouseButton1 = PRESSED
+    positionMouseButton2 = RELEASED
+    positionMouseButton3 = RELEASED
+    positionMouseShift = PRESSED
+    positionMouseCtrl = RELEASED
+    positionMouseAlt = IGNORED
+    positionColor = "0.886206984519958 0.875320017337799 0.560474991798401"
+    positionDrawingOn = FALSE
+    slicerMouseButton1 = IGNORED
+    slicerMouseButton2 = PRESSED
+    slicerMouseButton3 = IGNORED
+    slicerMouseShift = RELEASED
+    slicerMouseCtrl = RELEASED
+    slicerMouseAlt = RELEASED
+    zoomMouseButton1 = IGNORED
+    zoomMouseButton2 = PRESSED
+    zoomMouseButton3 = IGNORED
+    zoomMouseShift = RELEASED
+    zoomMouseCtrl = PRESSED
+    zoomMouseAlt = IGNORED
+    panMouseButton1 = IGNORED
+    panMouseButton2 = PRESSED
+    panMouseButton3 = IGNORED
+    panMouseShift = PRESSED
+    panMouseCtrl = RELEASED
+    panMouseAlt = IGNORED
+    autoCenterMouseButton1 = IGNORED
+    autoCenterMouseButton2 = PRESSED
+    autoCenterMouseButton3 = IGNORED
+    autoCenterMouseShift = PRESSED
+    autoCenterMouseCtrl = PRESSED
+    autoCenterMouseAlt = IGNORED
+  }
+}
 connections  {
-  Compose3DFrom2DFiles.dirPath = InputImage.outputName
+  Compose3DFrom2DFiles.dirPath = 0_degree.outputName
   Bypass.input0 = SetWorldMatrix.output0
   SetWorldMatrix.input0 = Compose3DFrom2DFiles.output0
-  OrthoView2D.image = Bypass.output0
-  InputImage.inputName = ProjectDirectory.rootPath
-  Compose3DFrom2DFiles2.dirPath = InputImage2.outputName
+  0_degree_OrthoView2D.image = Bypass.output0
+  0_degree_OrthoView2D.inInvPreLUT = View2DExtensions1.outNode
+  0_degree.inputName = ProjectDirectory.rootPath
+  Compose3DFrom2DFiles2.dirPath = 18_degree.outputName
   Bypass1.input0 = SetWorldMatrix1.output0
   SetWorldMatrix1.input0 = Compose3DFrom2DFiles2.output0
-  OrthoView2D1.image = Bypass1.output0
-  OrthoView2D1.grayWidth = OrthoView2D.grayWidth
-  OrthoView2D1.grayCenter = OrthoView2D.grayCenter
-  OrthoView2D1.worldPosition = OrthoView2D.worldPosition
-  InputImage2.inputName = ProjectDirectory.rootPath
+  18_degree_OrthoView2D1.image = Bypass1.output0
+  18_degree_OrthoView2D1.inInvPreLUT = View2DExtensions1.outNode
+  18_degree_OrthoView2D1.grayWidth = 0_degree_OrthoView2D.grayWidth
+  18_degree_OrthoView2D1.grayCenter = 0_degree_OrthoView2D.grayCenter
+  18_degree_OrthoView2D1.worldPosition = 0_degree_OrthoView2D.worldPosition
+  18_degree.inputName = ProjectDirectory.rootPath
   Compose3DFrom2DFiles1.dirPath = MakeName1.outputName
   Bypass2.input0 = SetWorldMatrix2.output0
   SetWorldMatrix2.input0 = Compose3DFrom2DFiles1.output0
   OrthoView2D2.image = Bypass2.output0
+  OrthoView2D2.inInvPreLUT = View2DExtensions.outNode
+  View2DExtensions.inLUT = Bypass2.output0
+  Compose3DFrom2DFiles3.dirPath = MakeName2.outputName
+  Bypass3.input0 = SetWorldMatrix3.output0
+  SetWorldMatrix3.input0 = Compose3DFrom2DFiles3.output0
+  OrthoView2D3.image = Bypass3.output0
+  OrthoView2D3.inInvPreLUT = View2DExtensions.outNode
+  OrthoView2D3.grayWidth = OrthoView2D2.grayWidth
+  OrthoView2D3.grayCenter = OrthoView2D2.grayCenter
+  OrthoView2D3.worldPosition = OrthoView2D2.worldPosition
 }
 networkModel = ""
