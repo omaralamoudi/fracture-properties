@@ -1,0 +1,165 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage{myAnnotations}
+
+% for bibliography management using bibtex {
+\usepackage{natbib}
+% since the new seg bibliography style uses doi links, the hyperref package is needed. See https://github.com/SEGTeX/texmf/commit/8e260fbdf31ed2fd3bdfb73bea41ea9fca47b95e for details 
+\usepackage{hyperref}
+%}
+\usepackage[margin=1in]{geometry}
+
+% package for including graphics {
+\usepackage{graphicx}
+\usepackage{float}
+%}
+
+% MY ENVIRONMENTS {
+\newenvironment{tight_enumerate}{
+\begin{enumerate}[label=\textbf{(\arabic*)}, ref=\arabic*]
+  \setlength{\itemsep}{0.4em}
+  \setlength{\parskip}{-0.25em}
+}{\end{enumerate}}
+
+\newenvironment{tight_itemize}{
+\begin{itemize}
+  \setlength{\itemsep}{0.4em}
+  \setlength{\parskip}{-.5em}
+}{\end{itemize}}
+%}
+
+\title{Correlating the variation in fracture aperture due to confining pressure to the fracture specific stiffness and fluid flow permeability\\
+\emph{An annotated bibliography and notes}}
+
+\author{Omar Alamoudi}
+\date{\today} 
+
+\begin{document}
+\maketitle
+\section{Project Idea and evolution}
+\subsection{Original project idea}
+
+\subsection{Evolution of project idea}
+Since my discussions with Nicola in late Feb 2022, the idea of this project has slight deviated from the original one. Now, I am interested in quantifying the variation in permeability of a fractured rock sample when applying a confining stress that results in the reduction in the fracture aperture. The quantification will be made using microCT images, permeability measurements, and if possible numerical modeling of fluid flow. 
+
+Carolyn Bland has a data set of permeability measurements of a shale sample that has a major induced fractured along its axis. The permeability of this sample was measured at different confining pressures after the fracture was induced. Carolyn also acquired a microCT image of the sample before applying any confining pressures at counter top conditions. I have access to this microCT image of said sample. For my pressures vessel, I will be able to acquired microCT images of samples at different confining pressures, while also measuring permeability at these confining pressures. But before doing so, here I am developing the needed methodology in analyzing the resultant data in the absence of the microCT images of the rock sample under confining pressures.
+
+\subsection{Other ideas}
+\subsubsection{Numerical modeling}
+\begin{itemize}
+\item If we do numerical modeling, I can use what I learned in Marc Hesse's class to model fluid flow in a microCT image of a rock. The objective of said modeling is to invert for permeability of the microCT image that would produce the pressure equalization curves generated from permeability measurements based on \citep{Brace1968} method. This could potentially produce a permeability field of the microCT image, that we can then relate to different quantifications of the fracture aperture in the microCT image of the rock. For example, the fracture apertures along the skelaton of the fracture in the microCT image.
+\end{itemize}
+
+\section{Notes and discussions}
+The subsections below are ordered in a reverse chronological order.
+
+\subsection{[Feb 25, 2022] Discussion with Nicola: relating spacial distribution .... }
+Nicola and I were talking about how to model the fracture aperture reduction due to stress given the analytical solution of \tempcite{crack stress and displacement analytical solution}{The paper Nicola sent me via email today}. We came up with a methodology to approach this problem, and it goes as following:
+\begin{enumerate}
+\item Extract the spacial distribution of the fracture apertures from the microCT image. One approach is using the methodology shown in \citep[see][fig. 5]{Zhao2018}. This should result in a two-dimensional image showing the the fracture apertures along the axis of two-dimensions since the micorCT image is a three-dimensional image.
+
+\item We then compute the Fourier-transform of the fracture aperture spatial distribution function, which results in a measure of the the amplitudes of the different fracture aperture wave numbers. To understand this consider 1D function $f(x) = A_0 sin(\frac{2\pi x}{L})$ ... see the matlab file \texttt{fracture properties/scripts/matlab/prototyping/fourier\_ analysis\_of\_fracture\_apertures.mlx}
+
+\item We then use the result from the Fourier analysis to generate different fractures with dimetions of minor axis = to the amplitude, and the major axis = the wave number. We then find the resultant reduction in fracture aperture given a specified stress tensor using the analytical solution from the paper Nicola showed me.
+
+\item We then take the results from the analytical solutions, and apply the inverse Fourier Transform to get the new aperture distribution that represents the aperture reduced due to the given stress. 
+\end{enumerate}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=1\textwidth]{figures/perm_vs_fracture_specific_stiffness.jpg}
+\caption{Conceptual idea of relating an image with fracture apertures, the FFT of said image, and an idealized fracture made of Ellipses.}
+\label{fig:concept}
+\end{figure}
+
+\subsubsection{Learning about 2D Fourier Transform (FT, or FFT)}
+This subject is not an easy one. I noticed that there is a huge difference between looking at a 1D FFT and 2D FFT. The lectures slides by \citep{Zisserman2014} are helpful in explaining some of the concept.
+
+A YouTube video I found at \cite{Cohen2017} is proving to be very useful too. 
+
+\subsection{[Feb around 20, 2022] Discussion with Nicola: correlating the reduction in fracture aperture due to confining pressure with the reduction in permeability} Nicola suggested that I look into how the fracture aperture is affected when subjected to a confining pressure. The initial intuition is that the aperture would reduce, resulting in a reduction in permeability. He particularly suggested looking to find a model that explains how the aperture is reduced due the a given confining pressure. This is useful because in Carolyn's experiment, we do have a sample that we subject to a confining pressure, and we observe a general reduction in permeability, in fact we even observe the closure or reduction of fracture aperture to the point of blocking the flow. If there is a good model explaining how the aperture is reduced, and we can correlate that measured permeability, we might be able to also assess the mechanical healing since the sample eventually blocks fluid flow reducing permeability to basically nothing.
+
+\subsubsection{[Feb 3, 2021] Discussion with Nicola}
+A few ideas arise regarding extending the work donw in \cite{Voorn2013}. As per Richard Ketcham's feedback for the course project, the incorporation of blurred images analysis and sub-voxel fractures are good extensions of this work. Other ideas discussed:
+\begin{itemize}
+	\item After measuring the Point Spread Function (PSF) using Rich Ketcham's program, we can try to deconvolve the PSF with the microCT image with the objective of enhancing the details in the image, this could help improve the detection of small planer features such as fractures. 
+	\item in \cite{Voorn2013}, the Gaussian function used in the convolution operation is of the form $ G(x,y,z,s)$, so it is safe to assume that the parameter $s$ that corresponds to the width of the spike in a 1-D Gaussian, and the  is uniform in all directions, i.e. isotropic (spherical). Since fractures are more planer than spherical, maybe we should consider an ellipsoidal form instead. 
+	\item An idea that I need to workout has to do with the question: what is the appropriate $\sigma$  needed to illuminate a specific aperture of fractures? Another way to think about
+\end{itemize} 
+
+\subsection{[Jan 27, 2021] Comment by Nicola}
+We should measure the point spread function, or edge spread function of our machine using properly calibrated materials (standard point, or cube, or bar) and use the resultant estimate of the point spread function in the image analysis. 
+
+\subsection{Undated Notes}
+\subsubsection{Beam Hardening Correction}
+Some images still have some beam hardening, I fould this code online that can supposedly fixes it: https://github.com/CarlaRomano/Beam-hardening-correction
+
+\section{Annotated bibliography}
+The order of the following sections is arbitrary. Number is used to refer to the different sections within the manuscript.
+
+\subsection{Eric Goldfarb's work presented during EDGER 2021}
+Eric spoke during his EGDER	2021 meeting about fast scans and how they don't deteriate the quality of the image. I need to cite this work and use it when I present my work about scanning samples while under confining pressures inside of my vessel and the UTCT X-Ray scanner.
+
+\subsection{\cite{Zimmerman1996}}
+In Sec. 4, the authors assert that fluid flow occurs in paths of least resistance. This assertion is also stated in \citep{Lubbe2006} This is an intuitive observation. It implies that large fractures are more important than smaller fractures, as larger fractures are easier to flow through. Large and small here describe the fracture aperture specifically. Such assertion has some implications on the concern regarding measuring smaller fractures in general, and in microCT images in particular. Maybe it is not as important to quantify smaller fractures. In other words, the time invested in trying to resolve smaller fractures is not worth it given how little smaller fractures contribute to the flow. This argument can be well addressed by demonstrating the following:
+\begin{itemize}
+\item If smaller fractures don't matter as much as larger fractures, then we apply stresses on a fractured media that contains an array of fractures of different apertures, the permeability reduction will be affected more by the reduction of the fracture aperture of the larger fractures than the smaller fractures.
+\item Assuming that the specific stiffness \citep{Hopkins1987} of smaller fractures is significantly higher than the larger fractures (this assumption is intuitive, maybe it needs validation). That means, when applying an identical stress to two different fractures of different apertures, the reduction of the fracture aperture in the larger fracture will be significantly more than that of its smaller counter part. This means that the impact in the reduction of permeability will be impacted more by the reduction of the aperture of the large fracture compared to the small fracture aperture reduction. This can be demonstrated by using the analytical solution of \cite{Maugis1992} on two different size cracks, and compare the average displacements, and the fracture apertures before and after applying stress.
+
+\end{itemize}
+\subsection{\cite{Orangi2011}} 
+These authors study the effect of variation reservoir parameters on the production of hydrocarbons of the Eagle Ford Shale. The study is based on simulating the production using what seems to be a proprietary homogeneous sector model. I noticed an error in the publication where the authors refer to figure 13 when what is shown is a duplicate of figure 12. It is important to also note that this publication is a convention proceeding, and it is not peer reviewed, so maybe it is not the strongest reference on the matters discussed below. What I want use this reference for are the following arguments:
+\begin{itemize}
+\item Demonstrating the problem with the misnomer 'fracture-permeability' where the authors here actually represent the fractures not as a fluid conduit that is void but rather as a porous rock with a Darcy permeability. This is contrary to what one would expect if the fracture was a void filled with fluid. However, since the authors represent the fracture as a porous rock with high permeability, it is not a misnomer in this context, but rather an approximation of a fractured rock using a porous medium.
+\item Explaining the importance of the measure fracture surface area as it seems to be a major contributor in the cumulative product regardless of the height and width described in the publication \citep[p.12]{Orangi2011}. 
+\end{itemize}
+
+\subsection[paper about]{\cite{Lubbe2006}} 
+The authors of this paper measured fracture compliance in the field using seismic data, and compared the results with lab measurements available in the literature. 
+
+I want to cite this paper because it supports the following argument: larger fractures matter much more than smaller fractures, larger fractures conduct more fluid, and therefore, if we can measure them better than smaller ones, that should be satisfactory when estimating permeability is the objective of the study.
+
+Other points of interest:
+\begin{itemize}
+\item In the introduction, the authors assert that a small number of large fractures affect fluid flow critically within a fractured solid. This can be interpreted as larger fractures are more critical to fluid flow than smaller ones.
+\end{itemize}
+
+\subsection{\cite{Pyrak-Nolte1996}} studies the interrelations between fracture specific stiffness and seismic wave propagation. I find this paper rather fascinating. I certainly want to learn more about their findings. In this paper, the author alludes to the idea that fluid flow is dominated by the flow through the fractures \citep[p.792]{Pyrak-Nolte1996}. This seems to be a more careful consideration that asserting fluid flow is dominated by the flow through the fractures.
+
+In \citep[\S Fracture Network Geometry]{Pyrak-Nolte1996}, the author suggests that for a single fracture, there are three geometrical fracture properties to consider:
+\begin{tight_itemize}
+\item aperture distribution
+\item the spacial distribution of apertures
+\item surface roughness
+\end{tight_itemize}
+For a fracture network, there are the following additional properties as well:
+\begin{tight_itemize}
+\item fracture spacing
+\item fracture orientation
+\item spatial correlation of fractures
+\item inter-connectivity of fractures
+\end{tight_itemize}
+
+\subsection{\cite{Pyrak-Nolte2000}} I think this is the paper that I've been looking for, I haven't read it yet, but I think it describes the relationship between stressing a fractures that results in the reduction of the aperture that results in the reduction in the fluid flow. I need to read it and hope that it works as expected. 
+
+After briefly skimming through it, I realize that this paper does not have a theoretical derivation, but it has a numerical simulation and its analysis. Further reading is needed. 
+
+
+\subsection{\cite{Hopkins1987}}
+This conference proceeding discusses the effect of the spatial distribution of asperities on fracture-specific-stiffness. \ilinstruction{I think this is a great paper that I could use to replicate using FEniCS?}
+
+\subsection{\cite{Maugis1992}}
+This is the paper that Nicola shared with me that shows the analytical solution of applying stress on a crack. Nicola also shared some files applying these solutions using Matlab, see the Matlab file \texttt{PhD/Projects/fracture properties/readings/material shared by Nicola/ellipse}.
+ 
+\subsection{\cite[see fig. 6]{Ketcham2001}} 
+This figure shows an image with sub-voxel fractures that were measured in a thin section.
+\clearpage
+\newpage
+\bibliographystyle{seg}
+\bibliography{references}
+
+\pagebreak
+\appendix
+\pagenumbering{gobble}
+\section*{Manuscript annotation legend}
+In the manuscript below, I use different styles and colors to express thought, instructions to myself, and ideas about what I think the manuscript needs to improve. This paragraphs shows examples of these styles, and should provide a \emph{'legend'} of the used styles while reading the manuscript. First, I use \tempcite{temporary citation.}{Where this footnote provides additional information about the unformulated citation mentioned in the text, or an instruction to provide a citation about a specific topic discussed without proper references.} as a note that this is a temporary citation that needs further refinement. Second, I use \ilinstruction{inline self-instructions within the text.} These inline self-instructions are meant to be intrusive and exist inline with the rest of the manuscript text to draw maximum attention. Other types of self-instructions that I use are \spinstruction{specific instruction}{Where more details are provided here}, and margin instructions that are associated with the following asterisks \instruction{This is an example of a margin instruction}. Third, I use a style that changes the color of some text, \moredetails{in order to highlight the need of more details.}
+\end{document}

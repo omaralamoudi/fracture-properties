@@ -1,30 +1,54 @@
 %% Preamble for EDGER paper
 % PACKAGES
-\usepackage{color,graphicx,subcaption,float,listings,wrapfig}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{wrapfig} % https://www.overleaf.com/learn/latex/Wrapping_text_around_figures
 \usepackage[inline]{enumitem}
-\usepackage{mathtools,commath,amssymb,cancel,siunitx}
-\usepackage{xcolor,hyperref,comment}
+\usepackage{mathtools}
+\usepackage{commath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{comment}
 \usepackage[normalem]{ulem}
-\usepackage[noabbrev]{cleveref}
 \usepackage[perpage]{footmisc}
 \usepackage{lineno}
-\usepackage{xcolor,soul} % for highlighting text
-\usepackage{marginnote,ragged2e} % <-- used for margine notes
-\renewcommand*{\raggedleftmarginnote}{\RaggedLeft}
-\renewcommand*{\raggedrightmarginnote}{\RaggedRight}
+\usepackage{xcolor}
+\usepackage{soul} % for highlighting text
+\usepackage{docmute} % used to supress the preamble of the files added using 
 
-% MY COMMANDS
-\newcommand{\tmpcite}[2]{\texttt{[#1\footnote{#2}]}} % <-- temporary cite with a link to the source
-\newcommand{\update}[1]{\textcolor{blue}{#1}} 
-\newcommand{\rethink}[1]{\textcolor{orange}{#1}} % <-- command for an update that is needed
-\newcommand{\instruction}[1]{\marginnote{\scriptsize{\textcolor{red}{\noindent #1}}}} %<-- instuction
-\newcommand{\ilinstruction}[1]{\textcolor{red}{[#1]}}	% <-- in-line instruction
-\newcommand{\spinstruction}[2]{\noindent\textcolor{red}{\hrulefill \\ \instruction{#2} #1 \noindent\hrulefill}} % <-- specific instruction
-\newcommand{\moredetails}[1]{\textcolor{magenta}{#1}}
-\renewcommand*{\thefootnote}{(\arabic{footnote})}     % <-- adds parantheses around footnote numbers
-\newcommand{\D}[2]{\frac{D#1}{D#2}}
-\newcommand{\vel}{\mathbf{v}}
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+% styling packages
+\usepackage[margin = 1in]{geometry}
+\setlength{\parskip}{0.25cm}
+\renewcommand{\baselinestretch}{1.0}
+\usepackage{grffile}
+\usepackage{graphicx}
+% \graphicspath{{figures/}} % this should be specified next to the manuscript
+
+% referencing packages
+\usepackage{hyperref}
+\def\chapterautorefname~#1\null{chapter~(#1)\null}
+\def\sectionautorefname~#1\null{section~(#1)\null}
+\def\subsectionautorefname~#1\null{section~(#1)\null}
+\def\subsubsectionautorefname~#1\null{section~(#1)\null}
+\def\figureautorefname~#1\null{figure~(#1)\null}
+\def\tableautorefname~#1\null{table~(#1)\null}
+\def\equationautorefname~#1\null{eq.~(#1)\null}
+% modifying the autoref fuction slightly
+\newcommand{\Autoref}[1]{%
+  \begingroup%
+  \def\chapterautorefname~##1\null{Chapter~(##1)\null}%
+  \def\sectionautorefname~##1\null{Section~(##1)\null}%
+  \def\subsectionautorefname~##1\null{Section~(##1)\null}%
+  \def\figureautorefname~##1\null{Figure~(##1)\null}%
+  \def\tableautorefname~##1\null{Table~(##1)\null}%
+  \def\equationautorefname~##1\null{Equation~(##1)\null}%
+  \autoref{#1}%
+  \endgroup%
+}
+\usepackage[noabbrev]{cleveref} % I think this must be loaded after the package hyperref? I need to verify this
 
 % MY ENVIRONMENTS
 \newenvironment{tight_enumerate}{
@@ -32,3 +56,9 @@
   \setlength{\itemsep}{0.4em}
   \setlength{\parskip}{-0.25em}
 }{\end{enumerate}}
+
+\newenvironment{tight_itemize}{
+\begin{itemize}
+  \setlength{\itemsep}{0.4em}
+  \setlength{\parskip}{-.5em}
+}{\end{itemize}}

@@ -1,11 +1,33 @@
 \documentclass{edger}
+\input{preamble} 
+% MY COMMANDS -- editing instructions {
+%\input{my-annotations}
+% to learn more about the difference bewteen \input{} and \include{} see: https://www.sascha-frank.com/input_and_include.html
+%}
 
-\include{edger-preamble} 
+\usepackage{myAnnotations}
+
 \graphicspath{{figures/}}
 
-\setcounter{secnumdepth}{4} % see: https://tex.stackexchange.com/questions/344993/referencing-subsubsection-is-not-working-as-intended
+% # Add the possibility of more sectioning {
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+            {-2.5ex\@plus -1ex \@minus -.25ex}%
+            {1.25ex \@plus .25ex}%
+            {\normalfont\normalsize\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC
+
+% Links used to implement this solution: 
+% - https://tex.stackexchange.com/questions/344993/referencing-subsubsection-is-not-working-as-intended
+% - https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection/60218#60218
+% }
 
 \begin{document}
+\subsubsection*{Manuscript text color legend}
+In the manuscript below, I use different styles and colors to express thought, instructions to myself, and ideas about what I think the manuscript needs to improve. This paragraphs shows examples of these styles, and should provide a \emph{'legend'} of the used styles while reading the manuscript. First, I use \tempcite{temporary citation.}{Where this footnote provides additional information about the unformulated citation mentioned in the text, or an instruction to provide a citation about a specific topic discussed without proper references.} as a note that this is a temporary citation that needs further refinement. Second, I use \ilinstruction{inline self-instructions within the text.} These inline self-instructions are meant to be intrusive and exist inline with the rest of the manuscript text to draw maximum attention. Other types of self-instructions that I use are \spinstruction{specific instruction}{Where more details are provided here}, and margin instructions that are associated with the following asterisks \instruction{This is an example of a margin instruction}. Third, I use a style that changes the color of some text, \moredetails{in order to highlight the need of more details.}
+\pagebreak
 \thispagestyle{plain} % defines the stye for THIS page (1st page)
 
 \edgertitle{Fracture Detection and property estimation in microCT Images}
@@ -16,20 +38,28 @@
 \begin{edgerabstract}
 MicroCT imaging is an exciting field when used to image experiments on rocks. A more exciting approach is imaging experiments on rock samples repeatedly over time. This allows us to 'visually' inspect the samples as the experiment progresses. Considering hydraulic conductivity as a subject of interest, particularly understanding how fracturing a rock sample under a deformation regime affects its permeability, detecting and measuring fracture properties is fundamental.
 
-To detect and measure fracture features from microCT images of a rock sample that is evolving requires a repeatable, semi-automatic workflow to produce consistent measurements of time variant images. Here we evaluate a Hessian filtering technique on 3D microCT images of synthetic images and microCT images of a rock sample. We find that the Hessian filtering is successful in enhancing and detecting fractures. In addition, this technique eliminates the beam hardening effect on microCT images of rock samples which increases the reliability of picking isosurface values use in compute fracture surface area. 
+To detect and measure fracture features from microCT images of a rock sample that is evolving, a repeatable, semi-automatic workflow is required to produce consistent measurements of time variant images. Here we evaluate a Hessian filtering technique on 3D microCT images of synthetic images of fractures, and microCT images of a rock sample. We find that the Hessian filtering is successful in enhancing and detecting fractures. In addition, this technique eliminates the beam hardening effect on microCT images of rock samples which increases the reliability of picking isosurface values used in computing fracture surface area. 
 \end{edgerabstract}
 % ^^^ all above is not for this document
 
 \section{Introduction}
 In applications that utilize and depend on understanding multi-phase composite material properties, understanding the effects of apparent properties is generally a good approximation of how the composite behaves. It is also important to understand how the variation of the composite constituents affect said properties. The behavior of composites varies under the influence of different physical and chemical processes. For example, a primary feature that helps in understanding how composite constituents affect one another pertains to their interaction along boundaries of contact. Rocks, soils, and rock melts are three composite material examples that geologist, geophysicists, and engineers want to understand. Rocks are composed of a multiple material phases. A rock sample is composed of at least two material phases: a solid, and a fluid phase. Considering a rock sample with an economic fluid as its fluid phase, the interaction between that fluid and the rock solid phase is governed by the physical properties of each phase, the conservation of mass, momentum, and energy of their system, and the geometric distribution of these phases in the rock sample. Also, subjecting the sample to a deformation field, causes the geometric distribution to change, which perturbs the balance law quantities. With this broad view points in mind, I am interested in better understanding the processes governing fluid flow within fractured rocks under a deformation regime. The question of how fluid flow is affected by the induction and evolution of fractures in such rocks is of particular interest. 
 
-Since fluid flow is generally dominated by flow through fracture \citep{Zoback2007}, fracture geometric properties are primary influences on the fluid flow. An intuitive property to consider here is the fracture aperture \citep{Zimmerman1996}. Other properties such as the fracture volume, and fracture surface area are also important but are more difficult to measure \citep{Zhao2020}.  Additionally, the evolution of these fractures due to deformation is relevant to understanding the change in fluid flow in a fractured sample. In order to understand how these properties affect the fluid flow, we need to detect and measure these fracture properties through time.
 
-In order to understand how the evolution of fractures influences samples permeability, we plan to conduct tri-axial testing of cylindrical rock samples while simultaneously acquiring micrometer-scale Computed Tomography images (microCT), permeability measurements, and ultrasonic P and S wave velocities at multiple time points. A time-sequential acquisitions of these measurements will provide the means to capture the effects of fracture induction and evolution on fluid permeability. The acquisition of all types of data will be conducted at different deformation stages. Therefore, we need a systematic, semi-automatic approach to reliably and consistently detect and measure the fractures of the samples. In this paper we focus on detecting fractures and measuring their surface area. 
+Since fluid flow is generally dominated by flow through fracture \citep{Zoback2007} \tempcite{Zimmerman 1996, Ketcham 2005?, ...}{Add more citations stating fluid flow through porous media is dominated by fluid flow through fractures, I remember Ketcham's paper about the Inverse Point Spread Function makes the same assertion}, fracture geometric properties are primary influences on the fluid flow. An intuitive property to consider here is the fracture aperture \citep{Zimmerman1996}. Other properties such as the fracture volume, and fracture surface area are also important but are more difficult to measure \citep{Zhao2020}.  Additionally, the evolution of these fractures due to deformation is relevant to understanding the change in fluid flow in a fractured sample. For example, it is well known that the production of hydrocarbons from fractured unconventional reservoirs have a significantly higher production decline rate. This can be attributed to the closure of the artificial fractures due to mechanical or chemical healing \citep{Kleinberg2018} \tempcite{more citations needed}{add citations regarding the steep decline in production of unconventional reservoirs and its attribution to mechanical or chemical healing}. In order to understand how these properties affect the fluid flow, we need to detect and measure these fracture properties through time while under stress.
 
-\begin{comment}
-\emph{[The following paragraph discusses how fracture geometries have in the past been related to permeability.]}
+In order to understand how the evolution of fractures influences samples permeability, we plan in the near future to conduct tri-axial testing of cylindrical rock samples while simultaneously acquiring micrometer-scale Computed Tomography images (microCT), permeability measurements, and ultrasonic P and S wave velocities at multiple time instances of the experiment. A time-sequential acquisitions of these data will provide us the means to capture the effects of fracture induction and evolution on the fluid flow. The acquisition of these data types will be conducted at the same target deformation stages. Therefore, we need a systematic, semi-automatic approach to reliably and consistently detect and measure the fractures of the samples. In this paper \begin{enumerate*}[label=\arabic*)] 
+\item we describe a methodology to enhance fractures in microCT images in order to measure their properties. This methodology utilizes Multi-Scale Hessian Fracture Filtering (MSHFF) technique \citep{Voorn2013}; 
+\item \spinstruction{additional work needed}{Started working on this, but encountered some issues with the software Blob3D. This is not a very difficult problem to work  on, all I need to do is measure the fracture using IPSF method, which will give me a mean fracture aperture, and compare the resultant permeability using the cubic model, and compare it with the trend of permeability measurements acquired by Carolyn} Utilized the Inverse Point Spread Function method (IPSF) to measure the fracture aperture of a shale rock sample \citep{Ketcham2010}; 
+\item Compare permeability measurement of said sample with the predicted permeability values based on the measured fracture aperture; 
+\item describe a methodology of measuring the surface area of fractures from microCT images.\end{enumerate*}
 
+%\begin{comment}
+\subsection{Relating permeability to simplified geometries of fluid conduits}
+\moredetails{The following paragraph discusses how fracture geometries have in the past been related to permeability.}
+When considering a fractured, porous, and permeable rock, the fluid flow occurs predominantly through the fractures. This is an intuitive understanding of the flow given that flow through the fractures encounters the least resistance. That means that there are multiple fluid flow regimes occurring simultaneously, a Darcy fluid flow through the porous solid, and a Stokes (or Navier-Stokes) flow through the fracture \spinstruction{not sure which type of flow}{I am not sure what other types of flows are expected inside a fractured rocks. I need to establish that with some other references. I might also need some mathematical formulation, read what I learned in Ronny Borja's class Poromechanics lecture notes 1 about relating Darcy velocity to fluid flow velocity}. This distinction is not usually made clear in the literature because different research group usually refer to capacity of a fracture to conduct fluid as permeability \citep[p. 6]{Orangi2011} \tempcite{more citations needed}{The references cited here should use the term fracture-permeability even though the fractures of interest contain noting (void space)}. But Darcy permeability is only concerned with fluid flow through a porous rock sample \tempcite{original Darcy, literature on fluid flow through conventional reservoirs}{Citations properly using Darcy permeability to characterize conventional reservoirs where the predominant flow is a Darcy flow}. Therefore, it is a misnomer to discuss the permeability of the fractures but it is rather reasonable to characterize the pereability of a fractured rock as a whole. In addition, using Darcy's hypothesis to estimate fracture-permeability under estimates the permeability of the fractured rock \citep{Singh2019}. This is of course because fluid flow through a fractured rock occurs mostly through the fractures rather than the porous matrix surrounding it. A simplified model of a non-porous solid with a void with known geometry through which the fluid flows helps us understand how void geometrical properties affect the fluid flow. Two geometries are discussed below: a cylindrical void inside a cylindrical sample, and a plate-like void splitting a cylindrical sample.
+
+\subsubsection{Cylindrical void model}
 Darcy's law shown in \autoref{eqn:Darcy's Law} \citep{Darcy1856} governs the conductivity of fluid within a cylindrical porous material sample with known geometry. The driving force of the fluid motion is the pressure gradient. Darcy's law does not make any explicit declarations about the spatial distribution, or shape of the pores within a rock specimen. On the other hand, the Kozeny--Carman \citep{Carman1961, Mavko2009} describes the fluid flow through a cylindrical cavity in solid block see \autoref{eqn:Kozeny-Carman}. Imagine drilling a cylindrical cavity in the cylindrical sample with the known geometry with Radius R. \Autoref{eqn:Kozeny-Carman} describes the flow through that cavity. 
 
 \begin{equation}
@@ -46,14 +76,18 @@ Q = - \frac{1}{L} \frac{\pi R^4}{8\mu} \Delta p \label{eqn:Kozeny-Carman}
 Comparing \autoref{eqn:Darcy's Law} and \autoref{eqn:Kozeny-Carman}, \autoref{eqn:perm} shows that there is a correlation between the sample fluid permeability, the cross sectional area of the sample, and the radius of the cavity. Considering an alternative case where we have fractures, one can deduce that we can estimate or predict the relationship between a rock sample geometry and fractures within the sample that would be the primary conduit of fluid flow. Therefore, the use of microCT images to map fractures is an important first step to understanding such relationship. 
 
 Considering a single two-dimensional slice from a three-dimensional microCT volume data of two half-cylinder of a rock sample, \cite{Ketcham2010} have demonstrated the applicability of what the authors call the Inverse Point Spread Function method (IPSF) in measuring the apparent and true aperture of fractures from microCT volumes. Using this method requires visually inspecting and detecting the fractures in the image, then measuring them. An alternative approach proposed by \cite{Voorn2013} employs computing the Hessian to detect multi-scale fractures within a sample. In the paper, we discuss the application of \cite{Voorn2013} approach on synthetic images as a first step in attempting to detect fractures with the aim to eventually measure them. We also attempt to estimate fracture surface area of a cylindrical sample that was subject to a rotary shear experiment \citep{Zhao2017}. MicroCT images of the samples were acquired before and after fracturing.
-\end{comment}
+%\end{comment}
+
+\subsubsection{Plate-like void splitting a cylindrical sample}
+\moredetails{I need to add the model that is based on Zimmerman's 1996 work here. The work that was in my proposal.}
 
 \section{Materials and Methods}
-	Our main objective is to improve the ability to detect, and henceforth measure fractures in microCT images acquired of rock samples in a systematic, semi-automatic, repeatable way. The necessity of semi-automatically detecting and measuring fractures is due to our over arching goal to use the developed methodology to measure the evolving fracture properties in microCT images over time of a sample undergoing deformation and fracturing.  
-	
-	The methodology used is based on the one described in \cite{Voorn2013}. To demonstrate this approach in detecting fractures, we first apply the methodology on two-dimensional (2D) and three-dimensional (3D) synthetic images. I generated these images with basic geometric features resembling fractures. I then computed the spatial Hessian matrix for each voxel of the synthetic images, and finally conduct further analysis to map the fracture like features. The description of these steps follows in the same order stated. 
+	Our main objective is to improve the ability to detect, and henceforth measure fractures in microCT images acquired of rock samples. The developed method must be systematic, semi-automatic, and generates reproducible results \tempcite{cite reproducebility papers}{I value reproducibility, and there is a significant amount of research stating is value. Fomel's group does this as well as Stanford Exploration Project SEP}. The necessity of the systematic analysis in detecting and measuring fractures is due to our over arching goal to use the developed methodology to measure the evolving fracture properties in microCT images over time of a sample undergoing deformation and fracturing.  
 
-\subsection{Synthetic Image Generation} \label{sec:Synthetic Fractures}
+\subsection{Fracture Detection and Measurement}
+	As a first step, we enhance the images of fractured rocks, after which we attempt different approaches of measuring the fracture properties in the enhanced images. The methodology used is based on \cite{Voorn2013}. \spinstruction{An idea}{I need to consider using the Laplacian $\Delta = \nabla \cdot \nabla G(\mathbf{x})$ as a filter. Because the Laplacian provides a measure of how different a surround area is to the point at which the Laplacian is evaluated.} \tempcite{convolution as a proxy for derivatives}{Cite papers that show that convolving the hessian of the Gaussian with an image with different scale factor $s$ is equivalent to taking the spacial derivative. I think a first place to start looking for this is the citations in \cite{Voorn2013}, and medical papers pertaining to geometric features of bones etc. in microCT images} To demonstrate this approach in detecting fractures, we first apply the methodology on two-dimensional (2D) and three-dimensional (3D) synthetic images. I generated these images with basic geometric features resembling fractures. I then computed the spatial Hessian matrix for each voxel of the synthetic images, and finally conduct further analysis to map the fracture like features. The description of these steps follows in the same order stated. 
+
+\subsubsection{Synthetic Image Generation} \label{sec:Synthetic Fractures}
 
 \begin{figure}[!h]
 \centering
@@ -78,7 +112,7 @@ The workflow used in generating the synthetic fracture images was done using Mat
 
 In order to understand the effects of blurring and noise in our analysis, four different images are generated using identical image size and fracture apertures in two sets. The first set is of two "sharp" images, and the other two are blurred images. The blurring is produced by the convolution of the sharp image with a 3-by-3 (-by-3 in 3D) box filter. The blurred images are a rudimentary attempt to represent the effect of the Point Spread Function (PSF) of a microCT machine \citep{Ketcham2010}. In each set, one image is noise free while random noise was added to the other. This is our attempt to observe and quantify the effect of random noise. The result of this workflow is images with the specified fracture apertures as the apparent fractures. Since our objective is to map fractures, a plate like geometrical features, \cite{Voorn2013} have stated that two-dimensional images are insufficient in mapping fractures.  To generate 3D images with fractures that are vertically oriented, a stack of three identical images are superimposed on one another. For the images that contain noise, three different realizations of noise are stacked to preserve the randomness of noise. \Autoref{fig:Synthetic images} shows the middle slice of a three-dimensional image with input parameters [1,2,3,4,6] for fracture apertures, 100 voxels for the length of the image, and 10 for the SNR. 
 
-\subsection{MicroCT Images and Sample Description}
+\subsubsection{MicroCT Images and Sample Description}
 
 \begin{figure}[!h]
 \centering
@@ -99,8 +133,8 @@ The images are for a cylindrical sample that underwent a rotary shear experiment
 \label{fig:Zhao2017_fig-6-7}
 \end{figure}
 
-\subsection{Enhancing Fractures in microCT Images Using Hessian Filtering} \label{sec:Enhancing Fractures in microCT Images Using Hessian Filtering} \label{sec:EnhancingFractturesInMicroCTImages}
-\subsubsection{Computing the Hessian} \label{sec:The Hessian}
+\subsubsection{Enhancing Fractures in microCT Images Using Hessian Filtering} \label{sec:Enhancing Fractures in microCT Images Using Hessian Filtering} \label{sec:EnhancingFractturesInMicroCTImages}
+\paragraph{Computing the Hessian} \label{sec:The Hessian}
 To compute the Hessian of a microCT image, consider a three dimensional Euclidean domain $E^3$ representing the domain of a microCT image, and given a scalar valued field $I: E^3 \rightarrow \mathbb{R}$ representing the gray value of every voxel. The Hessian of the scalar field $I$ is $\mathbf{H}(I)$. Consider the matrix notation of the Hessian as shown in \autoref{eqn:hessian}. 
 
 \begin{align*}
@@ -149,7 +183,7 @@ G(x,y,z,s) & = \exp\left\{ -\frac{1}{2s^2} \left[ \left(x - x_0\right)^2 + \left
 
 For a given image, I computed all nine components of the Hessian for each voxel for different values of the scaling parameter $s$. This was done by (1) choosing a value for $s$; (2) generating the proper three-dimensional Gaussian filter $G(x,y,z)$ using the   Image Processing Toolbox function \texttt{fspecial3} with a filter size of either 18 or 19. The size of the filter was dependent on $2s$. The filter was 18 if $2s$ was even and 19 if $2s$ was odd.(3) computing the nine derivatives, $G_{ji}(x,y,x)$ for $i,j = [x,y,z]$, that are used in \autoref{eqn:I xy}, then convolving the result with the images while choosing $\alpha = 1$. Looking at the bottom plot of \autoref{fig:Gaussian cont}, each curve can be defined by it largest trough bounded by two smaller peaks. The distance that defines the largest trough for every curve between the two points (closest to zero) intersection the horizontal axis is $2s$. 
 
-\subsubsection{Fracture Enhancement Analysis} \label{sec:Fracture Enhancement Analysis}
+\paragraph{Fracture Enhancement Analysis} \label{sec:Fracture Enhancement Analysis}
 After computing the all nine components of the Hessian for every voxel of the synthetic images for every value of $s$, we compute the eigenvalues $\lambda_1,~ \lambda_2,~\lambda_3$, where $\lambda_1 < \lambda_2 < \lambda_3$. I used the Matlab function \texttt{eig} to do so. For every value of $s$, within and close to plate like features, we expect one of the eigenvalues to have a large magnitude while the other two to have small magnitudes. Using the same criteria proposed by \cite{Voorn2013}, we can then define a new value $A_s$ for every voxel such that 
 $$A_s = \begin{cases}
 \lambda_3 - |\lambda_2| - |\lambda_1| &\quad \text{if} ~ (\lambda_3 - |\lambda_2| - |\lambda_1|) > 0\\
@@ -168,7 +202,7 @@ $\gamma$ is an arbitrary tolerance that I chose to be $0.70$ in my application. 
 
 The final step is combining all different images for every value of $s$, and inverting the image to match the original synthetic image as shown in \autoref{fig:copmaring voorn}. 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \includegraphics[width = \textwidth]{"SFI,s = 0.5, Aperture = 1, Frac (1 of 5), hsize = 19"}
 \includegraphics[width = \textwidth]{"SFI,s = 1, Aperture = 2, Frac (2 of 5), hsize = 18"}
@@ -181,7 +215,7 @@ The final step is combining all different images for every value of $s$, and inv
 
 
 \subsubsection{Using \texorpdfstring{\cite{Voorn2013}}{Voorn et al. (2013)} Code} 
-The code described in \cite{Voorn2013} to enhance multi-scale fractures is available in code via a GitHub repository. At first, I recreated the entire workflow in Matlab with the intention of attempting to further address sub-voxel fractures with minor success not discussed here. More work is needed to achieve this objective. In \autoref{sec:results comparing my outcome and voorns} I will discuss the difference in the outcome of my code compared to the outcome of the code published by \cite{Voorn2013}. The synthetic image used in this comparison is the Synthetic Blurry Fracture Image with added noise (SBFIN) that is shown in \autoref{fig:Blurry images}. The results of using my code compared to the published code is shown in \autoref{fig:copmaring voorn}. 
+The code for the method described in \cite{Voorn2013} to enhance multi-scale fractures is available in a GitHub repository. At first, I recreated the entire workflow in Matlab with the intention of attempting to further address sub-voxel fractures with minor success not discussed here. More work is needed to achieve this objective. In \autoref{sec:results comparing my outcome and voorns} I will discuss the difference in the outcome of my code compared to the outcome of the code published by \cite{Voorn2013}. The synthetic image used in this comparison is the Synthetic Blurry Fracture Image with added noise (SBFIN) that is shown in \autoref{fig:Blurry images}. The results of using my code compared to the published code is shown in \autoref{fig:copmaring voorn}. 
 
 \begin{figure}[!ht]
 \centering
@@ -193,16 +227,17 @@ The code described in \cite{Voorn2013} to enhance multi-scale fractures is avail
 
  
 \subsection{Measuring Fracture Surface area} \label{sec:MeasuringFractureSurfaceArea}
-A particular fracture property of interest is the surface area of the fracture.  Fracture surface area is the area of the interface between the 'void' and the solid phase of a rock sample. The importance of quantifying this geometric feature stems from its influence on the following:
+A particular fracture property of interest is the surface area of the fracture. Fracture surface area is the area of the interface between the 'void' and the solid phase of a rock sample. The importance of quantifying this geometric feature stems from its influence on the following:
 \begin{tight_itemize}
-	\item it is the surface across which fluid exchange between the two phases occur
+	\item it is the surface across which fluid exchange occurs between fluid flow regimes
 	\item the fluid flow mechanisms depends on the orientation of flow with respect to the fracture surface
-	\item the estimation of system energy consumption due to fracturing (surface energy) 
+	\item the estimation of system energy consumption due to fracturing (surface energy) \citep{Zhao2020}
+	\item when simulating cumulative production of hydrocarbons in artificially fractured reservoirs, the fracture surface area is the major contributor to the cumulative hydrocarbon production \citep{Orangi2011}
 \end{tight_itemize}
 
 For the stated reasons above, we wanted to assess the usage of the Hessian filtering enhanced images compared to a microCT images see \autoref{fig:comparingHessianAndMicroCT}. 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{comparingFracturesHessianAndMicroCT.png}
 \caption{The top row show from left to right: a zoomed in version of the inverted microCT image 18\_degree, a slice of the microCT image with two crossed green and red lines and a small while box showing the position of the cursor. The linear plot to the right show the gray values of the inverted microCT image along the green line shown on the microCT slice.  Similarly, the bottom row is of the Hessian filtering enhanced image. Notice how much better small fractures show in the enhanced image in the slice image and in the linear plot inside the white circles. }
@@ -230,7 +265,7 @@ The surface area due to fractures is the difference in surface area of these two
 \subsection{Comment on My Implementation of the Hessian Filtering Technique} \label{sec:furtherComment}
 \Autoref{fig:copmaring voorn} shows the resulst of my implementation on the SBFIN images.  We can see from the traverse profiles that we are able to detect the fractures of different scales. Although we are able to detect the fractures, not all fracture apertures visually match the corresponding fractures in the original synthetic image in \autoref{fig:Synthetic images}. 
 
-\begin{wrapfigure}{R}{0.4\textwidth}
+\begin{wrapfigure}{R}{0.5\textwidth}
 \vspace{-20pt}
 \centering
 \includegraphics[width=0.4\textwidth]{Zhaoetal2020fig4.png}
@@ -240,7 +275,7 @@ The surface area due to fractures is the difference in surface area of these two
 
 Since our data set and filtering kernels used in the convolution operation are made out of discrete values, the shape of the filter must be preserved. This means that when using the Matlab function \texttt{fspecial3} to generate the 3D filter, one needs to plot it and insure that the size of the filter results in second derivative filter shape that preserves the two-peak-one-trough shape for a specific scaling parameter $s$. To show this better, consider the 2D filter since it is easier to visualize. \Autoref{fig:Filters} shows the kernel generated using the \emph{gaussian} option of the Matlab function \texttt{fspecial2} (2D equivalent of \texttt{fspecial3}). Shown in this figure are four different filters for one scaling parameter $s = 1$. The filter sizes shown are 5, 9, 11, and 19. \Autoref{fig:Filter size 5} shows that the second derivative $G_{xx}$ shown in the right column does not preserver the trough-peak-trough shape required to produce the appropriate results. But a filter size of 9 or greater seem to preserve that shape, making such sizes sufficient to produce the correct results. The main advantage of keeping the filter size small however, is reducing the computing expense. For my synthetic images, which are 100 x 100 x 3 voxels in size, the computational time was minimal, but considering an actual image of a rock, the computations could become very expensive. An attempt that is not shown here on an image of size 1000 x 350 x 3 was made, and the computational time was about 15 minutes. This shows that there should be an optimal filter size for every scaling parameter $s$ to optimize the computational expense. 
 
-\begin{figure}[!h]
+\begin{figure}[!hb]
 \centering
     \begin{subfigure}[b]{0.4\textwidth}            
             \includegraphics[width=\textwidth]{"s = 1, hSize = 5_normalized"}
@@ -279,17 +314,9 @@ The approach proposed by \cite{Voorn2013} seems to be successful at detecting fr
 
 Furthermore, the Gaussian kernal used in \cite{Voorn2013} is isotropic. We anticipate that using an anisotropic Gaussian kernal has the potential of providing additional information about the fractures. The shape of an isosurface an anisotropic Gaussian kernal, i.e. 3D contour, yields a shape that has three principal directions of different magnitudes. This information can be utilized in identifying fracture orientation. This feature of fractures is helpful in understanding the extent of the fracture contribution in fluid flow within a rock sample. 
 
+
 \clearpage
 \newpage
 \bibliographystyle{seg}
 \bibliography{references}
-
-\begin{comment}
-\clearpage
-\newpage
-\appendix
-\section{Appendix}
-\input{{gaussian functions}}
-\input{{ideas and meeting notes}}
-\end{comment}
 \end{document}
