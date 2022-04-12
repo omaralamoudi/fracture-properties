@@ -51,6 +51,11 @@ Carolyn Bland has a data set of permeability measurements of a shale sample that
 
 \section{Notes and discussions}
 The subsections below are ordered in a reverse chronological order.
+\subsection{[April 11, 2022] Discussion with Nicola}
+In this discussion, we compared the output of our initial \texttt{fft} analysis of periodically occurring fractures. In my analysis, I utilized the analytical solution provided by \cite{Mavko1978} to generate two frequency spectra before and after deformation. As per the \citep{Mavko1978} model, we need to define a parameter that I will call fracture spacing. Here, fracture spacing is the distance from the centers of two of the non-elliptical tapered fractures. The center is the point where maximum fracture aperture occurs. 
+
+In my implementation, I maintained the formulation provided in \citep{Mavko1978}, where the spacing remains constant, but the fracture width is reduced when subjected to higher pressure. On the other hand, Nicola chose a different approach in modeling the problem. He decided to approximate the resultant fracture aperture of a single fracture by a sinusoid by repeating it after deformation. This results in varying the fracture spacing as a function of pressure, but it preserves the periodic character of the repeated fracture. 
+
 \subsection{[April 4, 2022] Discussion with Nicola}
 In this discussion, we were contemplating the \texttt{fft} results of a 2d image. We looked at some material in the \cite[see pages 63-66]{Mavko2009}. The discussion covered the following points: 
 \begin{itemize}
