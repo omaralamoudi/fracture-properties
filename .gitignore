@@ -26,6 +26,7 @@
 *.dcm
 *.jpg
 *.png
+*.gif
 
 # Manuscripts
 *.pdf
