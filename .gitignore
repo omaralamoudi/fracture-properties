@@ -13,6 +13,7 @@
 *.bak
 *.dvi
 *.tks		
+*.toc
 
 # Matlab files, especially temporary files *.*~
 *.m~
