@@ -123,17 +123,29 @@ Carolyn Bland has a data set of permeability measurements of a shale sample that
 
 \section{Notes and discussions}
 The subsections below are ordered in a reverse chronological order.
-\subsection{[April 11, 2022] Discussion with Nicola}
-In this discussion, we compared the output of our initial \texttt{fft} analysis of periodically occurring fractures. In my analysis, I utilized the analytical solution provided by \cite{Mavko1978} to generate two frequency spectra before and after deformation. As per the \citep{Mavko1978} model, we need to define a parameter that I will call fracture spacing. Here, fracture spacing is the distance from the centers of two of the non-elliptical tapered fractures. The center is the point where maximum fracture aperture occurs. 
+\subsection{[April 18, 2022] Discussion with Nicola}
+In this discussion, I might have had a breakthrough in understanding the differences between how Nicola is applying the tapered crack model and how I am applying it. Nicola applies the model in the Fourier domain while I apply it in the real domain. Meaning, Nicola decomposes the aperture array using \texttt{FFT} into its sinusoidal components, from there he assumes that the fracture aperture is composed of the superposition of the different spatial frequencies and their associated amplitudes where, the amplitudes corresponds to $2b$ and the wavelength $\lambda = 1/f$ corresponds to $2c$ where $2b$ is half the maximum fracture aperture, and $2c$ is the fracture width. Then Nicola applies the pressure on the different sinusoidal components resulting in a new array of sinusoids where $c$ and $b$ are different. In addition, when replicating the fracture aperture signal, Nicola chooses to first concatenate a negative aperture to the original tapered fracture aperture, and them replicate this combination.
 
-In my implementation, I maintained the formulation provided in \citep{Mavko1978}, where the spacing remains constant, but the fracture width is reduced when subjected to higher pressure. On the other hand, Nicola chose a different approach in modeling the problem. He decided to approximate the resultant fracture aperture of a single fracture by a sinusoid by repeating it after deformation. This results in varying the fracture spacing as a function of pressure, but it preserves the periodic character of the repeated fracture. 
+In my implementation, the deformation is rather applied in the real domain, and I am trying to understand what happens to the frequencies and amplitudes in the Fourier domain. Of course this leads us to the question "Then why bother decompose the fracture aperture using FFT?" The initial answer is so that we can  apply the tapered crack model on individual constituent of the fracture, where we are assuming that the fracture is a super position of an array of fractures of different geometires. This is done because of our objective to analyze the image that we produce from projecting the fracture aperture spatial distribution onto the YZ plane.
+
+\subsection{[April 11, 2022] Discussion with Nicola}
+In this discussion, we compared the output of our initial \texttt{fft} analysis of periodically occurring fractures. In my analysis, I utilized the analytical solution provided by \cite{Mavko1978} to generate two frequency spectra before and after deformation. As per the \citep{Mavko1978} model, we need to define a parameter that I will call fracture spacing. Here, fracture spacing is the distance from the centers of two of the non-elliptical tapered fractures. The center is the point where maximum fracture aperture occurs. See \autoref{fig:tapered_fracture_schematic} showing two different ways of interpreting what happens to a fracture when subjected to a closing pressure.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/schematic_of_tapered_fractures.png}
+\caption{A schematic showing two configurations for the fracture surface that will be used in the Fourier analysis. The colored lines show the fracture surface after being subjected to a closing pressure. Note here that the top row is consistent with the description in \cite{Mavko1978}, but the advantage of the the second interpretation is that we can extract information about the crack width from the frequency domain.}
+\label{fig:tapered_fracture_schematic}
+\end{figure}
+
+In my implementation, I maintained the formulation provided in \citep{Mavko1978}, where the spacing remains constant, but the fracture width is reduced when subjected to higher pressure. On the other hand, Nicola chose a different approach in modeling the problem. He decided to approximate the resultant fracture aperture of a single fracture by a sinusoids by repeating it after deformation. This results in varying the fracture spacing as a function of pressure, but it preserves the periodic character of the repeated fracture. An advantage of the approach Nicola adopts is that one can extract twice the fracture width $2\mathbf{c}$ from the frequency domain as it is the reciprocal of the spatial frequencies with the highest amplitudes. 
 
 \subsection{[April 4, 2022] Discussion with Nicola}
 In this discussion, we were contemplating the \texttt{fft} results of a 2d image. We looked at some material in the \cite[see pages 63-66]{Mavko2009}. The discussion covered the following points: 
 \begin{itemize}
 \item Nicola agreed that ignoring measuring small cracks and fractures in microCT images as they don't necessarily contribute significantly to the fluid conduction in the fracture rock. This might need to be thoroughly examined. Also, he suggested that we might arrive at a result of \textbf{specifying the microCT resolution as a limiter for a specified permeability estimate}, i.e. given a microCT image with a known resolution, we can only estimate a permeability that is greater than $\kappa_c$ where $\kappa_c$ is limited by the microCT image resolution.
 \item So far, in the literature (Rock Physics Handbook, McJaeger Fundametals for Rock Mechanics, etc.) we only find solutions of penny, and needle shaped cavities, where two axes out of the three are the same. No solution for anisotropic ellipsoids where all three axes are different. I am not sure if this is an important problem, but for now, we will use the available solution to move forward.
-\item We discussed a point about transforming the frequency of the fracture aperture distribution when subjected to stress. See \autoref{fig:freq transformation} showing some brain storming schematics. We thought that this transformation would occur when subjecting the fracture to stress, this would happen because fracture spacing and fracture aperture would change as a result of applied stress. Considering \textbf{2D} cracks as non-elliptical tapered cracks as shown in \cite[Table 2.9.1 page 64, and Figure 2.9.2 page 66]{Mavko2009}, we should consider the solutions provided in \cite{Mavko1978}. This solution is the same shown in \cite[see pages 63-66]{Mavko2009}. It is for 2D cracks, so its applicability to our analysis will be limited to analyzing 2D slices of the microCT images along the z-axis since we are applying confining pressure radially.
+\item We discussed a point about transforming the frequency of the fracture aperture distribution when subjected to stress. See \autoref{fig:freq_transformation} showing some brain storming schematics. We thought that this transformation would occur when subjecting the fracture to stress, this would happen because fracture spacing and fracture aperture would change as a result of applied stress. Considering \textbf{2D} cracks as non-elliptical tapered cracks as shown in \cite[Table 2.9.1 page 64, and Figure 2.9.2 page 66]{Mavko2009}, we should consider the solutions provided in \cite{Mavko1978}. This solution is the same shown in \cite[see pages 63-66]{Mavko2009}. It is for 2D cracks, so its applicability to our analysis will be limited to analyzing 2D slices of the microCT images along the z-axis since we are applying confining pressure radially.
 
 \end{itemize}
 
@@ -141,7 +153,7 @@ In this discussion, we were contemplating the \texttt{fft} results of a 2d image
 \centering
 \includegraphics[width=0.8\textwidth]{figures/20220404_discussion_with_nicola.png}
 \caption{Comparing the output frequency with the input frequency after applying stress on a fracture that results in fracture aperture reduction}
-\label{fig:freq transformation}
+\label{fig:freq_transformation}
 \end{figure}
 
 \subsection{[Feb 25, 2022] Discussion with Nicola: relating spacial distribution .... }
@@ -149,7 +161,7 @@ Nicola and I were talking about how to model the fracture aperture reduction due
 \begin{enumerate}
 \item Extract the spacial distribution of the fracture apertures from the microCT image. One approach is using the methodology shown in \citep[see][fig. 5]{Zhao2018}. This should result in a two-dimensional image showing the the fracture apertures along the axis of two-dimensions since the micorCT image is a three-dimensional image.
 
-\item We then compute the Fourier-transform of the fracture aperture spatial distribution function, which results in a measure of the the amplitudes of the different fracture aperture wave numbers. To understand this consider 1D function $f(x) = A_0 sin(\frac{2\pi x}{L})$ ... see the matlab file \texttt{fracture properties/scripts/matlab/prototyping/fourier\_ analysis\_of\_fracture\_apertures.mlx}
+\item We then compute the Fourier-transform of the fracture aperture spatial distribution function, which results in a measure of the the amplitudes of the different fracture aperture wave numbers. To understand this consider 1D function $f(x) = A_0 sin(\frac{2\pi x}{L})$ ... see the matlab file \texttt{fracture properties/scripts/matlab/prototyping/\\fourier\_ analysis\_of\_fracture\_apertures.mlx}
 
 \item We then use the result from the Fourier analysis to generate different fractures with dimetions of minor axis = to the amplitude, and the major axis = the wave number. We then find the resultant reduction in fracture aperture given a specified stress tensor using the analytical solution from the paper Nicola showed me.
 
