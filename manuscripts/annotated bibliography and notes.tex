@@ -201,6 +201,9 @@ Some images still have some beam hardening, I fould this code online that can su
 \section{Annotated bibliography}
 The order of the following sections is arbitrary. Number is used to refer to the different sections within the manuscript.
 
+\subsection{\texttt{hilbert} Matlab function}
+For my \texttt{fft} analysis, I want to checkout the \texttt{hilbert} function. I came across this function when trying to analyze the envalop of the signal generated from the piezoelectric transducers in order to systematically determine the initial disturbance that yields the Vp delay time, from which we can determine the Vp of a sample (or the standards used in the calibration process)
+
 \subsection{Eric Goldfarb's work presented during EDGER 2021}
 Eric spoke during his EGDER	2021 meeting about fast scans and how they don't deteriate the quality of the image. I need to cite this work and use it when I present my work about scanning samples while under confining pressures inside of my vessel and the UTCT X-Ray scanner.
 
@@ -257,6 +260,18 @@ This is the paper that Nicola shared with me that shows the analytical solution 
  
 \subsection[Ketcham and Carlson (2001)]{\cite{Ketcham2001}} 
 \cite[fig. 6]{Ketcham2001} shows an image with sub-voxel fractures that were measured in a thin section.
+
+\subsection[Cohen (2017)]{\cite{Cohen2017}}
+This YouTube video provides a great insight into understanding 2D FFT results. 
+
+\subsection[Mavko and Nur (1978)]{\cite{Mavko1978}}
+I'm reading this paper to: 
+\begin{itemize}
+\item Determine whither the discussed cracks are 2D or 3D
+\item Understand the crack properties also stated in \cite{Mavko2009}.
+\end{itemize}
+
+In \cite{Mavko1978}, the authors explicitly state in the introduction that the cracks are 2D and flat. Also, the parameters $c,~ b$ are the crack half length (width) and half the maximum width (half the maximum aperture, or half the maximum height) respectively. Another parameter that is mentioned is the aspect ration which is $\alpha = b/c << 1$. 
 \clearpage
 \newpage
 \bibliographystyle{seg}
