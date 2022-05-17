@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TexmakerSession quickmode="3">
-    <document bookmark3="0" bookmark1="0" file="C:\Users\oma385\Dropbox\LaTeX\mytexmf\tex\latex\myAnnotations.sty" line="12" master="false" bookmark2="0" hasfocus="false"/>
-    <document bookmark3="0" bookmark1="0" file="C:\Users\oma385\Dropbox\LaTeX\mytexmf\tex\latex\edger.cls" line="51" master="false" bookmark2="0" hasfocus="false"/>
-    <document bookmark3="0" bookmark1="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/manuscripts/project report.tex" line="1" master="false" bookmark2="0" hasfocus="false"/>
-    <document bookmark3="0" bookmark1="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/manuscripts/preamble.tex" line="0" master="false" bookmark2="0" hasfocus="false"/>
-    <document bookmark3="0" bookmark1="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/manuscripts/references.bib" line="0" master="false" bookmark2="0" hasfocus="true"/>
-    <document bookmark3="0" bookmark1="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture properties/manuscripts/annotated bibliography and notes.tex" line="0" master="false" bookmark2="0" hasfocus="false"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:\Users\oma385\Dropbox\LaTeX\mytexmf\tex\latex\myAnnotations.sty" hasfocus="false" master="false" line="12"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:\Users\oma385\Dropbox\LaTeX\mytexmf\tex\latex\edger.cls" hasfocus="false" master="false" line="51"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture_properties/manuscripts/project report.tex" hasfocus="false" master="false" line="1"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture_properties/manuscripts/preamble.tex" hasfocus="false" master="false" line="0"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture_properties/manuscripts/annotated bibliography and notes.tex" hasfocus="true" master="true" line="0"/>
+    <document bookmark3="0" bookmark1="0" bookmark2="0" file="C:/Users/oma385/Dropbox/GraduateSchool/PhD/Projects/fracture_properties/manuscripts/references.bib" hasfocus="false" master="false" line="0"/>
 </TexmakerSession>
