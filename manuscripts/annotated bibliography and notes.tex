@@ -1,4 +1,4 @@
-\documentclass[11pt,titlepage]{article}
+\documentclass[12pt,titlepage]{article}
 \usepackage{myAnnotations}
 
 % for bibliography management using bibtex {
@@ -8,9 +8,15 @@
 %}
 \usepackage[margin=1in]{geometry}
 
+% Package that allows arbitrary font size {
+% I encountered the Warning: "LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available" and found a solution here: https://tex.stackexchange.com/questions/58087/how-to-remove-the-warnings-font-shape-ot1-cmss-m-n-in-size-4-not-available
+\usepackage{lmodern}
+%}
 % package for including graphics {
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[margin=20pt,font=small,labelfont=bf,
+labelsep=colon]{caption} % to control the width of the captions
 %}
 
 % MY ENVIRONMENTS {
@@ -32,6 +38,8 @@
 
 \author{Omar Alamoudi}
 \date{\today} 
+
+\linespread{1.6} % to produce 1.5 Word line spacing. See: https://tex.stackexchange.com/questions/65849/confusion-onehalfspacing-vs-spacing-vs-word-vs-the-world
 
 \begin{document}
 \maketitle
