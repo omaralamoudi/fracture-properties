@@ -197,27 +197,28 @@ We should measure the point spread function, or edge spread function of our mach
 \subsubsection{Beam Hardening Correction}
 Some images still have some beam hardening, I fould this code online that can supposedly fixes it: https://github.com/CarlaRomano/Beam-hardening-correction
 
+\pagebreak
 \section{Annotated bibliography}
 The order of the following sections is arbitrary. Number is used to refer to the different sections within the manuscript.
 
 \subsection{Eric Goldfarb's work presented during EDGER 2021}
 Eric spoke during his EGDER	2021 meeting about fast scans and how they don't deteriate the quality of the image. I need to cite this work and use it when I present my work about scanning samples while under confining pressures inside of my vessel and the UTCT X-Ray scanner.
 
-\subsection{\cite{Zimmerman1996}}
+\subsection[Zimmerman and Bodvarsson (1996)]{\cite{Zimmerman1996}}
 In Sec. 4, the authors assert that fluid flow occurs in paths of least resistance. This assertion is also stated in \citep{Lubbe2006} This is an intuitive observation. It implies that large fractures are more important than smaller fractures, as larger fractures are easier to flow through. Large and small here describe the fracture aperture specifically. Such assertion has some implications on the concern regarding measuring smaller fractures in general, and in microCT images in particular. Maybe it is not as important to quantify smaller fractures. In other words, the time invested in trying to resolve smaller fractures is not worth it given how little smaller fractures contribute to the flow. This argument can be well addressed by demonstrating the following:
 \begin{itemize}
 \item If smaller fractures don't matter as much as larger fractures, then we apply stresses on a fractured media that contains an array of fractures of different apertures, the permeability reduction will be affected more by the reduction of the fracture aperture of the larger fractures than the smaller fractures.
 \item Assuming that the specific stiffness \citep{Hopkins1987} of smaller fractures is significantly higher than the larger fractures (this assumption is intuitive, maybe it needs validation). That means, when applying an identical stress to two different fractures of different apertures, the reduction of the fracture aperture in the larger fracture will be significantly more than that of its smaller counter part. This means that the impact in the reduction of permeability will be impacted more by the reduction of the aperture of the large fracture compared to the small fracture aperture reduction. This can be demonstrated by using the analytical solution of \cite{Maugis1992} on two different size cracks, and compare the average displacements, and the fracture apertures before and after applying stress.
 
 \end{itemize}
-\subsection{\cite{Orangi2011}} 
+\subsection[Orangi et al. (2011)]{\cite{Orangi2011}} 
 These authors study the effect of variation reservoir parameters on the production of hydrocarbons of the Eagle Ford Shale. The study is based on simulating the production using what seems to be a proprietary homogeneous sector model. I noticed an error in the publication where the authors refer to figure 13 when what is shown is a duplicate of figure 12. It is important to also note that this publication is a convention proceeding, and it is not peer reviewed, so maybe it is not the strongest reference on the matters discussed below. What I want use this reference for are the following arguments:
 \begin{itemize}
 \item Demonstrating the problem with the misnomer 'fracture-permeability' where the authors here actually represent the fractures not as a fluid conduit that is void but rather as a porous rock with a Darcy permeability. This is contrary to what one would expect if the fracture was a void filled with fluid. However, since the authors represent the fracture as a porous rock with high permeability, it is not a misnomer in this context, but rather an approximation of a fractured rock using a porous medium.
 \item Explaining the importance of the measure fracture surface area as it seems to be a major contributor in the cumulative product regardless of the height and width described in the publication \citep[p.12]{Orangi2011}. 
 \end{itemize}
 
-\subsection[paper about]{\cite{Lubbe2006}} 
+\subsection[Lubbe and Worthington (2006)]{\cite{Lubbe2006}} 
 The authors of this paper measured fracture compliance in the field using seismic data, and compared the results with lab measurements available in the literature. 
 
 I want to cite this paper because it supports the following argument: larger fractures matter much more than smaller fractures, larger fractures conduct more fluid, and therefore, if we can measure them better than smaller ones, that should be satisfactory when estimating permeability is the objective of the study.
@@ -227,7 +228,7 @@ Other points of interest:
 \item In the introduction, the authors assert that a small number of large fractures affect fluid flow critically within a fractured solid. This can be interpreted as larger fractures are more critical to fluid flow than smaller ones.
 \end{itemize}
 
-\subsection{\cite{Pyrak-Nolte1996}} studies the interrelations between fracture specific stiffness and seismic wave propagation. I find this paper rather fascinating. I certainly want to learn more about their findings. In this paper, the author alludes to the idea that fluid flow is dominated by the flow through the fractures \citep[p.792]{Pyrak-Nolte1996}. This seems to be a more careful consideration that asserting fluid flow is dominated by the flow through the fractures.
+\subsection[Pyrak-Nolte (1996)]{\cite{Pyrak-Nolte1996}} studies the interrelations between fracture specific stiffness and seismic wave propagation. I find this paper rather fascinating. I certainly want to learn more about their findings. In this paper, the author alludes to the idea that fluid flow is dominated by the flow through the fractures \citep[p.792]{Pyrak-Nolte1996}. This seems to be a more careful consideration that asserting fluid flow is dominated by the flow through the fractures.
 
 In \citep[\S Fracture Network Geometry]{Pyrak-Nolte1996}, the author suggests that for a single fracture, there are three geometrical fracture properties to consider:
 \begin{tight_itemize}
@@ -243,19 +244,19 @@ For a fracture network, there are the following additional properties as well:
 \item inter-connectivity of fractures
 \end{tight_itemize}
 
-\subsection{\cite{Pyrak-Nolte2000}} I think this is the paper that I've been looking for, I haven't read it yet, but I think it describes the relationship between stressing a fractures that results in the reduction of the aperture that results in the reduction in the fluid flow. I need to read it and hope that it works as expected. 
+\subsection[Pyrak-Nolte and Morris (2000)]{\cite{Pyrak-Nolte2000}} I think this is the paper that I've been looking for, I haven't read it yet, but I think it describes the relationship between stressing a fractures that results in the reduction of the aperture that results in the reduction in the fluid flow. I need to read it and hope that it works as expected. 
 
 After briefly skimming through it, I realize that this paper does not have a theoretical derivation, but it has a numerical simulation and its analysis. Further reading is needed. 
 
 
-\subsection{\cite{Hopkins1987}}
+\subsection[Hopkins et al. (1987)]{\cite{Hopkins1987}}
 This conference proceeding discusses the effect of the spatial distribution of asperities on fracture-specific-stiffness. \ilinstruction{I think this is a great paper that I could use to replicate using FEniCS?}
 
-\subsection{\cite{Maugis1992}}
+\subsection[Maugis (1992)]{\cite{Maugis1992}}
 This is the paper that Nicola shared with me that shows the analytical solution of applying stress on a crack. Nicola also shared some files applying these solutions using Matlab, see the Matlab file \texttt{PhD/Projects/fracture properties/readings/material shared by Nicola/ellipse}.
  
-\subsection{\cite[see fig. 6]{Ketcham2001}} 
-This figure shows an image with sub-voxel fractures that were measured in a thin section.
+\subsection[Ketcham and Carlson (2001)]{\cite{Ketcham2001}} 
+\cite[fig. 6]{Ketcham2001} shows an image with sub-voxel fractures that were measured in a thin section.
 \clearpage
 \newpage
 \bibliographystyle{seg}
